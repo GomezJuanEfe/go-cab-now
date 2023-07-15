@@ -1,1 +1,10 @@
-// Se asignan estilos generales
+@import '../abstract/variables.scss';
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: $font-standard;
+}
