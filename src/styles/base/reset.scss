@@ -1,1 +1,9 @@
-// Se resetean todos los estilos. Para esto hay plantillas
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button, input {
+  all: unset;
+}
