@@ -7,3 +7,13 @@
 button, input {
   all: unset;
 }
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
