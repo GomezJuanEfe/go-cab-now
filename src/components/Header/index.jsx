@@ -9,7 +9,7 @@ const Header = () => {
   const [menu, setMenu] = useState(false);
   const [settings, setSettings] = useState(false);
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     if (window.innerWidth >= 1200) {
       return null
     }
@@ -65,7 +65,7 @@ const Header = () => {
           <ul className="menu__right-section">
 
             <li className='menu__right-section-front'>
-              <select name="currency" id="currency">
+              <select name="currency" id="currency-front">
                 <option value="usd">USD</option>
                 <option value="eur">EUR</option>
                 <option value="cop">COP</option>
@@ -73,7 +73,7 @@ const Header = () => {
             </li>
 
             <li className='menu__right-section-front'>
-              <select name="lang" id="lang">
+              <select name="lang" id="lang-front">
                 <option value="esp">ESP</option>
                 <option value="eng">ENG</option>
               </select>

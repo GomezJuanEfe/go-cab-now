@@ -1,0 +1,29 @@
+.footer-blog {
+
+  &__media {
+    display: flex;
+  
+    &-body {
+      margin-left: 25px;
+  
+      h5 {
+        margin-bottom: 8px;
+      }
+  
+      p {
+        font-size: 1.4rem;
+        font-weight: 600;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__media:last-child {
+    margin-top: 18px;
+  }
+}
