@@ -8,13 +8,14 @@
 }
 
 .menu__container {
+  max-width: 1400px;
   display: flex;
   justify-content: space-between;
 
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin: 10px auto;
+
 
   .menu__image-container {
 
@@ -197,7 +198,7 @@
         color: #fff;
 
         .active-link {
-          border-bottom: 1px solid inhe;
+          border-bottom: 1px solid inherit;
         }
       }
     }
