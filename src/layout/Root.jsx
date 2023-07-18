@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom"
+import Header from "../components/Header"
 
 const Root = () => {
 
   return (
     <>
-      <header>HEADER</header>
+      <Header/>
         <main>
           <Outlet />
         </main>
