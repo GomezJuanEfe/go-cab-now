@@ -1,17 +1,21 @@
 import './WhyChooseRica.scss'
+import wheel from '../../assets/icons/wheel.png'
+import customer from '../../assets/icons/customer.png'
+import world from '../../assets/icons/world.png'
+import cab from '../../assets/icons/cab.png'
 
 const WhyChooseRica = () => {
 
 return (
-    <div>
-      <div className='title__card'>WHY CHOOSE RICA?</div>
-          <article>
+  <div>
+      <section className='container__card'>        
+           <span>WHY CHOOSE RICA?</span>
            <h2>Welcome To Rica</h2>
            <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit. Adipisci Alias 
             Aperiam At, Aut Commodi Corporis Dolorum Ducimus Labore Magnam 
-            Mollitia Natus Porro Possimus Quae Sit Tenetur Veniam Veritatis Voluptate Voluptatem!</p>     
-          </article>
-
+            Mollitia Natus Porro Possimus Quae Sit Tenetur Veniam Veritatis Voluptate Voluptatem!</p>  
+      </section> 
+      
           <section className='container__icons'>
 
             <div className='card'>
@@ -39,8 +43,8 @@ return (
             </div>
 
           </section>
-
-      </div>
+      
+    </div>
     
 )
 
