@@ -1,4 +1,5 @@
 import OurAwesomeFleet from "../components/OurAwesomeFleet"
+import OurHappyCustomer from "../components/OurHappyCustomer"
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <>
     <h2>Home</h2>
     <OurAwesomeFleet />
+    <OurHappyCustomer />
     </>
   )
 }

@@ -1,8 +1,8 @@
-import './FleetCarousel.scss';
-import 'slick-carousel/slick/slick.css';
-import "slick-carousel/slick/slick-theme.css";
-import React, { Component } from "react";
 import Slider from "react-slick";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import './FleetCarousel.scss';
+import React, { Component } from "react";
 import classicCab from '../../assets/images/1.png'
 import businessCab from '../../assets/images/2.png'
 import vipCab from '../../assets/images/3.png'
@@ -40,14 +40,18 @@ export default class Responsive extends Component {
           breakpoint: 767,
           settings: {
             slidesToShow: 1,
-            initialSlide: 1
+            initialSlide: 1,
+            arrows: false,
+            dots: true
           }
         },
         {
           breakpoint: 480,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            arrows: false,
+            dots: true
           }
         }
       ]
