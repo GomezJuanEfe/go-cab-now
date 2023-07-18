@@ -1,0 +1,59 @@
+@import '../../styles/abstract/variables.scss';
+
+.container__general {
+   background-image: url(../../assets/images/app-bg.jpg);
+
+   align-content: center;
+   text-align: center;
+
+h2 {
+    color: $very-light-snow;
+    padding-bottom: calc(10px + (20 - 10) * ((100vw - 320px) / (1920 - 320)));
+}
+
+.container__text{
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    color: $white;
+}
+
+.container__icons{
+    box-sizing: border-box;
+    align-items: center;
+    justify-content:space-around;
+    display: flex;
+    align-content: center;
+    text-align: center;
+
+img {
+    width: 40px;
+    margin-bottom: 20px;
+}
+
+p{
+    margin-bottom: -3px;
+    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+    color: rgba(0, 0, 0, 0.65); 
+}
+
+.card {
+    background-color: $white;
+    margin-bottom: 20px;
+    border: 2px solid $very-light-snow;
+    padding: 20px 15px;
+    max-width: 151px;
+    max-height: 135px;
+    border-radius: 16px;
+    box-shadow: 2.5px 4.33px 35px 0px rgba(0, 0, 0, 0.04);
+    transition: transform 0.5s ease-in-out
+}
+
+.card:hover{
+    cursor: pointer;
+    transform: translateY(-10px);
+   
+}
+
+}
+
+}
