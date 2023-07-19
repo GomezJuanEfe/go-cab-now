@@ -15,6 +15,7 @@ import luggage from '../../assets/icons/luggage.png'
 
 //https://github.com/akiran/react-slick
 
+
 export default class Responsive extends Component {
   render() {
     const settings = {
