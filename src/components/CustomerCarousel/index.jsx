@@ -58,11 +58,11 @@ export default class Responsive extends Component {
           <div className='costumer__content'>
             <p>Architecto aut error explicabo. Voluptatem eaque sequi qui beatae velit vero autautem. Et adipisci perferendis corporis et similique vitae consequatur. Auteveniet quam. Et ut placeat consequatur qui nihil eos quibusdam. Impedit blanditiis delectus.</p>
             <h3>Mark Enderess</h3>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
+            <span className="fa fa-star checked"></span>
+            <span className="fa fa-star checked"></span>
+            <span className="fa fa-star checked"></span>
+            <span className="fa fa-star checked"></span>
+            <span className="fa fa-star"></span>
           </div>
         </div>
       </div>
@@ -73,11 +73,11 @@ export default class Responsive extends Component {
           <div className='fleet__content'>
             <p>Architecto aut error explicabo. Voluptatem eaque sequi qui beatae velit vero autautem. Et adipisci perferendis corporis et similique vitae consequatur. Auteveniet quam. Et ut placeat consequatur qui nihil eos quibusdam. Impedit blanditiis delectus.</p>
             <h3>Mark Enderess</h3>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
+            <span className="fa fa-star checked"></span>
+            <span className="fa fa-star checked"></span>
+            <span className="fa fa-star checked"></span>
+            <span className="fa fa-star checked"></span>
+            <span className="fa fa-star"></span>
           </div>
         </div>
       </div>

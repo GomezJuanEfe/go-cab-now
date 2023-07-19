@@ -13,6 +13,7 @@ import snowflake from '../../assets/icons/snowflake.png'
 import luggage from '../../assets/icons/luggage.png'
 
 
+//https://github.com/akiran/react-slick
 
 
 export default class Responsive extends Component {
