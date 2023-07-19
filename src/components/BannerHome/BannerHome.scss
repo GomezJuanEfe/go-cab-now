@@ -1,0 +1,67 @@
+@import '../../styles/abstract/variables';
+
+.banner-container {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./public/bg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .banner-content {
+    width: 100%;
+    max-width: 1400px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: 24px;
+    margin-right: 24px;
+    color: $white;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: $fs-sm;
+      font-weight: 300;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  
+  .banner-container {
+    height: 80vh;
+
+    .banner-content {
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  .banner-container {
+    height: 100vh;
+    
+    .banner-content {
+
+      h1 {
+        font-size: 4.75rem;
+      }
+
+      h3 {
+        font-size: 2rem;
+      }
+    }
+  }
+}
