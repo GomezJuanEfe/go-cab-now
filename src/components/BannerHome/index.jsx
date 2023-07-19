@@ -1,6 +1,6 @@
 import './BannerHome.scss';
 
-const BannerHome = () => {
+function BannerHome() {
   return (
     <div className="banner-container">
 
