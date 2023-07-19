@@ -1,0 +1,123 @@
+@import '../../styles/abstract/variables.scss';
+
+.container__general {
+   background-image: url(../../assets/images/app-bg.jpg);
+   background-size: cover;
+   background-position: center center;
+   max-height: 100%;
+   align-content: center;
+   text-align: center;
+   padding: 50px 0px 10px 0px;
+
+h2 {
+    padding: 10px 0px;
+    font-size: calc(2.2rem + 14 * (100vw - 320px) / 1600);
+    padding: 10px 0;
+    font-weight: 800;
+    color: $very-light-snow;
+}
+
+.container__text{
+    font-size: calc(1.4rem + 2 * (100vw - 320px) / 1600);
+    letter-spacing: 0.03em;
+    color: $white;
+    line-height: 1.7;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding: 30px 100PX; 
+}
+
+.container__icons{
+    box-sizing: border-box;
+    align-items: center;
+    justify-content:space-around;
+    display: flex;
+    align-content: center;
+    text-align: center;
+    padding: 0px 10px;
+
+img {
+    width: 40px;
+    margin-bottom: 20px;
+}
+
+p{
+    margin-bottom: -3px;
+    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+    color: rgba(0, 0, 0, 0.65); 
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.se-card {
+    background-color: $white;
+    margin-bottom: 30px;
+    border: 2px solid $very-light-snow;
+    padding: 35px 25px;
+    border-radius: 16px;
+    box-shadow: 2.5px 4.33px 35px 0px rgba(0, 0, 0, 0.04);
+    transition: transform 0.5s ease-in-out;
+    width:100%;
+    max-width: 490px;
+}
+#card__down{
+    max-width: 100%;
+    flex-flow: row wrap;
+    align-content: baseline;
+    margin-top: 0px;
+    transform: translateY(25px);
+    cursor: pointer;
+}
+#card__down:hover{
+    transition: transform 0.5s ease-in-out;
+    transform: translateY(-10px);
+}
+.se-card:hover{
+    cursor: pointer;
+    transform: translateY(-10px);  
+}
+}
+}
+
+//MEDIAS QUERIES
+@media screen and (min-width: 380px) {
+
+    .container__icons {
+        display: flex;
+        flex-flow: row wrap;
+      }
+    .se-card {
+        width: 196px;
+        height: 167px;
+        width: 100%;  
+    }
+    }
+@media screen and (min-width: 576px) {
+
+    .container__icons {
+        display: flex;
+        flex-flow: row wrap;
+      }
+    .se-card{
+        width: 196px;
+        height: 167px;
+        width: 100%;
+    }  
+    }
+  
+  @media screen and (min-width: 1200px) {
+   .container__general{
+
+    .container__icons {
+        display: flex;
+        flex-flow: row nowrap;
+    .se-card, #card__down{
+        align-items: flex-start;
+        width: 25%;
+        width: 196px;
+        height: 167px;
+      }
+    }
+  }
+}
