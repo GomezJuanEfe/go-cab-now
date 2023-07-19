@@ -1,7 +1,6 @@
-import './BannerHome.scss'
+import './BannerHome.scss';
 
 const BannerHome = () => {
-
   return (
     <div className="banner-container">
 
@@ -10,7 +9,7 @@ const BannerHome = () => {
         <h3>Rent a Cab with afforable price with Go Cab Now</h3>
       </div>
     </div>
-  )
+  );
 }
 
-export default BannerHome
+export default BannerHome;

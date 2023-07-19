@@ -1,7 +1,6 @@
-import './FooterBlog.scss'
+import './FooterBlog.scss';
 
-const FooterBlog = ({img, title, body}) => {
-
+function FooterBlog({ img, title, body }) {
   return (
     <div className="footer-blog__media">
 
@@ -15,7 +14,7 @@ const FooterBlog = ({img, title, body}) => {
       </div>
 
     </div>
-  )
+  );
 }
 
-export default FooterBlog
+export default FooterBlog;
