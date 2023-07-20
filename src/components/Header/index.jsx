@@ -1,12 +1,11 @@
 import './header.scss';
 import { NavLink } from 'react-router-dom';
-import {
-  FaBars, FaUser, FaCog, FaAngleRight,
-} from 'react-icons/fa';
+// eslint-disable-next-line object-curly-newline
+import { FaBars, FaUser, FaCog, FaAngleRight } from 'react-icons/fa';
 import { useState } from 'react';
 import GCN_logo from '../../assets/icons/GCN-logo.png';
 
-function Header() {
+const Header = () => {
   const [menu, setMenu] = useState(false);
   const [settings, setSettings] = useState(false);
 
@@ -105,6 +104,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;
