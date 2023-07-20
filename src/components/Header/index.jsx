@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 // eslint-disable-next-line object-curly-newline
 import { FaBars, FaUser, FaCog, FaAngleRight } from 'react-icons/fa';
 import { useState } from 'react';
-import GCN_logo from '../../assets/icons/GCN-logo.png';
+import gcnLogo from '../../assets/icons/GCN-logo.png';
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -13,8 +13,7 @@ const Header = () => {
     if (window.innerWidth >= 1200) {
       return null;
     }
-    console.log(!menu);
-    setMenu(!menu);
+    return setMenu(!menu);
   };
 
   const handleClickSettings = () => setSettings(!settings);
@@ -25,22 +24,41 @@ const Header = () => {
 
         <div className="menu__image-container">
           <NavLink to="/">
-            <img src={GCN_logo} alt="" />
+            <img src={gcnLogo} alt="" />
           </NavLink>
         </div>
 
         <nav className="navbar">
-          <div className="navbar__toggle" onClick={handleClick}>
+          <div
+            className="navbar__toggle"
+            onClick={handleClick}
+            onKeyDown={handleClick}
+            role="button"
+            tabIndex={0}
+          >
             <FaBars style={{ fill: 'white', fontSize: '20px' }} />
           </div>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
+            jsx-a11y/no-static-element-interactions */}
           <div className={`navbar__overlay ${menu ? 'show' : ''}`} onClick={handleClick} />
           <ul className={`navbar__menu ${menu ? 'show' : ''}`}>
-            <li className="navbar__back-btn" onClick={handleClick}>
+            <li
+              className="navbar__back-btn"
+              onClick={handleClick}
+              onKeyDown={handleClick}
+              role="menuitem"
+              tabIndex={0}
+            >
               <span>Back</span>
-              {' '}
               <FaAngleRight />
             </li>
-            <li className="navbar__link" onClick={handleClick}>
+            <li
+              className="navbar__link"
+              onClick={handleClick}
+              onKeyDown={handleClick}
+              role="menuitem"
+              tabIndex={0}
+            >
               <NavLink
                 to="/"
                 className={({ isActive }) => (isActive ? 'active-link' : '')}
@@ -48,7 +66,13 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
-            <li className="navbar__link" onClick={handleClick}>
+            <li
+              className="navbar__link"
+              onClick={handleClick}
+              onKeyDown={handleClick}
+              role="menuitem"
+              tabIndex={0}
+            >
               <NavLink
                 to="cab-list"
                 className={({ isActive }) => (isActive ? 'active-link' : '')}
