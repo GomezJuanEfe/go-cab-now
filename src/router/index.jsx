@@ -1,9 +1,9 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom';
 
-import Root from '../layout/Root'
-import Home from '../pages/Home'
-import CabList from '../pages/CabList'
-import NotFound from '../pages/NotFound'
+import Root from '../layout/Root';
+import Home from '../pages/Home';
+import CabList from '../pages/CabList';
+import NotFound from '../pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -13,14 +13,14 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />
+        element: <Home />,
       },
       {
         path: '/cab-list',
-        element: <CabList />
-      }
-    ]
-  }
-])
+        element: <CabList />,
+      },
+    ],
+  },
+]);
 
-export default router
+export default router;
