@@ -2,19 +2,29 @@ import './FooterSection.scss';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 const FooterSection = ({
-  title, children, active, setActive, id,
+  title,
+  children,
+  active,
+  setActive,
+  id,
 }) => {
-  const handleClick = (id) => {
+  const handleClick = (clickedId) => {
     if (window.innerWidth >= 768) {
       return undefined;
     }
-    id === active ? setActive(undefined) : setActive(id);
+    return setActive(clickedId === active ? undefined : clickedId);
   };
 
   return (
     <div className="footer-section">
 
-      <div className="footer-section__title" onClick={() => handleClick(id)}>
+      <div
+        className="footer-section__title"
+        role="menuitem"
+        tabIndex={0}
+        onClick={() => handleClick(id)}
+        onKeyDown={() => handleClick(id)}
+      >
         <h5>{title}</h5>
         <span>
           {active === id ? <FaChevronUp /> : <FaChevronDown />}
