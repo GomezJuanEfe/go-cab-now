@@ -5,17 +5,15 @@ import WhyChooseRica from '../components/WhyChooseRica';
 import TheBestCab from '../components/TheBestCab';
 import BannerHome from '../components/BannerHome';
 
-function Home() {
-  return (
-    <>
-      <BannerHome />
-      <WhyChooseRica />
-      <SuperEasy />
-      <OurAwesomeFleet />
-      <TheBestCab />
-      <OurHappyCustomer />
-    </>
-  );
-}
+const Home = () => (
+  <>
+    <BannerHome />
+    <WhyChooseRica />
+    <SuperEasy />
+    <OurAwesomeFleet />
+    <TheBestCab />
+    <OurHappyCustomer />
+  </>
+);
 
 export default Home;

@@ -1,9 +1,9 @@
 import './FooterSection.scss';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-function FooterSection({
+const FooterSection = ({
   title, children, active, setActive, id,
-}) {
+}) => {
   const handleClick = (id) => {
     if (window.innerWidth >= 768) {
       return undefined;
@@ -29,6 +29,6 @@ function FooterSection({
 
     </div>
   );
-}
+};
 
 export default FooterSection;

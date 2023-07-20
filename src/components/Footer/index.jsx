@@ -7,7 +7,7 @@ import GCN_logo from '../../assets/icons/GCN-logo.png';
 import blog_img_1 from '../../assets/images/1(2).jpg';
 import blog_img_2 from '../../assets/images/2(2).jpg';
 
-function Footer() {
+const Footer = () => {
   const [active, setActive] = useState(undefined);
 
   return (
@@ -86,6 +86,6 @@ function Footer() {
 
     </footer>
   );
-}
+};
 
 export default Footer;

@@ -1,7 +1,5 @@
-function CabList() {
-  return (
-    <h2>Lista de carros!!!</h2>
-  );
-}
+const CabList = () => (
+  <h2>Lista de carros!!!</h2>
+);
 
 export default CabList;

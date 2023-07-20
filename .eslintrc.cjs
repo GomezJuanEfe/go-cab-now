@@ -22,6 +22,12 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'react/function-component-definition': [
+      'error', {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
     'react/react-in-jsx-scope': 'off',
   },
 };
