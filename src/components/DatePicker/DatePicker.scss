@@ -1,0 +1,16 @@
+.date-picker {
+  padding: 5px;
+  display: inline-block;
+  background-color: white;
+  font-size: 100%;
+
+  input {
+    font-size: 1.4rem;
+    padding: 8px 12px;
+  }
+
+  div.MuiPickersLayout-root {
+    font-size: 1.4rem;
+    color: red;
+  }
+}
