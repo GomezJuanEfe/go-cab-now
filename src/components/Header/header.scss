@@ -78,6 +78,7 @@
       color: #222222;
       padding: 10px 15px;
     }
+
     .active-link {
       border-bottom: 2px solid #ffffff;
     }
@@ -92,7 +93,9 @@
 .menu__right-section {
   display: flex;
 
-  &-front, &-user, &-settings {
+  &-front,
+  &-user,
+  &-settings {
     width: 42px;
     height: 42px;
     display: flex;
@@ -107,7 +110,7 @@
     display: none;
   }
 
-  
+
   & li:nth-child(4) {
     margin-left: 10px;
   }
@@ -128,7 +131,7 @@
     width: 100%;
     -webkit-appearance: none;
     border: none;
-    background: url(./public/down-black.png) no-repeat 80%;
+    background: url(./down-black.png) no-repeat 80%;
     padding: 5px 28px 4px 10px;
     text-transform: uppercase;
     position: relative;
@@ -154,11 +157,11 @@
 
     &-front {
       display: flex;
-      
+
       & select {
         color: white;
         background: none;
-        background: url(./public/down-white.png) no-repeat 80%;
+        background: url(./down-white.png) no-repeat 80%;
         font-family: inherit;
         font-size: 1.6rem;
         font-weight: 900;
@@ -179,7 +182,8 @@
   .navbar {
     margin-left: 20px;
 
-    .navbar__toggle, .navbar__overlay {
+    .navbar__toggle,
+    .navbar__overlay {
       all: unset;
       display: none;
     }

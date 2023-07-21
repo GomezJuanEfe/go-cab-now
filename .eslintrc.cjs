@@ -22,6 +22,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'react/prop-types': 'off',
     'react/function-component-definition': [
       'error', {
         namedComponents: 'arrow-function',
