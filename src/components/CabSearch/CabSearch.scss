@@ -1,0 +1,97 @@
+@import '../../styles/abstract/variables';
+.choose-location {
+  margin-top: 20px;
+  label {
+    margin-right: 34px;
+    position: relative;
+    input{
+      margin-left: 10px;
+      position: absolute;
+      top: 4px;
+      right: -20px;
+      -webkit-appearance: radio;
+    }
+  }
+}
+.cab-search-form{
+  @media screen and (min-width: 900px) {
+    max-width: 980px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px 12px 20px;
+    background-color: $white;
+  }
+  .search-inputs {
+    width: 80%;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @media screen and (min-width: 900px) {
+      flex-wrap: nowrap;
+    }
+    .col {
+      width: 50%;
+      padding-right: 5px;
+      @media screen and (min-width: 900px) {
+       width: 20%;
+      }
+
+      .form-group{
+        position: relative;
+        display: flex;
+        width: 100%;
+
+        .label-input{
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          label{
+            color: $white;
+            @media screen and (min-width: 900px) {
+              color: $black;
+            }
+          }
+          input {
+            margin-bottom: 12px;
+            padding: 10px 0px 10px 10px;
+            background-color: $white;
+            @media screen and (min-width: 900px) {
+              border: solid 1px #dfdfdf;
+            }
+          }
+        }
+      }
+
+      .search-icon{
+        position: absolute;
+        right: 1px;
+        margin-bottom: 14px;
+        background-color: $white;
+        height: 38px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: flex-end;
+        border-left: solid 1px #dfdfdf;
+        .date-icon {
+          opacity: 0.1;
+        }
+      }
+
+    }
+  }
+
+  .search-button{
+    margin-top: 20px;
+    height: 22px;
+    padding: 10px 60px;
+    font-weight: bold;
+    background-color: $primary-color;
+
+  }
+}
+
