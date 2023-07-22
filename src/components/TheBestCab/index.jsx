@@ -1,10 +1,17 @@
-import './TheBestCab.scss';
 import img1 from '../../assets/images/3(1).png';
 import img2 from '../../assets/images/4(1).png';
 
 const TheBestCab = () => (
   <div>
     <section className="container__app">
+      <div className="container_img">
+        <div className="image">
+          <img className="phones" src={img1} alt="phones1" />
+        </div>
+        <div className="image">
+          <img className="phones" src={img2} alt="phones2" />
+        </div>
+      </div>
       <div className="app-content">
         <span className="text__new">NEW</span>
         <h2 className="title">
@@ -33,14 +40,6 @@ const TheBestCab = () => (
             {' '}
             Play Store
           </a>
-        </div>
-      </div>
-      <div className="container_img">
-        <div className="image">
-          <img className="phones" src={img1} alt="phones1" />
-        </div>
-        <div className="image">
-          <img className="phones" src={img2} alt="phones2" />
         </div>
       </div>
     </section>
