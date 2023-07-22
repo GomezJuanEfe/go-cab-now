@@ -1,14 +1,28 @@
 @import '../../styles/abstract/variables.scss';
 
-.app-content {
+.container__app {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    background-image: url(/src/assets/images/app-bg.jpg);
+    background-size: cover;
+    background-position: center center;
+    max-height: 100%;
+    max-width: 100%;
+    align-content: center;
+    text-align: center;
+    padding: 50px 0px 10px 0px;
+
+.app-content {
+  text-align: center;
+  padding-top: 100px 0px 100px 0px;
+  height: 300px;
+  width: 50%;
+  align-items: flex-start;
+
+}
 
 .text__new{
     font-family: $font-custom;
     font-weight: 600;
-    position: relative;
     padding: 5px 18px;
     background-color: $white;
     color: $primary-color;
@@ -22,11 +36,12 @@
     margin-top: -7px;
 }
 p {
+    text-justify: auto;
     font-size: calc(14px + (20 - 14) * ((100vw - 320px) / (1920 - 320)));
     color: rgba(255, 255, 255, 0.78);
     letter-spacing: 0.02em;
     line-height: 1.7;
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
 }
 h3{
     font-size: calc(18px + (24 - 18) * ((100vw - 320px) / (1920 - 320)));
@@ -34,20 +49,77 @@ h3{
     font-weight: 800;
     color: $white;
 }
+
+.app__buttons{
+  padding: 10px;
 }
+ a {
+  color: $primary-color;
+  font-weight: 700;
+  line-height: 20px;
+  background-color: $white;
+  border-radius: 5px;
+  font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1920 - 320)));
+  padding: 10px 16px;
+  margin-left: 10px;
+}
+
 
 .container_img{
     display: flex;
-    flex-flow: row nowrap;
-    flex-direction: row;
-    width: 58.33333%;
-   
-    
-.phones{
-    align-items: flex-end;
-    width: 330px;
-    height: 647px;
-    
-    
-}
-}
+    width: 50%;
+
+  }
+
+    .phones{
+
+      padding: 10px;
+
+    }
+  }
+
+// MEDIAS QUERIES
+
+@media screen and (min-width: 380px) {
+
+  .app-content{
+    display: flex;
+  }
+
+  .container__img {
+      display: flex;
+      flex-flow: row wrap;
+
+    }
+  .phones {
+    display: flex;
+    width: 50%;
+  }
+  }
+
+@media screen and (max-width: 576px) {
+
+  .app-content{
+    display: flex;
+  }
+  .container__img {
+      display: flex;
+      justify-content: flex-end;
+      flex-flow: row wrap;
+      align-items: center;
+    }
+    .phones {
+      display: flex;
+      width: 50%;
+    }
+  }
+
+@media screen and (min-width: 1200px) {
+  .container__img {
+      display: flex;
+      flex-flow: row wrap;
+
+
+    }
+  }
+
