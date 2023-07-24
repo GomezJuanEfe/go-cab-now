@@ -11,51 +11,63 @@ import ux from '../../assets/icons/ux.png';
 
 const BrandsFleet = () => {
   const settings = {
-    dots: true,
+    dots: false,
+    centerMode: false,
+    className: 'center',
+    centerPadding: '60px',
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToShow: 4,
+    responsive: [
+
+      {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow: 4,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 4,
+          initialSlide: 1,
+          infinite: true,
+          arrows: false,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          arrows: false,
+          dots: false,
+        },
+      },
+    ],
   };
-    // responsive: [
-    //   {
-    //     breakpoint: 1440,
-    //     settings: {
-    //       slidesToShow: 5,
-    //       initialSlide: 5,
-    //       infinite: false,
-    //       dots: true,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 767,
-    //     settings: {
-    //       slidesToShow: 5,
-    //       initialSlide: 5,
-    //       arrows: false,
-    //       dots: true,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 480,
-    //     settings: {
-    //       slidesToShow: 5,
-    //       slidesToScroll: 5,
-    //       arrows: false,
-    //       dots: true,
-    //     },
-    //   },
-    // ],
   return (
-    <div>
+    <div className="brand__slider">
       <Slider {...settings}>
-        <section className="section__brand">
+        <div>
           <img className="brand" src={tecno} alt="tecno" />
+        </div>
+        <div>
           <img className="brand" src={eco} alt="eco" />
+        </div>
+        <div>
           <img className="brand" src={air} alt="airport" />
+        </div>
+        <div>
           <img className="brand" src={hydra} alt="hydra" />
+        </div>
+        <div>
           <img className="brand" src={ux} alt="ux" />
-        </section>
+        </div>
       </Slider>
     </div>
   );
