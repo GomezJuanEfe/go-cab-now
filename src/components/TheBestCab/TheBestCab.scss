@@ -2,13 +2,16 @@
 
 .container__app {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-image: url(/src/assets/images/app-bg.jpg);
   background-size: cover;
   background-position: center center;
   align-content: center;
   flex-wrap: wrap;
   text-align: center;
-  padding: 50px 0px 10px 0px;
+  padding: 30px 30px;
+
 
 
   .container_img {
@@ -26,7 +29,70 @@
   }
 
   .app-content {
+
+    text-align: center;
+    padding: 20px 5px 40px 5px;
+    justify-content: center;
+    align-items: flex-start;
     width: 100%;
+
+  .text__new{
+
+    width: 100%;
+    font-family: $font-custom;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: $primary-color;
+  }
+.button_new {
+  text-align: center;
+  width: 6rem;
+  background-color: $white;
+  padding: 5px 18px;
+  margin: 0 auto;
+}
+
+
+.title {
+    color: $white;
+    font-size: calc(24px + (50 - 24) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
+    margin: 5px 0px 10px 0px;
+
+}
+.paragraph {
+    text-justify: auto;
+    font-size: calc(14px + (20 - 14) * ((100vw - 320px) / (1920 - 320)));
+    color: rgba(255, 255, 255, 0.78);
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+    padding-bottom: 15px;
+}
+h3{
+    font-size: calc(18px + (24 - 18) * ((100vw - 320px) / (1920 - 320)));
+    margin-bottom: 42px;
+    font-weight: 800;
+    color: $white;
+}
+
+ a {
+  color: $primary-color;
+  font-weight: 700;
+  background-color: $white;
+  border-radius: 5px;
+  font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1920 - 320)));
+  padding: 10px 16px;
+  margin-left: 10px;
+}
+}
+}
+
+@media screen and (min-width: 375px){
+  .container__app{
+    padding: 30px 50px;
+  a{
+    width: 50%;
+  }
   }
 }
 
@@ -34,12 +100,23 @@
   .container__app {
     flex-direction: row-reverse;
 
+
     .container_img {
-      width: 50%;
+      width: 48%;
     }
 
     .app-content {
-      width: 50%;
+      justify-content: center;
+      width: 48%;
+      text-align: left;
+
+    .text__new{
+      width: 6rem;
+      padding: 0;
     }
+    .button_new{
+      margin: 0;
+    }
+  }
   }
 }

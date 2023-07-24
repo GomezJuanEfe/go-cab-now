@@ -1,5 +1,10 @@
+/* eslint-disable no-undef */
 import img1 from '../../assets/images/3(1).png';
 import img2 from '../../assets/images/4(1).png';
+import './TheBestCab.scss';
+// eslint-disable-next-line import/order
+import { AiFillApple, AiFillAndroid } from 'react-icons/ai';
+
 
 const TheBestCab = () => (
   <div>
@@ -13,13 +18,15 @@ const TheBestCab = () => (
         </div>
       </div>
       <div className="app-content">
-        <span className="text__new">NEW</span>
+        <div className="text__new">
+          <p className="button_new">NEW</p>
+        </div>
         <h2 className="title">
           The best cab app
           <br />
           for your mobile app.
         </h2>
-        <p>
+        <p className="paragraph">
           Quisque sollicitudin feugiat risus, eu posuere ex euismod eu. Phasellus hendrerit, massa
           efficitur dapibus pulvinar, sapien eros sodales ante, euismod aliquet nulla metus a
           mauris.
@@ -27,16 +34,12 @@ const TheBestCab = () => (
         <h3>Dowload App Now...</h3>
         <div className="app__buttons">
           <a href="https://www.apple.com/ios/app-store/">
-            <i
-              className="fab fa-apple"
-            />
+            <AiFillApple style={{ fill: 'yellow', fontSize: '20px' }} />
             {' '}
             App Store
           </a>
           <a href="https://play.google.com/store?hl=en">
-            <i
-              className="fab fa-android"
-            />
+            <AiFillAndroid style={{ fill: 'yellow', fontSize: '20px' }} />
             {' '}
             Play Store
           </a>
