@@ -12,9 +12,9 @@ const Home = () => (
     <WhyChooseRica />
     <SuperEasy />
     <OurAwesomeFleet />
-    <TheBestCab />
+    {/* <TheBestCab /> */}
     <OurHappyCustomer />
-    <BrandsFleet />
+    {/* <BrandsFleet /> */}
   </>
 );
 

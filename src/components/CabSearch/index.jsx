@@ -1,83 +1,72 @@
 import './CabSearch.scss';
-import From from '../../assets/icons/from.png';
-import Location from '../../assets/icons/location.png';
-import Date from '../../assets/icons/date.png';
+import DatePicker from '../DatePicker';
+// import From from '../../assets/icons/from.png';
+// import Location from '../../assets/icons/location.png';
+// import Date from '../../assets/icons/date.png';
 
 const CabSearch = () => (
   <>
     <div className="choose-location">
-      <label htmlFor="radio-diff">
+      <label htmlFor="radio-location">
         Different Location
-        <input type="radio" name="radio-diff" id="radio-diff" />
+        <input type="radio" name="radio-location" id="radio-diff" />
       </label>
-      <label htmlFor="radio-same">
+      <label htmlFor="radio-location">
         Same Location
-        <input type="radio" name="radio-same" id="radio-same" />
+        <input type="radio" name="radio-location" id="radio-same" />
       </label>
     </div>
 
     <div className="cab-search">
 
-      <div className="cab-search-detail">
+      <div className="search-inputs">
 
-        <form className="cab-search-form">
+        <div className="label-input">
+          <label htmlFor="pick-up-loc">
+            <div>Pick Up Location</div>
+            <input type="text" id="pick-up-loc" placeholder="Pick Up" />
+          </label>
+          {/* <div className="search-icon">
+            <img src={From} alt="from icon" />
+          </div> */}
+        </div>
 
-          <div className="search-inputs">
+        <div className="label-input">
+          <label htmlFor="drop-off-loc">
+            <div>Drop-Off Location</div>
+            <input type="text" id="drop-off-loc" placeholder="Drop Off" />
+          </label>
+          {/* <div className="search-icon">
+            <img src={Location} alt="location icon" />
+          </div> */}
+        </div>
 
-            <div className="col">
-              <div className="form-group">
-                <div className="label-input">
-                  <label htmlFor="pick-up-loc">Pick Up Location</label>
-                  <input type="text" id="pick-up-loc" placeholder="Pick Up" />
-                </div>
-                <div className="search-icon">
-                  <img src={From} alt="from icon" />
-                </div>
-              </div>
-            </div>
+        <div className="label-input">
+          <label htmlFor="pick-up">
+            <div>Pick Up</div>
+            <DatePicker />
+          </label>
+          {/* <div className="search-icon">
+            <img className="date-icon" src={Date} alt="date icon" />
+          </div> */}
+        </div>
 
-            <div className="col">
-              <div className="form-group">
-                <div className="label-input">
-                  <label htmlFor="drop-off-loc">Drop-Off Location</label>
-                  <input type="text" id="drop-off-loc" placeholder="Drop Off" />
-                </div>
-                <div className="search-icon">
-                  <img src={Location} alt="location icon" />
-                </div>
-              </div>
-            </div>
+        <div className="label-input">
+          <label htmlFor="drop-off">
+            <div>Drop-Off</div>
+            <DatePicker />
+          </label>
+          {/* <div className="search-icon">
+            <img className="date-icon" src={Date} alt="date icon" />
+          </div> */}
+        </div>
 
-            <div className="col">
-              <div className="form-group">
-                <div className="label-input">
-                  <label htmlFor="pick-up">Pick Up</label>
-                  <input type="text" id="pick-up" placeholder="Pick Up Date & Time" />
-                </div>
-                <div className="search-icon">
-                  <img className="date-icon" src={Date} alt="date icon" />
-                </div>
-              </div>
-            </div>
+        <div className="search-button">
+          <button className="search-button" type="button">SEARCH</button>
+        </div>
 
-            <div className="col">
-              <div className="form-group">
-                <div className="label-input">
-                  <label htmlFor="drop-off">Drop-Off</label>
-                  <input type="text" id="drop-off" placeholder="Drop Off Date & Time" />
-                </div>
-                <div className="search-icon">
-                  <img className="date-icon" src={Date} alt="date icon" />
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <button className="search-button" type="submit">SEARCH</button>
-
-        </form>
       </div>
+
     </div>
   </>
 );
