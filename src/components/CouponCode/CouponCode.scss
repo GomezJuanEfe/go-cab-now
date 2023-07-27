@@ -17,6 +17,27 @@
         width: 100%;
         display: flex;
         position: relative;
+        input{
+          font-size: 1.6rem;
+          width: 100%;
+          padding: 6px 6px;
+          border: solid 1px #dfdfdf;
+        }
+        button{
+          padding: 6px 12px;
+          font-size: 1.6rem;
+          background-color: #e9ecef;
+          border-left: solid 1px #dfdfdf;
+          position: absolute;
+          top: 1px;
+          right: 1px;
+        }
+      }
+      .promos{
+        margin-top: 20px;
+        .form-check{
+          padding-left: 1.5rem;
+        }
       }
     }
   }
