@@ -1,10 +1,10 @@
-import BookingSummery from '../components/BookingSummery';
-import CouponCode from '../components/CouponCode';
+import ContactDetails from '../components/ContactDetails';
+import BannerPages from '../components/BannerPages'
 
 const CabBooking = () => (
   <>
-    <BookingSummery />
-    <CouponCode />
+    <BannerPages pageName="cab booking"/>
+    <ContactDetails />
   </>
 );
 

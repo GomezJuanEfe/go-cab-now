@@ -1,7 +1,7 @@
 import './BookingSummery.scss';
 
 const BookingSummery = () => (
-  <div className="review-box">
+  <div className="review-booking">
     <div className="title-top">Booking Summery</div>
     <div className="booking-detail">
       <div className="summery-box">

@@ -3,9 +3,9 @@
 .review-box{
   width: 90%;
   margin: 0 auto;
-  margin-top: 100px;
-  margin-bottom: 50px;
+  margin-top: 20px;
   box-shadow: 0px 1px 9px 3px rgb(228 228 228 / 81%);
+  margin-bottom: 20px;
   .coupon-detail{
     padding: 10px;
     .promo-section{
@@ -34,11 +34,47 @@
         }
       }
       .promos{
-        margin-top: 20px;
+
         .form-check{
-          padding-left: 1.5rem;
+          margin-top: 20px;
+          input{
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+          }
+          label{
+            display: inline-block;
+            position: relative;
+            padding-left: 30px; /* Espacio para el círculo de radio */
+            cursor: pointer;
+            letter-spacing: 0.03rem;
+          }
+          label:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 15px;
+            height: 15px;
+            border: 1px solid #dfdfdf; /* Color del borde del círculo */
+            border-radius: 50%; /* Hace que el borde sea circular */
+          }
+          input:checked + label:before {
+            background-color: #000; /* Color del círculo cuando está seleccionado */
+          }
+          label span:first-child{
+            font-weight: 700;
+            font-size: 14px;
+          }
+          label :nth-child(2){
+            font-weight: 500;
+          }
         }
       }
     }
+  }
+  @media screen and (min-width: 600px) {
+    width: 80%;
   }
 }
