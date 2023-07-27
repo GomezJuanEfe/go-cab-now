@@ -1,0 +1,23 @@
+@import '../../styles/abstract/variables.scss' ;
+
+.review-box{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  box-shadow: 0px 1px 9px 3px rgb(228 228 228 / 81%);
+  .coupon-detail{
+    padding: 10px;
+    .promo-section{
+      .coupon-title{
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .coupon-input{
+        width: 100%;
+        display: flex;
+        position: relative;
+      }
+    }
+  }
+}

@@ -1,5 +1,11 @@
+import BookingSummery from '../components/BookingSummery';
+import CouponCode from '../components/CouponCode';
+
 const CabBooking = () => (
-  <h2>Datos de Reserva</h2>
+  <>
+    <BookingSummery />
+    <CouponCode />
+  </>
 );
 
 export default CabBooking;
