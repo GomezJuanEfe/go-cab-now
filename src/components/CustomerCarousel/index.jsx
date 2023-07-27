@@ -48,7 +48,7 @@ const FleetCarousel = () => {
   };
   return (
 
-    <Slider {...settings}>
+    <Slider Slider {...settings}>
 
       <div className="customer-container">
         <div className="customer-card">

@@ -4,6 +4,7 @@ import Root from '../layout/Root';
 import Home from '../pages/Home';
 import CabList from '../pages/CabList';
 import NotFound from '../pages/NotFound';
+import CabBooking from '../pages/CabBooking';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: '/cab-list',
         element: <CabList />,
+      },
+      {
+        path: '/cab-booking',
+        element: <CabBooking />,
       },
     ],
   },
