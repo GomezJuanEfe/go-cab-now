@@ -11,14 +11,11 @@
   background-size: cover;
 
   .banner-content {
-    align-self: flex-end;
-    margin-bottom: 24px;
     width: 100%;
     max-width: 1400px;
     padding-left: 12px;
     padding-right: 12px;
-    margin-left: 24px;
-    margin-right: 24px;
+
     color: $white;
 
     h1 {
@@ -38,6 +35,8 @@
     height: 80vh;
 
     .banner-content {
+      margin-left: 24px;
+      margin-right: 24px;
 
       h1 {
         font-size: 3rem;
@@ -50,8 +49,19 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1000px) {
+  .banner-container {
+    height: 90vh;
+    align-items: flex-end;
+    padding-bottom: 7%;
 
+    .banner-content {
+      max-width: 1400px;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
   .banner-container {
     height: 100vh;
 
@@ -63,6 +73,26 @@
 
       h3 {
         font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .banner-container {
+    padding-bottom: 5%;
+
+    .banner-content {
+      margin: 0;
+      padding: 0;
+
+      h1 {
+        font-size: 7.6rem;
+      }
+
+      h3 {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
       }
     }
   }

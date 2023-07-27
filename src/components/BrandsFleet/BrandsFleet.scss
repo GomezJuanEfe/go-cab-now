@@ -1,0 +1,10 @@
+@import '../../styles/abstract/variables.scss';
+
+.brand {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  background-image: url(../../assets/images/logo-bg.jpg);
+  display: flex;
+  justify-content: space-evenly;
+
+}

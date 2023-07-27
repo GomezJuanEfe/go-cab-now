@@ -1,0 +1,62 @@
+@import '../../styles/abstract/variables';
+
+.date-picker {
+
+  .MuiFormControl-root {
+    width: 100%;
+    background-color: $white;
+
+    .MuiInputBase-root {
+      border-radius: unset;
+    }
+  }
+
+  input {
+    width: 100%;
+    font-size: 1.4rem;
+    padding: 8px 12px;
+  }
+}
+
+svg.MuiSvgIcon-root {
+  font-size: 2rem;
+}
+
+.MuiPickersCalendarHeader-label {
+  font-size: 2rem;
+}
+
+.MuiDayCalendar-weekDayLabel {
+  font-size: 1.75rem !important;
+}
+
+.css-1beqopj-MuiPickersYear-yearButton {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.css-qa7bje-MuiButtonBase-root-MuiPickersDay-root,
+.css-1jsy6pn-MuiButtonBase-root-MuiPickersDay-root.Mui-selected,
+.css-1e3wlyl-MuiButtonBase-root-MuiMenuItem-root-MuiMultiSectionDigitalClockSection-item {
+  font-size: 1.4rem !important;
+}
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  font-size: 1.75rem !important;
+}
+
+.css-1hbyad5-MuiTypography-root {
+  font-size: 1rem !important;
+}
+
+.css-13u1oz-MuiButtonBase-root-MuiButton-root-MuiPickersToolbarButton-root {
+  font-size: 1.5rem !important;
+}
+
+.css-1e4tpwf-MuiTypography-root-MuiPickersToolbarText-root-MuiDateTimePickerToolbar-separator {
+  line-height: 1.6;
+}
+
+.MuiDateTimePickerToolbar-root {
+  color: red;
+}

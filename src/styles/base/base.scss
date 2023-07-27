@@ -13,3 +13,27 @@ body {
   font-family: $font-standard;
   font-size: $fs-sm;
 }
+
+input {
+  box-sizing: border-box;
+}
+
+input[type="radio"] {
+  appearance: none;
+
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+
+  border: 1px solid $light-gray;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+}
+
+input[type="radio"]:checked {
+  border: 4px solid $primary-color;
+}
+
+button {
+  box-sizing: border-box;
+}
