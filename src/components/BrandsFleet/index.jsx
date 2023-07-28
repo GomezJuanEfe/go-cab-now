@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Slider from 'react-slick';
 import './BrandsFleet.scss';
 import 'slick-carousel/slick/slick.css';
@@ -9,15 +11,29 @@ import air from '../../assets/icons/airport.png';
 import hydra from '../../assets/icons/hydra.png';
 import ux from '../../assets/icons/ux.png';
 
+const ArrowStyle = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'none', background: 'red' }}
+      onClick={onClick}
+    />
+  );
+};
+
 const BrandsFleet = () => {
   const settings = {
     dots: false,
     centerMode: false,
-    className: 'center',
+    className: 'slider-container',
     centerPadding: '60px',
     infinite: true,
     speed: 500,
     slidesToShow: 4,
+    autoplay: true,
+    nextArrow: <ArrowStyle />,
+    prevArrow: <ArrowStyle />,
     responsive: [
 
       {
