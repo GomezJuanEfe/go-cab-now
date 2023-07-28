@@ -1,6 +1,6 @@
+/* eslint-disable object-curly-newline */
 import './header.scss';
 import { NavLink } from 'react-router-dom';
-// eslint-disable-next-line object-curly-newline
 import { FaBars, FaUser, FaCog, FaAngleRight } from 'react-icons/fa';
 import { useState } from 'react';
 import gcnLogo from '../../assets/icons/GCN-logo.png';

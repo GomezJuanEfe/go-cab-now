@@ -1,5 +1,11 @@
+import BannerPages from '../components/BannerPages';
+import CabSearch from '../components/CabSearch';
+
 const CabList = () => (
-  <h2>Lista de carros!!!</h2>
+  <>
+    <BannerPages pageName="cab search" />
+    <CabSearch />
+  </>
 );
 
 export default CabList;

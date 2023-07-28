@@ -16,7 +16,7 @@ const ArrowStyle = (props) => {
   return (
     <div
       className={className}
-      style={{ ...style, display: 'none', background: 'red' }}
+      style={{ ...style, display: 'none' }}
       onClick={onClick}
     />
   );
