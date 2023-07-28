@@ -1,8 +1,14 @@
 @import '../../styles/abstract/variables.scss';
 
+.container__limit{
+background-image: url(../../assets/images/logo-bg.jpg);
+}
+
   .brand__slider {
     width:100%;
     padding: 24px 0px 24px 0px;
-    background-image: url(../../assets/images/logo-bg.jpg);
+    max-width: 1400px;
     margin: 0 auto;
 }
+
+

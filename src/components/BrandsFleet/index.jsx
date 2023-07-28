@@ -51,24 +51,26 @@ const BrandsFleet = () => {
     ],
   };
   return (
-    <div className="brand__slider">
-      <Slider {...settings}>
-        <div>
-          <img className="brand" src={tecno} alt="tecno" />
-        </div>
-        <div>
-          <img className="brand" src={eco} alt="eco" />
-        </div>
-        <div>
-          <img className="brand" src={air} alt="airport" />
-        </div>
-        <div>
-          <img className="brand" src={hydra} alt="hydra" />
-        </div>
-        <div>
-          <img className="brand" src={ux} alt="ux" />
-        </div>
-      </Slider>
+    <div className="container__limit">
+      <div className="brand__slider">
+        <Slider {...settings}>
+          <div>
+            <img className="brand" src={tecno} alt="tecno" />
+          </div>
+          <div>
+            <img className="brand" src={eco} alt="eco" />
+          </div>
+          <div>
+            <img className="brand" src={air} alt="airport" />
+          </div>
+          <div>
+            <img className="brand" src={hydra} alt="hydra" />
+          </div>
+          <div>
+            <img className="brand" src={ux} alt="ux" />
+          </div>
+        </Slider>
+      </div>
     </div>
   );
 };

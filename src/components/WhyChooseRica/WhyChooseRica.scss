@@ -1,5 +1,10 @@
 @import '../../styles/abstract/variables.scss';
 
+.section__limit{
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 .container__card {
     margin: 0 auto;
     max-width: 90%;
@@ -28,7 +33,7 @@
         letter-spacing: 0.03rem;
         line-height: 1.7;
         margin-bottom: 20px;
-    }
+      }
 }
 
 .container__icons {
@@ -48,7 +53,7 @@
         max-height: 229px;
         border-radius: 5px;
         box-shadow: 2.5px 4.33px 35px 10px rgba(0, 0, 0, 0.05);
-    }      
+    }
 
     img {
         width: 50px;
@@ -76,7 +81,7 @@
         align-items: center;
       }
     .card {
-        width: 100%;  
+        width: 100%;
     }
     }
 
@@ -88,15 +93,15 @@
         flex-flow: row wrap;
         align-items: center;
       }
-       
+
     }
-  
+
   @media screen and (min-width: 1200px) {
     .container__icons {
         display: flex;
         flex-flow: row wrap;
         padding: 30px 0px;
-  
+
       }
     }
-  
+
