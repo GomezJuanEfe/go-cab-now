@@ -1,11 +1,30 @@
+import { useState } from 'react';
 import BannerPages from '../components/BannerPages';
-import CabSearch from '../components/CabSearch';
+import CabSearchBody from '../components/CabSearchBody';
+import CabSearchCarList from '../components/CabSearchCarList';
+import CabSearchFilter from '../components/CabSearchFilter';
+import CabSearchSection from '../components/CabSearchSection';
 
-const CabList = () => (
-  <>
-    <BannerPages pageName="cab search" />
-    <CabSearch />
-  </>
-);
+const CabList = () => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const handleFilterMenu = () => setIsFilterOpen(!isFilterOpen);
+
+  return (
+    <>
+      <BannerPages pageName="cab search" />
+      <CabSearchBody>
+        <CabSearchSection
+          handleFilterMenu={handleFilterMenu}
+        />
+        <CabSearchFilter
+          isFilterOpen={isFilterOpen}
+          handleFilterMenu={handleFilterMenu}
+        />
+        <CabSearchCarList />
+      </CabSearchBody>
+    </>
+  );
+};
 
 export default CabList;

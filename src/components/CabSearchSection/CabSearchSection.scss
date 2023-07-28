@@ -1,0 +1,27 @@
+.cab-search-section {
+  width: 100%;
+
+  /* Borrar */
+  background-color: rgba(255, 0, 0, 0.2);
+  height: 200px;
+
+  /* Borrar estilos boton */
+  button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  // styles
+}
+
+@media screen and (min-width: 1000px) {
+  .cab-search-section {
+    button {
+      display: none;
+    }
+  }
+}

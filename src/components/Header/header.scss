@@ -182,6 +182,10 @@
 }
 
 @media screen and (min-width: 1200px) {
+  .menu__container {
+    margin: 0 auto;
+  }
+
   .navbar {
     margin-left: 20px;
 

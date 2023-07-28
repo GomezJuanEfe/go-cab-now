@@ -1,0 +1,25 @@
+.cab-search-body {
+  max-width: 1400px;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 30px 12px;
+}
+
+@media screen and (min-width: 768px) {
+
+  .cab-search-body {
+    margin: 0 24px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .cab-search-body {
+    margin: 0 24px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .cab-search-body {
+    margin: 0 auto;
+  }
+}
