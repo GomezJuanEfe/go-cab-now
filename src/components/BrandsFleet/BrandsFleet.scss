@@ -1,10 +1,20 @@
 @import '../../styles/abstract/variables.scss';
 
-.brand {
-  padding-top: 70px;
-  padding-bottom: 70px;
+.container__limit {
   background-image: url(../../assets/images/logo-bg.jpg);
-  display: flex;
-  justify-content: space-evenly;
+}
 
+.brand__slider {
+  width: 100%;
+  padding: 24px 0px 24px 0px;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .slider-container {
+
+
+    .brand {
+      margin: 0 auto;
+    }
+  }
 }
