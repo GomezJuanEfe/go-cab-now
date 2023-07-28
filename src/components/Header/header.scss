@@ -131,7 +131,7 @@
     width: 100%;
     -webkit-appearance: none;
     border: none;
-    background: url(./down-black.png) no-repeat 80%;
+    background: url(../../assets/icons/down-black.png) no-repeat 80%;
     padding: 5px 28px 4px 10px;
     text-transform: uppercase;
     position: relative;
@@ -149,7 +149,7 @@
 
 @media screen and (min-width: 768px) {
   .menu__container {
-    margin: 0 24px;
+    margin: 10px 24px;
   }
 
   .menu__right-section {
@@ -164,7 +164,7 @@
       & select {
         color: white;
         background: none;
-        background: url(./down-white.png) no-repeat 80%;
+        background: url(../../assets/icons/down-white.png) no-repeat 80%;
         font-family: inherit;
         font-size: 1.6rem;
         font-weight: 900;
@@ -183,7 +183,7 @@
 
 @media screen and (min-width: 1200px) {
   .menu__container {
-    margin: 0 auto;
+    margin: 10px auto;
   }
 
   .navbar {
