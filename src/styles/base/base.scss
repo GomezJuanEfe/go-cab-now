@@ -37,3 +37,37 @@ input[type="radio"]:checked {
 button {
   box-sizing: border-box;
 }
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-color: $medium-gray;
+}
+
+input[type="checkbox"]+label {
+  position: relative;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #000000b3;
+  text-transform: capitalize;
+}
+
+input[type="checkbox"]:checked {
+  background-color: $primary-color;
+}
+
+input[type="checkbox"]:checked+label:after {
+  width: 20px;
+  height: 20px;
+  background-image: url('./assets/icons/check-mark.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  content: "";
+  top: 0px;
+  left: -30px;
+  position: absolute;
+  background-size: 70%;
+  display: block;
+}
