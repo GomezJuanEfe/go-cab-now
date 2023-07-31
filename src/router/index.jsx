@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import CabList from '../pages/CabList';
 import NotFound from '../pages/NotFound';
 import CabBooking from '../pages/CabBooking';
+import Payments from '../pages/Payments';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
         path: '/cab-booking',
         element: <CabBooking />,
       },
+      {
+        path: '/payments',
+        element: <Payments />,
+      }
     ],
   },
 ]);

@@ -1,0 +1,18 @@
+@import '../../styles/abstract/variables.scss';
+
+.input_radio_payment{
+  // width: 100%;
+  display: flex;
+  position: relative;
+  background-color: rgb(97, 97, 196);
+    input {
+      background-color: $primary-color;
+      margin-left: 0;
+      position: relative;
+      margin-right: 30px;
+  }
+    h3{
+      color: rgba(0, 0, 0, 0.9);
+      padding: 10px 15px;
+  }
+}
