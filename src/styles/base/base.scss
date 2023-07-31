@@ -14,6 +14,8 @@ body {
   font-size: $fs-sm;
 }
 
+/* INPUT */
+
 input {
   box-sizing: border-box;
 }
@@ -32,10 +34,6 @@ input[type="radio"] {
 
 input[type="radio"]:checked {
   border: 4px solid $primary-color;
-}
-
-button {
-  box-sizing: border-box;
 }
 
 input[type="checkbox"] {
@@ -70,4 +68,27 @@ input[type="checkbox"]:checked+label:after {
   position: absolute;
   background-size: 70%;
   display: block;
+}
+
+/* Button */
+
+button {
+  box-sizing: border-box;
+}
+
+button[type="button"].secondary-button {
+  padding: 5px 16px;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background-color: $primary-color;
+  color: $white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+button[type="button"].secondary-button:hover {
+  outline: 1px solid $primary-color;
+  background-color: $white;
+  color: $primary-color;
 }

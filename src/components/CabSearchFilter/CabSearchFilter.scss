@@ -32,7 +32,7 @@
         background-color: $very-light-snow;
 
         input {
-          width: 168px;
+          width: 75%;
         }
       }
 
@@ -147,7 +147,7 @@
 
 @media screen and (min-width: 1000px) {
   .cab-search-filter {
-    width: 30%;
+    width: 23%;
 
     .cab-search-sidebar {
       height: unset !important;

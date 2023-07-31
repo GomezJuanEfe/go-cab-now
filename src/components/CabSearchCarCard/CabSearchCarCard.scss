@@ -1,0 +1,75 @@
+@import '../../styles/abstract/variables.scss';
+
+.cab-search-card {
+  padding: 10px 15px;
+  background-color: $white;
+
+  .card__header {
+    text-align: center;
+
+    h6 {
+      font-size: 1.4rem;
+      text-transform: capitalize;
+      font-weight: 600;
+    }
+
+    p {
+      text-transform: capitalize;
+      color: $medium-dark-gray;
+    }
+  }
+
+  .card__details {
+    ul {
+      max-width: 220px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 15px auto 0px;
+    }
+
+    li {
+      width: 50%;
+    }
+  }
+
+  .card__price {
+    margin-top: 30px;
+    text-align: center;
+
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    p {
+      text-transform: capitalize;
+      color: $medium-dark-gray;
+    }
+
+    span {
+      color: $black;
+      font-weight: 700;
+    }
+  }
+
+  .card__button {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .cab-search-card {
+    display: flex;
+    justify-content: space-between;
+
+    .card__button {
+      margin: auto 0;
+      display: block;
+    }
+  }
+}

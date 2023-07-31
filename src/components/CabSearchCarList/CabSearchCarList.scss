@@ -1,6 +1,8 @@
 .cab-search-list {
   width: 100%;
-  background-color: rgba(255, 255, 0, 0.4);
+  display: flex;
+  flex-flow: column wrap;
+  gap: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -9,6 +11,6 @@
 
 @media screen and (min-width: 1000px) {
   .cab-search-list {
-    width: 70%;
+    width: calc(77% - 30px);
   }
 }
