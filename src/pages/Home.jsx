@@ -4,6 +4,7 @@ import SuperEasy from '../components/SuperEasy';
 import WhyChooseRica from '../components/WhyChooseRica';
 import TheBestCab from '../components/TheBestCab';
 import BannerHome from '../components/BannerHome';
+import BrandsFleet from '../components/BrandsFleet';
 
 const Home = () => (
   <>
@@ -13,6 +14,7 @@ const Home = () => (
     <OurAwesomeFleet />
     <TheBestCab />
     <OurHappyCustomer />
+    <BrandsFleet />
   </>
 );
 

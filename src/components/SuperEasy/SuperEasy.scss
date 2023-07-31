@@ -1,9 +1,14 @@
 @import '../../styles/abstract/variables.scss';
 
-.container__general {
-   background-image: url(../../assets/images/app-bg.jpg);
-   background-size: cover;
+.container-to-limit{
+  background-size: cover;
    background-position: center center;
+  background-image: url(../../assets/images/app-bg.jpg);
+ }
+
+.container__general {
+   max-width: 1400px;
+   margin: 0 auto;
    max-height: 100%;
    align-content: center;
    text-align: center;
@@ -25,7 +30,8 @@ h2 {
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
-    padding: 30px 100PX; 
+
+    margin: 0 auto;
 }
 
 .container__icons{
@@ -45,7 +51,7 @@ img {
 p{
     margin-bottom: -3px;
     font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
-    color: rgba(0, 0, 0, 0.65); 
+    color: rgba(0, 0, 0, 0.65);
     font-weight: 600;
     line-height: 1.3;
 }
@@ -53,19 +59,20 @@ p{
 .se-card {
     background-color: $white;
     margin-bottom: 30px;
-    border: 2px solid $very-light-snow;
-    padding: 35px 25px;
+    // border: 2px solid $very-light-snow;
+    padding: 24px 54px;
+    margin: 30px;
     border-radius: 16px;
     box-shadow: 2.5px 4.33px 35px 0px rgba(0, 0, 0, 0.04);
     transition: transform 0.5s ease-in-out;
-    width:100%;
+    width: 100%;
     max-width: 490px;
 }
 #card__down{
-    max-width: 100%;
+
     flex-flow: row wrap;
     align-content: baseline;
-    margin-top: 0px;
+    margin: 30px;
     transform: translateY(25px);
     cursor: pointer;
 }
@@ -75,22 +82,30 @@ p{
 }
 .se-card:hover{
     cursor: pointer;
-    transform: translateY(-10px);  
+    transform: translateY(-10px);
 }
 }
 }
 
 //MEDIAS QUERIES
-@media screen and (min-width: 380px) {
+@media screen and (min-width: 320px) {
 
     .container__icons {
         display: flex;
         flex-flow: row wrap;
       }
     .se-card {
-        width: 196px;
-        height: 167px;
-        width: 100%;  
+      width: 100%;
+      margin: 0 auto;
+    }
+    .card_down{
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .container__text{
+      margin: 0px 20px;
+      max-width: 95%
     }
     }
 @media screen and (min-width: 576px) {
@@ -100,24 +115,31 @@ p{
         flex-flow: row wrap;
       }
     .se-card{
-        width: 196px;
-        height: 167px;
         width: 100%;
-    }  
     }
-  
+    .card_down{
+      width: 100%;
+    }
+    .container__text{
+      padding: 30px 100px;
+      margin: 0px 20px;
+    }
+    }
+
   @media screen and (min-width: 1200px) {
    .container__general{
 
     .container__icons {
         display: flex;
         flex-flow: row nowrap;
-    .se-card, #card__down{
+    .se-card, .card__down{
         align-items: flex-start;
         width: 25%;
-        width: 196px;
-        height: 167px;
-      }
+        max-width: 100%;
+     }
+    }
+    .container__text{
+      padding: 30px 100px;
     }
   }
 }

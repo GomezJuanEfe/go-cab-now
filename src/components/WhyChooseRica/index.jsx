@@ -6,6 +6,7 @@ import cab from '../../assets/icons/cab.png';
 
 const WhyChooseRica = () => (
   <div>
+    <div className="section__limit">
     <section className="container__card">
       <span>WHY CHOOSE RICA?</span>
       <h2>Welcome To Rica</h2>
@@ -43,7 +44,7 @@ const WhyChooseRica = () => (
       </div>
 
     </section>
-
+    </div>
   </div>
 );
 
