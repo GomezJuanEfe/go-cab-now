@@ -11,7 +11,7 @@ const valueLabelFormat = (number) => {
   return new Intl.NumberFormat('en-US', options).format(number);
 };
 
-const useStyles = createStyles((theme) => {
+const useStyles = createStyles(() => {
   const yellow = '#e9b30e';
   return ({
     bar: {

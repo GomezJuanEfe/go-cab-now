@@ -12,10 +12,22 @@ const CabSearchCarCard = ({ carName, carType }) => (
     </div>
     <div className="card__details">
       <ul>
-        <li>5 seater</li>
-        <li>AC</li>
-        <li>2 luggage</li>
-        <li>Automatic</li>
+        <li>
+          <span className="seat-icon" />
+          5 seater
+        </li>
+        <li>
+          <span className="ac-icon" />
+          AC
+        </li>
+        <li>
+          <span className="luggage-icon" />
+          2 luggage
+        </li>
+        <li>
+          <span className="trans-icon" />
+          Automatic
+        </li>
       </ul>
     </div>
     <div className="card__price">
