@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   .login-container{
+    margin-top: 54px;
     position: relative;
     z-index: 99;
     max-width: 500px;
@@ -23,9 +24,9 @@
     .close-login{
       position: absolute;
       color: $white;
-      right: -2rem;
+      right: -1.8rem;
       font-size: 2rem;
-      top: -2rem;
+      top: -1.8rem;
     }
     h2{
       text-align: center;
