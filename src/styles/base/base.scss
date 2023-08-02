@@ -14,6 +14,8 @@ body {
   font-size: $fs-sm;
 }
 
+/* INPUT */
+
 input {
   box-sizing: border-box;
 }
@@ -34,6 +36,59 @@ input[type="radio"]:checked {
   border: 4px solid $primary-color;
 }
 
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-color: $medium-gray;
+}
+
+input[type="checkbox"]+label {
+  position: relative;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #000000b3;
+  text-transform: capitalize;
+}
+
+input[type="checkbox"]:checked {
+  background-color: $primary-color;
+}
+
+input[type="checkbox"]:checked+label:after {
+  width: 20px;
+  height: 20px;
+  background-image: url('./assets/icons/check-mark.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  content: "";
+  top: 0px;
+  left: -30px;
+  position: absolute;
+  background-size: 70%;
+  display: block;
+}
+
+/* Button */
+
 button {
   box-sizing: border-box;
+}
+
+button[type="button"].secondary-button {
+  padding: 5px 16px;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background-color: $primary-color;
+  color: $white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+button[type="button"].secondary-button:hover {
+  outline: 1px solid $primary-color;
+  background-color: $white;
+  color: $primary-color;
 }

@@ -8,7 +8,12 @@ import CabSearchSection from '../components/CabSearchSection';
 const CabList = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const handleFilterMenu = () => setIsFilterOpen(!isFilterOpen);
+  const handleFilterMenu = () => {
+    if (window.innerWidth >= 1200) {
+      return null;
+    }
+    return setIsFilterOpen(!isFilterOpen);
+  };
 
   return (
     <>
