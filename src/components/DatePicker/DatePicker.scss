@@ -1,62 +1,72 @@
-@import '../../styles/abstract/variables';
+@import '../../styles/abstract/variables.scss';
 
-.date-picker {
+// .label-input.modal {
+//   margin-bottom: 12px;
+// }
 
-  .MuiFormControl-root {
-    width: 100%;
-    background-color: $white;
-
-    .MuiInputBase-root {
-      border-radius: unset;
-    }
-  }
-
-  input {
-    width: 100%;
-    font-size: 1.4rem;
-    padding: 8px 12px;
-  }
+.modal .mantine-Input-wrapper {
+  margin-bottom: 12px;
 }
 
-svg.MuiSvgIcon-root {
-  font-size: 2rem;
+div.mantine-Modal-inner.mantine-1nb50hw {
+  align-items: center !important;
 }
 
-.MuiPickersCalendarHeader-label {
-  font-size: 2rem;
+.mantine-DateTimePicker-placeholder {
+  color: $light-gray
 }
 
-.MuiDayCalendar-weekDayLabel {
-  font-size: 1.75rem !important;
+.mantine-Modal-body button {
+  padding: 5px !important;
+  margin: 5px;
 }
 
-.css-1beqopj-MuiPickersYear-yearButton {
-  font-size: 1.5rem;
+.mantine-CalendarHeader-calendarHeader.mantine-DateTimePicker-calendarHeader.mantine-MonthLevel-calendarHeader.mantine-DateTimePicker-calendarHeader.mantine-1emfdtu {
+  justify-content: center;
+  max-width: 100%;
+}
+
+.mantine-CalendarHeader-calendarHeader.mantine-DateTimePicker-calendarHeader.mantine-YearLevel-calendarHeader.mantine-DateTimePicker-calendarHeader.mantine-1emfdtu {
+  justify-content: center;
+  max-width: 100%;
+}
+
+.mantine-UnstyledButton-root.mantine-Day-day.mantine-DateTimePicker-day.mantine-7yisjr[data-weekend] {
+  color: $very-dark-gray;
+  font-weight: 700;
+}
+
+.mantine-5rrl7o[data-with-spacing] {
   text-align: center;
 }
 
-.css-qa7bje-MuiButtonBase-root-MuiPickersDay-root,
-.css-1jsy6pn-MuiButtonBase-root-MuiPickersDay-root.Mui-selected,
-.css-1e3wlyl-MuiButtonBase-root-MuiMenuItem-root-MuiMultiSectionDigitalClockSection-item {
-  font-size: 1.4rem !important;
+.mantine-DateTimePicker-weekday {
+  font-size: 1.5rem;
 }
 
-.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
-  font-size: 1.75rem !important;
+.mantine-TimeInput-input {
+  height: 100%;
+  padding: 5px 10px;
+  font-size: 1.5rem;
 }
 
-.css-1hbyad5-MuiTypography-root {
-  font-size: 1rem !important;
+button.mantine-ActionIcon-root[type="button"] {
+  border: 1px solid $primary-color;
+  border-radius: 3px;
+  width: 9%;
+  height: 100%;
+  text-align: center;
+  background: $primary-color;
+
+  svg {
+    width: 1.2rem !important;
+
+    path {
+      fill: $white !important;
+    }
+  }
 }
 
-.css-13u1oz-MuiButtonBase-root-MuiButton-root-MuiPickersToolbarButton-root {
-  font-size: 1.5rem !important;
-}
-
-.css-1e4tpwf-MuiTypography-root-MuiPickersToolbarText-root-MuiDateTimePickerToolbar-separator {
-  line-height: 1.6;
-}
-
-.MuiDateTimePickerToolbar-root {
-  color: red;
+.mantine-DateTimePicker-input.mantine-Input-input.mantine-DateTimePicker-input.mantine-k8iznv {
+  color: $light-gray;
 }

@@ -9,6 +9,10 @@ input {
   all: unset;
 }
 
+button[type="button"] {
+  all: unset;
+}
+
 ul {
   list-style: none;
 }
