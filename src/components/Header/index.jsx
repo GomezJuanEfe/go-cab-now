@@ -20,10 +20,7 @@ const Header = () => {
 
   const handleClickSettings = () => setSettings(!settings);
 
-  const handleClickLogin = () => {
-    setShowLogIn((prev) => !prev);
-    console.log(showLogIn);
-  };
+  const handleClickLogin = () => setShowLogIn(!showLogIn);
 
   return (
     <header className="header">
@@ -107,10 +104,10 @@ const Header = () => {
             </select>
           </li>
 
-          <li className="menu__right-section-user" onClick={() => setShowLogIn((prev) => !prev)}>
+          <li className="menu__right-section-user" onClick={handleClickLogin}>
             <FaUser style={{ fill: 'white', fontSize: '20px' }} />
-            <LogIn handleClickLogin={handleClickLogin} showLogIn={showLogIn} />
           </li>
+          <LogIn handleClickLogin={handleClickLogin} showLogIn={showLogIn} />
 
           <li className="menu__right-section-settings">
             <FaCog style={{ fill: 'white', fontSize: '20px' }} onClick={handleClickSettings} />
