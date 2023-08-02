@@ -29,7 +29,7 @@ const LogIn = ({ handleClickLogin, showLogIn }) => {
           <div className="lock-icon">
             <FaLock />
           </div>
-          <input className="password" type="text" id="password" placeholder="Type your password" />
+          <input className="password" type="password" id="password" placeholder="Type your password" />
 
           <div className="forgot">
             <p>Forgot password?</p>
