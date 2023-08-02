@@ -4,10 +4,12 @@ import { NavLink } from 'react-router-dom';
 import { FaBars, FaUser, FaCog, FaAngleRight } from 'react-icons/fa';
 import { useState } from 'react';
 import gcnLogo from '../../assets/icons/GCN-logo.png';
+import LogIn from '../LogIn';
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
   const [settings, setSettings] = useState(false);
+  const [showLogIn, setShowLogIn] = useState(false);
 
   const handleClick = () => {
     if (window.innerWidth >= 1200) {
@@ -17,6 +19,11 @@ const Header = () => {
   };
 
   const handleClickSettings = () => setSettings(!settings);
+
+  const handleClickLogin = () => {
+    setShowLogIn((prev) => !prev);
+    console.log(showLogIn);
+  };
 
   return (
     <header className="header">
@@ -100,8 +107,9 @@ const Header = () => {
             </select>
           </li>
 
-          <li className="menu__right-section-user">
+          <li className="menu__right-section-user" onClick={() => setShowLogIn((prev) => !prev)}>
             <FaUser style={{ fill: 'white', fontSize: '20px' }} />
+            <LogIn handleClickLogin={handleClickLogin} showLogIn={showLogIn} />
           </li>
 
           <li className="menu__right-section-settings">
