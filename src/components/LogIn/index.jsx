@@ -1,0 +1,30 @@
+import React from 'react';
+import './LogIn.scss';
+
+const LogIn = () => (
+  <div className="container">
+    <div className="login-container">
+      <h2>Login</h2>
+      <form>
+
+        <label htmlFor="username">Username</label>
+        <br />
+        <input className="username" type="text" id="username" placeholder="Type your username" />
+        <br />
+        <label htmlFor="password">Password</label>
+        <br />
+        <input className="password" type="text" id="password" placeholder="Type your password" />
+
+        <div className="forgot">
+          <p>Forgot password?</p>
+        </div>
+        <div className="login-button">
+          <button type="submit">LOGIN</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+);
+
+export default LogIn;
