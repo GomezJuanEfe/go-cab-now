@@ -5,14 +5,16 @@ import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
 import creditcard from '../../assets/icons/creditcards.png';
 import Cvv from '../../assets/icons/cvv.png';
+import NetBanking from '../NetBanking';
+import MyWallet from '../MyWallet';
 
 const Payment = () => {
   const [active, setActive] = useState(undefined);
-
+  console.log("active", active);
   return (
     <section className="payment">
 
-      <div className="col-components">
+      <div className="colum-components">
         <BookingSummery />
         <CouponCode />
       </div>
@@ -39,14 +41,16 @@ const Payment = () => {
                 Card Number
                 <input type="number" className="form-control" />
               </label>
-              <img src={creditcard} alt="creditcard" className="img_credit" />
+              <div className="img_credit">
+                <img src={creditcard} alt="creditcard" />
+              </div>
             </div>
 
             <div className="row">
-              <div className="form-group col-md-4">
+              <div className="form-group_col">
                 <label htmlFor="month">
                   Month
-                  <select id="month" className="form-control">
+                  <select className="form-control">
                     <option selected>Month...</option>
                     <option>January</option>
                     <option>February</option>
@@ -65,20 +69,22 @@ const Payment = () => {
               </div>
             </div>
 
-            <div className="form-group col-md-4">
+            <div className="form-group_col">
               <label htmlFor="year">
                 Year
-                <select id="year" className="form-control">
+                <select className="form-control">
                   <option selected>Year...</option>
                   <option>...</option>
                 </select>
               </label>
             </div>
-            <div className="form-group col-md-4">
+            <div className="form-group_col">
               <label htmlFor="cvv">
                 Cvv
-                <input type="password" maxLength="4" className="form-control" id="cvv" />
-                <img src={Cvv} className="cvv" alt="cvv" />
+                <input type="password" maxLength="4" className="form-control" />
+                <div className="cvv">
+                  <img src={Cvv} alt="cvv" />
+                </div>
               </label>
             </div>
             <div className="payment-btn">
@@ -91,7 +97,7 @@ const Payment = () => {
 
         </FormTemplate>
 
-        <FormTemplate className="title__container" title="Credit Card" active={active} setActive={setActive} id={1}>
+        <FormTemplate className="title__container" title="Credit Card" active={active} setActive={setActive} id={2}>
 
           <form action="form__payment">
 
@@ -114,7 +120,7 @@ const Payment = () => {
               <div className="form-group col-md-4">
                 <label htmlFor="month">
                   Month
-                  <select id="month" className="form-control">
+                  <select className="form-control">
                     <option selected>Month...</option>
                     <option>January</option>
                     <option>February</option>
@@ -136,7 +142,7 @@ const Payment = () => {
             <div className="form-group col-md-4">
               <label htmlFor="year">
                 Year
-                <select id="year" className="form-control">
+                <select className="form-control">
                   <option selected>Year...</option>
                   <option>...</option>
                 </select>
@@ -145,7 +151,7 @@ const Payment = () => {
             <div className="form-group col-md-4">
               <label htmlFor="cvv">
                 Cvv
-                <input type="password" maxLength="4" className="form-control" id="cvv" />
+                <input type="password" maxLength="4" className="form-control" />
                 <img src={Cvv} className="cvv" alt="cvv" />
               </label>
             </div>
@@ -157,6 +163,14 @@ const Payment = () => {
 
           </form>
 
+        </FormTemplate>
+
+        <FormTemplate className="title__container" title="Net Banking" active={active} setActive={setActive} id={3}>
+          <NetBanking />
+        </FormTemplate>
+
+        <FormTemplate className="title__container" title="My Wallet" active={active} setActive={setActive} id={4}>
+          <MyWallet />
         </FormTemplate>
 
       </div>

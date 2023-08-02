@@ -1,18 +1,30 @@
 @import '../../styles/abstract/variables.scss';
 
+
 .input_radio_payment{
-  // width: 100%;
   display: flex;
   position: relative;
-  background-color: rgb(97, 97, 196);
+  border: 1px solid #eeeeee;
+  background-color: #eeeeee;
+
     input {
-      background-color: $primary-color;
-      margin-left: 0;
+       box-sizing: b;
+      color: $primary-color;
+      margin-left: 16px;
       position: relative;
       margin-right: 30px;
+      margin-top: 10px;
   }
+
     h3{
       color: rgba(0, 0, 0, 0.9);
       padding: 10px 15px;
+  }
+}
+
+.payment__section__body {
+  display: none;
+  &.show{
+    display: flex;
   }
 }

@@ -1,14 +1,16 @@
-import './NetBanking.scss';
+import React from 'react';
 
-const NetBanking = () => (
+const MyWallet = () => (
   <div className="form__payment">
-    <div className="card__banking">
-      <form className="baking-section">
-        <h6>SELECT POPULAR BANKS</h6>
+    <div className="card__wallet">
+      <form className="wallet-section">
+        <h6>SELECT YOUR WALLET</h6>
+
         <div className="row">
+
           <div className="form-check col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
-              Industrial & Commercial Bank
+              Adyen
               <input
                 className="form-check-input radio_animated"
                 type="radio"
@@ -20,7 +22,7 @@ const NetBanking = () => (
           </div>
           <div className="form-check col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
-              Construction Bank Corp.
+              Airtel Wallet
               <input
                 className="form-check-input radio_animated"
                 type="radio"
@@ -32,7 +34,7 @@ const NetBanking = () => (
           </div>
           <div className="form-check col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
-              Agricultural Bank
+              Apple Pay
               <input
                 className="form-check-input radio_animated"
                 type="radio"
@@ -44,7 +46,7 @@ const NetBanking = () => (
           </div>
           <div className="form-check col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
-              HSBC Holdings
+              Brinks
               <input
                 className="form-check-input radio_animated"
                 type="radio"
@@ -56,7 +58,7 @@ const NetBanking = () => (
           </div>
           <div className="form-check col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
-              Bank of America
+              CardFree
               <input
                 className="form-check-input radio_animated"
                 type="radio"
@@ -79,6 +81,7 @@ const NetBanking = () => (
             </label>
           </div>
         </div>
+
         <div className="form-group mt-3">
           <label htmlFor="net-b">
             Select Bank
@@ -97,4 +100,4 @@ const NetBanking = () => (
   </div>
 );
 
-export default NetBanking;
+export default MyWallet;

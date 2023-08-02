@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './FormTemplate.scss';
-// import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 const FormTemplate = ({
   title,
@@ -10,12 +9,7 @@ const FormTemplate = ({
   id,
 
 }) => {
-  const handleClick = (clickedId) => {
-    if (window.innerWidth >= 576) {
-      return undefined;
-    }
-    return setActive(clickedId === active ? undefined : clickedId);
-  };
+  const handleClick = (clickedId) => setActive(clickedId === active ? undefined : clickedId);
 
   return (
     <div className="payment__section">
@@ -31,10 +25,6 @@ const FormTemplate = ({
           <input type="radio" />
           <label htmlFor="radio_input" />
           <h3>{title}</h3>
-
-          {/* <span>
-            {active === id ? <FaChevronUp /> : <FaChevronDown />}
-          </span> */}
         </div>
       </div>
 
