@@ -6,6 +6,7 @@ import CabList from '../pages/CabList';
 import NotFound from '../pages/NotFound';
 import CabBooking from '../pages/CabBooking';
 import Payments from '../pages/Payments';
+import Success from '../pages/Success';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
       {
         path: '/payments',
         element: <Payments />,
-      }
+      },
+      {
+        path: '/success',
+        element: <Success />,
+      },
     ],
   },
 ]);

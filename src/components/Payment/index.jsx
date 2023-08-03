@@ -1,5 +1,5 @@
 import './Payment.scss';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import FormTemplate from '../FormTemplate';
 import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
