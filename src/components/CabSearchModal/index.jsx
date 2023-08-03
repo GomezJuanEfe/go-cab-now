@@ -3,51 +3,62 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import LocationPicker from '../LocationPicker';
 import DatePicker from '../DatePicker';
 import CabSearchButton from '../CabSearchButton';
+import useForm from '../../hooks/useForm';
 
-const CabSearchModal = ({ show, handleModal }) => (
-  <div className={`cab-search-modal ${show ? 'show' : ''}`}>
-    <div className="modal-content">
+const CabSearchModal = ({ show, handleModal }) => {
+  const { form, handleForm } = useForm('modal');
 
-      <div
-        className="exit-btn"
-        onClick={handleModal}
-        onKeyDown={handleModal}
-        role="button"
-        tabIndex={0}
-      >
-        <AiOutlineCloseCircle />
-      </div>
-      <div className="input-container">
+  return (
+    <div className={`cab-search-modal ${show ? 'show' : ''}`}>
+      <div className="modal-content">
 
-        <LocationPicker
-          inputName="Pick Up Location"
-          id="pick-up-loc"
-          placeholder="Pick up"
-          modal
-        />
+        <div
+          className="exit-btn"
+          onClick={handleModal}
+          onKeyDown={handleModal}
+          role="button"
+          tabIndex={0}
+        >
+          <AiOutlineCloseCircle />
+        </div>
+        <div className="input-container">
 
-        <LocationPicker
-          inputName="Drop-Off Location"
-          id="drop-off-loc"
-          placeholder="Drop Off"
-          modal
-        />
+          <LocationPicker
+            inpName="Pick Up Location"
+            id="pick-up-loc"
+            placeholder="Pick up"
+            handleInput={handleForm}
+            modal
+          />
 
-        <DatePicker
-          inputName="Pick up"
-          modal
-        />
+          <LocationPicker
+            inpName="Drop-Off Location"
+            id="drop-off-loc"
+            placeholder="Drop Off"
+            handleInput={handleForm}
+            modal
+          />
 
-        <DatePicker
-          inputName="Drop off"
-          modal
-        />
+          <DatePicker
+            title="Pick up"
+            inpName="pick-up-date"
+            handleInput={handleForm}
+            modal
+          />
 
-        <CabSearchButton modal />
+          <DatePicker
+            title="Drop off"
+            inpName="drop-off-date"
+            handleInput={handleForm}
+            modal
+          />
 
+          <CabSearchButton modal />
+
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default CabSearchModal;

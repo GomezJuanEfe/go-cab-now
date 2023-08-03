@@ -2,25 +2,49 @@ import './CabSearch.scss';
 import DatePicker from '../DatePicker';
 import LocationPicker from '../LocationPicker';
 import CabSearchButton from '../CabSearchButton';
+import useForm from '../../hooks/useForm';
 
-const CabSearch = () => (
-  <div className="cab-search">
+const CabSearch = () => {
+  const { form, handleForm } = useForm('home');
 
-    <div className="search-inputs">
+  return (
 
-      <LocationPicker inputName="Pick Up Location" id="pick-up-loc" placeholder="Pick up" />
+    <div className="cab-search">
 
-      <LocationPicker inputName="Drop-Off Location" id="drop-off-loc" placeholder="Drop Off" />
+      <div className="search-inputs">
 
-      <DatePicker inputName="Pick up" />
+        <LocationPicker
+          title="Pick Up Location"
+          inpName="pick-up-loc"
+          placeholder="Pick up"
+          handleInput={handleForm}
+        />
 
-      <DatePicker inputName="Drop off" />
+        <LocationPicker
+          title="Drop-Off Location"
+          inpName="drop-off-loc"
+          placeholder="Drop Off"
+          handleInput={handleForm}
+        />
 
-      <CabSearchButton />
+        <DatePicker
+          title="Pick up"
+          inpName="pick-up-date"
+          handleInput={handleForm}
+        />
+
+        <DatePicker
+          title="Drop off"
+          inpName="drop-off-date"
+          handleInput={handleForm}
+        />
+
+        <CabSearchButton />
+
+      </div>
 
     </div>
-
-  </div>
-);
+  );
+};
 
 export default CabSearch;

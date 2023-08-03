@@ -24,21 +24,24 @@ const useStyles = createStyles(() => ({
   },
 }));
 
-const DatePicker = ({ inputName, id, modal }) => {
+const DatePicker = ({
+  title, inpName, modal, handleInput,
+}) => {
   const { classes } = useStyles();
   const modalStyle = modal ? 'modal' : '';
 
   return (
     <div className={`label-input ${modalStyle}`}>
-      <label htmlFor={id}>
-        <div>{inputName}</div>
+      <label htmlFor={inpName}>
+        <div>{title}</div>
         <DateTimePicker
-          id={id}
+          id={inpName}
           classNames={{ ...classes }}
           dropdownType="modal"
           placeholder={now}
           maw="auto"
           mx="auto"
+          onChange={(e) => handleInput(e, true, inpName)}
         />
       </label>
     </div>
