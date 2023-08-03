@@ -2,6 +2,8 @@
 
 
 .success-section{
+  margin: 0 auto;
+  max-width: 1200px;
   padding: 30px 30px;
   text-align: center;
 
@@ -24,6 +26,6 @@ p{
 
 @media (max-width: 992px){
 p {
- width:80%;
+  width:60%;
 }
 }
