@@ -4,27 +4,37 @@
 .input_radio_payment{
   display: flex;
   position: relative;
-  border: 1px solid #eeeeee;
+  border: 1px solid rgba(0, 0, 0, 0.09);
   background-color: #eeeeee;
+  margin-bottom: 10px;
 
     input {
        box-sizing: b;
       color: $primary-color;
       margin-left: 16px;
       position: relative;
-      margin-right: 30px;
-      margin-top: 10px;
+      margin-right: 40px;
+      margin-top: 15px;
   }
 
     h3{
       color: rgba(0, 0, 0, 0.9);
-      padding: 10px 15px;
+      padding: 10px 10px;
   }
 }
+
+.payment__section__form{
+  padding: 1rem 1rem;
+}
+
+.payment__section{
+  width:100%;
 
 .payment__section__body {
   display: none;
   &.show{
-    display: flex;
+    display: block;
+    width: 100%;
   }
+}
 }

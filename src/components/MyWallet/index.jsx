@@ -1,4 +1,4 @@
-import React from 'react';
+import './MyWallet.scss';
 
 const MyWallet = () => (
   <div className="form__payment">
@@ -8,76 +8,88 @@ const MyWallet = () => (
 
         <div className="row">
 
-          <div className="form-check col-md-6">
+          <div className="form-check_col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
+              <div className="input_radio_payment_2">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value="option1"
+                  checked
+                  name="radiocls"
+                />
+              </div>
               Adyen
-              <input
-                className="form-check-input radio_animated"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
             </label>
           </div>
-          <div className="form-check col-md-6">
+          <div className="form-check_col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
+              <div className="input_radio_payment_2">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value="option1"
+                  checked
+                  name="radiocls"
+                />
+              </div>
               Airtel Wallet
-              <input
-                className="form-check-input radio_animated"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
             </label>
           </div>
-          <div className="form-check col-md-6">
+          <div className="form-check_col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
+              <div className="input_radio_payment_2">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value="option1"
+                  checked
+                  name="radiocls"
+                />
+              </div>
               Apple Pay
-              <input
-                className="form-check-input radio_animated"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
             </label>
           </div>
-          <div className="form-check col-md-6">
+          <div className="form-check_col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
+              <div className="input_radio_payment_2">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value="option1"
+                  checked
+                  name="radiocls"
+                />
+              </div>
               Brinks
-              <input
-                className="form-check-input radio_animated"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
             </label>
           </div>
-          <div className="form-check col-md-6">
+          <div className="form-check_col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
+              <div className="input_radio_payment_2">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value="option1"
+                  checked
+                  name="radiocls"
+                />
+              </div>
               CardFree
-              <input
-                className="form-check-input radio_animated"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
             </label>
           </div>
-          <div className="form-check col-md-6">
+          <div className="form-check_col-md-6">
             <label className="form-check-label" htmlFor="Radios1">
+              <div className="input_radio_payment_2">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value="option1"
+                  checked
+                  name="radiocls"
+                />
+              </div>
               JPMorgan Chase & Co.
-              <input
-                className="form-check-input radio_animated"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
             </label>
           </div>
         </div>

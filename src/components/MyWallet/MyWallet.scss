@@ -24,18 +24,17 @@ position: relative;
   background-color: $white;
   border: transparent;
 }
-
-    input {
-       box-sizing: b;
-      color: $primary-color;
-      margin-left: 16px;
-      position: relative;
-      margin-right: 40px;
-      margin-top: 15px;
-  }
+input {
+  box-sizing: b;
+ color: $primary-color;
+ margin-left: 16px;
+ position: relative;
+ margin-right: 40px;
+ margin-top: 15px;
+}
 
 .form-check-input{
-  border: 4px solid #e9b30e;
-  margin-right: 10px;
-  background-color: #ffffff;
+border: 4px solid #e9b30e;
+margin-right: 10px;
+background-color: #ffffff;
 }
