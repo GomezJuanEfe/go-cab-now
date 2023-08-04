@@ -30,17 +30,17 @@ const Payment = () => {
             <form action="form__payment">
 
               <div className="form-group">
-                <label className="form_label" htmlFor="name">
+                <div className="title__inputs">
                   Name On Card
-                  <input type="text" className="form-control" />
-                </label>
+                </div>
+                <input type="text" className="form-control" />
               </div>
 
               <div className="form-group">
-                <label htmlFor="number">
+                <div className="title__inputs">
                   Card Number
-                  <input type="number" className="form-control" />
-                </label>
+                </div>
+                <input type="number" className="form-control" />
                 <div className="img_credit">
                   <img src={creditcard} alt="creditcard" />
                 </div>
@@ -48,44 +48,47 @@ const Payment = () => {
               <div className="row__inputs">
 
                 <div className="form-group_select">
-                  <label htmlFor="month">
+                  <div className="title__inputs">
                     Month
-                    <select className="form-control_cvv">
-                      <option selected>Month...</option>
-                      <option>January</option>
-                      <option>February</option>
-                      <option>March</option>
-                      <option>April</option>
-                      <option>May</option>
-                      <option>June</option>
-                      <option>July</option>
-                      <option>August</option>
-                      <option>September</option>
-                      <option>October</option>
-                      <option>November</option>
-                      <option>December</option>
-                    </select>
-                  </label>
+                  </div>
+                  <br />
+                  <select className="form-control_cvv">
+                    <option selected>Month...</option>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                  </select>
                 </div>
 
                 <div className="form-group_select">
-                  <label htmlFor="year">
+                  <div className="title__inputs">
                     Year
-                    <select className="form-control_cvv">
-                      <option selected>Year...</option>
-                      <option>...</option>
-                    </select>
-                  </label>
+                  </div>
+                  <br />
+                  <select className="form-control_cvv">
+                    <option selected>Year...</option>
+                    <option>...</option>
+                  </select>
                 </div>
 
                 <div className="form-group_select">
-                  <label htmlFor="cvv">
+                  <div className="title__inputs">
                     Cvv
-                    <input type="password" maxLength="4" className="form-control_cvv" />
-                    <div className="img_cvv">
-                      <img src={Cvv} alt="cvv" />
-                    </div>
-                  </label>
+                  </div>
+                  <br />
+                  <input type="password" maxLength="4" className="form-control_cvv" />
+                  <div className="img_cvv">
+                    <img src={Cvv} alt="cvv" />
+                  </div>
                 </div>
 
               </div>
@@ -104,61 +107,64 @@ const Payment = () => {
             <form action="form__payment">
 
               <div className="form-group">
-                <label htmlFor="name">
+                <div className="title__inputs">
                   Name On Card
-                  <input type="text" className="form-control" />
-                </label>
+                </div>
+                <input type="text" className="form-control" />
               </div>
 
               <div className="form-group">
-                <label htmlFor="number">
+                <div className="title__inputs">
                   Card Number
-                  <input type="number" className="form-control" />
-                </label>
+                </div>
+                <input type="number" className="form-control" />
                 <img src={creditcard} alt="creditcard" className="img_credit" />
               </div>
 
               <div className="row__inputs">
 
                 <div className="form-group_select">
-                  <label htmlFor="month">
+                  <div className="title__inputs">
                     Month
-                    <select className="form-control_cvv">
-                      <option selected>Month...</option>
-                      <option>January</option>
-                      <option>February</option>
-                      <option>March</option>
-                      <option>April</option>
-                      <option>May</option>
-                      <option>June</option>
-                      <option>July</option>
-                      <option>August</option>
-                      <option>September</option>
-                      <option>October</option>
-                      <option>November</option>
-                      <option>December</option>
-                    </select>
-                  </label>
+                  </div>
+                  <br />
+                  <select className="form-control_cvv">
+                    <option selected>Month...</option>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                  </select>
                 </div>
 
                 <div className="form-group_select">
-                  <label htmlFor="year">
+                  <div className="title__inputs">
                     Year
-                    <select className="form-control_cvv">
-                      <option selected>Year...</option>
-                      <option>...</option>
-                    </select>
-                  </label>
+                  </div>
+                  <br />
+                  <select className="form-control_cvv">
+                    <option selected>Year...</option>
+                    <option>...</option>
+                  </select>
                 </div>
 
                 <div className="form-group_select">
-                  <label htmlFor="cvv">
+                  <div className="title__inputs">
                     Cvv
-                    <input type="password" maxLength="4" className="form-control_cvv" />
-                    <div className="img_cvv">
-                      <img src={Cvv} alt="cvv" />
-                    </div>
-                  </label>
+                  </div>
+                  <br />
+                  <input type="password" maxLength="4" className="form-control_cvv" />
+                  <div className="img_cvv">
+                    <img src={Cvv} alt="cvv" />
+                  </div>
                 </div>
 
               </div>

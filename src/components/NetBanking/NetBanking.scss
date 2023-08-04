@@ -1,5 +1,17 @@
 @import '../../styles/abstract/variables.scss';
 
+.form__banking{
+  display: flex;
+  width:100%;
+}
+.card__banking{
+  display: flex;
+}
+.baking-section{
+  width: 100%;
+  margin: 5px;
+}
+
 h6{
   text-align: left;
   font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
@@ -9,13 +21,15 @@ h6{
 }
 .row_banking{
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-direction: column;
 }
 .form-check_col-md-6{
-position: relative;
+
+
 }
 
-.input_radio_payment_2{
+.text__radio{
   display: flex;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.09);
@@ -25,7 +39,7 @@ position: relative;
   border: transparent;
 }
 
-    input {
+  .form-check-input{
        box-sizing: b;
       color: $primary-color;
       margin-left: 16px;
@@ -34,7 +48,7 @@ position: relative;
       margin-top: 15px;
   }
 
-.form-check-input{
+.input_radio_payment_{
   border: 4px solid #e9b30e;
   margin-right: 10px;
   background-color: #ffffff;

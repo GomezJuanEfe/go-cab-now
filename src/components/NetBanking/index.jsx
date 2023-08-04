@@ -2,102 +2,107 @@ import './NetBanking.scss';
 
 const NetBanking = () => (
   <div className="form__banking">
+
     <div className="card__banking">
+
       <form className="baking-section">
+
         <h6>SELECT POPULAR BANKS</h6>
+
         <div className="row_banking">
+
           <div className="form-check_col-md-6">
-            <label className="form-check-label" htmlFor="Radios1">
-              <div className="input_radio_payment_2">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value="option1"
-                  checked
-                  name="radiocls"
-                />
+            <div className="form__check">
+              <input
+                className="form-check-input"
+                type="radio"
+                value="option1"
+                checked
+                name="radiocls"
+              />
+              <div className="text__radio">
+                Industrial & Commercial Bank
               </div>
-              Industrial & Commercial Bank
-            </label>
+            </div>
           </div>
           <div className="form-check_col-md-6">
-            <label className="form-check-label" htmlFor="Radios1">
-              <div className="input_radio_payment_2">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value="option1"
-                  checked
-                  name="radiocls"
-                />
+            <div className="form__check">
+              <input
+                className="form-check-input"
+                type="radio"
+                value="option1"
+                checked
+                name="radiocls"
+              />
+              <div className="text__radio">
+                Construction Bank Corp.
               </div>
-              Construction Bank Corp.
-            </label>
+            </div>
           </div>
           <div className="form-check_col-md-6">
-            <label className="form-check-label" htmlFor="Radios1">
-              <div className="input_radio_payment_2">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value="option1"
-                  checked
-                  name="radiocls"
-                />
+            <div className="form__check">
+              <input
+                className="form-check-input"
+                type="radio"
+                value="option1"
+                checked
+                name="radiocls"
+              />
+              <div className="text__radio">
+                Agricultural Bank
               </div>
-              Agricultural Bank
-            </label>
+            </div>
           </div>
           <div className="form-check_col-md-6">
-            <label className="form-check-label" htmlFor="Radios1">
-              <div className="input_radio_payment_2">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value="option1"
-                  checked
-                  name="radiocls"
-                />
+            <div className="form__check">
+              <input
+                className="form-check-input"
+                type="radio"
+                value="option1"
+                checked
+                name="radiocls"
+              />
+              <div className="text__radio">
+                HSBC Holdings
               </div>
-              HSBC Holdings
-            </label>
+            </div>
           </div>
           <div className="form-check_col-md-6">
-            <label className="form-check-label" htmlFor="Radios1">
-              <div className="input_radio_payment_2">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value="option1"
-                  checked
-                  name="radiocls"
-                />
+            <div className="form__check">
+              <input
+                className="form-check-input"
+                type="radio"
+                value="option1"
+                checked
+                name="radiocls"
+              />
+              <div className="text__radio">
+                Bank of America
               </div>
-              Bank of America
-            </label>
+            </div>
           </div>
           <div className="form-check_col-md-6">
-            <label className="form-check-label" htmlFor="Radios1">
-              <div className="input_radio_payment_2">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value="option1"
-                  checked
-                  name="radiocls"
-                />
+            <div className="form__check">
+              <input
+                className="form-check-input"
+                type="radio"
+                value="option1"
+                checked
+                name="radiocls"
+              />
+              <div className="text__radio">
+                JPMorgan Chase & Co.
               </div>
-              JPMorgan Chase & Co.
-            </label>
+            </div>
           </div>
         </div>
         <div className="form-group mt-3">
-          <label htmlFor="net-b">
+          <div htmlFor="net-b">
             Select Bank
             <select className="form-control">
               <option selected>Choose Bank...</option>
             </select>
-          </label>
+          </div>
         </div>
         <div className="payment-btn">
           <button type="button" className="btn_payment">
