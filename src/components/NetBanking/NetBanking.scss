@@ -1,7 +1,6 @@
 @import '../../styles/abstract/variables.scss';
 
 .form__banking{
-  display: flex;
   width:100%;
 }
 .card__banking{
@@ -21,12 +20,10 @@ h6{
 }
 .row_banking{
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 .form-check_col-md-6{
-
-
+  display: flex;
 }
 
 .text__radio{
@@ -34,22 +31,25 @@ h6{
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.09);
   margin-bottom: 10px;
-  width: 20%;
   background-color: $white;
   border: transparent;
 }
 
   .form-check-input{
-       box-sizing: b;
       color: $primary-color;
-      margin-left: 16px;
       position: relative;
       margin-right: 40px;
-      margin-top: 15px;
   }
 
 .input_radio_payment_{
   border: 4px solid #e9b30e;
   margin-right: 10px;
   background-color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+
+  .form-check_col-md-6 {
+    width: 50%;
+  }
 }
