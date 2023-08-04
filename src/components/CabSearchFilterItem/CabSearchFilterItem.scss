@@ -1,0 +1,35 @@
+@import '../../styles/abstract/variables.scss';
+
+.filter-item {
+  border-bottom: 1px solid $very-light-snow;
+
+  .filter-title {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    cursor: pointer;
+
+    h6 {
+      font-size: 14px;
+      color: black;
+      text-transform: capitalize;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    span {
+      padding: 1px 8px;
+      vertical-align: middle;
+      background-color: $very-light-snow;
+    }
+
+  }
+
+  .filter-content {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+}
