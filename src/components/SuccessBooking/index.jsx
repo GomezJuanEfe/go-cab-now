@@ -5,7 +5,7 @@ import ImgCar from '../../assets/images/success_img.png';
 const SuccessBooking = () => {
   return (
     <section className="success-section">
-      <div className="container">
+      <div>
         <div className="row_success">
           <div className="col_success">
             <img src={ImgCar} alt="successCar" />

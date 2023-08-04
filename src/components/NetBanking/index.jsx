@@ -12,89 +12,83 @@ const NetBanking = () => (
         <div className="row_banking">
 
           <div className="form-check_col-md-6">
-            <div className="form__check">
-              <input
-                className="form-check-input"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
-              <div className="text__radio">
-                Industrial & Commercial Bank
-              </div>
+            <input
+              className="form-check-input"
+              type="radio"
+              value="option1"
+              checked
+              name="radiocls"
+            />
+            <div className="text__radio">
+              Industrial & Commercial Bank
             </div>
           </div>
+
           <div className="form-check_col-md-6">
-            <div className="form__check">
-              <input
-                className="form-check-input"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
-              <div className="text__radio">
-                Construction Bank Corp.
-              </div>
+            <input
+              className="form-check-input"
+              type="radio"
+              value="option1"
+              checked
+              name="radiocls"
+            />
+            <div className="text__radio">
+              Construction Bank Corp.
             </div>
           </div>
+
           <div className="form-check_col-md-6">
-            <div className="form__check">
-              <input
-                className="form-check-input"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
-              <div className="text__radio">
-                Agricultural Bank
-              </div>
+            <input
+              className="form-check-input"
+              type="radio"
+              value="option1"
+              checked
+              name="radiocls"
+            />
+            <div className="text__radio">
+              Agricultural Bank
             </div>
           </div>
+
           <div className="form-check_col-md-6">
-            <div className="form__check">
-              <input
-                className="form-check-input"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
-              <div className="text__radio">
-                HSBC Holdings
-              </div>
+            <input
+              className="form-check-input"
+              type="radio"
+              value="option1"
+              checked
+              name="radiocls"
+            />
+            <div className="text__radio">
+              HSBC Holdings
             </div>
           </div>
+
           <div className="form-check_col-md-6">
-            <div className="form__check">
-              <input
-                className="form-check-input"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
-              <div className="text__radio">
-                Bank of America
-              </div>
+            <input
+              className="form-check-input"
+              type="radio"
+              value="option1"
+              checked
+              name="radiocls"
+            />
+            <div className="text__radio">
+              Bank of America
             </div>
           </div>
+
           <div className="form-check_col-md-6">
-            <div className="form__check">
-              <input
-                className="form-check-input"
-                type="radio"
-                value="option1"
-                checked
-                name="radiocls"
-              />
-              <div className="text__radio">
-                JPMorgan Chase & Co.
-              </div>
+            <input
+              className="form-check-input"
+              type="radio"
+              value="option1"
+              checked
+              name="radiocls"
+            />
+            <div className="text__radio">
+              JPMorgan Chase & Co.
             </div>
           </div>
+
         </div>
         <div className="form-group mt-3">
           <div htmlFor="net-b">
