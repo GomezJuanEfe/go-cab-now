@@ -21,6 +21,9 @@ h6{
 .row_banking{
   display: flex;
   flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0px 15px;
 }
 .form-check_col-md-6{
   display: flex;
@@ -45,6 +48,9 @@ h6{
   border: 4px solid #e9b30e;
   margin-right: 10px;
   background-color: #ffffff;
+}
+.form-control_net{
+  width:100%
 }
 
 @media screen and (min-width: 768px) {

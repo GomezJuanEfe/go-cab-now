@@ -90,10 +90,10 @@ const NetBanking = () => (
           </div>
 
         </div>
-        <div className="form-group mt-3">
+        <div className="title_select_bank">
           <div htmlFor="net-b">
             Select Bank
-            <select className="form-control">
+            <select className="form-control_net">
               <option selected>Choose Bank...</option>
             </select>
           </div>

@@ -7,10 +7,11 @@ import creditcard from '../../assets/icons/creditcards.png';
 import Cvv from '../../assets/icons/cvv.png';
 import NetBanking from '../NetBanking';
 import MyWallet from '../MyWallet';
+import '../FormTemplate/FormTemplate.scss';
 
 const Payment = () => {
   const [active, setActive] = useState(undefined);
-  console.log('active', active);
+
   return (
     <section className="payment">
 
@@ -24,7 +25,7 @@ const Payment = () => {
         <div className="container__title">
           <h4>Payment Option</h4>
         </div>
-        <div className="container__card">
+        <div className="container__card_payment">
           <FormTemplate className="title__container" title="Debit Card" active={active} setActive={setActive} id={1}>
 
             <form action="form__payment">
