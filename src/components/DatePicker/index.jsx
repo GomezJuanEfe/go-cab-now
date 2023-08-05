@@ -25,7 +25,7 @@ const useStyles = createStyles(() => ({
 }));
 
 const DatePicker = ({
-  title, inpName, modal, handleInput,
+  title, inpName, modal, handleInput, value,
 }) => {
   const { classes } = useStyles();
   const modalStyle = modal ? 'modal' : '';
@@ -38,10 +38,11 @@ const DatePicker = ({
           id={inpName}
           classNames={{ ...classes }}
           dropdownType="modal"
-          placeholder={now}
+          placeholder={value || now}
           maw="auto"
           mx="auto"
           onChange={(e) => handleInput(e, true, inpName)}
+          value={value}
         />
       </label>
     </div>

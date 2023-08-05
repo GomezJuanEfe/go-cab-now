@@ -1,11 +1,12 @@
 import './CabSearch.scss';
+import { useContext } from 'react';
 import DatePicker from '../DatePicker';
 import LocationPicker from '../LocationPicker';
 import CabSearchButton from '../CabSearchButton';
-import useForm from '../../hooks/useForm';
+import { FormContext } from '../../store/FormContext';
 
 const CabSearch = () => {
-  const { form, handleForm } = useForm('home');
+  const { tripForm, handleTripForm } = useContext(FormContext);
 
   return (
 
@@ -15,28 +16,32 @@ const CabSearch = () => {
 
         <LocationPicker
           title="Pick Up Location"
-          inpName="pick-up-loc"
+          inpName="pickUpLoc"
           placeholder="Pick up"
-          handleInput={handleForm}
+          handleInput={handleTripForm}
+          value={tripForm?.pickUpLoc}
         />
 
         <LocationPicker
           title="Drop-Off Location"
-          inpName="drop-off-loc"
+          inpName="dropOffLoc"
           placeholder="Drop Off"
-          handleInput={handleForm}
+          handleInput={handleTripForm}
+          value={tripForm?.dropOffLoc}
         />
 
         <DatePicker
           title="Pick up"
-          inpName="pick-up-date"
-          handleInput={handleForm}
+          inpName="pickUpDate"
+          value={tripForm?.pickUpDate}
+          handleInput={handleTripForm}
         />
 
         <DatePicker
           title="Drop off"
-          inpName="drop-off-date"
-          handleInput={handleForm}
+          inpName="dropOffDate"
+          value={tripForm?.dropOffDate}
+          handleInput={handleTripForm}
         />
 
         <CabSearchButton />

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const useForm = (formId) => {
-  const [form, setForm] = useState({ id: formId });
+const useForm = (initialValue) => {
+  const [form, setForm] = useState(initialValue);
 
   const handleForm = (e, isMantine = false, input = '') => {
     let formUpdated;
@@ -18,7 +18,6 @@ const useForm = (formId) => {
       };
     }
     setForm(formUpdated);
-    console.log(formUpdated);
   };
 
   return { form, handleForm };

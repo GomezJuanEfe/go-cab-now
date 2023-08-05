@@ -1,12 +1,13 @@
 import './CabSearchModal.scss';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { useContext } from 'react';
 import LocationPicker from '../LocationPicker';
 import DatePicker from '../DatePicker';
 import CabSearchButton from '../CabSearchButton';
-import useForm from '../../hooks/useForm';
+import { FormContext } from '../../store/FormContext';
 
 const CabSearchModal = ({ show, handleModal }) => {
-  const { form, handleForm } = useForm('modal');
+  const { tripForm, handleTripForm } = useContext(FormContext);
 
   return (
     <div className={`cab-search-modal ${show ? 'show' : ''}`}>
@@ -24,32 +25,34 @@ const CabSearchModal = ({ show, handleModal }) => {
         <div className="input-container">
 
           <LocationPicker
-            inpName="Pick Up Location"
-            id="pick-up-loc"
+            inpName="pickUpLoc"
             placeholder="Pick up"
-            handleInput={handleForm}
+            handleInput={handleTripForm}
+            value={tripForm?.pickUpLoc}
             modal
           />
 
           <LocationPicker
-            inpName="Drop-Off Location"
-            id="drop-off-loc"
+            inpName="dropOffLoc"
             placeholder="Drop Off"
-            handleInput={handleForm}
+            handleInput={handleTripForm}
+            value={tripForm?.dropOffLoc}
             modal
           />
 
           <DatePicker
             title="Pick up"
-            inpName="pick-up-date"
-            handleInput={handleForm}
+            inpName="pickUpDate"
+            handleInput={handleTripForm}
+            value={tripForm?.pickUpDate}
             modal
           />
 
           <DatePicker
             title="Drop off"
-            inpName="drop-off-date"
-            handleInput={handleForm}
+            inpName="dropOffDate"
+            handleInput={handleTripForm}
+            value={tripForm?.dropOffDate}
             modal
           />
 
