@@ -1,29 +1,29 @@
 @import '../../styles/abstract/variables.scss';
 
-.container_failed{
+.container_failed {
   margin: 0 auto;
   max-width: 1200px;
 }
 
-.row__failed{
-  padding: 30px 30px;
-  text-align: center;
-}
-  img{
-    max-width: 100%;
-    margin-bottom: calc(15px + (30 - 15) * ((100vw - 320px) / (1920 - 320)));
-  }
+  .row__failed {
+    padding: 30px 30px;
+    text-align: center;
 
-  h2{
-    font-size: calc(22px + (36 - 22) * ((100vw - 320px) / (1920 - 320)));
-    font-weight: 700;
-    letter-spacing: 0.001em;
-    line-height: 32px;
-    text-transform: capitalize;
-    color: $black;
-  }
+    .row__failed img {
+      max-width: 100%;
+      margin-bottom: calc(15px + (30 - 15) * ((100vw - 320px) / (1920 - 320)));
+    }
 
-  p{
+    .row__failed h2 {
+      font-size: calc(22px + (36 - 22) * ((100vw - 320px) / (1920 - 320)));
+      font-weight: 700;
+      letter-spacing: 0.001em;
+      line-height: 32px;
+      text-transform: capitalize;
+      color: $black;
+    }
+  }
+  .row__failed p {
     width: 80%;
     font-size: 16px;
     margin: 0 auto;
@@ -32,15 +32,15 @@
     padding-top: 10px;
     text-transform: capitalize;
   }
-  .btn_failed{
+  .btn_failed {
     background-color: $primary-color;
     color: $white;
     padding: 8px 20px;
     margin-top: 18px;
   }
 
-  @media (min-width: 992px){
-  p {
+  @media (min-width: 992px) {
+    .row__failed p {
     max-width: 50%;
-  }
+    }
   }
