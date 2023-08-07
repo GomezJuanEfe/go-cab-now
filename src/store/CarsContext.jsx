@@ -7,12 +7,9 @@ export const CarsProvider = ({ children }) => {
   const [carsData, setCarData] = useState([]);
 
   useEffect(() => {
-    CarFetch.getAllCars()
-      .then((data) => {
-        setCarData(data);
-        return data;
-      })
-      .then((data) => console.log(data));
+    // Pregunta:Cómo pordría hacer un manejo de errores?
+    CarFetch.fetchAllCars()
+      .then((data) => setCarData(data));
   }, []);
 
   return (
