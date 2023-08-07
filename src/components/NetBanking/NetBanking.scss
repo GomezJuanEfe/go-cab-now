@@ -1,35 +1,34 @@
 @import '../../styles/abstract/variables.scss';
 
-.form__banking{
+.form__banking {
   width:100%;
 }
-.card__banking{
+.card__banking {
   display: flex;
 }
-.baking-section{
+.baking-section {
   width: 100%;
   margin: 5px;
 }
 
-h6{
+.baking-section h6 {
   text-align: left;
   font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: 0.03em;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
 }
-.row_banking{
+.row_banking {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 0px 15px;
 }
-.form-check_col-md-6{
+.form-check_col-md-6 {
   display: flex;
 }
-
-.text__radio{
+.text__radio {
   display: flex;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.09);
@@ -38,23 +37,19 @@ h6{
   border: transparent;
 }
 
-  .form-check-input{
-      color: $primary-color;
-      position: relative;
-      margin-right: 40px;
-  }
-
-.input_radio_payment_{
-  border: 4px solid #e9b30e;
-  margin-right: 10px;
-  background-color: #ffffff;
+.form-check-input {
+  color: $primary-color;
+  position: relative;
+  margin-right: 40px;
 }
-.form-control_net{
+
+.form-control_net {
+  border: 2px solid #ced4da;
+  border-radius: 5px;
   width:100%
 }
 
 @media screen and (min-width: 768px) {
-
   .form-check_col-md-6 {
     width: 50%;
   }
