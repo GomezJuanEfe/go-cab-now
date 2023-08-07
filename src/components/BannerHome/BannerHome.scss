@@ -2,6 +2,7 @@
 
 .banner-container {
   height: 70vh;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,6 +28,24 @@
       font-weight: 300;
     }
   }
+
+  .choose-location {
+    display: flex;
+    margin-top: 5px;
+
+    label {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      margin-right: 20px;
+      text-shadow: 1px 1px 2px rgb(0, 0, 0);
+
+      input {
+        margin-right: 10px;
+        background-color: $white;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -50,6 +69,10 @@
 }
 
 @media screen and (min-width: 1000px) {
+  .cab-search-container {
+    max-width: 1200px;
+  }
+
   .banner-container {
     height: 90vh;
     align-items: flex-end;

@@ -1,0 +1,12 @@
+@import '../../styles/abstract/variables.scss';
+
+
+.slider-container {
+  margin: 40px 12px 20px;
+}
+
+.mantine-Slider-thumb+.mantine-Slider-thumb .mantine-Slider-label {
+  padding: 2px 5px;
+  background-color: #f59f00;
+  color: $white;
+}

@@ -1,8 +1,10 @@
 import './CabSearchBody.scss';
 
 const CabSearchBody = ({ children }) => (
-  <main className="cab-search-body">
-    {children}
+  <main className="cab-search-main">
+    <div className="cab-search-body">
+      {children}
+    </div>
   </main>
 );
 

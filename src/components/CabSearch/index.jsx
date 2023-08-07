@@ -1,74 +1,26 @@
 import './CabSearch.scss';
 import DatePicker from '../DatePicker';
-// import From from '../../assets/icons/from.png';
-// import Location from '../../assets/icons/location.png';
-// import Date from '../../assets/icons/date.png';
+import LocationPicker from '../LocationPicker';
+import CabSearchButton from '../CabSearchButton';
 
 const CabSearch = () => (
-  <>
-    <div className="choose-location">
-      <label htmlFor="radio-location">
-        Different Location
-        <input type="radio" name="radio-location" id="radio-diff" />
-      </label>
-      <label htmlFor="radio-location">
-        Same Location
-        <input type="radio" name="radio-location" id="radio-same" />
-      </label>
-    </div>
+  <div className="cab-search">
 
-    <div className="cab-search">
+    <div className="search-inputs">
 
-      <div className="search-inputs">
+      <LocationPicker inputName="Pick Up Location" id="pick-up-loc" placeholder="Pick up" />
 
-        <div className="label-input">
-          <label htmlFor="pick-up-loc">
-            <div>Pick Up Location</div>
-            <input type="text" id="pick-up-loc" placeholder="Pick Up" />
-          </label>
-          {/* <div className="search-icon">
-            <img src={From} alt="from icon" />
-          </div> */}
-        </div>
+      <LocationPicker inputName="Drop-Off Location" id="drop-off-loc" placeholder="Drop Off" />
 
-        <div className="label-input">
-          <label htmlFor="drop-off-loc">
-            <div>Drop-Off Location</div>
-            <input type="text" id="drop-off-loc" placeholder="Drop Off" />
-          </label>
-          {/* <div className="search-icon">
-            <img src={Location} alt="location icon" />
-          </div> */}
-        </div>
+      <DatePicker inputName="Pick up" />
 
-        <div className="label-input">
-          <label htmlFor="pick-up">
-            <div>Pick Up</div>
-            <DatePicker />
-          </label>
-          {/* <div className="search-icon">
-            <img className="date-icon" src={Date} alt="date icon" />
-          </div> */}
-        </div>
+      <DatePicker inputName="Drop off" />
 
-        <div className="label-input">
-          <label htmlFor="drop-off">
-            <div>Drop-Off</div>
-            <DatePicker />
-          </label>
-          {/* <div className="search-icon">
-            <img className="date-icon" src={Date} alt="date icon" />
-          </div> */}
-        </div>
-
-        <div className="search-button">
-          <button className="search-button" type="button">SEARCH</button>
-        </div>
-
-      </div>
+      <CabSearchButton />
 
     </div>
-  </>
+
+  </div>
 );
 
 export default CabSearch;
