@@ -4,7 +4,9 @@ import CabSearchCarCard from '../CabSearchCarCard';
 import { CarsContext } from '../../store/CarsContext';
 
 const CabSearchCarList = () => {
-  const { carsData } = useContext(CarsContext);
+  const { carsData, carsError, carsIsLoading } = useContext(CarsContext);
+  if (carsError) return <div>Failed to load</div>;
+  if (carsIsLoading) return <div>Loading...</div>;
 
   return (
     <div className="cab-search-list">
@@ -32,5 +34,4 @@ const CabSearchCarList = () => {
     </div>
   );
 };
-
 export default CabSearchCarList;
