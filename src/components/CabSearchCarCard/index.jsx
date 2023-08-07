@@ -1,11 +1,12 @@
 import './CabSearchCarCard.scss';
-import car5 from '../../assets/images/5.png';
 
-const CabSearchCarCard = ({ carName, carType }) => (
+const CabSearchCarCard = ({
+  carName, carType, carImg, carDetails, fare,
+}) => (
   <div className="cab-search-card">
     <div className="card__header">
       <div className="card__img">
-        <img src={car5} alt="car #5" />
+        <img src={carImg} alt={`${carName} car`} />
       </div>
       <h6>{carName}</h6>
       <p>{`(${carType})`}</p>
@@ -14,19 +15,23 @@ const CabSearchCarCard = ({ carName, carType }) => (
       <ul>
         <li>
           <span className="seat-icon" />
-          5 seater
+          {`${carDetails.seats} seater`}
         </li>
-        <li>
-          <span className="ac-icon" />
-          AC
-        </li>
+        {carDetails.air_conditioner
+          ? (
+            <li>
+              <span className="ac-icon" />
+              AC
+            </li>
+          )
+          : <li />}
         <li>
           <span className="luggage-icon" />
-          2 luggage
+          {`${carDetails.luggage} luggage`}
         </li>
         <li>
           <span className="trans-icon" />
-          Automatic
+          {carDetails.transmition}
         </li>
       </ul>
     </div>
@@ -35,7 +40,7 @@ const CabSearchCarCard = ({ carName, carType }) => (
       <p>
         Fare/km:
         {' '}
-        <span>$25</span>
+        <span>{`$${fare}`}</span>
       </p>
     </div>
     <div className="card__button">
