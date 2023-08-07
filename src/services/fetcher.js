@@ -1,3 +1,3 @@
-import axios from 'axios';
+import { mockInstance } from './axios';
 
-export const fetcher = (url) => axios.get(url).then((res) => res.data);
+export const fetcher = (url) => mockInstance.get(url).then((res) => res.data);
