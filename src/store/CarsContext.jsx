@@ -1,28 +1,27 @@
 import { createContext, useEffect, useState } from 'react';
+import CarFetch from '../services/CarsFetch';
 
-export const carContext = createContext();
+export const CarsContext = createContext();
 
-export const CarProvider = (children) => {
-  const [carData, setCarData] = useState();
+export const CarsProvider = ({ children }) => {
+  const [carsData, setCarData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('../../data.json');
-      return response.json();
-    };
-
-    const data = fetchData();
-    setCarData(data);
-    console.log(data);
+    CarFetch.getAllCars()
+      .then((data) => {
+        setCarData(data);
+        return data;
+      })
+      .then((data) => console.log(data));
   }, []);
 
   return (
-    <carContext.Provider
+    <CarsContext.Provider
       value={{
-        carData,
+        carsData,
       }}
     >
       {children}
-    </carContext.Provider>
+    </CarsContext.Provider>
   );
 };

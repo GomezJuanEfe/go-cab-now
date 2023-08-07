@@ -89,5 +89,70 @@
       "transmition": "Automatic"
     },
     "fare_km": 25
+  },
+  {
+    "car_id": 8,
+    "car_name": "Tesla Model 3",
+    "car_type": "Electric Sedan",
+    "car_img": "../../src/assets/images/12.png",
+    "car_details": {
+      "seats": 5,
+      "luggage": 2,
+      "air_conditioner": true,
+      "transmition": "Automatic"
+    },
+    "fare_km": 25
+  },
+  {
+    "car_id": 9,
+    "car_name": "BMW i4",
+    "car_type": "Electric Sedan",
+    "car_img": "../../src/assets/images/13.png",
+    "car_details": {
+      "seats": 5,
+      "luggage": 2,
+      "air_conditioner": true,
+      "transmition": "Automatic"
+    },
+    "fare_km": 25
+  },
+  {
+    "car_id": 10,
+    "car_name": "Renault Kwid",
+    "car_type": "Hatchback",
+    "car_img": "../../src/assets/images/14.png",
+    "car_details": {
+      "seats": 5,
+      "luggage": 1,
+      "air_conditioner": true,
+      "transmition": "Mechanic"
+    },
+    "fare_km": 25
+  },
+  {
+    "car_id": 11,
+    "car_name": "Seat Leon",
+    "car_type": "Hatchback",
+    "car_img": "../../src/assets/images/15.png",
+    "car_details": {
+      "seats": 5,
+      "luggage": 1,
+      "air_conditioner": true,
+      "transmition": "Automatic"
+    },
+    "fare_km": 25
+  },
+  {
+    "car_id": 12,
+    "car_name": "Volkswagen Transporter",
+    "car_type": "Hatchback",
+    "car_img": "../../src/assets/images/16.png",
+    "car_details": {
+      "seats": 9,
+      "luggage": 4,
+      "air_conditioner": true,
+      "transmition": "Automatic"
+    },
+    "fare_km": 25
   }
 ]

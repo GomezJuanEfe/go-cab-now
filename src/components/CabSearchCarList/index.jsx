@@ -1,30 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
 import './CabSearchCarList.scss';
 import CabSearchCarCard from '../CabSearchCarCard';
-
-const getAllCars = async () => {
-  const response = await fetch('../../data.json');
-  const data = await response.json();
-  return data;
-};
+import { CarsContext } from '../../store/CarsContext';
 
 const CabSearchCarList = () => {
-  const [carData, setCarData] = useState([]);
-
-  useEffect(() => {
-    getAllCars()
-      .then((data) => {
-        setCarData(data);
-        return data;
-      })
-      .then((data) => console.log(data));
-  }, []);
+  const { carsData } = useContext(CarsContext);
 
   return (
     <div className="cab-search-list">
       <div className="list-container">
         {
-          carData.map((item) => (
+          carsData.map((item) => (
             <CabSearchCarCard
               key={item.car_id}
               carName={item.car_name}
