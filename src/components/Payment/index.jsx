@@ -12,6 +12,19 @@ import '../FormTemplate/FormTemplate.scss';
 const Payment = () => {
   const [active, setActive] = useState(undefined);
 
+  const [formPayment, setFormPayment] = useState({
+    value, handleChangePay, nameCard, numberCard
+  });
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    // console.log(formPayment);
+  };
+
+  const handleChangePay = (event) => {
+    setFormPayment(event.target.value);
+  };
+
   return (
     <section className="payment">
 
@@ -34,14 +47,26 @@ const Payment = () => {
                 <div className="title__inputs">
                   Name On Card
                 </div>
-                <input type="text" className="form-control" />
+                <input
+                  id={nameCard}
+                  type="text"
+                  className="form-control"
+                  value={formPayment}
+                  onChange={handleChangePay}
+                />
               </div>
 
               <div className="form-group">
                 <div className="title__inputs">
                   Card Number
                 </div>
-                <input type="number" className="form-control" />
+                <input
+                  id={numberCard}
+                  type="number"
+                  className="form-control"
+                  value={formPayment}
+                  onChange={handleChangePay}
+                />
                 <div className="img_credit">
                   <img src={creditcard} alt="creditcard" />
                 </div>
@@ -86,7 +111,11 @@ const Payment = () => {
                     Cvv
                   </div>
                   <br />
-                  <input type="password" maxLength="4" className="form-control_cvv" />
+                  <input
+                    type="password"
+                    maxLength="4"
+                    className="form-control_cvv"
+                  />
                   <div className="img_cvv">
                     <img src={Cvv} alt="cvv" />
                   </div>
@@ -94,7 +123,10 @@ const Payment = () => {
 
               </div>
               <div className="payment-btn">
-                <button type="button" className="btn_payment">
+                <button
+                  type="button"
+                  className="btn_payment"
+                >
                   MAKE PAYMENT
                 </button>
               </div>
@@ -111,14 +143,25 @@ const Payment = () => {
                 <div className="title__inputs">
                   Name On Card
                 </div>
-                <input type="text" className="form-control" />
+                <input
+                  id={nameCard}
+                  type="text"
+                  className="form-control"
+                  value={formPayment}
+                  onChange={handleChangePay}
+                />
               </div>
 
               <div className="form-group">
                 <div className="title__inputs">
                   Card Number
                 </div>
-                <input type="number" className="form-control" />
+                <input
+                  type="number"
+                  className="form-control"
+                  value={formPayment}
+                  onChange={handleChangePay}
+                />
                 <img src={creditcard} alt="creditcard" className="img_credit" />
               </div>
 
@@ -162,7 +205,11 @@ const Payment = () => {
                     Cvv
                   </div>
                   <br />
-                  <input type="password" maxLength="4" className="form-control_cvv" />
+                  <input
+                    type="password"
+                    maxLength="4"
+                    className="form-control_cvv"
+                  />
                   <div className="img_cvv">
                     <img src={Cvv} alt="cvv" />
                   </div>
@@ -171,7 +218,10 @@ const Payment = () => {
               </div>
 
               <div className="payment-btn">
-                <button type="button" className="btn_payment">
+                <button
+                  type="button"
+                  className="btn_payment"
+                >
                   MAKE PAYMENT
                 </button>
               </div>
