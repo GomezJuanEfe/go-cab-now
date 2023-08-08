@@ -4,7 +4,9 @@ import CabSearchCarCard from '../CabSearchCarCard';
 import { CarsContext } from '../../store/CarsContext';
 
 const CabSearchCarList = () => {
-  const { carsData, carsError, carsIsLoading } = useContext(CarsContext);
+  const {
+    carsData, carsError, carsIsLoading, setCarPageIndex, carPageIndex,
+  } = useContext(CarsContext);
   if (carsError) return <div>Failed to load</div>;
   if (carsIsLoading) return <div>Loading...</div>;
 
@@ -12,7 +14,7 @@ const CabSearchCarList = () => {
     <div className="cab-search-list">
       <div className="list-container">
         {
-          carsData.map((item) => (
+          carsData.result.map((item) => (
             <CabSearchCarCard
               key={item.car_id}
               carName={item.car_name}
@@ -25,11 +27,25 @@ const CabSearchCarList = () => {
         }
       </div>
       <ul className="pagination">
-        <li className="pagination__item">«</li>
+        <li
+          className="pagination__item"
+          onClick={() => setCarPageIndex(carPageIndex - 1)}
+          onKeyDown={() => setCarPageIndex(carPageIndex - 1)}
+          role="menuitem"
+        >
+          «
+        </li>
         <li className="pagination__item active">1</li>
         <li className="pagination__item">2</li>
         <li className="pagination__item">3</li>
-        <li className="pagination__item">»</li>
+        <li
+          className="pagination__item"
+          onClick={() => setCarPageIndex(carPageIndex + 1)}
+          onKeyDown={() => setCarPageIndex(carPageIndex + 1)}
+          role="menuitem"
+        >
+          »
+        </li>
       </ul>
     </div>
   );
