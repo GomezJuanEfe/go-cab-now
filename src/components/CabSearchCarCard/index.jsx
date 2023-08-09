@@ -1,5 +1,6 @@
 import './CabSearchCarCard.scss';
 import car5 from '../../assets/images/5.png';
+import { NavLink } from 'react-router-dom';
 
 const CabSearchCarCard = ({ carName, carType }) => (
   <div className="cab-search-card">
@@ -39,7 +40,9 @@ const CabSearchCarCard = ({ carName, carType }) => (
       </p>
     </div>
     <div className="card__button">
-      <button className="secondary-button" type="button">Book Now</button>
+      <NavLink to="/cab-booking">
+        <button className="secondary-button" type="button">Book Now</button>
+      </NavLink>
     </div>
   </div>
 );
