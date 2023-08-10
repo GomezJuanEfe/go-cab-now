@@ -19,8 +19,11 @@ const useForm = (initialValue) => {
     }
     setForm(formUpdated);
   };
+  const overrideForm = (newForm) => {
+    setForm(newForm);
+  };
 
-  return { form, handleForm };
+  return { form, handleForm, overrideForm };
 };
 
 export default useForm;

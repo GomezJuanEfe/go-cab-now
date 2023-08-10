@@ -11,35 +11,11 @@ export const FromProvider = ({ children }) => {
     dropOffDate: '',
   });
 
-  const { form: debitCardForm, handleForm: handleDebitCardForm } = useForm({
-    nameOnCard: '',
-    cardNumber: '',
-    month: '',
-    year: '',
-    cvv: '',
-  });
-  const { form: creditCardForm, handleForm: handleCreditCardForm } = useForm({
-    nameOnCard: '',
-    cardNumber: '',
-    month: '',
-    year: '',
-    cvv: '',
-  });
-  const { form: selectForm, handleForm: handleSelectForm } = useForm({
-    industrial: '',
-  });
-
   return (
     <FormContext.Provider
       value={{
         tripForm,
         handleTripForm,
-        debitCardForm,
-        handleDebitCardForm,
-        creditCardForm,
-        handleCreditCardForm,
-        selectForm,
-        handleSelectForm,
       }}
     >
       {children}

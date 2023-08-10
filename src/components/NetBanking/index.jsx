@@ -1,11 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './NetBanking.scss';
 import { useContext } from 'react';
-import { FormContext } from '../../store/FormContext';
+import { PaymentContext } from '../../store/PaymentContext';
 
 const NetBanking = () => {
-  const { selectForm, handleSelectForm } = useContext(FormContext);
+  // const [selectBank, setSelectBank] = useState(undefined);
 
+  const { selectBankForm, handleSelectBankForm } = useContext(PaymentContext);
+  // const handleRadioChange = (e) => {
+  //   setSelectBank(e.target.value);
+  // };
+
+  console.log(selectBankForm);
   return (
     <div className="form__banking">
 
@@ -20,11 +26,12 @@ const NetBanking = () => {
             <div className="form-check_col-md-6">
               <input
                 id="industrial"
-                name="industrial"
+                name="selectedBank"
                 className="form-check-input"
+                value="industrial"
                 type="radio"
-                value={selectForm.industrial}
-                onChange={handleSelectForm}
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'industrial'}
               />
               <label
                 htmlFor="industrial"
@@ -37,11 +44,12 @@ const NetBanking = () => {
             <div className="form-check_col-md-6">
               <input
                 id="construction"
-                name="construction"
+                name="selectedBank"
                 className="form-check-input"
+                value="construction"
                 type="radio"
-                value={selectForm.construction}
-                onChange={handleSelectForm}
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'construction'}
               />
               <label
                 htmlFor="construction"
@@ -53,52 +61,72 @@ const NetBanking = () => {
 
             <div className="form-check_col-md-6">
               <input
+                id="agricultural"
+                name="selectedBank"
                 className="form-check-input"
+                value="agricultural"
                 type="radio"
-                value="option1"
-
-                name="radiocls"
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'agricultural'}
               />
-              <label className="text__radio">
+              <label
+                htmlFor="agricultural"
+                className="text__radio"
+              >
                 Agricultural Bank
               </label>
             </div>
 
             <div className="form-check_col-md-6">
               <input
+                id="holdings"
+                name="selectedBank"
                 className="form-check-input"
+                value="holdings"
                 type="radio"
-                value="option1"
-
-                name="radiocls"
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'holdings'}
               />
-              <label className="text__radio">
+              <label
+                htmlFor="holdings"
+                className="text__radio"
+              >
                 HSBC Holdings
               </label>
             </div>
 
             <div className="form-check_col-md-6">
               <input
+                id="america"
+                name="selectedBank"
                 className="form-check-input"
                 type="radio"
-                value="option1"
-
-                name="radiocls"
+                value="america"
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'america'}
               />
-              <label className="text__radio">
+              <label
+                htmlFor="america"
+                className="text__radio"
+              >
                 Bank of America
               </label>
             </div>
 
             <div className="form-check_col-md-6">
               <input
+                id="chase"
+                name="selectedBank"
                 className="form-check-input"
                 type="radio"
-                value="option1"
-
-                name="radiocls"
+                value="chase"
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'chase'}
               />
-              <label className="text__radio">
+              <label
+                htmlFor="chase"
+                className="text__radio"
+              >
                 JPMorgan Chase & Co.
               </label>
             </div>
@@ -113,7 +141,10 @@ const NetBanking = () => {
             </div>
           </div>
           <div className="payment-btn">
-            <button type="button" className="btn_payment">
+            <button
+              type="submit"
+              className="btn_payment"
+            >
               MAKE PAYMENT
             </button>
           </div>

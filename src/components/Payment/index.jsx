@@ -9,15 +9,61 @@ import Cvv from '../../assets/icons/cvv.png';
 import NetBanking from '../NetBanking';
 import MyWallet from '../MyWallet';
 import '../FormTemplate/FormTemplate.scss';
-import { FormContext } from '../../store/FormContext';
+import { PaymentContext } from '../../store/PaymentContext';
 
 const Payment = () => {
   const [active, setActive] = useState(undefined);
-  const { debitCardForm, handleDebitCardForm } = useContext(FormContext);
-  const { creditCardForm, handleCreditCardForm } = useContext(FormContext);
+
+  const { debitCardForm, handleDebitCardForm, overrideDebitForm } = useContext(PaymentContext);
+
+  const { creditCardForm, handleCreditCardForm, overrideCreditForm } = useContext(PaymentContext);
+  setTimeout(() => overrideDebitForm({
+    nameOnCard: '',
+    cardNumber: '',
+    month: '',
+    year: '',
+    cvv: '',
+  }), 20000);
+  console.log("overrideDebitForm", overrideDebitForm);
+
+  // const [debitCardForm, setDebitCardForm] = useState({
+  //   nameOnCard: '',
+  //   cardNumber: '',
+  //   month: '',
+  //   year: '',
+  //   cvv: '',
+  // });
+  // const [creditCardForm, setCreditCardForm] = useState({
+  //   nameCard: '',
+  //   cardNumberCredit: '',
+  //   monthCredit: '',
+  //   yearCredit: '',
+  //   cvvCredit: '',
+  // });
+
+  // const handleDebitCardForm = (e) => {
+  //   const { name, value } = e.target;
+  //   setDebitCardForm((prevForm) => ({
+  //     ...prevForm,
+  //     [name]: value,
+  //   }));
+  // };
+
+  // const handleCreditCardForm = (e) => {
+  //   const { name, value } = e.target;
+  //   setCreditCardForm((prevForm) => ({
+  //     ...prevForm,
+  //     [name]: value,
+  //   }));
+  // };
+
+  // const handleSubmitPay = (event) => {
+  //   event.preventDefault();
+  //   console.log('handleSubmitPay', debitCardForm);
+  // };
 
   console.log(debitCardForm);
-  // console.log(creditCardForm);
+  console.log(creditCardForm);
 
   return (
     <section className="payment">
@@ -152,7 +198,7 @@ const Payment = () => {
               </div>
               <div className="payment-btn">
                 <button
-                  type="button"
+                  type="submit"
                   className="btn_payment"
                 >
                   MAKE PAYMENT
@@ -169,34 +215,34 @@ const Payment = () => {
 
               <div className="form-group">
                 <label
-                  htmlFor="nameOnCard"
+                  htmlFor="nameCard"
                   className="title__inputs"
                 >
                   Name On Card
                 </label>
                 <input
-                  id="nameOnCard"
-                  name="nameOnCard"
+                  id="nameCard"
+                  name="nameCard"
                   type="text"
                   className="form-control"
-                  value={creditCardForm.nameOnCard}
+                  value={creditCardForm.nameCard}
                   onChange={handleCreditCardForm}
                 />
               </div>
 
               <div className="form-group">
                 <label
-                  htmlFor="cardNumber"
+                  htmlFor="cardNumberCredit"
                   className="title__inputs"
                 >
                   Card Number
                 </label>
                 <input
-                  id="cardNumber"
-                  name="cardNumber"
+                  id="cardNumberCredit"
+                  name="cardNumberCredit"
                   type="number"
                   className="form-control"
-                  value={creditCardForm.cardNumber}
+                  value={creditCardForm.cardNumberCredit}
                   onChange={handleCreditCardForm}
                 />
                 <img src={creditcard} alt="creditcard" className="img_credit" />
@@ -206,17 +252,17 @@ const Payment = () => {
 
                 <div className="form-group_select">
                   <label
-                    htmlFor="month"
+                    htmlFor="monthCredit"
                     className="title__inputs"
                   >
                     Month
                   </label>
                   <br />
                   <select
-                    id="month"
-                    name="month"
+                    id="monthCredit"
+                    name="monthCredit"
                     className="form-control_cvv"
-                    value={creditCardForm.month}
+                    value={creditCardForm.monthCredit}
                     onChange={handleCreditCardForm}
                   >
                     <option>Month...</option>
@@ -237,17 +283,17 @@ const Payment = () => {
 
                 <div className="form-group_select">
                   <label
-                    htmlFor="year"
+                    htmlFor="yearCredit"
                     className="title__inputs"
                   >
                     Year
                   </label>
                   <br />
                   <select
-                    id="year"
-                    name="year"
+                    id="yearCredit"
+                    name="yearCredit"
                     className="form-control_cvv"
-                    value={creditCardForm.year}
+                    value={creditCardForm.yearCredit}
                     onChange={handleCreditCardForm}
                   >
                     <option>Year...</option>
@@ -257,19 +303,19 @@ const Payment = () => {
 
                 <div className="form-group_select">
                   <label
-                    htmlFor="cvv"
+                    htmlFor="cvvCredit"
                     className="title__inputs"
                   >
                     Cvv
                   </label>
                   <br />
                   <input
-                    id="cvv"
-                    name="cvv"
+                    id="cvvCredit"
+                    name="cvvCredit"
                     type="password"
                     maxLength="4"
                     className="form-control_cvv"
-                    value={creditCardForm.cvv}
+                    value={creditCardForm.cvvCredit}
                     onChange={handleCreditCardForm}
                   />
                   <div className="img_cvv">
@@ -281,7 +327,7 @@ const Payment = () => {
 
               <div className="payment-btn">
                 <button
-                  type="button"
+                  type="submit"
                   className="btn_payment"
                 >
                   MAKE PAYMENT
