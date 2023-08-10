@@ -21,12 +21,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="adyen"
-                name="selectedBank"
+                name="selectedWallet"
                 className="form-check-input"
                 value="adyen"
                 type="radio"
                 onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedBank === 'adyen'}
+                checked={selectBankForm.selectedWallet === 'adyen'}
               />
               <label
                 htmlFor="adyen"
@@ -39,12 +39,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="airtel"
-                name="selectedBank"
+                name="selectedWallet"
                 className="form-check-input"
                 value="airtel"
                 type="radio"
                 onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedBank === 'airtel'}
+                checked={selectBankForm.selectedWallet === 'airtel'}
               />
               <label
                 htmlFor="airtel"
@@ -57,12 +57,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="wallet"
-                name="selectedBank"
+                name="selectedWallet"
                 className="form-check-input"
                 value="wallet"
                 type="radio"
                 onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedBank === 'wallet'}
+                checked={selectBankForm.selectedWallet === 'wallet'}
               />
               <label
                 htmlFor="wallet"
@@ -75,12 +75,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="apple"
-                name="selectedBank"
+                name="selectedWallet"
                 className="form-check-input"
                 value="apple"
                 type="radio"
                 onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedBank === 'apple'}
+                checked={selectBankForm.selectedWallet === 'apple'}
               />
               <label
                 htmlFor="apple"
@@ -93,12 +93,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="brinks"
-                name="selectedBank"
+                name="selectedWallet"
                 className="form-check-input"
                 value="brinks"
                 type="radio"
                 onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedBank === 'brinks'}
+                checked={selectBankForm.selectedWallet === 'brinks'}
               />
               <label
                 htmlFor="brinks"
@@ -111,12 +111,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="free"
-                name="selectedBank"
+                name="selectedWallet"
                 className="form-check-input"
                 value="free"
                 type="radio"
                 onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedBank === 'free'}
+                checked={selectBankForm.selectedWallet === 'free'}
               />
               <label
                 htmlFor="free"

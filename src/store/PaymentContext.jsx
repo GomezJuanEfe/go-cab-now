@@ -20,6 +20,7 @@ export const PaymentProvider = ({ children }) => {
   });
   const { form: selectBankForm, handleForm: handleSelectBankForm } = useForm({
     selectedBank: '',
+    selectedWallet: '',
   });
 
   return (
