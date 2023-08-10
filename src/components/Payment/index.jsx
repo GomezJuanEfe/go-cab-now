@@ -14,48 +14,17 @@ import { PaymentContext } from '../../store/PaymentContext';
 const Payment = () => {
   const [active, setActive] = useState(undefined);
 
-  const { debitCardForm, handleDebitCardForm, overrideDebitForm } = useContext(PaymentContext);
+  const { debitCardForm, handleDebitCardForm } = useContext(PaymentContext);
 
-  const { creditCardForm, handleCreditCardForm, overrideCreditForm } = useContext(PaymentContext);
-  setTimeout(() => overrideDebitForm({
-    nameOnCard: '',
-    cardNumber: '',
-    month: '',
-    year: '',
-    cvv: '',
-  }), 20000);
-  console.log("overrideDebitForm", overrideDebitForm);
-
-  // const [debitCardForm, setDebitCardForm] = useState({
+  const { creditCardForm, handleCreditCardForm } = useContext(PaymentContext);
+  // setTimeout(() => overrideDebitForm({
   //   nameOnCard: '',
   //   cardNumber: '',
   //   month: '',
   //   year: '',
   //   cvv: '',
-  // });
-  // const [creditCardForm, setCreditCardForm] = useState({
-  //   nameCard: '',
-  //   cardNumberCredit: '',
-  //   monthCredit: '',
-  //   yearCredit: '',
-  //   cvvCredit: '',
-  // });
-
-  // const handleDebitCardForm = (e) => {
-  //   const { name, value } = e.target;
-  //   setDebitCardForm((prevForm) => ({
-  //     ...prevForm,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // const handleCreditCardForm = (e) => {
-  //   const { name, value } = e.target;
-  //   setCreditCardForm((prevForm) => ({
-  //     ...prevForm,
-  //     [name]: value,
-  //   }));
-  // };
+  // }), 20000);
+  // console.log("overrideDebitForm", overrideDebitForm);
 
   // const handleSubmitPay = (event) => {
   //   event.preventDefault();

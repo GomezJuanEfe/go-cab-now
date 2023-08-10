@@ -4,12 +4,7 @@ import { useContext } from 'react';
 import { PaymentContext } from '../../store/PaymentContext';
 
 const NetBanking = () => {
-  // const [selectBank, setSelectBank] = useState(undefined);
-
   const { selectBankForm, handleSelectBankForm } = useContext(PaymentContext);
-  // const handleRadioChange = (e) => {
-  //   setSelectBank(e.target.value);
-  // };
 
   console.log(selectBankForm);
   return (

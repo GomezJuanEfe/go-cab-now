@@ -4,15 +4,14 @@ import useForm from '../hooks/useForm';
 export const PaymentContext = createContext();
 
 export const PaymentProvider = ({ children }) => {
-
-  const { form: debitCardForm, handleForm: handleDebitCardForm, overrideForm: overrideDebitForm } = useForm({
+  const { form: debitCardForm, handleForm: handleDebitCardForm } = useForm({
     nameOnCard: '',
     cardNumber: '',
     month: '',
     year: '',
     cvv: '',
   });
-  const { form: creditCardForm, handleForm: handleCreditCardForm, overrideForm: overrideCreditForm } = useForm({
+  const { form: creditCardForm, handleForm: handleCreditCardForm } = useForm({
     nameCard: '',
     cardNumberCredit: '',
     monthCredit: '',
@@ -32,8 +31,6 @@ export const PaymentProvider = ({ children }) => {
         handleCreditCardForm,
         selectBankForm,
         handleSelectBankForm,
-        overrideDebitForm,
-        overrideCreditForm,
       }}
     >
       {children}

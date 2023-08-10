@@ -1,13 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './MyWallet.scss';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { PaymentContext } from '../../store/PaymentContext';
 
 const MyWallet = () => {
-  const [selectWallet, setSelectWallet] = useState(undefined);
-  console.log(selectWallet);
-  const handleRadioChange = (e) => {
-    setSelectWallet(e.target.value);
-  };
+  const { selectBankForm, handleSelectBankForm } = useContext(PaymentContext);
 
   return (
 
@@ -24,12 +21,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="adyen"
-                name="adyen"
+                name="selectedBank"
                 className="form-check-input"
                 value="adyen"
                 type="radio"
-                onChange={handleRadioChange}
-                checked={selectWallet === 'adyen'}
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'adyen'}
               />
               <label
                 htmlFor="adyen"
@@ -42,12 +39,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="airtel"
-                name="airtel"
+                name="selectedBank"
                 className="form-check-input"
                 value="airtel"
                 type="radio"
-                onChange={handleRadioChange}
-                checked={selectWallet === 'airtel'}
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'airtel'}
               />
               <label
                 htmlFor="airtel"
@@ -60,12 +57,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="wallet"
-                name="wallet"
+                name="selectedBank"
                 className="form-check-input"
                 value="wallet"
                 type="radio"
-                onChange={handleRadioChange}
-                checked={selectWallet === 'wallet'}
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'wallet'}
               />
               <label
                 htmlFor="wallet"
@@ -78,12 +75,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="apple"
-                name="apple"
+                name="selectedBank"
                 className="form-check-input"
                 value="apple"
                 type="radio"
-                onChange={handleRadioChange}
-                checked={selectWallet === 'apple'}
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'apple'}
               />
               <label
                 htmlFor="apple"
@@ -96,12 +93,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="brinks"
-                name="brinks"
+                name="selectedBank"
                 className="form-check-input"
                 value="brinks"
                 type="radio"
-                onChange={handleRadioChange}
-                checked={selectWallet === 'brinks'}
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'brinks'}
               />
               <label
                 htmlFor="brinks"
@@ -114,12 +111,12 @@ const MyWallet = () => {
             <div className="form-check_col-md-6">
               <input
                 id="free"
-                name="free"
+                name="selectedBank"
                 className="form-check-input"
                 value="free"
                 type="radio"
-                onChange={handleRadioChange}
-                checked={selectWallet === 'free'}
+                onChange={handleSelectBankForm}
+                checked={selectBankForm.selectedBank === 'free'}
               />
               <label
                 htmlFor="free"
