@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-restricted-syntax */
 const toTitleCase = (str) => {
   const response = [];
   str.split(' ').forEach((item) => {
@@ -33,4 +33,20 @@ const pagination = (arr, size) => {
   return result;
 };
 
-export { toTitleCase, parseQueryParameters, pagination };
+const buildQueryString = (params) => {
+  const queryParams = [];
+
+  for (const key in params) {
+    if (Array.isArray(params[key])) {
+      queryParams.push(`${key}=${params[key].join(',')}`);
+    } else {
+      queryParams.push(`${key}=${params[key]}`);
+    }
+  }
+
+  return queryParams.join('&');
+};
+
+export {
+  toTitleCase, parseQueryParameters, pagination, buildQueryString,
+};
