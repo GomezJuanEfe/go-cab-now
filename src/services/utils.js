@@ -7,17 +7,22 @@ const toTitleCase = (str) => {
   return response.join(' ');
 };
 
-const parseQueryParameters = (url) => {
+const parseQueryParameters = (url, toArrParmas) => {
   const queryString = url.split('?')[1]; // Get the query string after the '?'
   const paramsArray = queryString.split('&'); // Split parameters into an array
 
-  const paramsObject = {};
+  let paramsObject = {};
 
   paramsArray.forEach((param) => {
     const [key, value] = param.split('='); // Split parameter into key and value
     paramsObject[key] = decodeURIComponent(value); // Store parameter in object
   });
 
+  toArrParmas?.forEach((item) => {
+    paramsObject = { ...paramsObject, [item]: paramsObject[item]?.split(',') };
+  });
+
+  console.log(paramsObject);
   return paramsObject;
 };
 

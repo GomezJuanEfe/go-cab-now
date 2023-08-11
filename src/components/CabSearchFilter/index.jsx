@@ -12,6 +12,11 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
     handleCarFilter: handleInputChange,
     handleQueryString,
   } = useContext(CarsContext);
+  // handle enter on search bar
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') handleQueryString();
+  };
+
   // Logic to show filter modal on mobile
   const leftProperty = isFilterOpen ? '-1px' : '-356px';
   const showClass = isFilterOpen ? 'show' : '';
@@ -44,7 +49,7 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
           <div>
             <BiSearch />
             {' | '}
-            <input type="text" name="filterBar" id="filterBar" value={carFilter.filterBar} placeholder="Search here..." onChange={handleInputChange} />
+            <input type="text" name="filterBar" id="filterBar" value={carFilter.filterBar} placeholder="Search here..." onChange={handleInputChange} onKeyDown={handleEnter} />
           </div>
         </div>
 

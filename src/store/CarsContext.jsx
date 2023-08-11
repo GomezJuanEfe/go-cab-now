@@ -25,6 +25,8 @@ export const CarsProvider = ({ children }) => {
   3. hacer petición al backend ✅
   4. Hacer función de filtrado
   5. Recibir información y setear estado para volver a renderizar
+
+  Pregunta: No es mejor hacer un POST request?
   */
 
   const [carFilter, setCarFilter] = useState({
@@ -56,6 +58,7 @@ export const CarsProvider = ({ children }) => {
   const handleQueryString = () => {
     const string = buildQueryString(carFilter);
     setQueryString(string);
+    setCarPageIndex(1);
   };
   /* /FILTER LOGIC */
 

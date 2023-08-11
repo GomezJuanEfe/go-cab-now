@@ -66,7 +66,6 @@ const CabSearchCarList = () => {
                 onClick={() => setCarPageIndex(carPageIndex + 1)}
                 onKeyDown={() => setCarPageIndex(carPageIndex + 1)}
                 role="menuitem"
-                disabled
               >
                 »
               </li>
