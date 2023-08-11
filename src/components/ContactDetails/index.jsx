@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './ContactDetails.scss';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
-import advertise from '../../assets/images/advertise.jpg'
+import advertise from '../../assets/images/advertise.jpg';
+import { FormContext } from '../../store/FormContext';
 
 const ContactDetails = () => {
+  const { contactForm, handleContactForm } = useContext(FormContext);
   const [phone, setPhone] = useState('');
+  contactForm.contactPhone = phone;
 
   return (
     <div className="contact-page">
@@ -24,12 +27,12 @@ const ContactDetails = () => {
                   <div className="col first-name">
                     <label htmlFor="first-name">First name</label>
                     <br />
-                    <input type="text" id="first-name" placeholder="First name" />
+                    <input type="text" id="first-name" name="firstName" placeholder="First name" onChange={handleContactForm} value={contactForm.firstName} />
                   </div>
                   <div className="col last-name">
                     <label htmlFor="last-name">Last name</label>
                     <br />
-                    <input type="text" id="last-name" placeholder="Last name" />
+                    <input type="text" id="last-name" name="lastName" placeholder="Last name" onChange={handleContactForm} value={contactForm.lastName} />
                   </div>
                 </div>
               </div>
@@ -37,7 +40,7 @@ const ContactDetails = () => {
               <div className="form-group email-input">
                 <label htmlFor="email">Email Address</label>
                 <br />
-                <input id="email" type="email" placeholder="Enter email" />
+                <input id="email" name="emailAddress" type="email" placeholder="Enter email" onChange={handleContactForm} value={contactForm.emailAddress} />
                 <br />
                 <small>Booking confirmation will be sent to this email ID.</small>
               </div>
@@ -57,13 +60,13 @@ const ContactDetails = () => {
               <div className="form-group special-request">
                 <label htmlFor="special-request">Special Request</label>
                 <br />
-                <textarea id="special-request" type="text" />
+                <textarea id="special-request" name="specialRequest" type="text" onChange={handleContactForm} value={contactForm.specialRequest} />
               </div>
 
               <div className="form-group coupon-group">
                 <label className="coupon-title" htmlFor="promo-code">Have A Coupon Code?</label>
                 <div className="coupon-input">
-                  <input type="text" id="promo-code" placeholder="Promo Code" />
+                  <input type="text" name="promoCode" id="promo-code" placeholder="Promo Code" onChange={handleContactForm} value={contactForm.promoCode} />
                   <button type="submit">apply</button>
                 </div>
               </div>
