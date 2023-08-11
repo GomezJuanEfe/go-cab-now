@@ -23,10 +23,8 @@ export const CarsProvider = ({ children }) => {
   1. Estado y handle para tomar valores de inputs ✅
   2. Función para crear url ✅
   3. hacer petición al backend ✅
-  4. Hacer función de filtrado
-  5. Recibir información y setear estado para volver a renderizar
-
-  Pregunta: No es mejor hacer un POST request?
+  4. Hacer función de filtrado ✅
+  5. Recibir información y setear estado para volver a renderizar ✅
   */
 
   const [carFilter, setCarFilter] = useState({
