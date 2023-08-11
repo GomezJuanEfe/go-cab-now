@@ -12,6 +12,7 @@ export const CarsProvider = ({ children }) => {
   const [queryString, setQueryString] = useState('');
   const { data: carsData, error: carsError, isLoading: carsIsLoading } = useSWR(`${baseURL}${carPageIndex}&${queryString}`, fetcher);
   const [carPages, setCarPages] = useState(1);
+
   const [carFilter, setCarFilter] = useState({
     filterBar: '',
     type: '',
