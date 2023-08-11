@@ -20,6 +20,8 @@ export const PaymentProvider = ({ children }) => {
   });
   const { form: selectBankForm, handleForm: handleSelectBankForm } = useForm({
     selectedBank: '',
+  });
+  const { form: selectWalletForm, handleForm: handleSelectWalletForm } = useForm({
     selectedWallet: '',
   });
 
@@ -32,6 +34,8 @@ export const PaymentProvider = ({ children }) => {
         handleCreditCardForm,
         selectBankForm,
         handleSelectBankForm,
+        selectWalletForm,
+        handleSelectWalletForm
       }}
     >
       {children}

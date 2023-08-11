@@ -4,8 +4,8 @@ import { useContext } from 'react';
 import { PaymentContext } from '../../store/PaymentContext';
 
 const MyWallet = () => {
-  const { selectBankForm, handleSelectBankForm } = useContext(PaymentContext);
-
+  const { selectWalletForm, handleSelectWalletForm } = useContext(PaymentContext);
+  console.log(selectWalletForm);
   return (
 
     <div className="form__payment">
@@ -25,8 +25,8 @@ const MyWallet = () => {
                 className="form-check-input"
                 value="adyen"
                 type="radio"
-                onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedWallet === 'adyen'}
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'adyen'}
               />
               <label
                 htmlFor="adyen"
@@ -43,8 +43,8 @@ const MyWallet = () => {
                 className="form-check-input"
                 value="airtel"
                 type="radio"
-                onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedWallet === 'airtel'}
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'airtel'}
               />
               <label
                 htmlFor="airtel"
@@ -61,8 +61,8 @@ const MyWallet = () => {
                 className="form-check-input"
                 value="wallet"
                 type="radio"
-                onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedWallet === 'wallet'}
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'wallet'}
               />
               <label
                 htmlFor="wallet"
@@ -79,8 +79,8 @@ const MyWallet = () => {
                 className="form-check-input"
                 value="apple"
                 type="radio"
-                onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedWallet === 'apple'}
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'apple'}
               />
               <label
                 htmlFor="apple"
@@ -97,8 +97,8 @@ const MyWallet = () => {
                 className="form-check-input"
                 value="brinks"
                 type="radio"
-                onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedWallet === 'brinks'}
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'brinks'}
               />
               <label
                 htmlFor="brinks"
@@ -115,8 +115,8 @@ const MyWallet = () => {
                 className="form-check-input"
                 value="free"
                 type="radio"
-                onChange={handleSelectBankForm}
-                checked={selectBankForm.selectedWallet === 'free'}
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'free'}
               />
               <label
                 htmlFor="free"
