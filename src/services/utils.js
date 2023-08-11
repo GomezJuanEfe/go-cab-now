@@ -21,8 +21,6 @@ const parseQueryParameters = (url, toArrParmas) => {
   toArrParmas?.forEach((item) => {
     paramsObject = { ...paramsObject, [item]: paramsObject[item]?.split(',') };
   });
-
-  console.log(paramsObject);
   return paramsObject;
 };
 

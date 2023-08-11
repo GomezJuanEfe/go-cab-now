@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import './CabSearchFilter.scss';
 import { BiSearch } from 'react-icons/bi';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
@@ -21,7 +22,7 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
   const leftProperty = isFilterOpen ? '-1px' : '-356px';
   const showClass = isFilterOpen ? 'show' : '';
 
-  // Latest filters logic
+  // show latest filters panel logic
   const [isShown, setIsShown] = useState(true);
 
   const handleLastFilters = () => setIsShown(!isShown);
@@ -69,12 +70,32 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
             <CabSearchFilterItem itemName="Car Type">
 
               <div className="check-box-container">
-                <input type="checkbox" id="ct-mini" name="type" value="mini" onChange={handleInputChange} />
-                <label htmlFor="ct-mini">Mini</label>
+                <input type="checkbox" id="ct-hatchback" name="type" value="Hatchback" onChange={handleInputChange} />
+                <label htmlFor="ct-hatchback">Hatchback</label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="ct-medium" name="type" value="medium" onChange={handleInputChange} />
-                <label htmlFor="ct-medium">Medium</label>
+                <input type="checkbox" id="ct-mini" name="type" value="Sedan" onChange={handleInputChange} />
+                <label htmlFor="ct-mini">Sedan</label>
+              </div>
+              <div className="check-box-container">
+                <input type="checkbox" id="ct-elec-sedan" name="type" value="Electric Sedan" onChange={handleInputChange} />
+                <label htmlFor="ct-elec-sedan">Electric Sedan</label>
+              </div>
+              <div className="check-box-container">
+                <input type="checkbox" id="ct-suv" name="type" value="SUV" onChange={handleInputChange} />
+                <label htmlFor="ct-suv">SUV</label>
+              </div>
+              <div className="check-box-container">
+                <input type="checkbox" id="ct-van" name="type" value="Van" onChange={handleInputChange} />
+                <label htmlFor="ct-van">Van</label>
+              </div>
+              <div className="check-box-container">
+                <input type="checkbox" id="ct-camper" name="type" value="Camper" onChange={handleInputChange} />
+                <label htmlFor="ct-camper">Camper</label>
+              </div>
+              <div className="check-box-container">
+                <input type="checkbox" id="ct-lux-coupe" name="type" value="Luxury Coupe" onChange={handleInputChange} />
+                <label htmlFor="ct-lux-coupe">Luxury Coupe</label>
               </div>
 
             </CabSearchFilterItem>

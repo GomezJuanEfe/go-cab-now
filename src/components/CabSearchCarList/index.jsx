@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import './CabSearchCarList.scss';
 import CabSearchCarCard from '../CabSearchCarCard';
 import { CarsContext } from '../../store/CarsContext';

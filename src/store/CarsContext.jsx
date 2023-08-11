@@ -12,23 +12,6 @@ export const CarsProvider = ({ children }) => {
   const [queryString, setQueryString] = useState('');
   const { data: carsData, error: carsError, isLoading: carsIsLoading } = useSWR(`${baseURL}${carPageIndex}&${queryString}`, fetcher);
   const [carPages, setCarPages] = useState(1);
-
-  useEffect(() => {
-    setCarPages(carsData?.info.pages);
-  }, [carsData]);
-
-  /* FILTER LOGIC */
-
-  /*
-  1. Estado y handle para tomar valores de inputs ✅
-  2. Función para crear url ✅
-  3. hacer petición al backend ✅
-  4. Hacer función de filtrado
-  5. Recibir información y setear estado para volver a renderizar
-
-  Pregunta: No es mejor hacer un POST request?
-  */
-
   const [carFilter, setCarFilter] = useState({
     filterBar: '',
     type: '',
@@ -38,6 +21,12 @@ export const CarsProvider = ({ children }) => {
     carOption: '',
   });
 
+  // Update carData when the first request is done
+  useEffect(() => {
+    setCarPages(carsData?.info.pages);
+  }, [carsData]);
+
+  // Set the filte object
   const handleCarFilter = (e) => {
     const {
       name, value, checked, type,
@@ -55,12 +44,12 @@ export const CarsProvider = ({ children }) => {
     setCarFilter({ ...carFilter, [name]: filterUpdated });
   };
 
+  // When this event is called the queryString is set
   const handleQueryString = () => {
     const string = buildQueryString(carFilter);
     setQueryString(string);
     setCarPageIndex(1);
   };
-  /* /FILTER LOGIC */
 
   return (
     <CarsContext.Provider
