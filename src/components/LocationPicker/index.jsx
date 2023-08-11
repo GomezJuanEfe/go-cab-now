@@ -1,14 +1,14 @@
 import './LocationPicker.scss';
 
 const LocationPicker = ({
-  inputName, id, placeholder, modal,
+  title, inpName, placeholder, modal, handleInput, value,
 }) => {
   const modalStyle = modal ? 'modal' : '';
   return (
     <div className={`label-input ${modalStyle}`}>
-      <label htmlFor={id}>
-        <div>{inputName}</div>
-        <input type="text" id={id} placeholder={placeholder} />
+      <label htmlFor={inpName}>
+        <div>{title}</div>
+        <input type="text" id={inpName} placeholder={placeholder} name={inpName} onChange={(e) => handleInput(e)} value={value} />
       </label>
     </div>
   );
