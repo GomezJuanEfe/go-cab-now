@@ -3,7 +3,7 @@ const carData = [
     car_id: 1,
     car_name: 'Ford Fusion',
     car_type: 'Sedan',
-    car_img: '../../src/assets/images/5.png',
+    car_img: '/cars/5.png',
     car_details: {
       seats: 5,
       luggage: 2,
@@ -16,7 +16,7 @@ const carData = [
     car_id: 2,
     car_name: 'Suzuki Vitara',
     car_type: 'SUV',
-    car_img: '../../src/assets/images/6.png',
+    car_img: '/cars/6.png',
     car_details: {
       seats: 5,
       luggage: 2,
@@ -29,7 +29,7 @@ const carData = [
     car_id: 3,
     car_name: 'Volkswagen Up',
     car_type: 'Hatchback',
-    car_img: '../../src/assets/images/7.png',
+    car_img: '/cars/7.png',
     car_details: {
       seats: 5,
       luggage: 2,
@@ -42,7 +42,7 @@ const carData = [
     car_id: 4,
     car_name: 'Honda Accord',
     car_type: 'Sedan',
-    car_img: '../../src/assets/images/8.png',
+    car_img: '/cars/8.png',
     car_details: {
       seats: 5,
       luggage: 2,
@@ -55,7 +55,7 @@ const carData = [
     car_id: 5,
     car_name: 'Force Traveller',
     car_type: 'Camper',
-    car_img: '../../src/assets/images/9.png',
+    car_img: '/cars/9.png',
     car_details: {
       seats: 9,
       luggage: 4,
@@ -68,7 +68,7 @@ const carData = [
     car_id: 6,
     car_name: 'Land Rove Evoque',
     car_type: 'SUV',
-    car_img: '../../src/assets/images/10.png',
+    car_img: '/cars/10.png',
     car_details: {
       seats: 5,
       luggage: 4,
@@ -81,7 +81,7 @@ const carData = [
     car_id: 7,
     car_name: 'BMW i8 2018',
     car_type: 'Luxury Coupe',
-    car_img: '../../src/assets/images/11.png',
+    car_img: '/cars/11.png',
     car_details: {
       seats: 2,
       luggage: 2,
@@ -94,7 +94,7 @@ const carData = [
     car_id: 8,
     car_name: 'Tesla Model 3',
     car_type: 'Electric Sedan',
-    car_img: '../../src/assets/images/12.png',
+    car_img: '/cars/12.png',
     car_details: {
       seats: 5,
       luggage: 2,
@@ -107,7 +107,7 @@ const carData = [
     car_id: 9,
     car_name: 'BMW i4',
     car_type: 'Electric Sedan',
-    car_img: '../../src/assets/images/13.png',
+    car_img: '/cars/13.png',
     car_details: {
       seats: 5,
       luggage: 2,
@@ -120,7 +120,7 @@ const carData = [
     car_id: 10,
     car_name: 'Renault Kwid',
     car_type: 'Hatchback',
-    car_img: '../../src/assets/images/14.png',
+    car_img: '/cars/14.png',
     car_details: {
       seats: 5,
       luggage: 1,
@@ -133,7 +133,7 @@ const carData = [
     car_id: 11,
     car_name: 'Seat Leon',
     car_type: 'Hatchback',
-    car_img: '../../src/assets/images/15.png',
+    car_img: '/cars/15.png',
     car_details: {
       seats: 5,
       luggage: 1,
@@ -146,7 +146,7 @@ const carData = [
     car_id: 12,
     car_name: 'Volkswagen Transporter',
     car_type: 'Van',
-    car_img: '../../src/assets/images/16.png',
+    car_img: '/cars/16.png',
     car_details: {
       seats: 9,
       luggage: 4,
