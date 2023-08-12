@@ -1,18 +1,26 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './MyWallet.scss';
+import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { PaymentContext } from '../../store/PaymentContext';
 
 const MyWallet = () => {
-  const { selectWalletForm, handleSelectWalletForm } = useContext(PaymentContext);
-  console.log(selectWalletForm);
+  const {
+    selectWalletForm,
+    handleSelectWalletForm,
+  } = useContext(PaymentContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // axios.post('https://api.paystack.co/charge', {.....selectwalletForm})
+  };
   return (
 
     <div className="form__payment">
 
       <div className="card__wallet">
 
-        <form className="wallet-section">
+        <form className="wallet-section" onSubmit={handleSubmit}>
 
           <h6>SELECT YOUR WALLET</h6>
 
@@ -129,12 +137,17 @@ const MyWallet = () => {
           </div>
 
           <div className="payment-btn">
-            <button
-              type="submit"
-              className="btn_payment"
+            <NavLink
+              to="/success"
             >
-              MAKE PAYMENT
-            </button>
+              <button
+                onSubmit={handleSubmit}
+                type="submit"
+                className="btn_payment"
+              >
+                MAKE PAYMENT
+              </button>
+            </NavLink>
           </div>
         </form>
       </div>

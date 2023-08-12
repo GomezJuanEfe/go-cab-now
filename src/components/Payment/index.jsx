@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './Payment.scss';
+import { NavLink } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import FormTemplate from '../FormTemplate';
 import BookingSummery from '../BookingSummery';
@@ -13,26 +14,24 @@ import { PaymentContext } from '../../store/PaymentContext';
 
 const Payment = () => {
   const [active, setActive] = useState(undefined);
+  const [activeForm, setActiveForm] = useState('Debit Card'); // CreditCard || DebitCard || Bank || Wallet
 
-  const { debitCardForm, handleDebitCardForm } = useContext(PaymentContext);
+  const {
+    debitCardForm,
+    creditCardForm,
+    handleDebitCardForm,
+    handleCreditCardForm,
+    resetGeneralForm,
+  } = useContext(PaymentContext);
 
-  const { creditCardForm, handleCreditCardForm } = useContext(PaymentContext);
-  // setTimeout(() => overrideDebitForm({
-  //   nameOnCard: '',
-  //   cardNumber: '',
-  //   month: '',
-  //   year: '',
-  //   cvv: '',
-  // }), 20000);
-  // console.log("overrideDebitForm", overrideDebitForm);
+  const handleFormChange = () => {
+    resetGeneralForm();
+    setActiveForm(activeForm);
+  };
 
-  // const handleSubmitPay = (event) => {
-  //   event.preventDefault();
-  //   console.log('handleSubmitPay', debitCardForm);
-  // };
-
-  console.log(debitCardForm);
-  console.log(creditCardForm);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <section className="payment">
@@ -49,9 +48,16 @@ const Payment = () => {
         </div>
         <div className="container__card_payment">
 
-          <FormTemplate className="title__container" title="Debit Card" active={active} setActive={setActive} id={1}>
+          <FormTemplate
+            className="title__container"
+            title="Debit Card"
+            active={active}
+            setActive={setActive}
+            id={1}
+            handleChange={() => handleFormChange('Debit Card')}
+          >
 
-            <form action="form__payment">
+            <form action="form__payment" onSubmit={handleSubmit}>
 
               <div className="form-group">
                 <label
@@ -166,21 +172,32 @@ const Payment = () => {
 
               </div>
               <div className="payment-btn">
-                <button
-                  type="submit"
-                  className="btn_payment"
+                <NavLink
+                  to="/success"
                 >
-                  MAKE PAYMENT
-                </button>
+                  <button
+                    type="submit"
+                    className="btn_payment"
+                  >
+                    MAKE PAYMENT
+                  </button>
+                </NavLink>
               </div>
 
             </form>
 
           </FormTemplate>
 
-          <FormTemplate className="title__container" title="Credit Card" active={active} setActive={setActive} id={2}>
+          <FormTemplate
+            className="title__container"
+            title="Credit Card"
+            active={active}
+            setActive={setActive}
+            id={2}
+            handleChange={() => handleFormChange('Credit Card')}
+          >
 
-            <form action="form__payment">
+            <form action="form__payment" onSubmit={handleSubmit}>
 
               <div className="form-group">
                 <label
@@ -295,26 +312,45 @@ const Payment = () => {
               </div>
 
               <div className="payment-btn">
-                <button
-                  type="submit"
-                  className="btn_payment"
+                <NavLink
+                  to="/success"
                 >
-                  MAKE PAYMENT
-                </button>
+                  <button
+                    type="submit"
+                    className="btn_payment"
+                  >
+                    MAKE PAYMENT
+                  </button>
+                </NavLink>
               </div>
 
             </form>
 
           </FormTemplate>
 
-          <FormTemplate className="title__container" title="Net Banking" active={active} setActive={setActive} id={3}>
+          <FormTemplate
+            className="title__container"
+            title="Net Banking"
+            active={active}
+            setActive={setActive}
+            id={3}
+            handleChange={() => handleFormChange('Net Banking')}
+          >
             <NetBanking />
           </FormTemplate>
 
-          <FormTemplate className="title__container" title="My Wallet" active={active} setActive={setActive} id={4}>
+          <FormTemplate
+            className="title__container"
+            title="My Wallet"
+            active={active}
+            setActive={setActive}
+            id={4}
+            handleChange={() => handleFormChange('My Wallet')}
+          >
             <MyWallet />
           </FormTemplate>
         </div>
+
       </div>
 
     </section>

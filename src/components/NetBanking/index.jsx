@@ -1,18 +1,25 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './NetBanking.scss';
+import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { PaymentContext } from '../../store/PaymentContext';
 
 const NetBanking = () => {
   const { selectBankForm, handleSelectBankForm } = useContext(PaymentContext);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // axios.post('https://api.paystack.co/charge', {.....selectwalletForm})
+  };
+
   console.log(selectBankForm);
+
   return (
     <div className="form__banking">
 
       <div className="card__banking">
 
-        <form className="baking-section">
+        <form className="baking-section" onSubmit={handleSubmit}>
 
           <h6>SELECT POPULAR BANKS</h6>
 
@@ -136,12 +143,17 @@ const NetBanking = () => {
             </div>
           </div>
           <div className="payment-btn">
-            <button
-              type="submit"
-              className="btn_payment"
+            <NavLink
+              to="/failedpage"
             >
-              MAKE PAYMENT
-            </button>
+              <button
+                onSubmit={handleSubmit}
+                type="submit"
+                className="btn_payment"
+              >
+                MAKE PAYMENT
+              </button>
+            </NavLink>
           </div>
         </form>
       </div>

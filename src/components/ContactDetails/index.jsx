@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './ContactDetails.scss';
+import { NavLink } from 'react-router-dom';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
-import advertise from '../../assets/images/advertise.jpg'
+import advertise from '../../assets/images/advertise.jpg';
 
 const ContactDetails = () => {
   const [phone, setPhone] = useState('');
@@ -67,10 +68,11 @@ const ContactDetails = () => {
                   <button type="submit">apply</button>
                 </div>
               </div>
-              <div className="proceed-to-pay">
-                <button type="submit" className="proceed-button">PROCEED TO PAY</button>
-              </div>
-
+              <NavLink to="/payments">
+                <div className="proceed-to-pay">
+                  <button type="submit" className="proceed-button">PROCEED TO PAY</button>
+                </div>
+              </NavLink>
             </form>
           </div>
         </div>
