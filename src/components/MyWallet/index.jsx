@@ -3,6 +3,7 @@ import './MyWallet.scss';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { PaymentContext } from '../../store/PaymentContext';
+import { checkForm } from '../../services/utils';
 
 const MyWallet = () => {
   const {
@@ -137,17 +138,29 @@ const MyWallet = () => {
           </div>
 
           <div className="payment-btn">
-            <NavLink
-              to="/success"
-            >
-              <button
-                onSubmit={handleSubmit}
-                type="submit"
-                className="btn_payment"
-              >
-                MAKE PAYMENT
-              </button>
-            </NavLink>
+            {checkForm(selectWalletForm)
+              ? (
+                <NavLink to="/success">
+                  <button
+                    onSubmit={handleSubmit}
+                    type="submit"
+                    className="btn_payment"
+                  >
+                    MAKE PAYMENT
+                  </button>
+                </NavLink>
+              )
+              : (
+                <NavLink to="/failedpage">
+                  <button
+                    onSubmit={handleSubmit}
+                    type="submit"
+                    className="btn_payment"
+                  >
+                    MAKE PAYMENT
+                  </button>
+                </NavLink>
+              )}
           </div>
         </form>
       </div>

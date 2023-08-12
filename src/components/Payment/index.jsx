@@ -11,6 +11,7 @@ import NetBanking from '../NetBanking';
 import MyWallet from '../MyWallet';
 import '../FormTemplate/FormTemplate.scss';
 import { PaymentContext } from '../../store/PaymentContext';
+import { checkForm } from '../../services/utils';
 
 const Payment = () => {
   const [active, setActive] = useState(undefined);
@@ -32,16 +33,6 @@ const Payment = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
-  const checkForm = (obj) => {
-    const values = Object.values(obj);
-    console.log(values);
-    return !values.some((item) => item === '');
-  };
-
-  const example = checkForm(debitCardForm);
-
-  console.log('debitcardform', example);
 
   return (
     <section className="payment">
@@ -335,17 +326,29 @@ const Payment = () => {
               </div>
 
               <div className="payment-btn">
-                <NavLink
-                  to="/success"
-                >
-                  <button
-                    onSubmit={handleSubmit}
-                    type="submit"
-                    className="btn_payment"
-                  >
-                    MAKE PAYMENT
-                  </button>
-                </NavLink>
+                {checkForm(creditCardForm)
+                  ? (
+                    <NavLink to="/success">
+                      <button
+                        onSubmit={handleSubmit}
+                        type="submit"
+                        className="btn_payment"
+                      >
+                        MAKE PAYMENT
+                      </button>
+                    </NavLink>
+                  )
+                  : (
+                    <NavLink to="/failedpage">
+                      <button
+                        onSubmit={handleSubmit}
+                        type="submit"
+                        className="btn_payment"
+                      >
+                        MAKE PAYMENT
+                      </button>
+                    </NavLink>
+                  )}
               </div>
 
             </form>

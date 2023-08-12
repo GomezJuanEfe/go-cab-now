@@ -3,6 +3,7 @@ import './NetBanking.scss';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { PaymentContext } from '../../store/PaymentContext';
+import { checkForm } from '../../services/utils';
 
 const NetBanking = () => {
   const { selectBankForm, handleSelectBankForm } = useContext(PaymentContext);
@@ -141,17 +142,29 @@ const NetBanking = () => {
             </div>
           </div>
           <div className="payment-btn">
-            <NavLink
-              to="/failedpage"
-            >
-              <button
-                onSubmit={handleSubmit}
-                type="submit"
-                className="btn_payment"
-              >
-                MAKE PAYMENT
-              </button>
-            </NavLink>
+            {checkForm(selectBankForm)
+              ? (
+                <NavLink to="/success">
+                  <button
+                    onSubmit={handleSubmit}
+                    type="submit"
+                    className="btn_payment"
+                  >
+                    MAKE PAYMENT
+                  </button>
+                </NavLink>
+              )
+              : (
+                <NavLink to="/failedpage">
+                  <button
+                    onSubmit={handleSubmit}
+                    type="submit"
+                    className="btn_payment"
+                  >
+                    MAKE PAYMENT
+                  </button>
+                </NavLink>
+              )}
           </div>
         </form>
       </div>

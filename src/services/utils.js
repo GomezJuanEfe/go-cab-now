@@ -50,6 +50,11 @@ const buildQueryString = (params) => {
   return queryParams.join('&');
 };
 
+const checkForm = (obj) => {
+  const values = Object.values(obj);
+  return !values.some((item) => item === '');
+};
+
 export {
-  toTitleCase, parseQueryParameters, pagination, buildQueryString,
+  toTitleCase, parseQueryParameters, pagination, buildQueryString, checkForm,
 };
