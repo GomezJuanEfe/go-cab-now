@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './Payment.scss';
 import { NavLink } from 'react-router-dom';
 import { useContext, useState } from 'react';
-=======
-import './Payment.scss';
-import { useState } from 'react';
->>>>>>> 32ddaf943a00e8dd70de1ac4cd4bbee20d992fda
 import FormTemplate from '../FormTemplate';
 import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
@@ -15,7 +10,6 @@ import Cvv from '../../assets/icons/cvv.png';
 import NetBanking from '../NetBanking';
 import MyWallet from '../MyWallet';
 import '../FormTemplate/FormTemplate.scss';
-<<<<<<< HEAD
 import { PaymentContext } from '../../store/PaymentContext';
 
 const Payment = () => {
@@ -38,11 +32,6 @@ const Payment = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-=======
-
-const Payment = () => {
-  const [active, setActive] = useState(undefined);
->>>>>>> 32ddaf943a00e8dd70de1ac4cd4bbee20d992fda
 
   return (
     <section className="payment">
