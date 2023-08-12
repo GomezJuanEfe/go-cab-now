@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FormContext } from '../../store/FormContext';
 import './LogIn.scss';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { FaUser, FaLock, FaFacebookF, FaGoogle } from 'react-icons/fa';
+import {
+  FaUser, FaLock, FaFacebookF, FaGoogle,
+} from 'react-icons/fa';
 
 const LogIn = ({ handleClickLogin, showLogIn }) => {
+  const { loginForm, handleLoginForm } = useContext(FormContext);
   if (!showLogIn) {
     return null;
   }
@@ -22,14 +26,30 @@ const LogIn = ({ handleClickLogin, showLogIn }) => {
           <div className="user-icon">
             <FaUser />
           </div>
-          <input className="username" type="text" id="username" placeholder="Type your username" />
+          <input
+            className="username"
+            name="username"
+            type="text"
+            id="username"
+            placeholder="Type your username"
+            onChange={handleLoginForm}
+            value={loginForm.username}
+          />
           <br />
           <label htmlFor="password">Password</label>
           <br />
           <div className="lock-icon">
             <FaLock />
           </div>
-          <input className="password" type="password" id="password" placeholder="Type your password" />
+          <input
+            className="password"
+            name="password"
+            type="password"
+            id="password"
+            placeholder="Type your password"
+            onChange={handleLoginForm}
+            value={loginForm.password}
+          />
 
           <div className="forgot">
             <p>Forgot password?</p>

@@ -12,8 +12,6 @@ const NetBanking = () => {
     // axios.post('https://api.paystack.co/charge', {.....selectwalletForm})
   };
 
-  console.log(selectBankForm);
-
   return (
     <div className="form__banking">
 
