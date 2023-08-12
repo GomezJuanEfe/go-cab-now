@@ -3,6 +3,10 @@ import { useState } from 'react';
 const useForm = (initialValue) => {
   const [form, setForm] = useState(initialValue);
 
+  const resetForm = () => {
+    setForm(initialValue);
+  };
+
   const handleForm = (e, isMantine = false, input = '') => {
     let formUpdated;
     if (isMantine) {
@@ -20,7 +24,7 @@ const useForm = (initialValue) => {
     setForm(formUpdated);
   };
 
-  return { form, handleForm };
+  return { form, handleForm, resetForm };
 };
 
 export default useForm;

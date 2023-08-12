@@ -1,104 +1,171 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import './MyWallet.scss';
+import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { PaymentContext } from '../../store/PaymentContext';
+import { checkForm } from '../../services/utils';
 
-const MyWallet = () => (
-  <div className="form__payment">
+const MyWallet = () => {
+  const {
+    selectWalletForm,
+    handleSelectWalletForm,
+  } = useContext(PaymentContext);
 
-    <div className="card__wallet">
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // axios.post('https://api.paystack.co/charge', {.....selectwalletForm})
+  };
+  return (
 
-      <form className="wallet-section">
+    <div className="form__payment">
 
-        <h6>SELECT YOUR WALLET</h6>
+      <div className="card__wallet">
 
-        <div className="row_wallet">
+        <form className="wallet-section" onSubmit={handleSubmit}>
 
-          <div className="form-check_col-md-6">
-            <input
-              className="form-check-input"
-              type="radio"
-              value="option1"
-              checked
-              name="radiocls"
-            />
-            <div className="text__radio">
-              Adyen
+          <h6>SELECT YOUR WALLET</h6>
+
+          <div className="row_wallet">
+
+            <div className="form-check_col-md-6">
+              <input
+                id="adyen"
+                name="selectedWallet"
+                className="form-check-input"
+                value="adyen"
+                type="radio"
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'adyen'}
+              />
+              <label
+                htmlFor="adyen"
+                className="text__radio"
+              >
+                Adyen
+              </label>
             </div>
+
+            <div className="form-check_col-md-6">
+              <input
+                id="airtel"
+                name="selectedWallet"
+                className="form-check-input"
+                value="airtel"
+                type="radio"
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'airtel'}
+              />
+              <label
+                htmlFor="airtel"
+                className="text__radio"
+              >
+                Airtel Money
+              </label>
+            </div>
+
+            <div className="form-check_col-md-6">
+              <input
+                id="wallet"
+                name="selectedWallet"
+                className="form-check-input"
+                value="wallet"
+                type="radio"
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'wallet'}
+              />
+              <label
+                htmlFor="wallet"
+                className="text__radio"
+              >
+                Airtel Wallet
+              </label>
+            </div>
+
+            <div className="form-check_col-md-6">
+              <input
+                id="apple"
+                name="selectedWallet"
+                className="form-check-input"
+                value="apple"
+                type="radio"
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'apple'}
+              />
+              <label
+                htmlFor="apple"
+                className="text__radio"
+              >
+                Apple Pay
+              </label>
+            </div>
+
+            <div className="form-check_col-md-6">
+              <input
+                id="brinks"
+                name="selectedWallet"
+                className="form-check-input"
+                value="brinks"
+                type="radio"
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'brinks'}
+              />
+              <label
+                htmlFor="brinks"
+                className="text__radio"
+              >
+                Brinks
+              </label>
+            </div>
+
+            <div className="form-check_col-md-6">
+              <input
+                id="free"
+                name="selectedWallet"
+                className="form-check-input"
+                value="free"
+                type="radio"
+                onChange={handleSelectWalletForm}
+                checked={selectWalletForm.selectedWallet === 'free'}
+              />
+              <label
+                htmlFor="free"
+                className="text__radio"
+              >
+                CardFree
+              </label>
+            </div>
+
           </div>
 
-          <div className="form-check_col-md-6">
-            <input
-              className="form-check-input"
-              type="radio"
-              value="option1"
-              checked
-              name="radiocls"
-            />
-            <div className="text__radio">
-              Airtel Money
-            </div>
+          <div className="payment-btn">
+            {checkForm(selectWalletForm)
+              ? (
+                <NavLink to="/success">
+                  <button
+                    onSubmit={handleSubmit}
+                    type="submit"
+                    className="btn_payment"
+                  >
+                    MAKE PAYMENT
+                  </button>
+                </NavLink>
+              )
+              : (
+                <NavLink to="/failedpage">
+                  <button
+                    onSubmit={handleSubmit}
+                    type="submit"
+                    className="btn_payment"
+                  >
+                    MAKE PAYMENT
+                  </button>
+                </NavLink>
+              )}
           </div>
-
-          <div className="form-check_col-md-6">
-            <input
-              className="form-check-input"
-              type="radio"
-              value="option1"
-              checked
-              name="radiocls"
-            />
-            <div className="text__radio">
-              Airtel Wallet
-            </div>
-          </div>
-
-          <div className="form-check_col-md-6">
-            <input
-              className="form-check-input"
-              type="radio"
-              value="option1"
-              checked
-              name="radiocls"
-            />
-            <div className="text__radio">
-              Apple Pay
-            </div>
-          </div>
-
-          <div className="form-check_col-md-6">
-            <input
-              className="form-check-input"
-              type="radio"
-              value="option1"
-              checked
-              name="radiocls"
-            />
-            <div className="text__radio">
-              Brinks
-            </div>
-          </div>
-
-          <div className="form-check_col-md-6">
-            <input
-              className="form-check-input"
-              type="radio"
-              value="option1"
-              checked
-              name="radiocls"
-            />
-            <div className="text__radio">
-              CardFree
-            </div>
-          </div>
-
-        </div>
-
-        <div className="payment-btn">
-          <button type="button" className="btn_payment">
-            MAKE PAYMENT
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default MyWallet;

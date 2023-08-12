@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import './ContactDetails.scss';
+import { NavLink } from 'react-router-dom';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import BookingSummery from '../BookingSummery';
@@ -70,10 +71,11 @@ const ContactDetails = () => {
                   <button type="submit">apply</button>
                 </div>
               </div>
-              <div className="proceed-to-pay">
-                <button type="submit" className="proceed-button">PROCEED TO PAY</button>
-              </div>
-
+              <NavLink to="/payments">
+                <div className="proceed-to-pay">
+                  <button type="submit" className="proceed-button">PROCEED TO PAY</button>
+                </div>
+              </NavLink>
             </form>
           </div>
         </div>
