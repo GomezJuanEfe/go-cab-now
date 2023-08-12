@@ -32,6 +32,10 @@
       color: $white;
       background-color: $primary-color ;
     }
+    &.disabled {
+      pointer-events: none;
+      opacity: 0;
+    }
   }
 
 }

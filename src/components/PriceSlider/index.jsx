@@ -32,7 +32,7 @@ const useStyles = createStyles(() => {
   });
 });
 
-const PriceSlider = () => {
+const PriceSlider = ({ priceValues, setPriceValues }) => {
   const { classes } = useStyles();
   return (
     <div className="slider-container">
@@ -42,6 +42,14 @@ const PriceSlider = () => {
         labelAlwaysOn
         label={valueLabelFormat}
         max={1500}
+        value={priceValues}
+        onChange={(e) => setPriceValues({
+          target: {
+            value: e,
+            name: 'priceRange',
+            type: 'custom',
+          },
+        })}
       />
     </div>
   );
