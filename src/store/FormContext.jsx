@@ -33,7 +33,7 @@ export const FromProvider = ({ children }) => {
         contactForm,
         handleContactForm,
         loginForm,
-        handleLoginForm
+        handleLoginForm,
       }}
     >
       {children}
