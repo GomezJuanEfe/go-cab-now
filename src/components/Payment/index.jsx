@@ -33,6 +33,16 @@ const Payment = () => {
     event.preventDefault();
   };
 
+  const checkForm = (obj) => {
+    const values = Object.values(obj);
+    console.log(values);
+    return !values.some((item) => item === '');
+  };
+
+  const example = checkForm(debitCardForm);
+
+  console.log('debitcardform', example);
+
   return (
     <section className="payment">
 
@@ -172,16 +182,29 @@ const Payment = () => {
 
               </div>
               <div className="payment-btn">
-                <NavLink
-                  to="/success"
-                >
-                  <button
-                    type="submit"
-                    className="btn_payment"
-                  >
-                    MAKE PAYMENT
-                  </button>
-                </NavLink>
+                {checkForm(debitCardForm)
+                  ? (
+                    <NavLink to="/success">
+                      <button
+                        onSubmit={handleSubmit}
+                        type="submit"
+                        className="btn_payment"
+                      >
+                        MAKE PAYMENT
+                      </button>
+                    </NavLink>
+                  )
+                  : (
+                    <NavLink to="/failedpage">
+                      <button
+                        onSubmit={handleSubmit}
+                        type="submit"
+                        className="btn_payment"
+                      >
+                        MAKE PAYMENT
+                      </button>
+                    </NavLink>
+                  )}
               </div>
 
             </form>
