@@ -5,7 +5,7 @@ import { CarsContext } from '../../store/CarsContext';
 
 const CabSearchCarList = () => {
   const {
-    carsData, carsError, carsIsLoading, setCarPageIndex, carPageIndex, carPages,
+    carsData, carsError, carsIsLoading, setCarPageIndex, carPageIndex, carPages, handleSelectCar,
   } = useContext(CarsContext);
   if (carsError) return <div>Failed to load</div>;
   if (carsIsLoading) return <div>Loading...</div>;
@@ -25,6 +25,7 @@ const CabSearchCarList = () => {
               carImg={item.car_img}
               carDetails={item.car_details}
               fare={item.fare_km}
+              handleSelect={() => handleSelectCar(item)}
             />
           ))
         }
