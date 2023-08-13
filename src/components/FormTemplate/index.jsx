@@ -7,9 +7,13 @@ const FormTemplate = ({
   active,
   setActive,
   id,
+  handleChange,
 
 }) => {
-  const handleClick = (clickedId) => setActive(clickedId === active ? undefined : clickedId);
+  const handleClick = (clickedId) => {
+    handleChange();
+    setActive(clickedId === active ? undefined : clickedId);
+  };
 
   return (
     <div className="payment__section">
@@ -22,7 +26,7 @@ const FormTemplate = ({
         onKeyDown={() => handleClick(id)}
       >
         <div className="input_radio_payment">
-          <input type="radio" />
+          <input type="radio" onClick={() => handleClick(id)} />
           <label htmlFor="radio_input" />
           <h3>{title}</h3>
         </div>

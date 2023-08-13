@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import useSWRMutation from 'swr/mutation';
 import axios from 'axios';
 import './ContactDetails.scss';
+import { NavLink } from 'react-router-dom';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import BookingSummery from '../BookingSummery';
@@ -94,7 +95,6 @@ const ContactDetails = () => {
                   <button type="submit" className="proceed-button">PROCEED TO PAY</button>
                 </div>
               </NavLink>
-
             </form>
           </div>
         </div>
