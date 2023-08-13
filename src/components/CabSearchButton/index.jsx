@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './CabSearchButton.scss';
 
 const CabSearchButton = ({ modal }) => {
@@ -5,7 +6,9 @@ const CabSearchButton = ({ modal }) => {
 
   return (
     <div className={`search-button ${modalStyle}`}>
-      <button className="search-button" type="button">SEARCH</button>
+      <NavLink to="/cab-list">
+        <button className="search-button" type="button">SEARCH</button>
+      </NavLink>
     </div>
   );
 };
