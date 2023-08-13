@@ -12,7 +12,6 @@ export const CarsProvider = ({ children }) => {
   const [queryString, setQueryString] = useState('');
   const { data: carsData, error: carsError, isLoading: carsIsLoading } = useSWR(`${baseURL}${carPageIndex}&${queryString}`, fetcher);
   const [carPages, setCarPages] = useState(1);
-
   const [carFilter, setCarFilter] = useState({
     filterBar: '',
     type: '',
@@ -21,6 +20,7 @@ export const CarsProvider = ({ children }) => {
     capacity: '',
     carOption: '',
   });
+  const [selectedCar, setSelectedCar] = useState({});
 
   // Update carData when the first request is done
   useEffect(() => {
@@ -52,6 +52,11 @@ export const CarsProvider = ({ children }) => {
     setCarPageIndex(1);
   };
 
+  // Handle Car Select
+  const handleSelectCar = (car) => {
+    setSelectedCar(car);
+  };
+
   return (
     <CarsContext.Provider
       value={{
@@ -64,6 +69,8 @@ export const CarsProvider = ({ children }) => {
         carFilter,
         handleCarFilter,
         handleQueryString,
+        handleSelectCar,
+        selectedCar,
       }}
     >
       {children}
