@@ -1,11 +1,13 @@
 import './CabSearchSection.scss';
 import { FaLongArrowAltRight } from 'react-icons/fa';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import CabSearch from '../CabSearch';
 import CabSearchModal from '../CabSearchModal';
+import { FormContext } from '../../store/FormContext';
 
 const CabSearchSection = ({ handleFilterMenu }) => {
   const [modal, setModal] = useState(false);
+  const { tripForm } = useContext(FormContext);
 
   const handleModal = () => setModal(!modal);
 
@@ -17,14 +19,22 @@ const CabSearchSection = ({ handleFilterMenu }) => {
 
           <div>
             <h5>
-              Paris
+              {tripForm.pickUpLoc || 'Origin'}
               {' '}
               <FaLongArrowAltRight />
               {' '}
-              Toulouse
+              {tripForm.dropOffLoc || 'Destination'}
             </h5>
-            <p>02:05, 19-Aug-2019</p>
-            <p>2 Adults</p>
+            <p>
+              Pick Up Date:
+              {' '}
+              {tripForm.pickUpDate.toString().slice(0, 24) || ''}
+            </p>
+            <p>
+              Drop Off Date:
+              {' '}
+              {tripForm.dropOffDate.toString().slice(0, 24) || ''}
+            </p>
           </div>
           <div>
             <button

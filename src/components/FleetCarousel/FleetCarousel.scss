@@ -4,6 +4,31 @@
   padding: 0 20px;
 }
 
+.slider button.slick-next, .slider button.slick-prev{
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.slider button.slick-next{
+  right: -25px;
+}
+.slider button.slick-prev{
+  left: -25px;
+}
 
   .slick-center {
     transition: all 500ms ease-in-out;
@@ -27,7 +52,7 @@
 
 
 .fleet__car-type {
-  
+
   .fleet-container{
     width: 100%;
     height: 100%;
@@ -50,7 +75,7 @@
       font-weight: 400;
       letter-spacing: 0.03rem;
       line-height: 1.2;
-    
+
     }
     p {
       padding: 0 5px;

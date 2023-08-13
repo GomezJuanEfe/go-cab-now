@@ -1,4 +1,6 @@
 import React, { useState, useContext } from 'react';
+import useSWRMutation from 'swr/mutation';
+import axios from 'axios';
 import './ContactDetails.scss';
 import { NavLink } from 'react-router-dom';
 import { PhoneInput } from 'react-international-phone';
@@ -8,10 +10,26 @@ import CouponCode from '../CouponCode';
 import advertise from '../../assets/images/advertise.jpg';
 import { FormContext } from '../../store/FormContext';
 
+const URL = 'https://jsonplaceholder.typicode.com/posts';
+
+const sendRequest = async (url, data) => {
+  const resp = await axios.post(url, data);
+  return resp;
+};
+
 const ContactDetails = () => {
   const { contactForm, handleContactForm } = useContext(FormContext);
+  const { trigger, isMutating, error } = useSWRMutation(URL, sendRequest);
   const [phone, setPhone] = useState('');
   contactForm.contactPhone = phone;
+
+  const handleClickSubmit = async (e) => {
+    e.preventDefault();
+    const resolve = await trigger(contactForm);
+    console.log(resolve);
+  };
+  if (isMutating) return <div>Adding post...</div>;
+  if (error) return <div>Failed to add post</div>;
 
   return (
     <div className="contact-page">
@@ -21,7 +39,7 @@ const ContactDetails = () => {
 
           <div className="title-top">Contact Details</div>
           <div className="contact-detail">
-            <form>
+            <form onSubmit={handleClickSubmit}>
 
               <div className="form-group">
                 <div className="row">
