@@ -26,7 +26,6 @@ const ContactDetails = () => {
   const handleClickSubmit = async (e) => {
     e.preventDefault();
     const resolve = await trigger(contactForm);
-    console.log(resolve);
   };
   if (isMutating) return <div>Adding post...</div>;
   if (error) return <div>Failed to add post</div>;

@@ -45,9 +45,9 @@ const CabSearchCarCard = ({
       </p>
     </div>
     <div className="card__button">
-      {/* <NavLink to="/cab-booking"> */}
-      <button className="secondary-button" type="button" onClick={handleSelect}>Book Now</button>
-      {/* </NavLink> */}
+      <NavLink to="/cab-booking">
+        <button className="secondary-button" type="button" onClick={handleSelect}>Book Now</button>
+      </NavLink>
     </div>
   </div>
 );
