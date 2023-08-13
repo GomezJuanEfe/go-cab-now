@@ -1,13 +1,32 @@
 import React, { useContext } from 'react';
 import { FormContext } from '../../store/FormContext';
+import useSWRMutation from 'swr/mutation';
+import axios from 'axios';
 import './LogIn.scss';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import {
   FaUser, FaLock, FaFacebookF, FaGoogle,
 } from 'react-icons/fa';
 
+const URL = 'https://jsonplaceholder.typicode.com/posts';
+
+const sendRequest = async (url, data) => {
+  const resp = await axios.post(url, data);
+  return resp;
+};
+
 const LogIn = ({ handleClickLogin, showLogIn }) => {
   const { loginForm, handleLoginForm } = useContext(FormContext);
+  const { trigger, isMutating, error } = useSWRMutation(URL, sendRequest);
+
+  const handleClickSubmit = async (e) => {
+    e.preventDefault();
+    const resolve = await trigger(loginForm);
+    return resolve;
+  };
+  if (isMutating) return <div>Adding post...</div>;
+  if (error) return <div>Failed to add post</div>;
+
   if (!showLogIn) {
     return null;
   }
@@ -19,7 +38,7 @@ const LogIn = ({ handleClickLogin, showLogIn }) => {
           <AiOutlineCloseCircle />
         </div>
         <h2>Login</h2>
-        <form>
+        <form onSubmit={handleClickSubmit}>
 
           <label htmlFor="username">Username</label>
           <br />

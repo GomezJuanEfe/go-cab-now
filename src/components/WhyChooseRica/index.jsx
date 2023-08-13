@@ -8,8 +8,8 @@ const WhyChooseRica = () => (
   <div>
     <div className="section__limit">
       <section className="container__card_why">
-        <span>WHY CHOOSE RICA?</span>
-        <h2>Welcome To Rica</h2>
+        <span>WHY CHOOSE GO CAB NOW?</span>
+        <h2>Welcome To Go Cab Now</h2>
         <p>
           Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit. Adipisci Alias
           Aperiam At, Aut Commodi Corporis Dolorum Ducimus Labore Magnam
@@ -22,13 +22,13 @@ const WhyChooseRica = () => (
         <div className="card">
           <img src={wheel} alt="wheel" />
           <h3>4500 + Rides Daily</h3>
-          <p>Every Day More Than 4500 Customer Take Rides With Rica Cab</p>
+          <p>Every Day More Than 4500 Customer Take Rides With Go Cab Now</p>
         </div>
 
         <div className="card">
           <img src={customer} alt="customer" />
           <h3>3,00,000 Happy Client</h3>
-          <p>Till Today Rica Cab Has More Than Three Lakhs Happy Customer</p>
+          <p>Till Today Go Cab Now Has More Than Three Lakhs Happy Customer</p>
         </div>
 
         <div className="card">
@@ -40,7 +40,7 @@ const WhyChooseRica = () => (
         <div className="card">
           <img src={cab} alt="cab" />
           <h3>10,000 Cabs</h3>
-          <p>Rica Cab Has More Than 10000 Cabs Which Include Luxury Cabs Too.</p>
+          <p>Go Cab Now Has More Than 10000 Cabs Which Include Luxury Cabs Too.</p>
         </div>
 
       </section>

@@ -1,23 +1,28 @@
 import './BookingSummery.scss';
+import { useContext } from 'react';
+import { FormContext } from '../../store/FormContext';
 
-const BookingSummery = () => (
+const BookingSummery = () => {
+  const { tripForm } = useContext(FormContext);
+
+  return (
   <div className="review-booking">
-    <div className="title-top">Booking Summery</div>
+    <div className="title-top">Booking Summary</div>
     <div className="booking-detail">
       <div className="summery-box">
         <table>
           <tbody>
             <tr>
               <td>Itinerary:</td>
-              <td>{'Paris > Toulouse'}</td>
+              <td>{`${tripForm.pickUpLoc || 'Origin'} > ${tripForm.dropOffLoc || 'Destination'}`}</td>
             </tr>
             <tr>
               <td>Pickup Date:</td>
-              <td>10/01/2019, 11:35pm</td>
+              <td>{tripForm.pickUpDate.toString().slice(0, 24) || ''}</td>
             </tr>
             <tr>
               <td>Return Date:</td>
-              <td>14/01/2019</td>
+              <td>{tripForm.dropOffDate.toString().slice(0, 24) || ''}</td>
             </tr>
             <tr>
               <td>Car Type:</td>
@@ -34,6 +39,7 @@ const BookingSummery = () => (
       </div>
     </div>
   </div>
-);
+)
+}
 
 export default BookingSummery;

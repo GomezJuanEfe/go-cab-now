@@ -92,3 +92,26 @@ button[type="button"].secondary-button:hover {
   background-color: $white;
   color: $primary-color;
 }
+
+button[type="button"].terciary-button {
+  padding: 5px 16px;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  font-weight: 700;
+  outline: 1px solid $primary-color;
+  background-color: $white;
+  color: $primary-color;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+button[type="button"].terciary-button:hover {
+  background-color: $primary-color;
+  color: $white;
+}
+
+.basic-margin {
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}

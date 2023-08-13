@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import './Payment.scss';
-import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import FormTemplate from '../FormTemplate';
 import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
@@ -8,9 +10,29 @@ import Cvv from '../../assets/icons/cvv.png';
 import NetBanking from '../NetBanking';
 import MyWallet from '../MyWallet';
 import '../FormTemplate/FormTemplate.scss';
+import { PaymentContext } from '../../store/PaymentContext';
+import { checkForm } from '../../services/utils';
 
 const Payment = () => {
   const [active, setActive] = useState(undefined);
+  const [activeForm, setActiveForm] = useState('Debit Card'); // CreditCard || DebitCard || Bank || Wallet
+
+  const {
+    debitCardForm,
+    creditCardForm,
+    handleDebitCardForm,
+    handleCreditCardForm,
+    resetGeneralForm,
+  } = useContext(PaymentContext);
+
+  const handleFormChange = () => {
+    resetGeneralForm();
+    setActiveForm(activeForm);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <section className="payment">
@@ -26,22 +48,50 @@ const Payment = () => {
           <h4>Payment Option</h4>
         </div>
         <div className="container__card_payment">
-          <FormTemplate className="title__container" title="Debit Card" active={active} setActive={setActive} id={1}>
 
-            <form action="form__payment">
+          <FormTemplate
+            className="title__container"
+            title="Debit Card"
+            active={active}
+            setActive={setActive}
+            id={1}
+            handleChange={() => handleFormChange('Debit Card')}
+          >
+
+            <form action="form__payment" onSubmit={handleSubmit}>
 
               <div className="form-group">
-                <div className="title__inputs">
+                <label
+                  htmlFor="nameOnCard"
+                  className="title__inputs"
+                >
                   Name On Card
-                </div>
-                <input type="text" className="form-control" />
+                </label>
+                <input
+                  id="nameOnCard"
+                  name="nameOnCard"
+                  type="text"
+                  className="form-control"
+                  value={debitCardForm.nameOnCard}
+                  onChange={handleDebitCardForm}
+                />
               </div>
 
               <div className="form-group">
-                <div className="title__inputs">
+                <label
+                  htmlFor="cardNumber"
+                  className="title__inputs"
+                >
                   Card Number
-                </div>
-                <input type="number" className="form-control" />
+                </label>
+                <input
+                  id="cardNumber"
+                  name="cardNumber"
+                  type="number"
+                  className="form-control"
+                  value={debitCardForm.cardNumber}
+                  onChange={handleDebitCardForm}
+                />
                 <div className="img_credit">
                   <img src={creditcard} alt="creditcard" />
                 </div>
@@ -49,12 +99,21 @@ const Payment = () => {
               <div className="row__inputs">
 
                 <div className="form-group_select">
-                  <div className="title__inputs">
+                  <label
+                    htmlFor="month"
+                    className="title__inputs"
+                  >
                     Month
-                  </div>
+                  </label>
                   <br />
-                  <select className="form-control_cvv">
-                    <option selected>Month...</option>
+                  <select
+                    id="month"
+                    name="month"
+                    className="form-control_cvv"
+                    value={debitCardForm.month}
+                    onChange={handleDebitCardForm}
+                  >
+                    <option>Month...</option>
                     <option>January</option>
                     <option>February</option>
                     <option>March</option>
@@ -71,22 +130,42 @@ const Payment = () => {
                 </div>
 
                 <div className="form-group_select">
-                  <div className="title__inputs">
+                  <label
+                    htmlFor="year"
+                    className="title__inputs"
+                  >
                     Year
-                  </div>
+                  </label>
                   <br />
-                  <select className="form-control_cvv">
-                    <option selected>Year...</option>
+                  <select
+                    id="year"
+                    name="year"
+                    className="form-control_cvv"
+                    value={debitCardForm.year}
+                    onChange={handleDebitCardForm}
+                  >
+                    <option>Year...</option>
                     <option>...</option>
                   </select>
                 </div>
 
                 <div className="form-group_select">
-                  <div className="title__inputs">
+                  <label
+                    htmlFor="cvv"
+                    className="title__inputs"
+                  >
                     Cvv
-                  </div>
+                  </label>
                   <br />
-                  <input type="password" maxLength="4" className="form-control_cvv" />
+                  <input
+                    id="cvv"
+                    name="cvv"
+                    type="password"
+                    maxLength="4"
+                    className="form-control_cvv"
+                    value={debitCardForm.cvv}
+                    onChange={handleDebitCardForm}
+                  />
                   <div className="img_cvv">
                     <img src={Cvv} alt="cvv" />
                   </div>
@@ -94,43 +173,99 @@ const Payment = () => {
 
               </div>
               <div className="payment-btn">
-                <button type="button" className="btn_payment">
-                  MAKE PAYMENT
-                </button>
+                {checkForm(debitCardForm)
+                  ? (
+                    <NavLink to="/success">
+                      <button
+                        onSubmit={handleSubmit}
+                        type="submit"
+                        className="btn_payment"
+                      >
+                        MAKE PAYMENT
+                      </button>
+                    </NavLink>
+                  )
+                  : (
+                    <NavLink to="/failedpage">
+                      <button
+                        onSubmit={handleSubmit}
+                        type="submit"
+                        className="btn_payment"
+                      >
+                        MAKE PAYMENT
+                      </button>
+                    </NavLink>
+                  )}
               </div>
 
             </form>
 
           </FormTemplate>
 
-          <FormTemplate className="title__container" title="Credit Card" active={active} setActive={setActive} id={2}>
+          <FormTemplate
+            className="title__container"
+            title="Credit Card"
+            active={active}
+            setActive={setActive}
+            id={2}
+            handleChange={() => handleFormChange('Credit Card')}
+          >
 
-            <form action="form__payment">
+            <form action="form__payment" onSubmit={handleSubmit}>
 
               <div className="form-group">
-                <div className="title__inputs">
+                <label
+                  htmlFor="nameCard"
+                  className="title__inputs"
+                >
                   Name On Card
-                </div>
-                <input type="text" className="form-control" />
+                </label>
+                <input
+                  id="nameCard"
+                  name="nameCard"
+                  type="text"
+                  className="form-control"
+                  value={creditCardForm.nameCard}
+                  onChange={handleCreditCardForm}
+                />
               </div>
 
               <div className="form-group">
-                <div className="title__inputs">
+                <label
+                  htmlFor="cardNumberCredit"
+                  className="title__inputs"
+                >
                   Card Number
-                </div>
-                <input type="number" className="form-control" />
+                </label>
+                <input
+                  id="cardNumberCredit"
+                  name="cardNumberCredit"
+                  type="number"
+                  className="form-control"
+                  value={creditCardForm.cardNumberCredit}
+                  onChange={handleCreditCardForm}
+                />
                 <img src={creditcard} alt="creditcard" className="img_credit" />
               </div>
 
               <div className="row__inputs">
 
                 <div className="form-group_select">
-                  <div className="title__inputs">
+                  <label
+                    htmlFor="monthCredit"
+                    className="title__inputs"
+                  >
                     Month
-                  </div>
+                  </label>
                   <br />
-                  <select className="form-control_cvv">
-                    <option selected>Month...</option>
+                  <select
+                    id="monthCredit"
+                    name="monthCredit"
+                    className="form-control_cvv"
+                    value={creditCardForm.monthCredit}
+                    onChange={handleCreditCardForm}
+                  >
+                    <option>Month...</option>
                     <option>January</option>
                     <option>February</option>
                     <option>March</option>
@@ -147,22 +282,42 @@ const Payment = () => {
                 </div>
 
                 <div className="form-group_select">
-                  <div className="title__inputs">
+                  <label
+                    htmlFor="yearCredit"
+                    className="title__inputs"
+                  >
                     Year
-                  </div>
+                  </label>
                   <br />
-                  <select className="form-control_cvv">
-                    <option selected>Year...</option>
+                  <select
+                    id="yearCredit"
+                    name="yearCredit"
+                    className="form-control_cvv"
+                    value={creditCardForm.yearCredit}
+                    onChange={handleCreditCardForm}
+                  >
+                    <option>Year...</option>
                     <option>...</option>
                   </select>
                 </div>
 
                 <div className="form-group_select">
-                  <div className="title__inputs">
+                  <label
+                    htmlFor="cvvCredit"
+                    className="title__inputs"
+                  >
                     Cvv
-                  </div>
+                  </label>
                   <br />
-                  <input type="password" maxLength="4" className="form-control_cvv" />
+                  <input
+                    id="cvvCredit"
+                    name="cvvCredit"
+                    type="password"
+                    maxLength="4"
+                    className="form-control_cvv"
+                    value={creditCardForm.cvvCredit}
+                    onChange={handleCreditCardForm}
+                  />
                   <div className="img_cvv">
                     <img src={Cvv} alt="cvv" />
                   </div>
@@ -171,23 +326,58 @@ const Payment = () => {
               </div>
 
               <div className="payment-btn">
-                <button type="button" className="btn_payment">
-                  MAKE PAYMENT
-                </button>
+                {checkForm(creditCardForm)
+                  ? (
+                    <NavLink to="/success">
+                      <button
+                        onSubmit={handleSubmit}
+                        type="submit"
+                        className="btn_payment"
+                      >
+                        MAKE PAYMENT
+                      </button>
+                    </NavLink>
+                  )
+                  : (
+                    <NavLink to="/failedpage">
+                      <button
+                        onSubmit={handleSubmit}
+                        type="submit"
+                        className="btn_payment"
+                      >
+                        MAKE PAYMENT
+                      </button>
+                    </NavLink>
+                  )}
               </div>
 
             </form>
 
           </FormTemplate>
 
-          <FormTemplate className="title__container" title="Net Banking" active={active} setActive={setActive} id={3}>
+          <FormTemplate
+            className="title__container"
+            title="Net Banking"
+            active={active}
+            setActive={setActive}
+            id={3}
+            handleChange={() => handleFormChange('Net Banking')}
+          >
             <NetBanking />
           </FormTemplate>
 
-          <FormTemplate className="title__container" title="My Wallet" active={active} setActive={setActive} id={4}>
+          <FormTemplate
+            className="title__container"
+            title="My Wallet"
+            active={active}
+            setActive={setActive}
+            id={4}
+            handleChange={() => handleFormChange('My Wallet')}
+          >
             <MyWallet />
           </FormTemplate>
         </div>
+
       </div>
 
     </section>
