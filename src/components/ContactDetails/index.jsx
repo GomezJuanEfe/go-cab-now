@@ -9,7 +9,7 @@ import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
 import advertise from '../../assets/images/advertise.jpg';
 import { FormContext } from '../../store/FormContext';
-import { NavLink } from 'react-router-dom';
+
 
 const URL = 'https://jsonplaceholder.typicode.com/posts';
 
