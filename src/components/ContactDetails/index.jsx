@@ -10,7 +10,6 @@ import CouponCode from '../CouponCode';
 import advertise from '../../assets/images/advertise.jpg';
 import { FormContext } from '../../store/FormContext';
 
-
 const URL = 'https://jsonplaceholder.typicode.com/posts';
 
 const sendRequest = async (url, data) => {
