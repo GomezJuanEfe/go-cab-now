@@ -6,8 +6,8 @@ const BookingSummery = () => {
   const { tripForm } = useContext(FormContext);
 
   return (
-    <div className="review-booking">
-    <div className="title-top">Booking Summery</div>
+  <div className="review-booking">
+    <div className="title-top">Booking Summary</div>
     <div className="booking-detail">
       <div className="summery-box">
         <table>
