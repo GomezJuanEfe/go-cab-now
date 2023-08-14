@@ -1,0 +1,30 @@
+@import '../../styles/abstract/variables.scss' ;
+
+tbody{
+  td{
+    .status--past, .status--cancelled, .status--upcoming{
+      color: $white;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+    .status--past{
+      background-color: $blue;
+    }
+    .status--cancelled{
+      color: $white;
+      background-color: $cancelled-gray
+    }
+    .status--upcoming{
+      color: $white;
+      background-color: $primary-color;
+    }
+    .reschedule, .cancel{
+      cursor: pointer;
+    }
+    .reschedule:hover, .cancel:hover{
+      color: $primary-color;
+    }
+  }
+}
+
+

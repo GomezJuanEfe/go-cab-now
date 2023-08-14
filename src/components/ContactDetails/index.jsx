@@ -9,6 +9,7 @@ import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
 import advertise from '../../assets/images/advertise.jpg';
 import { FormContext } from '../../store/FormContext';
+import BookingsList from '../BookingsList';
 
 const URL = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -31,6 +32,7 @@ const ContactDetails = () => {
   if (error) return <div>Failed to add post</div>;
 
   return (
+  <>
     <div className="contact-page">
 
       <div className="col-contact">
@@ -129,6 +131,8 @@ const ContactDetails = () => {
         </div>
       </div>
     </div>
+    <BookingsList />
+  </>
   );
 };
 
