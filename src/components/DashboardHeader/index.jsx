@@ -28,7 +28,7 @@ const DashboardHeader = () => {
                 <div className="username">
                   <span>Emma Walter</span>
                   <div className="profile-type">
-                    <p>Admin </p>
+                    <p>User </p>
                     <i><FaAngleDown /></i>
                   </div>
                 </div>
