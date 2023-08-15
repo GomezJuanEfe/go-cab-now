@@ -1,0 +1,20 @@
+
+
+.user-profile{
+  display: flex;
+  height: 100vh;
+  .col-left{
+    height: 100vh;
+    position: absolute;
+  }
+  .col-right{
+    width: 100%;
+    margin-top: 22px;
+    margin-left: 0px;
+    @media screen and (min-width: 900px) {
+      width: 100%;
+      margin-top: 22px;
+      margin-left: 300px;
+    }
+  }
+}

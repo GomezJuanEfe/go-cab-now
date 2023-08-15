@@ -8,7 +8,7 @@ import CabBooking from '../pages/CabBooking';
 import Payments from '../pages/Payments';
 import Success from '../pages/Success';
 import FailedPage from '../pages/FailedPage';
-import UserProfile from '../pages/UserProfile';
+import UserProfilePage from '../pages/UserProfilePage';
 
 const router = createBrowserRouter([
   {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/user-profile',
-        element: <UserProfile />,
+        element: <UserProfilePage />,
       },
     ],
   },

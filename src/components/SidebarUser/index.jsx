@@ -1,7 +1,9 @@
 import React from 'react';
 import './SideBarUser.scss';
 import { NavLink } from 'react-router-dom';
-import { BiUser, BiLogIn, BiBookmark, BiHome } from 'react-icons/bi'
+import {
+  BiUser, BiLogIn, BiBookmark, BiHome,
+} from 'react-icons/bi';
 
 const SidebarUser = () => {
   console.log('');
