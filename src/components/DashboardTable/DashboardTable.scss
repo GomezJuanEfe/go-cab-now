@@ -1,65 +1,40 @@
-@import '../../styles/abstract/variables.scss' ;
+@import '../../styles/abstract/variables.scss';
 
-.table-container{
-  margin: 100px auto;
-  width: 90%;
-  border: none;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-  border-radius: 15px;
-  -webkit-box-shadow: 0 0 20px rgb(8 21 66 / 5%);
-  box-shadow: 0 0 20px rgb(8 21 66 / 5%);
+.table-body{
+  padding: 30px 40px;
 
-  .table__header{
-    display: flex;
-    justify-content: flex-start;
-    padding: 30px 40px;
-    border-bottom: 1px solid #ecf3fa;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    position: relative;
-    h5{
-      font-size: 22px;
-      font-weight: 700;
+  .table-responsive{
+    overflow-x: auto;
+    table{
+      width: 100%;
+      margin-bottom: 0px;
+      vertical-align: top;
+      border: 2px solid #ecf3fa;
+      border-collapse: collapse;
+      thead{
+        vertical-align: bottom;
+        th{
+          padding: 12px;
+          background-color: $primary-color;
+          color: $white;
+          line-height: 1.5;
+          font-weight: 600;
+          font-size: 18px;
+          text-align: left;
+        }
+      }
+      tbody{
+        td{
+          padding: 12px;
+        }
+      }
     }
-  }
-
-  .table-body{
-    padding: 30px 40px;
-
-    .table-responsive{
-      overflow-x: auto;
-      table{
-        width: 100%;
-        margin-bottom: 0px;
-        vertical-align: top;
-        border: 2px solid #ecf3fa;
-        border-collapse: collapse;
-        thead{
-          vertical-align: bottom;
-          th{
-            padding: 12px;
-            background-color: $primary-color;
-            color: $white;
-            line-height: 1.5;
-            font-weight: 600;
-            font-size: 18px;
-            text-align: left;
-          }
-        }
-        tbody{
-          td{
-            padding: 12px;
-          }
-        }
-      }
-      table, tr {
-        border: 1px solid #ecf3fa;
-      }
-      table tr:nth-child(even) {
-        background-color: rgba(74,164,217,0.06);
-      }
+    table, tr {
+      border: 1px solid #ecf3fa;
+    }
+    table tr:nth-child(even) {
+      background-color: rgba(74,164,217,0.06);
     }
   }
 }
+

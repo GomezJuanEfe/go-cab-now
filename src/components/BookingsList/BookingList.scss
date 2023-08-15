@@ -1,30 +1,41 @@
 @import '../../styles/abstract/variables.scss' ;
 
-tbody{
-  td{
-    .status--past, .status--cancelled, .status--upcoming{
-      color: $white;
-      padding: 4px 8px;
-      border-radius: 5px;
-    }
-    .status--past{
-      background-color: $blue;
-    }
-    .status--cancelled{
-      color: $white;
-      background-color: $cancelled-gray
-    }
-    .status--upcoming{
-      color: $white;
-      background-color: $primary-color;
-    }
-    .reschedule, .cancel{
-      cursor: pointer;
-    }
-    .reschedule:hover, .cancel:hover{
-      color: $primary-color;
+.table-container{
+  margin: 100px auto;
+  width: 90%;
+  border: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 20px rgb(8 21 66 / 5%);
+  box-shadow: 0 0 20px rgb(8 21 66 / 5%);
+
+  tbody{
+    td{
+      .status--past, .status--cancelled, .status--upcoming{
+        color: $white;
+        padding: 4px 8px;
+        border-radius: 5px;
+      }
+      .status--past{
+        background-color: $blue;
+      }
+      .status--cancelled{
+        color: $white;
+        background-color: $cancelled-gray
+      }
+      .status--upcoming{
+        color: $white;
+        background-color: $primary-color;
+      }
+      .reschedule, .cancel{
+        cursor: pointer;
+      }
+      .reschedule:hover, .cancel:hover{
+        color: $primary-color;
+      }
     }
   }
 }
-
 
