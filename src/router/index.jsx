@@ -8,6 +8,7 @@ import CabBooking from '../pages/CabBooking';
 import Payments from '../pages/Payments';
 import Success from '../pages/Success';
 import FailedPage from '../pages/FailedPage';
+import UserProfile from '../pages/UserProfile';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/failedpage',
         element: <FailedPage />,
+      },
+      {
+        path: '/user-profile',
+        element: <UserProfile />,
       },
     ],
   },
