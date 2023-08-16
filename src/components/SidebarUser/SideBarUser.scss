@@ -1,0 +1,48 @@
+@import '../../styles/abstract/variables.scss' ;
+
+.sidebar-wrapper{
+  z-index: 999;
+  top: -110px;
+  left: -280px;
+  position: absolute;
+  bottom: 0;
+  padding: 35px;
+  line-height: inherit;
+  background: #fff;
+  width: 280px;
+  height: 150%;
+  text-align: left;
+  box-shadow: 0 0 21px 0 rgb(89 102 122 / 10%);
+  transition: left 0.3s ease;
+  @media screen and (min-width: 900px) {
+    left: 0px;
+    top: 100px;
+    position: fixed;
+    margin: 30px;
+    border-radius: 15px;
+    height: 75vh;
+  }
+}
+.sidebar-closed{
+  @media screen and (min-width: 900px){
+    left: -500px;
+  }
+  @media screen and (max-width: 899px){
+    left: 0px;
+    top: 0;
+
+  }
+}
+
+.sidebar-item{
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  span{
+    margin-left: 12px;
+  }
+}
+.sidebar-item:hover{
+  color: $primary-color;
+}

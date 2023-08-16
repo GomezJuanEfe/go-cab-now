@@ -1,0 +1,15 @@
+@import '../../styles/abstract/variables.scss';
+
+.table__title{
+  display: flex;
+  justify-content: flex-start;
+  padding: 30px 40px;
+  border-bottom: 1px solid #ecf3fa;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  position: relative;
+  h5{
+    font-size: 22px;
+    font-weight: 700;
+  }
+}
