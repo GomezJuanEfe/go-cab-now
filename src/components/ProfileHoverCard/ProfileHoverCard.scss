@@ -20,8 +20,12 @@
     padding: 12px;
     border-bottom: 1px solid $medium-gray;
     letter-spacing: 1px;
+    transition: color 0.2s ease-in-out;
     span{
       margin-left: 10px;
     }
+  }
+  .hovercard-item:hover{
+    color: $primary-color;
   }
 }

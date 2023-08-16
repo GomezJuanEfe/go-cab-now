@@ -38,7 +38,11 @@
   margin-bottom: 24px;
   letter-spacing: 1px;
   cursor: pointer;
+  transition: color 0.2s ease-in-out;
   span{
     margin-left: 12px;
   }
+}
+.sidebar-item:hover{
+  color: $primary-color;
 }
