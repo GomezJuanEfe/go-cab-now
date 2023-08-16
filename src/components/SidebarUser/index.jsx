@@ -5,10 +5,10 @@ import {
   BiUser, BiLogIn, BiBookmark, BiHome,
 } from 'react-icons/bi';
 
-const SidebarUser = () => {
+const SidebarUser = ({ showSidebar }) => {
   console.log('');
   return (
-    <div className="sidebar-wrapper">
+    <div className={showSidebar ? 'sidebar-wrapper' : 'sidebar-wrapper sidebar-closed'}>
       <div className="simplebar-content">
         <div className="home-button sidebar-item">
             <NavLink to="/">

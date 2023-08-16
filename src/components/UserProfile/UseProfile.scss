@@ -5,7 +5,22 @@
   height: 100vh;
   .col-left{
     height: 100vh;
-    position: absolute;
+    position: fixed;
+    z-index: 100;
+  }
+  .col-mobile-open{
+    @media screen and (max-width: 899px){
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
   }
   .col-right{
     width: 100%;
@@ -15,6 +30,10 @@
       width: 100%;
       margin-top: 22px;
       margin-left: 300px;
+      transition: margin-left 0.3s ease;
     }
+  }
+  .col-right-screensize{
+    margin-left: 0px;
   }
 }

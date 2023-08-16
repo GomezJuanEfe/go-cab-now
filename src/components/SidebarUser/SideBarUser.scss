@@ -13,19 +13,30 @@
   height: 150%;
   text-align: left;
   box-shadow: 0 0 21px 0 rgb(89 102 122 / 10%);
-  transition: left 0.1s ease;
+  transition: left 0.3s ease;
   @media screen and (min-width: 900px) {
     left: 0px;
     top: 100px;
     position: fixed;
     margin: 30px;
     border-radius: 15px;
-    height: 80vh;
+    height: 75vh;
+  }
+}
+.sidebar-closed{
+  @media screen and (min-width: 900px){
+    left: -500px;
+  }
+  @media screen and (max-width: 899px){
+    left: 0px;
+    top: 0;
+
   }
 }
 
 .sidebar-item{
   margin-bottom: 24px;
+  letter-spacing: 1px;
   cursor: pointer;
   span{
     margin-left: 12px;

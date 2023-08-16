@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './UseProfile.scss';
 import BookingsList from '../BookingsList';
 import DashboardHeader from '../DashboardHeader';
 import SidebarUser from '../SidebarUser';
+import { DashboardContext } from '../../store/DashboardContext';
 
-const UserProfile = () => (
-  <>
-    <DashboardHeader />
-    <div className="user-profile">
-      <div className="col-left">
-        <SidebarUser />
+const UserProfile = () => {
+  const { handleToggleSidebar, showSidebar, setShowSidebar } = useContext(DashboardContext);
+  const handleClick = () => {
+    if (window.innerWidth < 900) {
+      setShowSidebar(!showSidebar);
+    }
+  };
+
+  return (
+    <>
+      <DashboardHeader handleToggleSidebar={handleToggleSidebar} />
+      <div className="user-profile">
+        <div
+          onClick={handleClick}
+          onKeyDown={handleClick}
+          role="button"
+          tabIndex={0}
+          className={showSidebar ? 'col-left' : 'col-left col-mobile-open'}
+        >
+          <SidebarUser showSidebar={showSidebar} />
+        </div>
+        <div className={showSidebar ? 'col-right' : 'col-right col-right-screensize'}>
+          <BookingsList />
+        </div>
       </div>
-      <div className="col-right">
-        <BookingsList />
-      </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 export default UserProfile;
