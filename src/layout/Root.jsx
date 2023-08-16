@@ -1,15 +1,35 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ValidateElement from '../components/ValidateElement';
 
-const Root = () => (
-  <>
-    <Header />
-    <main>
-      <Outlet />
-    </main>
-    <Footer />
-  </>
-);
+const Root = () => {
+  const validPathsHeader = [
+    '/',
+    '/cab-list',
+    '/cab-booking',
+    '/payments',
+    '/success',
+    '/failedpage',
+  ];
+  const validPathsFooter = validPathsHeader;
+  return (
+    <>
+      <ValidateElement
+        validPaths={validPathsHeader}
+      >
+        <Header />
+      </ValidateElement>
+      <main>
+        <Outlet />
+      </main>
+      <ValidateElement
+        validPaths={validPathsFooter}
+      >
+        <Footer />
+      </ValidateElement>
+    </>
+  );
+};
 
 export default Root;
