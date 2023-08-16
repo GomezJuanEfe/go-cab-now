@@ -31,6 +31,7 @@ const ContactDetails = () => {
   if (error) return <div>Failed to add post</div>;
 
   return (
+
     <div className="contact-page">
 
       <div className="col-contact">
@@ -129,6 +130,7 @@ const ContactDetails = () => {
         </div>
       </div>
     </div>
+
   );
 };
 

@@ -1,0 +1,43 @@
+@import '../../styles/abstract/variables.scss';
+
+.table-body{
+  padding: 30px 20px;
+
+  .table-responsive{
+    overflow-x: auto;
+    table{
+      width: 100%;
+      margin-bottom: 0px;
+      vertical-align: top;
+      border: 2px solid #ecf3fa;
+      border-collapse: collapse;
+      thead{
+        vertical-align: bottom;
+        th{
+          padding: 12px;
+          background-color: $primary-color;
+          color: $white;
+          line-height: 1.5;
+          font-weight: 600;
+          font-size: 18px;
+          text-align: left;
+        }
+      }
+      tbody{
+        td{
+          padding: 12px;
+        }
+      }
+    }
+    table, tr {
+      border: 1px solid #ecf3fa;
+    }
+    table tr:nth-child(even) {
+      background-color: rgba(74,164,217,0.06);
+    }
+  }
+  @media screen and (min-width: 900px){
+    padding: 30px 40px;
+  }
+}
+
