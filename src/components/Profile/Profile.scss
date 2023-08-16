@@ -1,18 +1,23 @@
 @import '../../styles/abstract/variables.scss';
 
 .container_profile {
-  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 20px;
 }
 .form__profile {
+  padding: 20px;
   border: 3px solid #eeeeee;
   letter-spacing: 0.5px;
 }
 
 .personal__info {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .personal-info__img img {
+    align-items: center;
     width: 150px;
     height: 150px;
     border-radius: 5px;
@@ -20,52 +25,111 @@
     object-fit: cover;
   }
 
+  .personal-info__uplode {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 18px;
+  }
+
   .personal-info__uplode p {
-    margin-left: calc(10px + (48 - 10) * ((100vw - 320px) / (1920 - 320))) !important;
+    margin-top: 12px;
     margin-bottom: 16px;
   }
+
   .personal__info .uplode-img {
     position: relative;
   }
+  .personal-info__uplode label {
 
-  .uplode-img label {
-      position: absolute;
-      left: 0;
-      background-color: #f8f8f8;
-      padding: 10px;
-      border: 1px solid rgba(0,0,0,0.1);
-      color: #9aa4c8;
-      font-size: calc(13px + (15 - 13) * ((100vw - 320px) / (1920 - 320)));
-      cursor: pointer;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+    color: #9aa4c8;
+    font-size: calc(13px + (15 - 13) * ((100vw - 320px) / (1920 - 320)));
   }
-  .uplode-img label svg {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
+
+  .uplode-img input {
+    background-color: #f8f8f8;
+    border: 1px solid rgba(0,0,0,0.1);
+    color: #9aa4c8;
+    font-size: calc(13px + (15 - 13) * ((100vw - 320px) / (1920 - 320)));
+    position: absolute;
+    opacity: 0;
   }
 }
+
   .btn__profile {
     border-radius: 5px;
     font-weight: 700;
     padding: 9px 14px;
-    background-color: #e9b30e;
+    background-color: $primary-color;
     color: #ffffff;
+    margin-top: 25px;
   }
-  .container__profile {
+  .container__form_profile {
     display: flex;
-    .container__inputs_label {
-      font-weight: bold;
-      text-align: left;
-      margin-bottom: 4px;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+
+    .container__inputs_profile {
+      padding: 10px;
+    }
+    .inputs__profile {
+      flex-wrap: wrap;
+      width: 100%;
+      padding: calc(10px + (12 - 10) * ((100vw - 320px) / (1920 - 320))) 10px;
+      line-height: 1.5;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
     }
   }
 
 
-  @media screen and (min-width: 600px) {
-    .container__profile {
+  @media screen and (min-width: 576px) {
+    .personal__info {
       flex-direction: row;
+
+
+    .personal-info__img {
+      flex-wrap: wrap;
+    }
+  }
+    .container__inputs_profile {
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .container__form_profile {
+      flex-direction: row;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+
+    .container__inputs_profile {
       width: 50%;
-      margin: 0 auto;
+    }
+    }
+    .personal__info {
+    .personal-info__uplode {
+      align-items: flex-start;
+    }
+  }
+}
+
+  @media screen and (min-width: 1024px) {
+    .container__inputs_profile{
+      flex-direction: row;
+
     }
 
+    .container__form_profile {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+
+    }
   }
+
+

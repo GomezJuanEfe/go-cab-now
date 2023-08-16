@@ -1,0 +1,38 @@
+@import '../../styles/abstract/variables.scss';
+
+.section__update {
+
+  .container__update_form {
+    padding: 20px;
+    border: 3px solid #eeeeee;
+    letter-spacing: 0.5px;
+  }
+  .container__update {
+    padding: 10px;
+  }
+  .container__update_label {
+    font-weight: bold;
+  }
+  .container__update_input {
+
+    width: 100%;
+    padding: calc(10px + 2 * (100vw - 320px) / 1600) 10px;
+    line-height: 1.5;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  .btn__profile {
+    border-radius: 5px;
+    font-weight: 700;
+    padding: 9px 14px;
+    background-color: $primary-color;
+    color: #ffffff;
+    margin-top: 16px;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .container__update_input{
+    width: 50%;
+  }
+}
