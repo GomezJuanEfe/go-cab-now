@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './FormUpdate.scss';
 import TemplateUpdate from '../TemplateUpdate';
+import DashboardTitle from '../DashboardTableTitle';
 
 const FormUpdate = () => {
   const handleClick = (e) => {
@@ -10,6 +11,9 @@ const FormUpdate = () => {
   return (
 
     <div className="section__update">
+      <DashboardTitle
+        title="Change Email"
+      />
       <TemplateUpdate
         title="Current Email"
         placeholder="Current Email Address"
@@ -23,6 +27,9 @@ const FormUpdate = () => {
         placeholder="New Again Email Address"
         textbutton="Change Email"
         showButton={true}
+      />
+      <DashboardTitle
+        title="Change Password"
       />
       <TemplateUpdate
         title="Current Password"

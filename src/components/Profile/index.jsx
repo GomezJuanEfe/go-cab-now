@@ -2,13 +2,16 @@
 import './Profile.scss';
 import profile from '../../assets/images/profile.png';
 import FormUpdate from '../FormUpdate';
-// import TemplateUpdate from '../TemplateUpdate';
+import DashboardTitle from '../DashboardTableTitle';
 
 const Profile = () => {
   console.log();
   return (
 
     <div className="container_profile">
+      <DashboardTitle
+        title="Personal Information"
+      />
       <form className="form__profile">
 
         <div className="personal__info">

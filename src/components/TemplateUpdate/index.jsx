@@ -16,7 +16,7 @@ const TemplateUpdate = ({
 
         <div className="container__update">
           <label htmlFor="container__update_label">
-            {title}
+            <b>{title}</b>
           </label>
           <br />
           <input className="container__update_input" type="email" placeholder={placeholder} />

@@ -12,7 +12,6 @@ import MyWallet from '../MyWallet';
 import '../FormTemplate/FormTemplate.scss';
 import { PaymentContext } from '../../store/PaymentContext';
 import { checkForm } from '../../services/utils';
-import Profile from '../Profile';
 
 const Payment = () => {
   const [active, setActive] = useState(undefined);
@@ -380,10 +379,6 @@ const Payment = () => {
         </div>
 
       </div>
-      <div>
-        <Profile />
-      </div>
-
     </section>
 
   );

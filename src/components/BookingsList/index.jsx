@@ -5,7 +5,9 @@ import DashboardTable from '../DashboardTable';
 import DashboardTitle from '../DashboardTableTitle';
 
 const BookingsList = () => {
-  console.log('');
+  const handleButtonClick = () => {
+  console.log(handleButtonClick);
+  };
   return (
     <div className="table-container">
       <DashboardTitle title="My Bookings" />
@@ -35,7 +37,12 @@ const BookingsList = () => {
                   </span>
                 </td>
                 <td>
-                  <span className="reschedule">Reschedule</span>
+                  {/* <div
+                    onClick={this.handleButtonClick}
+                    className="reschedule"
+                  >
+                    <button>Reschedule</button>
+                  </div> */}
                   <span> | </span>
                   <span className="cancel">Cancel</span>
                 </td>

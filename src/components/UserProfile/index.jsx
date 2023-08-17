@@ -4,6 +4,9 @@ import BookingsList from '../BookingsList';
 import DashboardHeader from '../DashboardHeader';
 import SidebarUser from '../SidebarUser';
 import { DashboardContext } from '../../store/DashboardContext';
+import Profile from '../Profile';
+// import Reschedule from '../Reschedule';
+import AddNewCar from '../AddNewCar';
 
 const UserProfile = () => {
   const { handleToggleSidebar, showSidebar, setShowSidebar } = useContext(DashboardContext);
@@ -29,6 +32,13 @@ const UserProfile = () => {
         <div className={showSidebar ? 'col-right' : 'col-right col-right-screensize'}>
           <BookingsList />
         </div>
+
+        <div>
+          <Profile />
+          <AddNewCar />
+          {/* <Reschedule /> */}
+        </div>
+
       </div>
     </>
   );
