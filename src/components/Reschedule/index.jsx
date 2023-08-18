@@ -1,12 +1,29 @@
+import './Reschedule.scss';
+import { useContext } from 'react';
 import CabSearchModal from '../CabSearchModal';
+import { DashboardContext } from '../../store/DashboardContext';
 
 const Reschedule = () => {
-  const value = 0;
+  const handleSubmit = () => {
+  };
+  const { showReschedule } = useContext(DashboardContext);
+  console.log(showReschedule);
   return (
     <div>
       <CabSearchModal
-        showButton={false}
-      />
+        showButton
+        show={showReschedule}
+      >
+        <div>
+          <button
+            onSubmit={handleSubmit}
+            className="btn__profile_reschedule"
+            type="submit"
+          >
+            Reschedule
+          </button>
+        </div>
+      </CabSearchModal>
     </div>
 
   );

@@ -4,10 +4,17 @@ export const DashboardContext = createContext();
 
 export const DashboardProvider = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(true);
+  const [showReschedule, setShowReschedule] = useState(false);
+  const [showButtonSearch, setShowButtonSearch] = useState(true);
 
   const handleToggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
+  const handleClickReschedule = () => {
+    setShowReschedule(!showReschedule);
+    setShowButtonSearch(false);
+  };
+
   console.log(showSidebar);
   return (
     <DashboardContext.Provider
@@ -15,6 +22,9 @@ export const DashboardProvider = ({ children }) => {
         showSidebar,
         handleToggleSidebar,
         setShowSidebar,
+        handleClickReschedule,
+        showReschedule,
+        showButtonSearch
       }}
     >
       {children}

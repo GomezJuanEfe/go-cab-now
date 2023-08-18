@@ -45,8 +45,10 @@ const AddNewCar = () => (
       <div className="container__add-inputs">
         <label className="add_label-title"><b>Fare/Km</b></label>
         <br />
-        <div className="input-group container__add-inputs">
+        <div className="input-group">
+          <div className="container__span">
           <span className="input-group-text">$</span>
+          </div>
           <input className="inputs__add" placeholder="20" type="text" />
         </div>
       </div>

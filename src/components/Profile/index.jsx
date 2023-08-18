@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './Profile.scss';
 import profile from '../../assets/images/profile.png';
-import FormUpdate from '../FormUpdate';
+
 import DashboardTitle from '../DashboardTableTitle';
 
 const Profile = () => {
@@ -25,19 +25,19 @@ const Profile = () => {
               {' '}
             </p>
             <div className="uplode-img">
+              <label htmlFor="img">
+                <i data-feather="upload" />
+                {' '}
+                Uploade Image here
+              </label>
               <input
                 type="file"
                 id="img"
                 className="img_profile"
                 accept="image/*"
               />
-              <label htmlFor="img">
-                <i data-feather="upload" />
-                {' '}
-                Uploade Image here
-              </label>
             </div>
-            <button className="btn__profile" type="submit"> Remove Image</button>
+            <button className="btn__profile remove_img" type="submit"> Remove Image</button>
           </div>
 
         </div>
@@ -90,7 +90,6 @@ const Profile = () => {
         </button>
 
       </form>
-      <FormUpdate />
     </div>
 
   );

@@ -1,16 +1,45 @@
 @import '../../styles/abstract/variables.scss';
 
 .section__update {
-  padding: 15px;
-  border: 3px solid #eeeeee;
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  width: 90%;
+  border: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 20px rgb(8 21 66 / 5%);
+  box-shadow: 0 0 20px rgb(8 21 66 / 5%);
 
+  .container_update {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    .change_email, .change_password{
+      margin-bottom: 20px;
+      .change_inputs {
+        padding: 20px;
+      }
+      @media screen and (min-width: 576px) {
+        width:50%
+      }
+    }
+
+    @media screen and (min-width: 576px) {
+      flex-direction: row;
+      justify-content: space-evenly;
+  }
+}
   .container__update_form {
     padding: 20px;
     border: 3px solid #eeeeee;
     letter-spacing: 0.5px;
   }
   .container__update {
-    padding: 10px;
+    padding: 10px 0px;
   }
   .container__update_label {
     font-weight: bold;

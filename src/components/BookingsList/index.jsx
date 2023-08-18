@@ -1,13 +1,10 @@
-import React from 'react';
 import './BookingList.scss';
 import bookingsData from '../../services/bookings-data';
 import DashboardTable from '../DashboardTable';
 import DashboardTitle from '../DashboardTableTitle';
 
-const BookingsList = () => {
-  const handleButtonClick = () => {
-  console.log(handleButtonClick);
-  };
+const BookingsList = ({ handleClickReschedule }) => {
+  console.log();
   return (
     <div className="table-container">
       <DashboardTitle title="My Bookings" />
@@ -37,12 +34,7 @@ const BookingsList = () => {
                   </span>
                 </td>
                 <td>
-                  {/* <div
-                    onClick={this.handleButtonClick}
-                    className="reschedule"
-                  >
-                    <button>Reschedule</button>
-                  </div> */}
+                  <span onClick={handleClickReschedule} className="reschedule">Reschedule</span>
                   <span> | </span>
                   <span className="cancel">Cancel</span>
                 </td>

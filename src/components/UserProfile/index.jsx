@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import './UseProfile.scss';
-import BookingsList from '../BookingsList';
 import DashboardHeader from '../DashboardHeader';
 import SidebarUser from '../SidebarUser';
 import { DashboardContext } from '../../store/DashboardContext';
-import Profile from '../Profile';
+// import Profile from '../Profile';
+// import FormUpdate from '../FormUpdate';
 // import Reschedule from '../Reschedule';
 import AddNewCar from '../AddNewCar';
+// import BookingList from '../BookingsList';
 
 const UserProfile = () => {
+  const { handleClickReschedule } = useContext(DashboardContext);
   const { handleToggleSidebar, showSidebar, setShowSidebar } = useContext(DashboardContext);
   const handleClick = () => {
     if (window.innerWidth < 900) {
@@ -30,13 +32,13 @@ const UserProfile = () => {
           <SidebarUser showSidebar={showSidebar} />
         </div>
         <div className={showSidebar ? 'col-right' : 'col-right col-right-screensize'}>
-          <BookingsList />
-        </div>
-
-        <div>
-          <Profile />
-          <AddNewCar />
+          {/* <BookingList
+            handleClickReschedule={handleClickReschedule}
+          /> */}
+          {/* <Profile />
+          <FormUpdate />
           {/* <Reschedule /> */}
+          <AddNewCar />
         </div>
 
       </div>
