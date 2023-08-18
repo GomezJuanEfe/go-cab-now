@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Access.scss';
 import AccessCreateAccount from '../AccessCreateAccount';
-//import AccessLogIn from '../AccessLogIn';
+import { DashboardContext } from '../../store/DashboardContext';
+import AccessLogIn from '../AccessLogIn';
 
 const Access = () => {
-  console.log('Access');
+  const { handleShowAccess } = useContext(DashboardContext);
   return (
-    <AccessCreateAccount />
+    <>
+      <AccessCreateAccount handleShowAccess={handleShowAccess} />
+      <AccessLogIn handleShowAccess={handleShowAccess} />
+    </>
   );
 };
 

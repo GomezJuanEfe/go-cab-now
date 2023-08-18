@@ -1,5 +1,9 @@
 @import '../../styles/abstract/variables.scss' ;
 
+.hidden{
+  display: none;
+}
+
 form{
   h4{
     margin-bottom: 5px;
