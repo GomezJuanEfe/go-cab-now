@@ -9,6 +9,7 @@ import Payments from '../pages/Payments';
 import Success from '../pages/Success';
 import FailedPage from '../pages/FailedPage';
 import UserProfilePage from '../pages/UserProfilePage';
+import AccessPage from '../pages/AccessPage';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/user-profile',
         element: <UserProfilePage />,
+      },
+      {
+        path: '/access',
+        element: <AccessPage />,
       },
     ],
   },
