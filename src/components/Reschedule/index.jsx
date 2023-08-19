@@ -1,16 +1,19 @@
 import './Reschedule.scss';
 import { useContext } from 'react';
-import CabSearchModal from '../CabSearchModal';
+// import CabSearchModal from '../CabSearchModal';
 import { DashboardContext } from '../../store/DashboardContext';
 
 const Reschedule = () => {
-  const handleSubmit = () => {
-  };
+  // const handleSubmit = () => {
+  // };
   const { showReschedule } = useContext(DashboardContext);
   console.log(showReschedule);
   return (
     <div>
-      <CabSearchModal
+      <p>
+        Este es el componente reschedule
+      </p>
+      {/* <CabSearchModal
         showButton
         show={showReschedule}
       >
@@ -23,7 +26,7 @@ const Reschedule = () => {
             Reschedule
           </button>
         </div>
-      </CabSearchModal>
+      </CabSearchModal> */}
     </div>
 
   );

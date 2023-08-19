@@ -22,6 +22,7 @@ const CabSearchModal = ({ show, handleModal, children }) => {
         >
           <AiOutlineCloseCircle />
         </div>
+
         <div className="input-container">
 
           <LocationPicker
@@ -62,6 +63,7 @@ const CabSearchModal = ({ show, handleModal, children }) => {
             {children}
           </div>
         </div>
+
       </div>
     </div>
   );
