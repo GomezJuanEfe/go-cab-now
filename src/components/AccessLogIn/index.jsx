@@ -1,24 +1,22 @@
 import React, { useContext } from 'react';
-// import useSWRMutation from 'swr/mutation';
-// import axios from 'axios';
+import useSWRMutation from 'swr/mutation';
+import axios from 'axios';
 import './AccesLogIn.scss';
-// import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { FaFacebookF, FaGoogle } from 'react-icons/fa';
 import AccessCard from '../AccessCard';
 import { DashboardContext } from '../../store/DashboardContext';
+import { FormContext } from '../../store/FormContext';
 
-// import { FormContext } from '../../store/FormContext';
-
-/* const URL = 'https://jsonplaceholder.typicode.com/posts';
+const URL = 'https://jsonplaceholder.typicode.com/posts';
 
 const sendRequest = async (url, data) => {
   const resp = await axios.post(url, data);
   return resp;
-}; */
+};
 
 const AccessLogIn = ({ handleShowAccess }) => {
   const { showAccess } = useContext(DashboardContext);
-  /* const { loginForm, handleLoginForm } = useContext(FormContext);
+  const { loginForm, handleLoginForm } = useContext(FormContext);
   const { trigger, isMutating, error } = useSWRMutation(URL, sendRequest);
 
   const handleClickSubmit = async (e) => {
@@ -27,27 +25,39 @@ const AccessLogIn = ({ handleShowAccess }) => {
     return resolve;
   };
   if (isMutating) return <div>Adding post...</div>;
-  if (error) return <div>Failed to add post</div>; */
-
-  /* if (!showLogIn) {
-    return null;
-  } */
+  if (error) return <div>Failed to add post</div>;
 
   return (
-    <div className={showAccess ? 'signin-card' : 'hidden'}>
+    <div className={showAccess ? 'signin-card' : 'signin-card hidden'}>
       <AccessCard>
-        <form>
+        <form onSubmit={handleClickSubmit}>
           <h4>Sign in to account</h4>
           <p>Enter your email & password to login</p>
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
             <br />
-            <input type="email" id="email" required placeholder="example@gocabnow.com" />
+            <input
+              onChange={handleLoginForm}
+              type="email"
+              id="email"
+              name="emailAddress"
+              required
+              placeholder="example@gocabnow.com"
+              value={loginForm.emailAdress}
+            />
           </div>
           <div className="form-group password-group">
             <label htmlFor="password">Password</label>
             <br />
-            <input type="password" id="password" required placeholder="***************" />
+            <input
+              onChange={handleLoginForm}
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="***************"
+              value={loginForm.password}
+            />
           </div>
           <div className="form-group">
             <div className="forgot">

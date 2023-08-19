@@ -3,18 +3,23 @@
 .container{
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 130%;
   margin: 0;
   padding: 0;
   left: 0;
   right: 0;
-  top: 5vh;
+  top: 0vh;
   bottom: 0;
   background-color: white;
-  @media screen and (min-width: 1440px) {
-    top: 20vh;
+  background-image: url('../../assets/images/bg.jpg');
+  @media screen and (min-width: 600) {
+    top: 102%;;
   }
   .acess-card{
+    margin-top: 3vh;
+    @media screen and (min-width: 1440px) {
+      margin-top: 20vh;
+    }
     .card-content{
       .logo{
         display: flex;
