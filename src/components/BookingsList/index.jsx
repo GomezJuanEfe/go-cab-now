@@ -6,7 +6,7 @@ import DashboardTitle from '../DashboardTableTitle';
 import Modal from '../Modal';
 import Reschedule from '../Reschedule';
 
-const BookingsList = ({ handleClickReschedule }) => {
+const BookingsList = () => {
   const [showModal, setShowModal] = useState(true);
 
   const handleSetShowModal = () => {
