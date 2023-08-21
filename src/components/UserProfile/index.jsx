@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import './UseProfile.scss';
-
 import DashboardHeader from '../DashboardHeader';
 import SidebarUser from '../SidebarUser';
 import { DashboardContext } from '../../store/DashboardContext';
 
 const UserProfile = ({ children }) => {
   const { handleToggleSidebar, showSidebar, setShowSidebar } = useContext(DashboardContext);
+
   const handleClick = () => {
     if (window.innerWidth < 900) {
       setShowSidebar(!showSidebar);
@@ -29,6 +29,7 @@ const UserProfile = ({ children }) => {
         <div className={showSidebar ? 'col-right' : 'col-right col-right-screensize'}>
           {children}
         </div>
+
       </div>
     </>
   );

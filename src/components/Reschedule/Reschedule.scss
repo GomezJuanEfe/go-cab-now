@@ -1,0 +1,46 @@
+@import '../../styles/abstract/variables.scss' ;
+
+.container_reschedule {
+
+  .container_inputs_reschedule {
+
+    .label-input {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .container_button_reschedule {
+    padding-top: 10px ;
+    display: flex;
+    justify-content: center;
+
+    .btn__profile_reschedule {
+      width: 50%;
+      padding: 5px 20px;
+      margin-top: 5px;
+      text-align: center;
+      font-weight: 700;
+      color: $white;
+      background-color: $primary-color;
+      cursor: pointer;
+    }
+  }
+
+}
+
+@media screen and (min-width: 768px) {
+  .container_reschedule {
+
+    .container_inputs_reschedule{
+
+      .label-input {
+        padding: 5px !important;
+      }
+    }
+  }
+
+  .container_button_reschedule {
+    justify-content: center;
+  }
+}

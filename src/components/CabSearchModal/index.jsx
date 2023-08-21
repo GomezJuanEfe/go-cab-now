@@ -6,7 +6,7 @@ import DatePicker from '../DatePicker';
 import CabSearchButton from '../CabSearchButton';
 import { FormContext } from '../../store/FormContext';
 
-const CabSearchModal = ({ show, handleModal }) => {
+const CabSearchModal = ({ show, handleModal, children }) => {
   const { tripForm, handleTripForm } = useContext(FormContext);
 
   return (
@@ -22,6 +22,7 @@ const CabSearchModal = ({ show, handleModal }) => {
         >
           <AiOutlineCloseCircle />
         </div>
+
         <div className="input-container">
 
           <LocationPicker
@@ -58,7 +59,11 @@ const CabSearchModal = ({ show, handleModal }) => {
 
           <CabSearchButton modal />
 
+          <div className="reschedule_button">
+            {children}
+          </div>
         </div>
+
       </div>
     </div>
   );
