@@ -8,7 +8,7 @@ const BookingsList = () => {
   console.log('');
   return (
     <div className="table-container">
-      <DashboardTitle title="My Bookings" />
+      <DashboardTitle title="Bookings" />
       <DashboardTable>
         <table>
           <thead>
