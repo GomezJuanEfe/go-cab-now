@@ -21,7 +21,14 @@ export const FromProvider = ({ children }) => {
   });
 
   const { form: loginForm, handleForm: handleLoginForm } = useForm({
-    username: '',
+    emailAddress: '',
+    password: '',
+  });
+
+  const { form: signInForm, handleForm: handleSignInForm } = useForm({
+    firstName: '',
+    lastName: '',
+    emailAddress: '',
     password: '',
   });
 
@@ -34,6 +41,8 @@ export const FromProvider = ({ children }) => {
         handleContactForm,
         loginForm,
         handleLoginForm,
+        signInForm,
+        handleSignInForm
       }}
     >
       {children}

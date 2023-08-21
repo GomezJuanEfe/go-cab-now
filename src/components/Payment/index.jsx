@@ -379,7 +379,6 @@ const Payment = () => {
         </div>
 
       </div>
-
     </section>
 
   );
