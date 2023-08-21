@@ -3,11 +3,7 @@ import './UseProfile.scss';
 import DashboardHeader from '../DashboardHeader';
 import SidebarUser from '../SidebarUser';
 import { DashboardContext } from '../../store/DashboardContext';
-// import Profile from '../Profile';
-// import FormUpdate from '../FormUpdate';
-import AddNewCar from '../AddNewCar';
-// import BookingList from '../BookingsList';
-import AddNewUser from '../AddNewUser';
+import BookingList from '../BookingsList';
 
 const UserProfile = () => {
   const { handleClickReschedule } = useContext(DashboardContext);
@@ -33,13 +29,9 @@ const UserProfile = () => {
           <SidebarUser showSidebar={showSidebar} />
         </div>
         <div className={showSidebar ? 'col-right' : 'col-right col-right-screensize'}>
-          {/* <BookingList
+          <BookingList
             handleClickReschedule={handleClickReschedule}
           />
-          <Profile />
-          <FormUpdate />*/}
-          <AddNewCar />
-          <AddNewUser />
         </div>
 
       </div>
