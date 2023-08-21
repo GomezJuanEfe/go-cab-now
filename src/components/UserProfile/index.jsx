@@ -3,10 +3,8 @@ import './UseProfile.scss';
 import DashboardHeader from '../DashboardHeader';
 import SidebarUser from '../SidebarUser';
 import { DashboardContext } from '../../store/DashboardContext';
-import BookingList from '../BookingsList';
 
-const UserProfile = () => {
-  const { handleClickReschedule } = useContext(DashboardContext);
+const UserProfile = ({ children }) => {
   const { handleToggleSidebar, showSidebar, setShowSidebar } = useContext(DashboardContext);
 
   const handleClick = () => {
@@ -29,9 +27,7 @@ const UserProfile = () => {
           <SidebarUser showSidebar={showSidebar} />
         </div>
         <div className={showSidebar ? 'col-right' : 'col-right col-right-screensize'}>
-          <BookingList
-            handleClickReschedule={handleClickReschedule}
-          />
+          {children}
         </div>
 
       </div>
