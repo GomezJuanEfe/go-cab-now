@@ -1,10 +1,10 @@
 import React from 'react';
 import UserProfile from '../components/UserProfile';
-import AddUser from '../components/AddUser';
+import AddNewUser from '../components/AddNewUser';
 
 const AddUserPage = () => (
   <UserProfile>
-    <AddUser />
+    <AddNewUser />
   </UserProfile>
 );
 

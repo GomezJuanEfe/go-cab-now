@@ -1,10 +1,10 @@
 import React from 'react';
 import UserProfile from '../components/UserProfile';
-import AddCar from '../components/AddCar';
+import AddNewCar from '../components/AddNewCar';
 
 const AddCarPage = () => (
   <UserProfile>
-    <AddCar />
+    <AddNewCar />
   </UserProfile>
 );
 

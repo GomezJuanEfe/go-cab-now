@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import Root from '../layout/Root';
-import UserProfile from '../components/UserProfile';
 import Home from '../pages/Home';
 import CabList from '../pages/CabList';
 import NotFound from '../pages/NotFound';
@@ -9,7 +8,7 @@ import CabBooking from '../pages/CabBooking';
 import Payments from '../pages/Payments';
 import Success from '../pages/Success';
 import FailedPage from '../pages/FailedPage';
-//import UserProfilePage from '../pages/UserProfilePage';
+import UserProfilePage from '../pages/UserProfilePage';
 import BookingsPage from '../pages/BookingsPage';
 import AccessPage from '../pages/AccessPage';
 import AllUsersPage from '../pages/AllUsersPage';
@@ -50,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/user-profile/',
-        element: <UserProfile />,
+        element: <UserProfilePage />,
       },
       {
         path: '/user-profile/bookings',

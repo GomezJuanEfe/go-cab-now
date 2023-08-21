@@ -20,10 +20,12 @@ const SidebarUser = ({ showSidebar }) => {
           </div>
         </NavLink>
 
-        <div className="sidebar-item">
-          <FiUser />
-          <span>My Profile</span>
-        </div>
+        <NavLink to="/user-profile">
+          <div className="sidebar-item">
+            <FiUser />
+            <span>My Profile</span>
+          </div>
+        </NavLink>
 
         <NavLink to="/user-profile/bookings">
           <div className="sidebar-item">
