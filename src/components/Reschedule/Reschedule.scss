@@ -1,19 +1,19 @@
 @import '../../styles/abstract/variables.scss' ;
 
 .container_reschedule {
-  margin: 0 auto;
 
   .container_inputs_reschedule {
-    display: flex;
-    flex-direction: column;
 
+    .label-input {
+      width: 100%;
+      padding: 0;
+    }
   }
-  .container_inputs_reschedule span {
-    font-weight: bold;
-  }
+
   .container_button_reschedule {
     padding-top: 10px ;
     display: flex;
+    justify-content: center;
 
     .btn__profile_reschedule {
       width: 50%;
@@ -30,8 +30,14 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container_inputs_reschedule {
-    align-items: center;
+  .container_reschedule {
+
+    .container_inputs_reschedule{
+
+      .label-input {
+        padding: 5px !important;
+      }
+    }
   }
 
   .container_button_reschedule {
