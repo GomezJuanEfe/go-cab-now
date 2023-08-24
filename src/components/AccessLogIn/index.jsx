@@ -12,7 +12,7 @@ const URL = import.meta.env.VITE_API_URL;
 
 const AccessLogIn = ({ handleShowAccess }) => {
   const { showAccess } = useContext(DashboardContext);
-  const { loginForm, handleLoginForm, resetForm } = useContext(FormContext);
+  const { loginForm, handleLoginForm, resetLoginForm } = useContext(FormContext);
   const { setIsLogged } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -25,9 +25,10 @@ const AccessLogIn = ({ handleShowAccess }) => {
         localStorage.setItem('token', data.token);
         setIsLogged(true);
         navigate('/user-profile');
-      });
+      })
+      .catch((err) => alert(err.response.data));
 
-    resetForm({
+    resetLoginForm({
       email: '',
       password: '',
     });

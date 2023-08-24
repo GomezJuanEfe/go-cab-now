@@ -20,18 +20,18 @@ export const FromProvider = ({ children }) => {
     promoCode: '',
   });
 
-  const { form: loginForm, handleForm: handleLoginForm, resetForm } = useForm({
+  const { form: loginForm, handleForm: handleLoginForm, resetForm: resetLoginForm } = useForm({
     email: '',
     password: '',
   });
-  console.log(loginForm);
 
-  const { form: signInForm, handleForm: handleSignInForm } = useForm({
-    firstName: '',
-    lastName: '',
-    emailAddress: '',
+  const { form: signInForm, handleForm: handleSignInForm, resetForm: resetSignInForm } = useForm({
+    first_name: '',
+    last_name: '',
+    email: '',
     password: '',
   });
+  console.log(signInForm);
 
   return (
     <FormContext.Provider
@@ -42,9 +42,10 @@ export const FromProvider = ({ children }) => {
         handleContactForm,
         loginForm,
         handleLoginForm,
-        resetForm,
+        resetLoginForm,
         signInForm,
         handleSignInForm,
+        resetSignInForm,
       }}
     >
       {children}

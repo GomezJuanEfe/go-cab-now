@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import useSWRMutation from 'swr/mutation';
 import axios from 'axios';
 import './AccessCreateAccount.scss';
 import { FaFacebookF, FaGoogle } from 'react-icons/fa';
@@ -7,25 +6,30 @@ import AccessCard from '../AccessCard';
 import { DashboardContext } from '../../store/DashboardContext';
 import { FormContext } from '../../store/FormContext';
 
-const URL = 'https://jsonplaceholder.typicode.com/posts';
-
-const sendRequest = async (url, data) => {
-  const resp = await axios.post(url, data);
-  return resp;
-};
+const URL = import.meta.env.VITE_API_URL;
 
 const AccessCreateAccount = ({ handleShowAccess }) => {
   const { showAccess } = useContext(DashboardContext);
-  const { signInForm, handleSignInForm } = useContext(FormContext);
-  const { trigger, isMutating, error } = useSWRMutation(URL, sendRequest);
+  const { signInForm, handleSignInForm, resetSignInForm } = useContext(FormContext);
 
   const handleClickSubmit = async (e) => {
     e.preventDefault();
-    const resolve = await trigger(signInForm);
-    return resolve;
+
+    axios.post(`${URL}/api/users`, signInForm)
+      .then(({ data }) => {
+        alert(data.message);
+
+        resetSignInForm({
+          first_name: '',
+          last_name: '',
+          email: '',
+          password: '',
+        });
+
+        handleShowAccess();
+      })
+      .catch((err) => alert(err.response.data.message));
   };
-  if (isMutating) return <div>Adding post...</div>;
-  if (error) return <div>Failed to add post</div>;
 
   return (
     <div className={!showAccess ? 'signup-card' : 'signup-card hidden'}>
@@ -41,22 +45,22 @@ const AccessCreateAccount = ({ handleShowAccess }) => {
               <input
                 type="text"
                 id="firstname"
-                name="firstName"
+                name="first_name"
                 required
                 placeholder="First Name"
                 onChange={handleSignInForm}
-                value={signInForm.firstName}
+                value={signInForm.first_name}
               />
             </div>
             <div className="lastname-group">
               <input
                 type="text"
                 id="lastname"
-                name="lastName"
+                name="last_name"
                 required
                 placeholder="Last Name"
                 onChange={handleSignInForm}
-                value={signInForm.lastName}
+                value={signInForm.last_name}
               />
             </div>
           </div>
@@ -68,10 +72,10 @@ const AccessCreateAccount = ({ handleShowAccess }) => {
               onChange={handleSignInForm}
               type="email"
               id="email"
-              name="emailAddress"
+              name="email"
               required
               placeholder="example@gocabnow.com"
-              value={signInForm.emailAddress}
+              value={signInForm.email}
             />
           </div>
           <div className="form-group password-group">
