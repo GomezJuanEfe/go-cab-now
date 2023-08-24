@@ -26,7 +26,6 @@ const AccessCreateAccount = ({ handleShowAccess }) => {
   };
   if (isMutating) return <div>Adding post...</div>;
   if (error) return <div>Failed to add post</div>;
-  console.log(signInForm);
 
   return (
     <div className={!showAccess ? 'signup-card' : 'signup-card hidden'}>

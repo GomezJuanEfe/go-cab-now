@@ -1,13 +1,15 @@
-import React from 'react';
+import { useContext } from 'react';
 import './DashboardHeader.scss';
 import { NavLink } from 'react-router-dom';
 import { FaAngleDown } from 'react-icons/fa';
 import logo from '../../assets/icons/GCN-logo.png';
 import portrait from '../../assets/images/profile4.jpg';
 import ProfileHoverCard from '../ProfileHoverCard';
+import { UserContext } from '../../store/UserContext';
 
 const DashboardHeader = ({ handleToggleSidebar }) => {
-  console.log('');
+  const { userData, setUserData } = useContext(UserContext);
+
   return (
     <div className="dashboard-header">
       <div className="header-wrapper">
@@ -24,7 +26,12 @@ const DashboardHeader = ({ handleToggleSidebar }) => {
             role="button"
             tabIndex={0}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-align-center status_toggle middle sidebar-toggle"><line x1="18" y1="10" x2="6" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="18" y1="18" x2="6" y2="18"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-align-center status_toggle middle sidebar-toggle">
+              <line x1="18" y1="10" x2="6" y2="10" />
+              <line x1="21" y1="6" x2="3" y2="6" />
+              <line x1="21" y1="14" x2="3" y2="14" />
+              <line x1="18" y1="18" x2="6" y2="18" />
+            </svg>
           </div>
         </div>
         <div className="nav-right">
@@ -33,9 +40,9 @@ const DashboardHeader = ({ handleToggleSidebar }) => {
               <div className="profile-media">
                 <img src={portrait} alt="portrait" />
                 <div className="username">
-                  <span>Emma Walter</span>
+                  <span>{`${userData.first_name} ${userData.last_name}`}</span>
                   <div className="profile-type">
-                    <p>User </p>
+                    <p>{userData.role}</p>
                     <i><FaAngleDown /></i>
                   </div>
                 </div>

@@ -20,10 +20,11 @@ export const FromProvider = ({ children }) => {
     promoCode: '',
   });
 
-  const { form: loginForm, handleForm: handleLoginForm } = useForm({
-    emailAddress: '',
+  const { form: loginForm, handleForm: handleLoginForm, resetForm } = useForm({
+    email: '',
     password: '',
   });
+  console.log(loginForm);
 
   const { form: signInForm, handleForm: handleSignInForm } = useForm({
     firstName: '',
@@ -41,8 +42,9 @@ export const FromProvider = ({ children }) => {
         handleContactForm,
         loginForm,
         handleLoginForm,
+        resetForm,
         signInForm,
-        handleSignInForm
+        handleSignInForm,
       }}
     >
       {children}
