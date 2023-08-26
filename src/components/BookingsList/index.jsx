@@ -40,11 +40,11 @@ const BookingsList = () => {
     const fetchTripsdata = async () => {
       setLoading(true);
       try{
-        const { data: {trips} } = await axios.get(
+        const { data: { trips } } = await axios.get(
           URL,
           {
             headers: {
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsbG1sN2NsbDAwMDB0Y2xwZWZobWpwamIiLCJlbWFpbCI6ImRodkB0ZXN0LmNvbSIsImlhdCI6MTY5MjkxNTE3MywiZXhwIjoxNjkzMDAxNTczfQ.OhjmF0CKv6l6JUWw-T8MVq-dMVNDBfSR0-l1D6dxAss',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsbG1sN2NsbDAwMDB0Y2xwZWZobWpwamIiLCJlbWFpbCI6ImRodkB0ZXN0LmNvbSIsImlhdCI6MTY5MzA3MDMxNCwiZXhwIjoxNjkzMTU2NzE0fQ.YkcG3EWnW6b3UTfLvGsSxt6DZVTOBkxWUgfkl3ty4Vg',
             },
           },
         );
