@@ -128,7 +128,7 @@
   @media screen and (min-width: 576px) {
     .container__form_profile {
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: flex-start;
       flex-wrap: wrap;
 
       .personal__info{
@@ -154,7 +154,7 @@
     .container__form_profile {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-evenly;
+      justify-content: flex-start;
 
     }
   }

@@ -7,8 +7,8 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(!!localStorage.getItem('token'));
+  const [loadingUser, setLoadingUser] = useState(true);
   const [userData, setUserData] = useState({
-    token: '',
     first_name: '',
     last_name: '',
     email: '',
@@ -16,24 +16,23 @@ export const UserProvider = ({ children }) => {
     address: '',
     phone: '',
     avatar: '',
-    is_active: '',
-    created_at: '',
-    updated_at: '',
   });
-
-  console.log('User data', userData);
 
   useEffect(() => {
     if (isLogged) {
+      setLoadingUser(true);
       axios.get(`${URL}/api/users/single`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
-        .then(({ data }) => setUserData({ ...data.data, token: localStorage.getItem('token') }));
+        .then(({ data }) => {
+          setUserData({ ...data.data });
+          setLoadingUser(false);
+        })
+        .catch((error) => console.log(error));
     }
   }, [isLogged]);
 
   const logOut = () => {
     localStorage.removeItem('token');
     setUserData({
-      token: '',
       first_name: '',
       last_name: '',
       email: '',
@@ -41,9 +40,6 @@ export const UserProvider = ({ children }) => {
       address: '',
       phone: '',
       avatar: '',
-      is_active: '',
-      created_at: '',
-      updated_at: '',
     });
 
     setIsLogged(false);
@@ -53,6 +49,7 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         setIsLogged,
+        loadingUser,
         userData,
         setUserData,
         logOut,

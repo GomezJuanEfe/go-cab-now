@@ -31,7 +31,6 @@ export const FromProvider = ({ children }) => {
     email: '',
     password: '',
   });
-  console.log(signInForm);
 
   return (
     <FormContext.Provider

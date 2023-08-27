@@ -1,43 +1,44 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './Profile.scss';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import axios from 'axios';
 import profile from '../../assets/images/profile.png';
 
 import DashboardTitle from '../DashboardTableTitle';
 import { UserContext } from '../../store/UserContext';
+import useForm from '../../hooks/useForm';
 
 const URL = import.meta.env.VITE_API_URL;
+const token = localStorage.getItem('token');
 
 const Profile = () => {
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData, setUserData, loadingUser } = useContext(UserContext);
+  const { form, handleForm, resetForm } = useForm({
+    first_name: userData.first_name,
+    last_name: userData.last_name,
+    address: userData.address,
+    phone: userData.phone,
+    email: userData.email,
+  });
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    const { value, name } = e.target;
-    setUserData({
-      ...userData,
-      [name]: value,
+  useEffect(() => {
+    resetForm({
+      first_name: userData.first_name,
+      last_name: userData.last_name,
+      address: userData.address,
+      phone: userData.phone,
+      email: userData.email,
     });
-  };
+  }, [loadingUser]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const {
-      first_name, last_name, address, phone, email,
-    } = userData;
-    axios.patch(
-      `${URL}/api/users/single`,
-      {
-        first_name, last_name, address, phone, email,
-      },
-      { headers: { Authorization: `Bearer ${userData.token}` } },
-    )
+    axios.patch(`${URL}/api/users/single`, form, { headers: { Authorization: `Bearer ${token}` } })
       .then(({ data }) => {
+        setUserData({ ...data.data });
         alert(data.message);
       })
       .catch((err) => {
-        console.log(err);
         alert(err.response.data.message);
       });
   };
@@ -48,8 +49,8 @@ const Profile = () => {
       <DashboardTitle
         title="Personal Information"
       />
-      <form className="form__profile" onSubmit={handleSubmit}>
 
+      <form className="form__profile" onSubmit={handleSubmit}>
         <div className="personal__info">
           <div className="personal-info__img">
             <img src={profile} alt="profile" />
@@ -81,39 +82,33 @@ const Profile = () => {
         <div className="container__form_profile">
 
           <div className="container__inputs_profile">
-            <label htmlFor="container__inputs_label"><b>User Name</b></label>
-            <br />
-            <input className="inputs__profile" type="number" placeholder="UserName" />
-          </div>
-
-          <div className="container__inputs_profile">
             <label htmlFor="container__inputs_label"><b>First Name</b></label>
             <br />
-            <input className="inputs__profile" type="text" value={userData.first_name} placeholder="First Name" name="first_name" onChange={handleChange} />
+            <input className="inputs__profile" type="text" value={form.first_name || ''} placeholder="First Name" name="first_name" onChange={handleForm} />
           </div>
 
           <div className="container__inputs_profile">
             <label htmlFor="container__inputs_label"><b>Last Name</b></label>
             <br />
-            <input className="inputs__profile" type="text" value={userData.last_name} placeholder="Last Name" name="last_name" onChange={handleChange} />
+            <input className="inputs__profile" type="text" value={form.last_name || ''} placeholder="Last Name" name="last_name" onChange={handleForm} />
           </div>
 
           <div className="container__inputs_profile">
             <label htmlFor="container__inputs_label"><b>Address</b></label>
             <br />
-            <input className="inputs__profile" type="text" value={userData.address} placeholder="Address" name="address" onChange={handleChange} />
+            <input className="inputs__profile" type="text" value={form.address || ''} placeholder="Address" name="address" onChange={handleForm} />
           </div>
 
           <div className="container__inputs_profile">
             <label htmlFor="container__inputs_label"><b>Contact Number</b></label>
             <br />
-            <input className="inputs__profile" type="number" value={userData.phone} placeholder="Contact Number" name="phone" onChange={handleChange} />
+            <input className="inputs__profile" type="number" value={form.phone || ''} placeholder="Contact Number" name="phone" onChange={handleForm} />
           </div>
 
           <div className="container__inputs_profile">
             <label htmlFor="container__inputs_label"><b>Email Address</b></label>
             <br />
-            <input className="inputs__profile" type="Email" value={userData.email} placeholder="Email Address" name="email" onChange={handleChange} />
+            <input className="inputs__profile" type="Email" value={form.email || ''} placeholder="Email Address" name="email" onChange={handleForm} readOnly />
           </div>
 
         </div>
@@ -122,7 +117,6 @@ const Profile = () => {
           className="btn__profile"
         >
           Save Change
-          {' '}
         </button>
 
       </form>
@@ -132,15 +126,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-/*
-"
-Invalid `prisma.user.update()` invocation in
-/home/gomezjuan/MIR-bootcamp/projects/go-cab-now-backend/src/api/user/user.service.ts:101:36
-
-   98   const hashedPassword = await hashPassword(password);
-   99   data.password = hashedPassword;
-  100 }
-→ 101 const user = await prisma.user.update(
-Unique constraint failed on the fields: (`email`)"
-*/

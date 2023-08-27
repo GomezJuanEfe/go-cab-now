@@ -1,14 +1,17 @@
-import { useContext } from 'react';
 import './DashboardHeader.scss';
 import { NavLink } from 'react-router-dom';
 import { FaAngleDown } from 'react-icons/fa';
+import { useContext } from 'react';
 import logo from '../../assets/icons/GCN-logo.png';
 import portrait from '../../assets/images/profile4.jpg';
 import ProfileHoverCard from '../ProfileHoverCard';
 import { UserContext } from '../../store/UserContext';
 
 const DashboardHeader = ({ handleToggleSidebar }) => {
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData } = useContext(UserContext);
+
+  const fullName = `${userData.first_name} ${userData.last_name}`;
+  const { role } = userData;
 
   return (
     <div className="dashboard-header">
@@ -40,9 +43,9 @@ const DashboardHeader = ({ handleToggleSidebar }) => {
               <div className="profile-media">
                 <img src={portrait} alt="portrait" />
                 <div className="username">
-                  <span>{`${userData.first_name} ${userData.last_name}`}</span>
+                  <span>{fullName}</span>
                   <div className="profile-type">
-                    <p>{userData.role}</p>
+                    <p>{role}</p>
                     <i><FaAngleDown /></i>
                   </div>
                 </div>
