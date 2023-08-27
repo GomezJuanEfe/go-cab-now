@@ -1,7 +1,11 @@
 const carsData = [
   {
     car_id: 'cllspx17e00072928hpeo5ypo',
+<<<<<<< HEAD
     car_img: '/cars/10.png',
+=======
+    car_photo: '/cars/10.png',
+>>>>>>> 44a48d06d548bc9c1429d6a300573d5fe0c24820
     car_name: 'Land Rove Evoque',
     car_type: 'SUV',
     seats: 5,
@@ -33,5 +37,4 @@ const carsData = [
     fare: 25,
   },
 ];
-
 export default carsData;

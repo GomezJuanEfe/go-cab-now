@@ -2,6 +2,7 @@
 import './Payment.scss';
 import { NavLink } from 'react-router-dom';
 import { useContext, useState } from 'react';
+import axios from 'axios';
 import FormTemplate from '../FormTemplate';
 import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
@@ -12,10 +13,17 @@ import MyWallet from '../MyWallet';
 import '../FormTemplate/FormTemplate.scss';
 import { PaymentContext } from '../../store/PaymentContext';
 import { checkForm } from '../../services/utils';
+import { FormContext } from '../../store/FormContext';
+import { CarsContext } from '../../store/CarsContext';
+
+const URL = 'http://localhost:8080/api/trips';
 
 const Payment = () => {
   const [active, setActive] = useState(undefined);
   const [activeForm, setActiveForm] = useState('Debit Card'); // CreditCard || DebitCard || Bank || Wallet
+
+  const { tripForm } = useContext(FormContext);
+  const { selectedCar } = useContext(CarsContext);
 
   const {
     debitCardForm,
@@ -25,13 +33,42 @@ const Payment = () => {
     resetGeneralForm,
   } = useContext(PaymentContext);
 
+  const tripData = [
+    parseInt(tripForm.pickUpLoc, 10),
+    parseInt(tripForm.dropOffLoc, 10),
+    selectedCar.car_id,
+  ];
+  console.log(tripData);
+
+  const fetchCreateTrip = async () => {
+    try {
+      const response = await axios.post(
+        URL,
+        {
+          origin_latitude: parseInt(tripForm.pickUpLoc, 10),
+          destination_latitude: parseInt(tripForm.dropOffLoc, 10),
+          car_id: selectedCar.car_id,
+        },
+        {
+          headers: {
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsbHNwNml0ZjAwMDB0Y2xpbmpibGRpZWgiLCJlbWFpbCI6ImRodkB0ZXN0LmNvbSIsImlhdCI6MTY5MzA5NTQzMywiZXhwIjoxNjkzMTgxODMzfQ.K0C2ChuyIBQzmbmY1q1rRucloXB6Y4nQke2WDYNqdYY',
+          },
+        },
+      );
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleFormChange = () => {
     resetGeneralForm();
     setActiveForm(activeForm);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchCreateTrip();
   };
 
   return (
@@ -173,11 +210,16 @@ const Payment = () => {
 
               </div>
               <div className="payment-btn">
-                {checkForm(debitCardForm)
+                <button
+                  type="submit"
+                  className="btn_payment"
+                >
+                  MAKE PAYMENT
+                </button>
+                {/* {checkForm(debitCardForm)
                   ? (
                     <NavLink to="/success">
                       <button
-                        onSubmit={handleSubmit}
                         type="submit"
                         className="btn_payment"
                       >
@@ -188,14 +230,13 @@ const Payment = () => {
                   : (
                     <NavLink to="/failedpage">
                       <button
-                        onSubmit={handleSubmit}
                         type="submit"
                         className="btn_payment"
                       >
                         MAKE PAYMENT
                       </button>
                     </NavLink>
-                  )}
+                  )} */}
               </div>
 
             </form>
