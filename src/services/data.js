@@ -1,6 +1,6 @@
 const carData = [
   {
-    car_id: 1,
+    car_id: 'cllspx17e00072928hpeo5ypo',
     car_name: 'Ford Fusion',
     car_type: 'Sedan',
     car_img: '/cars/5.png',

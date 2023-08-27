@@ -12,29 +12,7 @@ const URL = 'http://localhost:8080/api/trips';
 const BookingsList = () => {
   const [showModal, setShowModal] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [tripsData, setTripsData] = useState({
-    id: '',
-    user_id: '',
-    car_id: '',
-    total: 1500,
-    date: '2023-11-11T19:20:30.451Z',
-    status: 'UPCOMING',
-    origin_latitude: 1,
-    destination_latitude: '',
-    origin_longitude: '',
-    destination_longitude: '',
-    distance_km: '',
-    Payments: '',
-  });
-
-  /*   useEffect(() => {
-    axios.get(URL)
-      .then(({ data }) => {
-        setBookingsData(data);
-        console.log('Data', data);
-      })
-      .catch((err) => console.log(err));
-  }, []); */
+  const [tripsData, setTripsData] = useState({});
 
   useEffect(() => {
     const fetchTripsdata = async () => {
@@ -80,27 +58,6 @@ const BookingsList = () => {
               </tr>
             </thead>
             <tbody>
-              {
-              /* bookingsData.map((booking, index) => (
-                <tr key={index}>
-                  <td>{booking.itinerary}</td>
-                  <td>
-                    $
-                    {booking.price}
-                  </td>
-                  <td>{booking.date}</td>
-                  <td>
-                    <span className={booking.status === 'PAST' ? 'status--past' : booking.status === 'UPCOMING' ? 'status--upcoming' : 'status--cancelled'}>
-                      {booking.status}
-                    </span>
-                  </td>
-                  <td>
-                    <span onClick={handleSetShowModal} className="reschedule">Reschedule</span>
-                    <span> | </span>
-                    <span className="cancel">Cancel</span>
-                  </td>
-                </tr>
-              )) */}
               { !loading && tripsData.map((booking, index) => (
               <tr key={index}>
                 <td>{booking.origin_latitude}</td>
