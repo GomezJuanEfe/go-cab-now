@@ -51,7 +51,7 @@ const AllCars = () => {
             { !loading && dataCars.map((car, index) => (
               <tr key={index}>
                 <td>
-                  {car.img}
+                  <img src={car.img} alt="car" />
                 </td>
                 <td>{car.car_name}</td>
                 <td>{car.type}</td>
