@@ -55,6 +55,17 @@ const checkForm = (obj) => {
   return !values.some((item) => item === '');
 };
 
+const usdFormat = (num) => {
+  const numberWithDecimals = (num / 100).toFixed(2);
+  const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+  return usd.format(numberWithDecimals);
+};
+
 export {
-  toTitleCase, parseQueryParameters, pagination, buildQueryString, checkForm,
+  toTitleCase,
+  parseQueryParameters,
+  pagination,
+  buildQueryString,
+  checkForm,
+  usdFormat,
 };
