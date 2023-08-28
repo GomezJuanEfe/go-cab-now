@@ -16,6 +16,7 @@ import AddUserPage from '../pages/AddUserPage';
 import AllCarsPage from '../pages/AllCarsPage';
 import AddCarPage from '../pages/AddCarPage';
 import CarDetailsPage from '../pages/CarDetailsPage';
+import PrivateRoute from '../components/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -49,31 +50,31 @@ const router = createBrowserRouter([
       },
       {
         path: '/user-profile/',
-        element: <UserProfilePage />,
+        element: <PrivateRoute><UserProfilePage /></PrivateRoute>,
       },
       {
         path: '/user-profile/bookings',
-        element: <BookingsPage />,
+        element: <PrivateRoute><BookingsPage /></PrivateRoute>,
       },
       {
         path: '/user-profile/all-users',
-        element: <AllUsersPage />,
+        element: <PrivateRoute><AllUsersPage /></PrivateRoute>,
       },
       {
         path: '/user-profile/add-user',
-        element: <AddUserPage />,
+        element: <PrivateRoute><AddUserPage /></PrivateRoute>,
       },
       {
         path: '/user-profile/all-cars',
-        element: <AllCarsPage />,
+        element: <PrivateRoute><AllCarsPage /></PrivateRoute>,
       },
       {
         path: '/user-profile/add-car',
-        element: <AddCarPage />,
+        element: <PrivateRoute><AddCarPage /></PrivateRoute>,
       },
       {
         path: '/user-profile/car-details',
-        element: <CarDetailsPage />,
+        element: <PrivateRoute><CarDetailsPage /></PrivateRoute>,
       },
       {
         path: '/access',

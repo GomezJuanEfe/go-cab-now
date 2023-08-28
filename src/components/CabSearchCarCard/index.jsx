@@ -1,5 +1,6 @@
 import './CabSearchCarCard.scss';
 import { NavLink } from 'react-router-dom';
+import { usdFormat } from '../../services/utils';
 
 const CabSearchCarCard = ({
   carName, carType, carImg, carDetails, fare, handleSelect,
@@ -37,7 +38,7 @@ const CabSearchCarCard = ({
       </ul>
     </div>
     <div className="card__price">
-      <h3>$1200</h3>
+      <h3>{usdFormat(120000)}</h3>
       <p>
         Fare/km:
         {' '}
