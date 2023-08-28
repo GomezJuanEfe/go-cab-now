@@ -6,6 +6,12 @@ export const DashboardProvider = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [showAccess, setShowAccess] = useState(true);
   const [addBookingButton, setAddBookingButton] = useState(false);
+  const [selectedTrip, setSelectedTrip] = useState({
+    origin_latitude: '',
+    destination_latitude: '',
+    id: '',
+  });
+  const [tripsData, setTripsData] = useState({});
 
   const handleShowAccess = () => {
     setShowAccess(!showAccess);
@@ -23,7 +29,11 @@ console.log(showAccess);
         handleShowAccess,
         showAccess,
         setAddBookingButton,
-        addBookingButton
+        addBookingButton,
+        setSelectedTrip,
+        selectedTrip,
+        tripsData,
+        setTripsData
       }}
     >
       {children}

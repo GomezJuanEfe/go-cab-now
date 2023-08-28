@@ -17,7 +17,8 @@ import { FormContext } from '../../store/FormContext';
 import { CarsContext } from '../../store/CarsContext';
 import { pickerDateToDateFormat } from '../../services/DateFormat';
 
-const URL = 'http://localhost:8080/api/trips';
+
+const URL = import.meta.env.VITE_API_URL;
 
 const Payment = () => {
   const [active, setActive] = useState(undefined);
@@ -39,7 +40,7 @@ const Payment = () => {
   const fetchCreateTrip = async () => {
     try {
       const response = await axios.post(
-        URL,
+        `${URL}/api/trips`,
         {
           origin_latitude: tripForm.pickUpLoc,
           destination_latitude: tripForm.dropOffLoc,

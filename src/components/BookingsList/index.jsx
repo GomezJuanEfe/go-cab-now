@@ -13,8 +13,8 @@ const URL = import.meta.env.VITE_API_URL;
 const BookingsList = () => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [tripsData, setTripsData] = useState({});
-  const { setAddBookingButton } = useContext(DashboardContext);
+  const { setAddBookingButton, setSelectedTrip, tripsData, setTripsData
+  } = useContext(DashboardContext);
 
   useEffect(() => {
     const fetchTripsdata = async () => {
@@ -49,7 +49,13 @@ const BookingsList = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleSetShowModal = () => {
+  const handleSetShowModal = (bookingData) => {
+    setSelectedTrip({
+      origin_latitude: bookingData.origin_latitude,
+      destination_latitude: bookingData.destination_latitude,
+      id: bookingData.id,
+    });
+
     setShowModal(!showModal);
   };
 
@@ -80,7 +86,7 @@ const BookingsList = () => {
                     </span>
                   </td>
                   <td>
-                    <span onClick={handleSetShowModal} className="reschedule">Reschedule</span>
+                    <span onClick={() => handleSetShowModal(booking)} className="reschedule">Reschedule</span>
                     <span> | </span>
                     <span className="cancel">Cancel</span>
                   </td>
@@ -91,7 +97,7 @@ const BookingsList = () => {
         </DashboardTable>
       </div>
       <Modal showModal={showModal} handleShowModal={handleSetShowModal}>
-        <Reschedule />
+        <Reschedule setShowModal={setShowModal} />
       </Modal>
     </>
   );
