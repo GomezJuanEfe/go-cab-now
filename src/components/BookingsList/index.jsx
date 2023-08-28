@@ -6,8 +6,9 @@ import DashboardTitle from '../DashboardTableTitle';
 import Modal from '../Modal';
 import Reschedule from '../Reschedule';
 import { DashboardContext } from '../../store/DashboardContext';
+import { usdFormat } from '../../services/utils';
 
-const URL = 'http://localhost:8080/api/trips';
+const URL = import.meta.env.VITE_API_URL;
 
 const BookingsList = () => {
   const [showModal, setShowModal] = useState(false);
@@ -20,10 +21,10 @@ const BookingsList = () => {
       setLoading(true);
       try {
         const { data: { trips } } = await axios.get(
-          URL,
+          `${URL}/api/trips`,
           {
             headers: {
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsbHNwNml0ZjAwMDB0Y2xpbmpibGRpZWgiLCJlbWFpbCI6ImRodkB0ZXN0LmNvbSIsImlhdCI6MTY5MzE3Nzk2MCwiZXhwIjoxNjkzMjY0MzYwfQ.wiXX0LVs0MnpG7wkxAVQA_3-BeI0Kpa65S4KtyCj5EI',
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
           },
         );
@@ -39,6 +40,14 @@ const BookingsList = () => {
   }, []);
 
   console.log('tripsData', tripsData);
+
+  useEffect(() => {
+    axios.get(`${URL}/api/healthcheck`)
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleSetShowModal = () => {
     setShowModal(!showModal);
@@ -63,10 +72,7 @@ const BookingsList = () => {
               { !loading && tripsData.map((booking, index) => (
                 <tr key={index}>
                   <td>{`${booking.origin_latitude} to ${booking.destination_latitude}`}</td>
-                  <td>
-                    $
-                    {booking.total}
-                  </td>
+                  <td>{usdFormat(booking?.total)}</td>
                   <td>{booking.date?.slice(0, 10)}</td>
                   <td>
                     <span className={booking.status === 'PAST' ? 'status--past' : booking.status === 'UPCOMING' ? 'status--upcoming' : 'status--cancelled'}>

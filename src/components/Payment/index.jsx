@@ -44,12 +44,12 @@ const Payment = () => {
           origin_latitude: tripForm.pickUpLoc,
           destination_latitude: tripForm.dropOffLoc,
           car_id: selectedCar.car_id,
-          total: 1200,
+          total: 120000,
           date: dateFormated,
         },
         {
           headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsbHNwNml0ZjAwMDB0Y2xpbmpibGRpZWgiLCJlbWFpbCI6ImRodkB0ZXN0LmNvbSIsImlhdCI6MTY5MzE3Nzk2MCwiZXhwIjoxNjkzMjY0MzYwfQ.wiXX0LVs0MnpG7wkxAVQA_3-BeI0Kpa65S4KtyCj5EI',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         },
       );

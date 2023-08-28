@@ -7,6 +7,7 @@ import './index.scss';
 import { PaymentProvider } from './store/PaymentContext';
 import { CarsProvider } from './store/CarsContext';
 import { DashboardProvider } from './store/DashboardContext';
+import { UserProvider } from './store/UserContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
@@ -14,7 +15,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <PaymentProvider>
       <CarsProvider>
         <DashboardProvider>
-          <RouterProvider router={router} />
+          <UserProvider>
+            <RouterProvider router={router} />
+          </UserProvider>
         </DashboardProvider>
       </CarsProvider>
     </PaymentProvider>
