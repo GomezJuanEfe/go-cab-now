@@ -15,6 +15,7 @@ import { PaymentContext } from '../../store/PaymentContext';
 import { checkForm } from '../../services/utils';
 import { FormContext } from '../../store/FormContext';
 import { CarsContext } from '../../store/CarsContext';
+import { pickerDateToDateFormat } from '../../services/DateFormat';
 
 const URL = 'http://localhost:8080/api/trips';
 
@@ -25,6 +26,8 @@ const Payment = () => {
   const { tripForm } = useContext(FormContext);
   const { selectedCar } = useContext(CarsContext);
 
+  const dateFormated = pickerDateToDateFormat(tripForm.pickUpDate);
+
   const {
     debitCardForm,
     creditCardForm,
@@ -33,25 +36,20 @@ const Payment = () => {
     resetGeneralForm,
   } = useContext(PaymentContext);
 
-  const tripData = [
-    parseInt(tripForm.pickUpLoc, 10),
-    parseInt(tripForm.dropOffLoc, 10),
-    selectedCar.car_id,
-  ];
-  console.log(tripData);
-
   const fetchCreateTrip = async () => {
     try {
       const response = await axios.post(
         URL,
         {
-          origin_latitude: parseInt(tripForm.pickUpLoc, 10),
-          destination_latitude: parseInt(tripForm.dropOffLoc, 10),
+          origin_latitude: tripForm.pickUpLoc,
+          destination_latitude: tripForm.dropOffLoc,
           car_id: selectedCar.car_id,
+          total: 1200,
+          date: dateFormated,
         },
         {
           headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsbHNwNml0ZjAwMDB0Y2xpbmpibGRpZWgiLCJlbWFpbCI6ImRodkB0ZXN0LmNvbSIsImlhdCI6MTY5MzA5NTQzMywiZXhwIjoxNjkzMTgxODMzfQ.K0C2ChuyIBQzmbmY1q1rRucloXB6Y4nQke2WDYNqdYY',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsbHNwNml0ZjAwMDB0Y2xpbmpibGRpZWgiLCJlbWFpbCI6ImRodkB0ZXN0LmNvbSIsImlhdCI6MTY5MzE3Nzk2MCwiZXhwIjoxNjkzMjY0MzYwfQ.wiXX0LVs0MnpG7wkxAVQA_3-BeI0Kpa65S4KtyCj5EI',
           },
         },
       );
