@@ -32,6 +32,14 @@ export const FromProvider = ({ children }) => {
     password: '',
   });
 
+  const { form: createNewCar, handleForm: handleCreateNewCar } = useForm({
+    carName: '',
+    uploadImgCar: '',
+    capacity: '',
+    fareKm: '',
+    carType: '',
+  });
+
   return (
     <FormContext.Provider
       value={{
@@ -44,6 +52,8 @@ export const FromProvider = ({ children }) => {
         resetLoginForm,
         signInForm,
         handleSignInForm,
+        createNewCar,
+        handleCreateNewCar,
         resetSignInForm,
       }}
     >
