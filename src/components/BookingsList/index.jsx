@@ -1,20 +1,22 @@
 import './BookingList.scss';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
+import { AiOutlinePlusSquare } from 'react-icons/ai';
 import DashboardTable from '../DashboardTable';
 import DashboardTitle from '../DashboardTableTitle';
 import Modal from '../Modal';
 import Reschedule from '../Reschedule';
 import { DashboardContext } from '../../store/DashboardContext';
 import { usdFormat } from '../../services/utils';
+import { formatTableDate } from '../../services/DateFormat';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const BookingsList = () => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
-  const { setAddBookingButton, setSelectedTrip, tripsData, setTripsData
-  } = useContext(DashboardContext);
+  const { setSelectedTrip, tripsData, setTripsData } = useContext(DashboardContext);
 
   useEffect(() => {
     const fetchTripsdata = async () => {
@@ -33,7 +35,6 @@ const BookingsList = () => {
         console.log(err);
       }
       setLoading(false);
-      setAddBookingButton(true);
     };
 
     fetchTripsdata();
@@ -54,6 +55,7 @@ const BookingsList = () => {
       origin_latitude: bookingData.origin_latitude,
       destination_latitude: bookingData.destination_latitude,
       id: bookingData.id,
+      pickUpDate: new Date(bookingData.date),
     });
 
     setShowModal(!showModal);
@@ -62,7 +64,14 @@ const BookingsList = () => {
   return (
     <>
       <div className="table-container">
-        <DashboardTitle title="My Bookings" />
+        <DashboardTitle title="Bookings">
+          <NavLink to="/cab-list">
+            <button className="add-button secondary-button" type="button">
+              <AiOutlinePlusSquare />
+              <span>Add New Booking</span>
+            </button>
+          </NavLink>
+        </DashboardTitle>
         <DashboardTable>
           <table>
             <thead>
@@ -79,7 +88,7 @@ const BookingsList = () => {
                 <tr key={index}>
                   <td>{`${booking.origin_latitude} to ${booking.destination_latitude}`}</td>
                   <td>{usdFormat(booking?.total)}</td>
-                  <td>{booking.date?.slice(0, 10)}</td>
+                  <td>{formatTableDate(booking.date)}</td>
                   <td>
                     <span className={booking.status === 'PAST' ? 'status--past' : booking.status === 'UPCOMING' ? 'status--upcoming' : 'status--cancelled'}>
                       {booking.status}
