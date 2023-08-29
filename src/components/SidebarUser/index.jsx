@@ -76,11 +76,11 @@ const SidebarUser = ({ showSidebar }) => {
                 All cars
               </li>
             </NavLink>
-            <NavLink to="/user-profile/car-details">
+            <NavLink to="/user-profile/edit-car">
               <li>
                 <span>-</span>
                 {' '}
-                Car's details
+                Edit Car
               </li>
             </NavLink>
             <NavLink to="/user-profile/add-car">

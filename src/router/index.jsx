@@ -15,7 +15,7 @@ import AllUsersPage from '../pages/AllUsersPage';
 import AddUserPage from '../pages/AddUserPage';
 import AllCarsPage from '../pages/AllCarsPage';
 import AddCarPage from '../pages/AddCarPage';
-import CarDetailsPage from '../pages/CarDetailsPage';
+import CarEditPage from '../pages/EditCarPage';
 import PrivateRoute from '../components/PrivateRoute';
 
 const router = createBrowserRouter([
@@ -73,8 +73,8 @@ const router = createBrowserRouter([
         element: <PrivateRoute><AddCarPage /></PrivateRoute>,
       },
       {
-        path: '/user-profile/car-details',
-        element: <PrivateRoute><CarDetailsPage /></PrivateRoute>,
+        path: '/user-profile/edit-car',
+        element: <PrivateRoute><CarEditPage /></PrivateRoute>,
       },
       {
         path: '/access',

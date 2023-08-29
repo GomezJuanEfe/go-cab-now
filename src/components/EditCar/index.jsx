@@ -1,19 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable linebreak-style */
 import DashboardTitle from '../DashboardTableTitle';
-import './AddNewCar.scss';
+import './EditCar.scss';
 
-const AddNewCar = () => {
+const EditCar = () => {
   const handleSubmit = () => {
-    console.log(handleSubmit);
   };
 
   return (
-
-    <div className="container__add">
+    <div className="container_edit-car">
 
       <DashboardTitle
-        title="Add New Car"
+        title="Edit Car"
       />
 
       <form className="container__add_form" onSubmit={handleSubmit}>
@@ -27,18 +24,7 @@ const AddNewCar = () => {
         <div className="container__add-inputs">
           <label htmlFor="car-type" className="add_label-title"><b>Car Type</b></label>
           <br />
-          <select id="car-type" className="select_add">
-
-            <option>Please choose an option</option>
-            <option>Hatchback</option>
-            <option>Sedan</option>
-            <option>Electric Sedan</option>
-            <option>SUV</option>
-            <option>Van</option>
-            <option>Camper</option>
-            <option>Luxery Coupe</option>
-
-          </select>
+          <input className="inputs__add" type="text" placeholder="Car Name" />
         </div>
 
         <div className="container__add-inputs">
@@ -50,7 +36,7 @@ const AddNewCar = () => {
             <div className="section__submit_file">
               <input type="file" />
               <i className="icon-cloud-up" />
-              <h4><b>Drop files here or click to upload.</b></h4>
+              <h4><b>Drop car img here or click to upload.</b></h4>
             </div>
           </div>
         </div>
@@ -122,18 +108,19 @@ const AddNewCar = () => {
             <div className="container__span">
               <span className="input-group-text">$</span>
             </div>
-            <input className="inputs__add" placeholder="20" type="text" />
+            <input className="inputs__add" placeholder="Fare/km" type="text" />
           </div>
+        </div>
+
+        <div className="buttons__add">
+          <button type="submit" className="submit_add">Edit</button>
+          <button type="submit" className="submit_add">Cancel</button>
         </div>
 
       </form>
 
-      <div className="buttons__add">
-        <button type="submit" className="submit_add">Submit</button>
-        <button type="submit" className="submit_add">Cancel</button>
-      </div>
-
     </div>
   );
 };
-export default AddNewCar;
+
+export default EditCar;
