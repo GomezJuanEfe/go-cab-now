@@ -1,10 +1,11 @@
 @import '../../styles/abstract/variables.scss';
 
-.dashboard-header{
+.dashboard-header {
   position: relative;
   width: 100%;
   height: 100%;
-  padding-bottom: 109px;
+  padding-bottom: 70px;
+
   .header-wrapper{
     display: flex;
     align-items: center;
@@ -79,5 +80,17 @@
         transform: translateY(0);
       }
     }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dashboard-header {
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .dashboard-header {
+    padding-bottom: 110px;
   }
 }

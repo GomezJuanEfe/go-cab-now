@@ -23,9 +23,9 @@ const UserProfile = ({ children }) => {
           role="button"
           tabIndex={0}
           className={showSidebar ? 'col-left' : 'col-left col-mobile-open'}
-        >
-          <SidebarUser showSidebar={showSidebar} />
-        </div>
+          aria-label="overlay"
+        />
+        <SidebarUser showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
         <div className={showSidebar ? 'col-right' : 'col-right col-right-screensize'}>
           {children}
         </div>
