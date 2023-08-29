@@ -20,15 +20,15 @@ export const FromProvider = ({ children }) => {
     promoCode: '',
   });
 
-  const { form: loginForm, handleForm: handleLoginForm } = useForm({
-    emailAddress: '',
+  const { form: loginForm, handleForm: handleLoginForm, resetForm: resetLoginForm } = useForm({
+    email: '',
     password: '',
   });
 
-  const { form: signInForm, handleForm: handleSignInForm } = useForm({
-    firstName: '',
-    lastName: '',
-    emailAddress: '',
+  const { form: signInForm, handleForm: handleSignInForm, resetForm: resetSignInForm } = useForm({
+    first_name: '',
+    last_name: '',
+    email: '',
     password: '',
   });
 
@@ -49,11 +49,12 @@ export const FromProvider = ({ children }) => {
         handleContactForm,
         loginForm,
         handleLoginForm,
+        resetLoginForm,
         signInForm,
         handleSignInForm,
         createNewCar,
         handleCreateNewCar,
-
+        resetSignInForm,
       }}
     >
       {children}
