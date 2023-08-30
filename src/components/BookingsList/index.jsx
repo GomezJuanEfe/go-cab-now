@@ -51,12 +51,14 @@ const BookingsList = () => {
   }, []);
 
   const handleSetShowModal = (bookingData) => {
-    setSelectedTrip({
-      origin_latitude: bookingData.origin_latitude,
-      destination_latitude: bookingData.destination_latitude,
-      id: bookingData.id,
-      pickUpDate: new Date(bookingData.date),
-    });
+    if (!showModal) {
+      setSelectedTrip({
+        origin_latitude: bookingData.origin_latitude,
+        destination_latitude: bookingData.destination_latitude,
+        id: bookingData.id,
+        pickUpDate: new Date(bookingData.date),
+      });
+    }
 
     setShowModal(!showModal);
   };

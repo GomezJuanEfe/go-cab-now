@@ -8,7 +8,6 @@ import DatePicker from '../DatePicker';
 const URL = import.meta.env.VITE_API_URL;
 
 const Reschedule = ({ setShowModal }) => {
-
   const {
     showReschedule,
     selectedTrip,
@@ -49,13 +48,20 @@ const Reschedule = ({ setShowModal }) => {
     setShowModal(false);
   };
 
-  const handleInput = (e) => {
+  const handleInput = (e, isMantine = false, input = '') => {
     let tripUpdated = {};
-    const { name, value } = e.target;
-    tripUpdated = {
-      ...selectedTrip,
-      [name]: value,
-    };
+    if (isMantine) {
+      tripUpdated = {
+        ...selectedTrip,
+        [input]: e,
+      };
+    } else {
+      const { name, value } = e.target;
+      tripUpdated = {
+        ...selectedTrip,
+        [name]: value,
+      };
+    }
     setSelectedTrip(tripUpdated);
   };
 
