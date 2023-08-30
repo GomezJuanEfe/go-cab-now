@@ -6,14 +6,21 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import DashboardTitle from '../DashboardTableTitle';
 import DashboardTable from '../DashboardTable';
 import Modal from '../Modal';
-import Reschedule from '../Reschedule';
+import ModalCarInformation from '../ModalCarInformation';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const AllCars = () => {
-  const [modalDelete, setModalDelete] = useState(true);
+  const [modalDelete, setModalDelete] = useState(false);
   const [loading, setLoading] = useState(true);
   const [dataCars, setDataCars] = useState({});
+  const [selectedCar, setSelectCar] = useState({
+    id: '',
+    img: '',
+    car_name: '',
+    type: '',
+    fare_km: '',
+  });
 
   useEffect(() => {
     const fetchCarsData = async () => {
@@ -33,9 +40,20 @@ const AllCars = () => {
     fetchCarsData();
   }, []);
 
-  const handleModalDelete = () => {
+  console.log("datacars", dataCars);
+
+  const handleShowModalCar = (carInformation) => {
+    if (!modalDelete) {
+      setSelectCar({
+        id: carInformation.id,
+        img: carInformation.img,
+        car_name: carInformation.car_name,
+        type: carInformation.type,
+        fare_km: carInformation.fare_km,
+      });
+    }
     setModalDelete(!modalDelete);
-    console.log(handleModalDelete);
+    console.log(handleShowModalCar);
   };
 
   return (
@@ -73,7 +91,7 @@ const AllCars = () => {
 
                   <td>
                     <AiOutlineDelete
-                      onClick={handleModalDelete}
+                      onClick={handleShowModalCar}
                       className="icon_delete"
                     />
                   </td>
@@ -85,8 +103,8 @@ const AllCars = () => {
         </DashboardTable>
       </div>
 
-      <Modal modalDelete={modalDelete} handleShowModal={handleModalDelete}>
-        <p>IS WORKING</p>
+      <Modal modalDelete={modalDelete} handleShowModal={handleShowModalCar}>
+        <ModalCarInformation />
       </Modal>
     </>
   );
