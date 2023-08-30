@@ -6,7 +6,7 @@ import DashboardTitle from '../DashboardTableTitle';
 import './AddNewCar.scss';
 import { FormContext } from '../../store/FormContext';
 
-const URL = 'http://localhost:8080/api/cars';
+const URL = import.meta.env.VITE_API_URL;
 
 const AddNewCar = () => {
   const { createNewCar, handleCreateNewCar } = useContext(FormContext);
@@ -14,7 +14,7 @@ const AddNewCar = () => {
   const fetchCreateCar = async () => {
     try {
       const response = await axios.post(
-        URL,
+        `${URL}/api/cars`,
         {
           carName: parseInt(createNewCar.carName, 10),
           type: parseInt(createNewCar.carType, 10),

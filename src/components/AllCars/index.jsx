@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
+import './AllCars.scss';
 import axios from 'axios';
 import { FaEdit } from 'react-icons/fa';
 import { AiOutlineDelete } from 'react-icons/ai';
 import DashboardTitle from '../DashboardTableTitle';
 import DashboardTable from '../DashboardTable';
-import carsData from '../../services/Cars-data';
+import Modal from '../Modal';
+import Reschedule from '../Reschedule';
 
-const URL = 'http://localhost:8080/api/cars';
+const URL = import.meta.env.VITE_API_URL;
 
 const AllCars = () => {
+  const [modalDelete, setModalDelete] = useState(true);
   const [loading, setLoading] = useState(true);
   const [dataCars, setDataCars] = useState({});
 
@@ -17,8 +20,8 @@ const AllCars = () => {
       setLoading(true);
 
       try {
-        const { data: { cars } } = await axios.get(URL, {
-          headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsbGNxcWVkczAwMDB1bDhwaHBsZHh0OGMiLCJlbWFpbCI6ImF2QHRlc3QuY29tIiwiaWF0IjoxNjkzMDc5MzAzLCJleHAiOjE2OTMxNjU3MDN9.PRn_hoGiF74r4MDlOztpjFtFU-9m36bQUwJrGHYFPEM' },
+        const { data: { cars } } = await axios.get(`${URL}/api/cars`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         setDataCars(cars);
       } catch (error) {
@@ -30,47 +33,62 @@ const AllCars = () => {
     fetchCarsData();
   }, []);
 
-  console.log('carsData', dataCars);
+  const handleModalDelete = () => {
+    setModalDelete(!modalDelete);
+    console.log(handleModalDelete);
+  };
 
   return (
-    <div className="table-container">
-      <DashboardTitle title="All Cars" />
-      <DashboardTable>
-        <table>
-          <thead>
-            <tr>
-              <th>Car Photo</th>
-              <th>Car Name</th>
-              <th>Type</th>
-              <th>Fare/Km</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            { !loading && dataCars.map((car, index) => (
-              <tr key={index}>
-                <td>
-                  <img src={car.img} alt="car" />
-                </td>
-                <td>{car.car_name}</td>
-                <td>{car.type}</td>
-                <td>
-                  $
-                  {car.fare_km}
-                </td>
-                <td>
-                  <FaEdit />
-                </td>
-                <td>
-                  <AiOutlineDelete />
-                </td>
+    <>
+      <div className="table-container">
+        <DashboardTitle title="All Cars" />
+        <DashboardTable>
+          <table>
+            <thead>
+              <tr>
+                <th>Car Photo</th>
+                <th>Car Name</th>
+                <th>Type</th>
+                <th>Fare/Km</th>
+                <th>Edit</th>
+                <th>Delete</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </DashboardTable>
-    </div>
+            </thead>
+            <tbody>
+              {!loading && dataCars.map((car, index) => (
+                <tr key={index}>
+                  <td>
+                    <img src={car.img} alt="car" />
+                  </td>
+                  <td>{car.car_name}</td>
+                  <td>{car.type}</td>
+                  <td>
+                    $
+                    {car.fare_km}
+                  </td>
+
+                  <td>
+                    <FaEdit className="icon_edit" />
+                  </td>
+
+                  <td>
+                    <AiOutlineDelete
+                      onClick={handleModalDelete}
+                      className="icon_delete"
+                    />
+                  </td>
+
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </DashboardTable>
+      </div>
+
+      <Modal modalDelete={modalDelete} handleShowModal={handleModalDelete}>
+        <p>IS WORKING</p>
+      </Modal>
+    </>
   );
 };
 
