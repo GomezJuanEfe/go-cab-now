@@ -30,11 +30,6 @@ const CabSearchSection = ({ handleFilterMenu }) => {
               {' '}
               {tripForm.pickUpDate.toString().slice(0, 24) || ''}
             </p>
-            <p>
-              Drop Off Date:
-              {' '}
-              {tripForm.dropOffDate.toString().slice(0, 24) || ''}
-            </p>
           </div>
           <div>
             <button
