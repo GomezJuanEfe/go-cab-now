@@ -4,6 +4,7 @@ import axios from 'axios';
 import { DashboardContext } from '../../store/DashboardContext';
 import LocationPicker from '../LocationPicker';
 import DatePicker from '../DatePicker';
+import { pickerDateToDateFormat } from '../../services/DateFormat';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -16,11 +17,11 @@ const Reschedule = ({ setShowModal }) => {
     setTripsData,
   } = useContext(DashboardContext);
 
-  const fetchUpdateTrip = async () => {
+  const fetchUpdateTrip = async (body) => {
     try {
       const response = await axios.patch(
         `${URL}/api/trips/single`,
-        selectedTrip,
+        body,
         //este selectedTrip está quedando con un formato de fecha inválido para la DB
         {
           headers: {
@@ -35,16 +36,23 @@ const Reschedule = ({ setShowModal }) => {
   };
 
   const handleSubmit = async () => {
-    const { data } = await fetchUpdateTrip();
-    console.log(data);
-    const tripsUpdated = tripsData.map((item) => {
+    const info = {
+      ...selectedTrip,
+      date: pickerDateToDateFormat(selectedTrip.date),
+    };
+
+    console.log('info', info);
+
+    const res = await fetchUpdateTrip(info);
+    console.log('response', res);
+   /*  const tripsUpdated = tripsData.map((item) => {
       if (data.tripUpdated.id === item.id) {
         return data.tripUpdated;
       }
       return item;
-    });
+    }); */
 
-    setTripsData(tripsUpdated);
+    //setTripsData(tripsUpdated);
     setShowModal(false);
   };
 
@@ -65,11 +73,7 @@ const Reschedule = ({ setShowModal }) => {
     setSelectedTrip(tripUpdated);
   };
 
-
   console.log('selectedTrip', selectedTrip);
-
-
-
 
   return (
     <div className="container_reschedule">
@@ -77,7 +81,7 @@ const Reschedule = ({ setShowModal }) => {
       <div className="container_inputs_reschedule">
         <LocationPicker title="Pick Up Location" value={selectedTrip.origin_latitude} inpName="origin_latitude" handleInput={handleInput} />
         <LocationPicker title="Drop Off Location" value={selectedTrip.destination_latitude} inpName="destination_latitude" handleInput={handleInput} />
-        <DatePicker title="Pick Up Date" inpName="pickUpDate" value={selectedTrip.pickUpDate} handleInput={handleInput} />
+        <DatePicker title="Pick Up Date" inpName="date" value={selectedTrip.date} handleInput={handleInput} />
       </div>
 
       <div className="container_button_reschedule">

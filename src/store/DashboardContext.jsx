@@ -8,7 +8,7 @@ export const DashboardProvider = ({ children }) => {
   const [selectedTrip, setSelectedTrip] = useState({
     origin_latitude: '',
     destination_latitude: '',
-    pickUpDate: '',
+    date: '',
     id: '',
   });
   const [tripsData, setTripsData] = useState({});
