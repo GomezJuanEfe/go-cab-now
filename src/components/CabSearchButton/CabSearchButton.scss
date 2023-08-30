@@ -1,7 +1,7 @@
 @import '../../styles/abstract/variables.scss';
 
 .search-button {
-  width: calc(50% - 10px);
+  width: 48%;
   display: flex;
 
   &.modal {
@@ -11,8 +11,9 @@
   button[type="button"] {
     display: inline-block;
     width: 100%;
+    min-height: 25.5px;
     padding: 5px 20px;
-    margin-top: 5px;
+    margin-top: 25px;
     text-align: center;
     font-weight: 700;
     color: $white;
@@ -35,8 +36,9 @@
     }
 
     button[type="button"] {
-      margin-top: 0;
-      padding: 8px 20px;
+      width: 60%;
+      margin-left: 12%;
+      padding: 9px 20px;
       font-size: 1.6rem;
     }
   }
@@ -45,8 +47,7 @@
 @media screen and (min-width: 1000px) {
 
   .search-button {
-    width: 20%;
-    margin-top: 20px;
+    width: 30%;
 
     button {
       margin: 0;
