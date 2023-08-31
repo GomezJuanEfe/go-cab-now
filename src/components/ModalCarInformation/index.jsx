@@ -1,45 +1,47 @@
 import axios from 'axios';
+import { useState } from 'react';
 import './ModalCarInformation.scss';
+import { useNavigate } from 'react-router-dom';
 import DashboardTable from '../DashboardTable';
+import Modal from '../Modal';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const ModalCarInformation = ({
-  selectedCar, dataCars, setModalDelete, setDataCars,
+  selectedCar,
+  dataCars,
+  setDataCars,
+  setModalDelete,
+
 }) => {
-  const fetchCarDeleted = async () => {
+  const [deleteCar, setDeleteCar] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleDeleteCar = async () => {
     try {
-      const res = await axios.delete(
-        `${URL}/api/cars`,
-        selectedCar,
+      await axios.delete(
+        `${URL}/api/cars/${selectedCar.id}`,
         {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+          data: { id: selectedCar.id },
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         },
       );
-      return res;
+
+      const updatedCarList = dataCars.filter((car) => car.id !== selectedCar.id);
+      setDataCars(updatedCarList);
+
+      setModalDelete(false);
+      setModalDelete(false);
+
+      navigate('/user-profile/all-cars');
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleSubmit = async () => {
-    const { data } = await fetchCarDeleted();
-    console.log(data);
-
-    const carDeleted = dataCars.map((deleted) => {
-      if (data.carDeleted.id === deleted.id) {
-        return data.carDeleted;
-      }
-      return deleted;
-    });
-    setDataCars(carDeleted);
-    setModalDelete(false);
-  };
-
   return (
-    <div className="container__inputs_info-car">
+    <div className="container__info-selectedCar">
 
       <DashboardTable>
         <table>
@@ -52,33 +54,41 @@ const ModalCarInformation = ({
             </tr>
           </thead>
           <tbody>
-            {/* {!loading && dataCars.map((car, index) => ( */}
-            {/* <tr key={index}>
+            <tr>
               <td>
-                <img src={car.img} alt="car" />
+                <img src={selectedCar.img} alt="car" />
               </td>
-              <td>{car.car_name}</td>
-              <td>{car.type}</td>
+              <td>{selectedCar.car_name}</td>
+              <td>{selectedCar.type}</td>
               <td>
                 $
-                {car.fare_km}
+                {selectedCar.fare_km}
               </td>
-
             </tr>
-            ))} */}
           </tbody>
         </table>
+        <br />
+        <div className="container_button_delete">
+          <button
+            onClick={() => setDeleteCar(true)}
+            className="terciary-button"
+            type="button"
+          >
+            Delete Car
+          </button>
+        </div>
       </DashboardTable>
 
-      <div className="container_button_delete">
-        <button
-          onSubmit={handleSubmit}
-          className="terciary-button"
-          type="submit"
-        >
-          Delete Car
-        </button>
-      </div>
+      <Modal
+        showModal={deleteCar}
+        handleShowModal={() => setModalDelete(false)}
+      >
+        <h2>You are about to delete your car permanently. Are you sure?</h2>
+        <div className="center">
+          <button className="terciary-button" onClick={handleDeleteCar} type="button">Confirm</button>
+          <button className="terciary-button" type="button" onClick={() => setDeleteCar(false)}>Cancel</button>
+        </div>
+      </Modal>
 
     </div>
   );

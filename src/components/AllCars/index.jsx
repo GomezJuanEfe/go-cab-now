@@ -3,6 +3,7 @@ import './AllCars.scss';
 import axios from 'axios';
 import { FaEdit } from 'react-icons/fa';
 import { AiOutlineDelete } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 import DashboardTitle from '../DashboardTableTitle';
 import DashboardTable from '../DashboardTable';
 import Modal from '../Modal';
@@ -40,20 +41,22 @@ const AllCars = () => {
     fetchCarsData();
   }, []);
 
-  console.log("datacars", dataCars);
-
   const handleShowModalCar = (carInformation) => {
-    if (!modalDelete) {
-      setSelectCar({
-        id: carInformation.id,
-        img: carInformation.img,
-        car_name: carInformation.car_name,
-        type: carInformation.type,
-        fare_km: carInformation.fare_km,
-      });
-    }
-    setModalDelete(!modalDelete);
-    console.log(handleShowModalCar);
+    setSelectCar({
+      id: carInformation.id,
+      img: carInformation.img,
+      car_name: carInformation.car_name,
+      type: carInformation.type,
+      fare_km: carInformation.fare_km,
+    });
+
+    setModalDelete(true);
+  };
+
+  const navigate = useNavigate();
+
+  const handleEditCar = () => {
+    navigate('/user-profile/edit-car');
   };
 
   return (
@@ -86,12 +89,15 @@ const AllCars = () => {
                   </td>
 
                   <td>
-                    <FaEdit className="icon_edit" />
+                    <FaEdit
+                      onClick={() => handleEditCar(selectedCar.id)}
+                      className="icon_edit"
+                    />
                   </td>
 
                   <td>
                     <AiOutlineDelete
-                      onClick={handleShowModalCar}
+                      onClick={() => handleShowModalCar(car)}
                       className="icon_delete"
                     />
                   </td>
@@ -103,8 +109,15 @@ const AllCars = () => {
         </DashboardTable>
       </div>
 
-      <Modal modalDelete={modalDelete} handleShowModal={handleShowModalCar}>
-        <ModalCarInformation />
+      <Modal
+        showModal={modalDelete}
+        handleShowModal={() => setModalDelete(false)}
+      >
+        <ModalCarInformation
+          selectedCar={selectedCar} // Pasa la info car selected
+          setModalDelete={setModalDelete}
+          setDataCars={setDataCars}
+        />
       </Modal>
     </>
   );

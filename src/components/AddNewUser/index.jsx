@@ -16,21 +16,9 @@ const AddNewUser = () => {
       <form className="container__add_form" onSubmit={handleSubmitNewUser}>
 
         <div className="container__add-inputs">
-          <label className="add_label-title"><b>Username</b></label>
-          <br />
-          <input className="inputs__add" type="text" placeholder="Username" />
-        </div>
-
-        <div className="container__add-inputs">
           <label className="add_label-title"><b>First Name</b></label>
           <br />
           <input className="inputs__add" type="text" placeholder="First Name" />
-        </div>
-
-        <div className="container__add-inputs">
-          <label className="add_label-title"><b>Last Name</b></label>
-          <br />
-          <input className="inputs__add" type="text" placeholder="Last Name" />
         </div>
 
         <div className="container__add-inputs">
@@ -55,6 +43,19 @@ const AddNewUser = () => {
           <label className="add_label-title"><b>Email</b></label>
           <br />
           <input className="inputs__add" type="text" placeholder="Email" />
+        </div>
+
+        <div className="container__add-inputs">
+          <label className="add_label-title"><b>Select Role</b></label>
+          <br />
+          <div className="input-group">
+            <select id="car-type" className="select_add">
+              <option>Please choose a role</option>
+              <option>ADMIN</option>
+              <option>USER</option>
+              <option>DRIVER</option>
+            </select>
+          </div>
         </div>
 
         <div className="container__add-inputs">
