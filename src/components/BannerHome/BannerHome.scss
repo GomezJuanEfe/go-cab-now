@@ -1,10 +1,10 @@
 @import '../../styles/abstract/variables';
 
 .banner-container {
-  height: 70vh;
+  height: 90vh;
   min-height: 400px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   background-image: url(../../assets/images/bg.jpg);
   background-position: center center;
@@ -16,6 +16,7 @@
     max-width: 1400px;
     padding-left: 12px;
     padding-right: 12px;
+    padding-bottom: 80px;
 
     color: $white;
 
@@ -51,7 +52,6 @@
 @media screen and (min-width: 768px) {
 
   .banner-container {
-    height: 80vh;
 
     .banner-content {
       margin-left: 24px;
@@ -75,8 +75,6 @@
 
   .banner-container {
     height: 90vh;
-    align-items: flex-end;
-    padding-bottom: 7%;
 
     .banner-content {
       max-width: 1400px;
