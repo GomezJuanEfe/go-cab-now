@@ -10,10 +10,12 @@ import Reschedule from '../Reschedule';
 import { DashboardContext } from '../../store/DashboardContext';
 import { usdFormat } from '../../services/utils';
 import { formatTableDate } from '../../services/DateFormat';
+import { UserContext } from '../../store/UserContext';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const BookingsList = () => {
+  const { userData } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const { setSelectedTrip, tripsData, setTripsData } = useContext(DashboardContext);
@@ -21,9 +23,10 @@ const BookingsList = () => {
   useEffect(() => {
     const fetchTripsdata = async () => {
       setLoading(true);
+      const fetchUrl = userData.role === 'ADMIN' ? `${URL}/api/trips` : `${URL}/api/trips/user-trips`;
       try {
         const { data: { trips } } = await axios.get(
-          `${URL}/api/trips`,
+          fetchUrl,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
