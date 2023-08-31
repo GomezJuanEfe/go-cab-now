@@ -43,16 +43,15 @@ const Reschedule = ({ setShowModal }) => {
 
     console.log('info', info);
 
-    const res = await fetchUpdateTrip(info);
-    console.log('response', res);
-   /*  const tripsUpdated = tripsData.map((item) => {
+    const { data } = await fetchUpdateTrip(info);
+    const tripsUpdated = tripsData.map((item) => {
       if (data.tripUpdated.id === item.id) {
         return data.tripUpdated;
       }
       return item;
-    }); */
+    });
 
-    //setTripsData(tripsUpdated);
+    setTripsData(tripsUpdated);
     setShowModal(false);
   };
 
