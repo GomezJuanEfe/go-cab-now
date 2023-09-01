@@ -3,7 +3,6 @@ import { useState, useContext } from 'react';
 import './ModalCarInformation.scss';
 import { useNavigate } from 'react-router-dom';
 import DashboardTable from '../DashboardTable';
-import Modal from '../Modal';
 import { DashboardContext } from '../../store/DashboardContext';
 
 const URL = import.meta.env.VITE_API_URL;

@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import axios from 'axios';
 import DashboardTitle from '../DashboardTableTitle';
 import './EditCar.scss';
@@ -8,13 +10,42 @@ import Modal from '../Modal';
 const URL = import.meta.env.VITE_API_URL;
 
 const EditCar = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
+  const selectedCarId = queryParams.get('selectedCarId');
+
   const [updateCar, setUpdateCar] = useState(false);
+  const [lodingCarById, setLoadingCarById] = useState(true); //renderizar componente
+  const [carData, setCarData] = useState({}); // pasar por parametro al new component form
+
+  useEffect(() => {
+    const fetchUpdateCar = async () => {
+      setLoadingCarById(true);
+      console.log('selectedCarId:: ', selectedCarId);
+      try {
+        const res = await axios.get(
+          `${URL}/api/cars/single/${selectedCarId}`,
+          {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+          },
+        );
+
+        setCarData(res.data.car);
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUpdateCar(false);
+  }, []);
 
   const handleSubmit = () => {
     setUpdateCar(updateCar);
   };
-
-  return (
+//la logica del form, va ir en el nuevo componente, (recibe como parametro carData)
+  return ( //dividir componente para formulario  y despues de que se realice la petición me lo renderice.
     <>
       <div className="container_edit-car">
 

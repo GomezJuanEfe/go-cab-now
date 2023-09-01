@@ -58,8 +58,9 @@ const AllCars = () => {
 
   const navigate = useNavigate();
 
-  const handleEditCar = () => {
-    navigate('/user-profile/edit-car');
+  const handleEditCar = (selectedCarId) => {
+    console.log('selectedCarId ', selectedCarId);
+    navigate(`/user-profile/edit-car?selectedCarId=${selectedCarId}`);
   };
 
   return (
@@ -93,7 +94,7 @@ const AllCars = () => {
 
                   <td>
                     <FaEdit
-                      onClick={() => handleEditCar(selectedCar.id)}
+                      onClick={() => handleEditCar(car.id)}
                       className="icon_edit"
                     />
                   </td>
