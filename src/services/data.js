@@ -10,7 +10,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'automatic',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 2,
@@ -23,7 +23,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'automatic',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 3,
@@ -36,7 +36,7 @@ const carData = [
       air_conditioner: false,
       transmition: 'manual',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 4,
@@ -49,7 +49,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'automatic',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 5,
@@ -62,7 +62,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'automatic',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 6,
@@ -75,7 +75,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'automatic',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 7,
@@ -88,7 +88,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'automatic',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 8,
@@ -101,7 +101,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'automatic',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 9,
@@ -114,7 +114,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'automatic',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 10,
@@ -127,7 +127,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'manual',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 11,
@@ -140,7 +140,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'automatic',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
   {
     car_id: 12,
@@ -153,7 +153,7 @@ const carData = [
       air_conditioner: true,
       transmition: 'automatic',
     },
-    fare_km: 25,
+    fare_km: 2500,
   },
 ];
 
