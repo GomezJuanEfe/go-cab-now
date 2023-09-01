@@ -5,6 +5,7 @@ export const DashboardContext = createContext();
 export const DashboardProvider = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [showAccess, setShowAccess] = useState(true);
+  const [dataCars, setDataCars] = useState({});
 
   const handleShowAccess = () => {
     setShowAccess(!showAccess);
@@ -20,7 +21,9 @@ console.log(showAccess);
         handleToggleSidebar,
         setShowSidebar,
         handleShowAccess,
-        showAccess
+        showAccess,
+        dataCars,
+        setDataCars
       }}
     >
       {children}

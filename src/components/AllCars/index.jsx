@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './AllCars.scss';
 import axios from 'axios';
 import { FaEdit } from 'react-icons/fa';
@@ -8,13 +8,16 @@ import DashboardTitle from '../DashboardTableTitle';
 import DashboardTable from '../DashboardTable';
 import Modal from '../Modal';
 import ModalCarInformation from '../ModalCarInformation';
+import { DashboardContext } from '../../store/DashboardContext';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const AllCars = () => {
+  const { dataCars, setDataCars } = useContext(DashboardContext);
+
   const [modalDelete, setModalDelete] = useState(false);
+  const [deleteCar, setDeleteCar] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [dataCars, setDataCars] = useState({});
   const [selectedCar, setSelectCar] = useState({
     id: '',
     img: '',
@@ -116,8 +119,18 @@ const AllCars = () => {
         <ModalCarInformation
           selectedCar={selectedCar} // Pasa la info car selected
           setModalDelete={setModalDelete}
-          setDataCars={setDataCars}
+          setDeleteCar={setDeleteCar}
         />
+      </Modal>
+
+      <Modal
+        showModal={deleteCar}
+        handleShowModal={() => setDeleteCar(false)}
+      >
+        <div className="center">
+          <h2>Your car was deleted successfully</h2>
+        </div>
+
       </Modal>
     </>
   );

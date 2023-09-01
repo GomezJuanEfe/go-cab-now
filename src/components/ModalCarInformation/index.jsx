@@ -1,38 +1,37 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import './ModalCarInformation.scss';
 import { useNavigate } from 'react-router-dom';
 import DashboardTable from '../DashboardTable';
 import Modal from '../Modal';
+import { DashboardContext } from '../../store/DashboardContext';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const ModalCarInformation = ({
   selectedCar,
-  dataCars,
-  setDataCars,
   setModalDelete,
-
+  setDeleteCar,
 }) => {
-  const [deleteCar, setDeleteCar] = useState(false);
+  const { dataCars, setDataCars } = useContext(DashboardContext);
 
   const navigate = useNavigate();
 
   const handleDeleteCar = async () => {
+    console.log('info car', selectedCar.id);
     try {
       await axios.delete(
         `${URL}/api/cars/${selectedCar.id}`,
         {
-          data: { id: selectedCar.id },
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         },
       );
 
-      const updatedCarList = dataCars.filter((car) => car.id !== selectedCar.id);
-      setDataCars(updatedCarList);
+      const carsUpdatedDelete = dataCars.filter((item) => item.id !== selectedCar.id);
 
+      setDataCars(carsUpdatedDelete);
       setModalDelete(false);
-      setModalDelete(false);
+      setDeleteCar(true);
 
       navigate('/user-profile/all-cars');
     } catch (error) {
@@ -70,25 +69,23 @@ const ModalCarInformation = ({
         <br />
         <div className="container_button_delete">
           <button
-            onClick={() => setDeleteCar(true)}
+            onClick={handleDeleteCar}
             className="terciary-button"
             type="button"
           >
             Delete Car
           </button>
+
+          <button
+            className="terciary-button"
+            type="button"
+            onClick={() => setDeleteCar(false)}
+          >
+            Cancel
+          </button>
+
         </div>
       </DashboardTable>
-
-      <Modal
-        showModal={deleteCar}
-        handleShowModal={() => setModalDelete(false)}
-      >
-        <h2>You are about to delete your car permanently. Are you sure?</h2>
-        <div className="center">
-          <button className="terciary-button" onClick={handleDeleteCar} type="button">Confirm</button>
-          <button className="terciary-button" type="button" onClick={() => setDeleteCar(false)}>Cancel</button>
-        </div>
-      </Modal>
 
     </div>
   );
