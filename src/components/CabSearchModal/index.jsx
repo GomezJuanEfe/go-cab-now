@@ -9,6 +9,10 @@ import { FormContext } from '../../store/FormContext';
 const CabSearchModal = ({ show, handleModal, children }) => {
   const { tripForm, handleTripForm } = useContext(FormContext);
 
+  const handleSearchButton = () => {
+    handleModal();
+  };
+
   return (
     <div className={`cab-search-modal ${show ? 'show' : ''}`}>
       <div className="modal-content">
@@ -49,15 +53,7 @@ const CabSearchModal = ({ show, handleModal, children }) => {
             modal
           />
 
-          <DatePicker
-            title="Drop off"
-            inpName="dropOffDate"
-            handleInput={handleTripForm}
-            value={tripForm?.dropOffDate}
-            modal
-          />
-
-          <CabSearchButton modal />
+          <CabSearchButton modal handleSearchButton={handleSearchButton} />
 
           <div className="reschedule_button">
             {children}
