@@ -58,9 +58,9 @@ const AllCars = () => {
 
   const navigate = useNavigate();
 
-  const handleEditCar = (selectedCarId) => {
-    console.log('selectedCarId ', selectedCarId);
-    navigate(`/user-profile/edit-car?selectedCarId=${selectedCarId}`);
+  const handleEditCar = () => {
+    console.log('selectedCarId ', selectedCar);
+    navigate(`/user-profile/edit-car/${selectedCar.id}`);
   };
 
   return (
@@ -129,9 +129,8 @@ const AllCars = () => {
         handleShowModal={() => setDeleteCar(false)}
       >
         <div className="center">
-          <h2>Your car was deleted successfully</h2>
+          <h1>Your car was deleted successfully</h1>
         </div>
-
       </Modal>
     </>
   );

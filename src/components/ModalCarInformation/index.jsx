@@ -38,6 +38,10 @@ const ModalCarInformation = ({
     }
   };
 
+  const handleCancelModal = () => {
+    setModalDelete(false);
+  }
+
   return (
     <div className="container__info-selectedCar">
 
@@ -78,7 +82,7 @@ const ModalCarInformation = ({
           <button
             className="terciary-button"
             type="button"
-            onClick={() => setDeleteCar(false)}
+            onClick={handleCancelModal}
           >
             Cancel
           </button>

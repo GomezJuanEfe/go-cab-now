@@ -125,7 +125,7 @@ const SidebarUser = ({ showSidebar, setShowSidebar }) => {
                 >
                   <span>-</span>
                   {' '}
-                  All cars
+                  Cars
                 </li>
                 )
               }
