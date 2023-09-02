@@ -115,7 +115,7 @@ const SidebarUser = ({ showSidebar, setShowSidebar }) => {
             <ul className={`sidebar-menu ${showCab && 'hide'}`}>
               <NavLink to="/user-profile/all-cars">
                 {
-                userData?.role === 'ADMIN'
+                (userData?.role === 'ADMIN' || userData?.role === 'DRIVER')
                 && (
                 <li
                   onClick={() => setShowSidebar(true)}

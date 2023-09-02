@@ -13,27 +13,27 @@ const EditCar = ({ selectedCar }) => {
   const [lodingCarById, setLoadingCarById] = useState(true); // renderizar componente
   const [carData, setCarData] = useState({}); // pasar por parametro al new component form
 
-  const fetchCarById = async () => {
-    setLoadingCarById(true);
-    try {
-      const res = await axios.get(
-        `${URL}/api/cars/single/${selectedCar.id}`,
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        },
-      );
+  // const fetchCarById = async () => {
+  //   setLoadingCarById(true);
+  //   try {
+  //     const res = await axios.get(
+  //       `${URL}/api/cars/single`,
+  //       {
+  //         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+  //       },
+  //     );
 
-      setCarData(res.data.car);
-      setLoadingCarById(false);
-    } catch (error) {
-      console.error(error);
-      setLoadingCarById(false);
-    }
-  };
+  //     setCarData(res.data.car);
+  //     setLoadingCarById(false);
+  //   } catch (error) {
+  //     console.error(error);
+  //     setLoadingCarById(false);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchCarById();
-    lodingCarById();
+    // fetchCarById();
+    // lodingCarById();
   }, []);
 
   // la logica del form, va ir en el nuevo componente, (recibe como parametro carData)

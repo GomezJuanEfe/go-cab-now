@@ -9,11 +9,13 @@ import DashboardTable from '../DashboardTable';
 import Modal from '../Modal';
 import ModalCarInformation from '../ModalCarInformation';
 import { DashboardContext } from '../../store/DashboardContext';
+import { UserContext } from '../../store/UserContext';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const AllCars = () => {
   const { dataCars, setDataCars } = useContext(DashboardContext);
+  const { userData } = useContext(UserContext);
 
   const [modalDelete, setModalDelete] = useState(false);
   const [deleteCar, setDeleteCar] = useState(false);
@@ -25,16 +27,21 @@ const AllCars = () => {
     type: '',
     fare_km: '',
   });
+  console.log('selected car', selectedCar);
 
   useEffect(() => {
     const fetchCarsData = async () => {
       setLoading(true);
 
       try {
-        const { data: { cars } } = await axios.get(`${URL}/api/cars`, {
+        const { data: { cars } } = await axios.get((userData.role === 'ADMIN' ? `${URL}/api/cars` : `${URL}/api/cars/single`), {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
-        setDataCars(cars);
+        if (userData.role === 'ADMIN') {
+          setDataCars(cars);
+        } else {
+          setDataCars([cars]);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -56,11 +63,11 @@ const AllCars = () => {
     setModalDelete(true);
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleEditCar = () => {
-    console.log('selectedCarId ', selectedCar);
-    navigate(`/user-profile/edit-car/${selectedCar.id}`);
+  const handleEditCar = (item) => {
+    setSelectCar(item);
+    // navigate('/user-profile/edit-car');
   };
 
   return (
@@ -80,7 +87,7 @@ const AllCars = () => {
               </tr>
             </thead>
             <tbody>
-              {!loading && dataCars.map((car, index) => (
+              {!loading && dataCars?.map((car, index) => (
                 <tr key={index}>
                   <td>
                     <img src={car.img} alt="car" />
@@ -94,7 +101,7 @@ const AllCars = () => {
 
                   <td>
                     <FaEdit
-                      onClick={() => handleEditCar(car.id)}
+                      onClick={() => handleEditCar(car)}
                       className="icon_edit"
                     />
                   </td>

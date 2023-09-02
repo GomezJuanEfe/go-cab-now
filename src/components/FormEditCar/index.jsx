@@ -4,27 +4,34 @@ import useForm from '../../hooks/useForm';
 
 const URL = import.meta.env.VITE_API_URL;
 
-const FormEditCar = ({ carData, updateCar, setUpdateCar }) => {
-  const { form, handleForm, resetForm } = useForm({
-    id: carData.id,
-    img: carData.img,
-    car_name: carData.car_name,
-    type: carData.type,
-    fare_km: carData.fare_km,
-  });
+const FormEditCar = ({ carData, updateCar, setUpdateCar }) =>
+/*
+  1. Poner estado selectedCar en un contexto
+  2. Llamar selectedCar del contexto en este componente
+  3. Inicializar el formulario con selectedCar
+  4. implementar useNavigate
+*/
 
-  const handleSubmit = (e) => {
-    e.prevenntDefault();
+// const { form, handleForm, resetForm } = useForm({
+//   id: carData.id,
+//   img: carData.img,
+//   car_name: carData.car_name,
+//   type: carData.type,
+//   fare_km: carData.fare_km,
+// });
 
-    axios.patch(`${URL}/api/cars/single`, form, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }),
-    setUpdateCar(updateCar);
-  };
+// const handleSubmit = (e) => {
+//   e.prevenntDefault();
 
-  return (
+//   axios.patch(`${URL}/api/cars/single`, form, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }),
+//   setUpdateCar(updateCar);
+// };
+
+  (
 
     <form
       className="container__add_form"
-      onSubmit={handleSubmit}
+      // onSubmit={handleSubmit}
     >
 
       <div className="container__add-inputs">
@@ -132,6 +139,4 @@ const FormEditCar = ({ carData, updateCar, setUpdateCar }) => {
     </form>
 
   );
-};
-
 export default FormEditCar;
