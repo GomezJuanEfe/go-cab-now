@@ -19,15 +19,19 @@
         border-radius: 5px;
       }
       .status--past{
-        background-color: $blue;
+        background-color: $light-gray;
       }
       .status--cancelled{
         color: $white;
-        background-color: $cancelled-gray
+        background-color: #ff5959
       }
       .status--upcoming{
         color: $white;
-        background-color: $primary-color;
+        background-color: $blue;
+      }
+      .status--completed {
+        color: $white;
+        background-color: #44e66d;
       }
       .reschedule, .cancel{
         cursor: pointer;
