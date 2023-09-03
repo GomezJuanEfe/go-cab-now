@@ -1,12 +1,35 @@
 import React from 'react';
+import DashboardTitle from '../DashboardTableTitle';
+import DashboardTable from '../DashboardTable';
 
-const AllUsers = () => {
-  const styles = {
-    marginLeft: '50px',
-  };
-  return (
-    <div style={styles}>All Users</div>
-  );
-};
+const AllUsers = () => (
+  <div className="table-container">
+    <DashboardTitle title="All Users" />
+    <DashboardTable>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>User</td>
+            <td>Name</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Edit</td>
+            <td>Delete</td>
+          </tr>
+        </tbody>
+      </table>
+    </DashboardTable>
+  </div>
+);
 
 export default AllUsers;
