@@ -8,6 +8,7 @@ const BannerHome = () => (
       <h1>Book Your Cab Now</h1>
       <h3>Rent a Cab with afforable price with Go Cab Now</h3>
 
+      {/*
       <div className="choose-location">
         <label htmlFor="radio-location">
           Different Location
@@ -18,6 +19,7 @@ const BannerHome = () => (
           <input type="radio" name="radio-location" id="radio-same" />
         </label>
       </div>
+      */}
 
       <div className="cab-search-container">
         <CabSearch />
