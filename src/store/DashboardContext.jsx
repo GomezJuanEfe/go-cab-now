@@ -5,6 +5,13 @@ export const DashboardContext = createContext();
 export const DashboardProvider = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [showAccess, setShowAccess] = useState(true);
+  const [selectedTrip, setSelectedTrip] = useState({
+    origin_latitude: '',
+    destination_latitude: '',
+    date: '',
+    id: '',
+  });
+  const [tripsData, setTripsData] = useState({});
 
   const handleShowAccess = () => {
     setShowAccess(!showAccess);
@@ -20,7 +27,11 @@ console.log(showAccess);
         handleToggleSidebar,
         setShowSidebar,
         handleShowAccess,
-        showAccess
+        showAccess,
+        setSelectedTrip,
+        selectedTrip,
+        tripsData,
+        setTripsData
       }}
     >
       {children}
