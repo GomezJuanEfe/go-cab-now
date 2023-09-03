@@ -11,6 +11,7 @@ import { DashboardContext } from '../../store/DashboardContext';
 import { usdFormat } from '../../services/utils';
 import { formatTableDate } from '../../services/DateFormat';
 import { UserContext } from '../../store/UserContext';
+import CompleteTrip from '../CompleteTrip';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -23,7 +24,7 @@ const BookingsList = () => {
   useEffect(() => {
     const fetchTripsdata = async () => {
       setLoading(true);
-      const fetchUrl = userData.role === 'ADMIN' ? `${URL}/api/trips` : `${URL}/api/trips/user-trips`;
+      const fetchUrl = userData.role === 'ADMIN' ? `${URL}/api/trips` : userData.role === 'ADMIN' ? `${URL}/api/trips/user-trips` : `${URL}/api/trips/car-trips`;
       try {
         const { data: { trips } } = await axios.get(
           fetchUrl,
@@ -62,7 +63,13 @@ const BookingsList = () => {
         date: new Date(bookingData.date),
       });
     }
+    setShowModal(!showModal);
+  };
 
+  const handleShowModal = (bookingData) => {
+    if (!showModal) {
+      setSelectedTrip(bookingData);
+    }
     setShowModal(!showModal);
   };
 
@@ -100,9 +107,15 @@ const BookingsList = () => {
                     </span>
                   </td>
                   <td>
-                    <span onClick={() => handleSetShowModal(booking)} className="reschedule">Reschedule</span>
-                    <span> | </span>
-                    <span className="cancel">Cancel</span>
+                    {userData.role === 'DRIVER'
+                      ? <span onClick={() => handleShowModal(booking)} className="complete-trip">Complete Trip</span>
+                      : (
+                        <div>
+                          <span onClick={() => handleSetShowModal(booking)} className="reschedule">Reschedule</span>
+                          <span> | </span>
+                          <span className="cancel">Cancel</span>
+                        </div>
+                      )}
                   </td>
                 </tr>
               ))}
@@ -110,9 +123,20 @@ const BookingsList = () => {
           </table>
         </DashboardTable>
       </div>
-      <Modal showModal={showModal} handleShowModal={handleSetShowModal}>
-        <Reschedule setShowModal={setShowModal} />
-      </Modal>
+      {
+        userData.role === 'DRIVER'
+          ? (
+            <Modal showModal={showModal} handleShowModal={handleShowModal}>
+              <CompleteTrip setShowModal={setShowModal} />
+            </Modal>
+          )
+          : (
+            <Modal showModal={showModal} handleShowModal={handleSetShowModal}>
+              <Reschedule setShowModal={setShowModal} />
+            </Modal>
+          )
+      }
+
     </>
   );
 };

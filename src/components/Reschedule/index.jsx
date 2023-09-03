@@ -22,7 +22,6 @@ const Reschedule = ({ setShowModal }) => {
       const response = await axios.patch(
         `${URL}/api/trips/single`,
         body,
-        //este selectedTrip está quedando con un formato de fecha inválido para la DB
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
