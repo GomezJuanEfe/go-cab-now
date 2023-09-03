@@ -6,6 +6,17 @@ export const DashboardProvider = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [showAccess, setShowAccess] = useState(true);
   const [dataCars, setDataCars] = useState(null);
+  const [selectedCar, setSelectCar] = useState({
+    id: '',
+    img: '',
+    car_name: '',
+    type: '',
+    seats: '',
+    luggage: '',
+    transmition: '',
+    fare_km: '',
+  });
+
 
   const handleShowAccess = () => {
     setShowAccess(!showAccess);
@@ -24,6 +35,8 @@ export const DashboardProvider = ({ children }) => {
         showAccess,
         dataCars,
         setDataCars,
+        selectedCar,
+        setSelectCar
       }}
     >
       {children}

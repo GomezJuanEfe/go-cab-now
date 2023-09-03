@@ -6,13 +6,10 @@ import './EditCar.scss';
 import Modal from '../Modal';
 import FormEditCar from '../FormEditCar';
 
-const URL = import.meta.env.VITE_API_URL;
-
-const EditCar = ({ selectedCar }) => {
+const EditCar = () => {
   const [updateCar, setUpdateCar] = useState(false);
   const [lodingCarById, setLoadingCarById] = useState(true); // renderizar componente
-  const [carData, setCarData] = useState({}); // pasar por parametro al new component form
-
+ 
   // const fetchCarById = async () => {
   //   setLoadingCarById(true);
   //   try {

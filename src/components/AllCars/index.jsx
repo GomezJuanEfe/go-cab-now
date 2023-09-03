@@ -14,19 +14,15 @@ import { UserContext } from '../../store/UserContext';
 const URL = import.meta.env.VITE_API_URL;
 
 const AllCars = () => {
-  const { dataCars, setDataCars } = useContext(DashboardContext);
+  const {
+    dataCars, setDataCars, selectedCar, setSelectCar,
+  } = useContext(DashboardContext);
   const { userData } = useContext(UserContext);
 
   const [modalDelete, setModalDelete] = useState(false);
   const [deleteCar, setDeleteCar] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [selectedCar, setSelectCar] = useState({
-    id: '',
-    img: '',
-    car_name: '',
-    type: '',
-    fare_km: '',
-  });
+
   console.log('selected car', selectedCar);
 
   useEffect(() => {
