@@ -1,13 +1,24 @@
 import './BookingList.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import bookingsData from '../../services/bookings-data';
 import DashboardTable from '../DashboardTable';
 import DashboardTitle from '../DashboardTableTitle';
 import Modal from '../Modal';
 import Reschedule from '../Reschedule';
 
+const URL = import.meta.env.VITE_API_URL;
+
 const BookingsList = () => {
   const [showModal, setShowModal] = useState(true);
+
+  useEffect(() => {
+    axios.get(`${URL}/api/healthcheck`)
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleSetShowModal = () => {
     setShowModal(!showModal);
