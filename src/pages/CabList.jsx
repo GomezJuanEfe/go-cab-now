@@ -4,7 +4,6 @@ import CabSearchBody from '../components/CabSearchBody';
 import CabSearchCarList from '../components/CabSearchCarList';
 import CabSearchFilter from '../components/CabSearchFilter';
 import CabSearchSection from '../components/CabSearchSection';
-import { CarProvider } from '../store/CarContext';
 
 const CabList = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -17,7 +16,7 @@ const CabList = () => {
   };
 
   return (
-    <CarProvider>
+    <>
       <BannerPages pageName="cab search" />
       <CabSearchBody>
         <CabSearchSection
@@ -29,7 +28,7 @@ const CabList = () => {
         />
         <CabSearchCarList />
       </CabSearchBody>
-    </CarProvider>
+    </>
   );
 };
 

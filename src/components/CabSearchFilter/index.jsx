@@ -5,14 +5,15 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useState, useContext } from 'react';
 import CabSearchFilterItem from '../CabSearchFilterItem';
 import PriceSlider from '../PriceSlider';
-import { CarsContext } from '../../store/CarsContext';
+import { CarContext } from '../../store/CarContext';
 
 const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
   const {
     carFilter,
-    handleCarFilter: handleInputChange,
+    handleCarFilter,
     handleQueryString,
-  } = useContext(CarsContext);
+  } = useContext(CarContext);
+
   // handle enter on search bar
   const handleEnter = (e) => {
     if (e.key === 'Enter') handleQueryString();
@@ -50,7 +51,15 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
           <div>
             <BiSearch />
             {' | '}
-            <input type="text" name="filterBar" id="filterBar" value={carFilter.filterBar} placeholder="Search here..." onChange={handleInputChange} onKeyDown={handleEnter} />
+            <input
+              type="text"
+              name="searchInput"
+              id="filterBar"
+              value={carFilter.searchInput}
+              placeholder="Search here..."
+              onChange={(e) => handleCarFilter(e)}
+              onKeyDown={handleEnter}
+            />
           </div>
         </div>
 
@@ -70,31 +79,73 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
             <CabSearchFilterItem itemName="Car Type">
 
               <div className="check-box-container">
-                <input type="checkbox" id="ct-hatchback" name="type" value="Hatchback" onChange={handleInputChange} />
+                <input
+                  type="checkbox"
+                  id="ct-hatchback"
+                  name="type"
+                  value="Hatchback"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="ct-hatchback">Hatchback</label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="ct-mini" name="type" value="Sedan" onChange={handleInputChange} />
+                <input
+                  type="checkbox"
+                  id="ct-mini"
+                  name="type"
+                  value="Sedan"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="ct-mini">Sedan</label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="ct-elec-sedan" name="type" value="Electric Sedan" onChange={handleInputChange} />
+                <input
+                  type="checkbox"
+                  id="ct-elec-sedan"
+                  name="type"
+                  value="Electric Sedan"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="ct-elec-sedan">Electric Sedan</label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="ct-suv" name="type" value="SUV" onChange={handleInputChange} />
+                <input
+                  type="checkbox"
+                  id="ct-suv"
+                  name="type"
+                  value="SUV"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="ct-suv">SUV</label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="ct-van" name="type" value="Van" onChange={handleInputChange} />
+                <input
+                  type="checkbox"
+                  id="ct-van"
+                  name="type"
+                  value="Van"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="ct-van">Van</label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="ct-camper" name="type" value="Camper" onChange={handleInputChange} />
+                <input
+                  type="checkbox"
+                  id="ct-camper"
+                  name="type"
+                  value="Camper"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="ct-camper">Camper</label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="ct-lux-coupe" name="type" value="Luxury Coupe" onChange={handleInputChange} />
+                <input
+                  type="checkbox"
+                  id="ct-lux-coupe"
+                  name="type"
+                  value="Luxury Coupe"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="ct-lux-coupe">Luxury Coupe</label>
               </div>
 
@@ -103,7 +154,13 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
             <CabSearchFilterItem itemName="Star Category">
 
               <div className="check-box-container">
-                <input type="checkbox" id="sc-5" name="starCategory" value="5" onChange={handleInputChange} />
+                <input
+                  type="checkbox"
+                  id="sc-5"
+                  name="starCategory"
+                  value="5"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="sc-5">
                   <AiFillStar />
                   <AiFillStar />
@@ -114,7 +171,13 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
                 </label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="sc-4" name="starCategory" value="4" onChange={handleInputChange} />
+                <input
+                  type="checkbox"
+                  id="sc-4"
+                  name="starCategory"
+                  value="4"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="sc-4">
                   <AiFillStar />
                   <AiFillStar />
@@ -125,7 +188,13 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
                 </label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="sc-3" onChange={handleInputChange} name="starCategory" value="3" />
+                <input
+                  type="checkbox"
+                  id="sc-3"
+                  name="starCategory"
+                  value="3"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="sc-3">
                   <AiFillStar />
                   <AiFillStar />
@@ -136,7 +205,13 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
                 </label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="sc-2" onChange={handleInputChange} name="starCategory" value="2" />
+                <input
+                  type="checkbox"
+                  id="sc-2"
+                  name="starCategory"
+                  value="2"
+                  // onChange={handleInputChange}
+                />
                 <label htmlFor="sc-2">
                   <AiFillStar />
                   <AiFillStar />
@@ -150,17 +225,33 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
             </CabSearchFilterItem>
 
             <CabSearchFilterItem itemName="Price">
-              <PriceSlider priceValues={carFilter.priceRange} setPriceValues={handleInputChange} />
+              <PriceSlider
+                priceValues={[0, 1500]}
+                // priceValues={carFilter.priceRange}
+                // setPriceValues={handleInputChange}
+              />
             </CabSearchFilterItem>
 
             <CabSearchFilterItem itemName="Capacity">
 
               <div className="check-box-container">
-                <input type="checkbox" id="ca-1-5" onChange={handleInputChange} name="capacity" value="1-5" />
+                <input
+                  type="checkbox"
+                  id="ca-1-5"
+                  // onChange={handleInputChange}
+                  name="capacity"
+                  value="1-5"
+                />
                 <label htmlFor="ca-1-5">1-5 passangers</label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="ca-6-10" onChange={handleInputChange} name="capacity" value="6-10" />
+                <input
+                  type="checkbox"
+                  id="ca-6-10"
+                  // onChange={handleInputChange}
+                  name="capacity"
+                  value="6-10"
+                />
                 <label htmlFor="ca-6-10">6-10 passangers</label>
               </div>
 
@@ -169,11 +260,23 @@ const CabSearchFilter = ({ isFilterOpen, handleFilterMenu }) => {
             <CabSearchFilterItem itemName="Car Option">
 
               <div className="check-box-container">
-                <input type="checkbox" id="co-automatic" onChange={handleInputChange} name="carOption" value="automatic" />
+                <input
+                  type="checkbox"
+                  id="co-automatic"
+                  // onChange={handleInputChange}
+                  name="carOption"
+                  value="automatic"
+                />
                 <label htmlFor="co-automatic">automatic</label>
               </div>
               <div className="check-box-container">
-                <input type="checkbox" id="co-manual" onChange={handleInputChange} name="carOption" value="manual" />
+                <input
+                  type="checkbox"
+                  id="co-manual"
+                  // onChange={handleInputChange}
+                  name="carOption"
+                  value="manual"
+                />
                 <label htmlFor="co-manual">manual</label>
               </div>
 

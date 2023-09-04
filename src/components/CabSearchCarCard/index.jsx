@@ -1,5 +1,4 @@
 import './CabSearchCarCard.scss';
-import { NavLink } from 'react-router-dom';
 import { usdFormat, toTitleCase } from '../../services/utils';
 
 const CabSearchCarCard = ({ data, handleSelect }) => (
@@ -44,9 +43,7 @@ const CabSearchCarCard = ({ data, handleSelect }) => (
       </p>
     </div>
     <div className="card__button">
-      <NavLink to="/cab-booking">
-        <button className="secondary-button" type="button" onClick={handleSelect}>Book Now</button>
-      </NavLink>
+      <button className="secondary-button" type="button" onClick={handleSelect}>Book Now</button>
     </div>
   </div>
 );

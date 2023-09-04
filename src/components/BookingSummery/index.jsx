@@ -1,11 +1,11 @@
 import './BookingSummery.scss';
 import { useContext } from 'react';
 import { FormContext } from '../../store/FormContext';
-import { CarsContext } from '../../store/CarsContext';
+import { CarContext } from '../../store/CarContext';
 
 const BookingSummery = () => {
   const { tripForm } = useContext(FormContext);
-  const { selectedCar } = useContext(CarsContext);
+  const { selectedCar } = useContext(CarContext);
 
   return (
     <div className="review-booking">
