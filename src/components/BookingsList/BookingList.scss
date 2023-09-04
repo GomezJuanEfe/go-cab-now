@@ -11,6 +11,14 @@
   -webkit-box-shadow: 0 0 20px rgb(8 21 66 / 5%);
   box-shadow: 0 0 20px rgb(8 21 66 / 5%);
 
+  .add-button{
+    display: flex;
+    align-items: center;
+    span{
+      margin-left: 5px;
+    }
+  }
+
   tbody{
     td{
       .status--past, .status--cancelled, .status--upcoming{
@@ -33,11 +41,11 @@
         color: $white;
         background-color: #44e66d;
       }
-      .reschedule, .cancel{
+      .reschedule, .cancel, .complete-trip{
         cursor: pointer;
         transition: color 0.2s ease-in-out;
       }
-      .reschedule:hover, .cancel:hover{
+      .reschedule:hover, .cancel:hover, .complete-trip:hover{
         color: $primary-color;
       }
     }

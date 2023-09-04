@@ -1,6 +1,6 @@
 const carData = [
   {
-    car_id: 1,
+    car_id: 'clm0umzcs0000tcrff751inoy',
     car_name: 'Ford Fusion',
     car_type: 'Sedan',
     car_img: '/cars/5.png',
@@ -13,7 +13,7 @@ const carData = [
     fare_km: 2500,
   },
   {
-    car_id: 2,
+    car_id: 'clm0umzcs0001tcrf64n478cw',
     car_name: 'Suzuki Vitara',
     car_type: 'SUV',
     car_img: '/cars/6.png',
@@ -26,7 +26,7 @@ const carData = [
     fare_km: 2500,
   },
   {
-    car_id: 3,
+    car_id: 'clm0umzcs0002tcrfybhtzuas',
     car_name: 'Volkswagen Up',
     car_type: 'Hatchback',
     car_img: '/cars/7.png',
@@ -39,7 +39,7 @@ const carData = [
     fare_km: 2500,
   },
   {
-    car_id: 4,
+    car_id: 'clm0umzcs0003tcrfaid5fwlg',
     car_name: 'Honda Accord',
     car_type: 'Sedan',
     car_img: '/cars/8.png',
@@ -52,7 +52,7 @@ const carData = [
     fare_km: 2500,
   },
   {
-    car_id: 5,
+    car_id: 'clm0umzcs0004tcrf1g978i3a',
     car_name: 'Force Traveller',
     car_type: 'Camper',
     car_img: '/cars/9.png',
@@ -65,7 +65,7 @@ const carData = [
     fare_km: 2500,
   },
   {
-    car_id: 6,
+    car_id: 'clm0umzcs0005tcrfhgkuymua',
     car_name: 'Land Rove Evoque',
     car_type: 'SUV',
     car_img: '/cars/10.png',
@@ -78,7 +78,7 @@ const carData = [
     fare_km: 2500,
   },
   {
-    car_id: 7,
+    car_id: 'clm0umzcs0006tcrffkivccc8',
     car_name: 'BMW i8 2018',
     car_type: 'Luxury Coupe',
     car_img: '/cars/11.png',
@@ -104,7 +104,7 @@ const carData = [
     fare_km: 2500,
   },
   {
-    car_id: 9,
+    car_id: 'clm0umzcs0007tcrfxdnh3l60',
     car_name: 'BMW i4',
     car_type: 'Electric Sedan',
     car_img: '/cars/13.png',
@@ -117,7 +117,7 @@ const carData = [
     fare_km: 2500,
   },
   {
-    car_id: 10,
+    car_id: 'clm0umzcs0009tcrfel6hiyih',
     car_name: 'Renault Kwid',
     car_type: 'Hatchback',
     car_img: '/cars/14.png',
@@ -130,7 +130,7 @@ const carData = [
     fare_km: 2500,
   },
   {
-    car_id: 11,
+    car_id: 'clm0umzcs000atcrfi820r6or',
     car_name: 'Seat Leon',
     car_type: 'Hatchback',
     car_img: '/cars/15.png',
@@ -143,7 +143,7 @@ const carData = [
     fare_km: 2500,
   },
   {
-    car_id: 12,
+    car_id: 'clm0umzcs000btcrf83gyvcp7',
     car_name: 'Volkswagen Transporter',
     car_type: 'Van',
     car_img: '/cars/16.png',
