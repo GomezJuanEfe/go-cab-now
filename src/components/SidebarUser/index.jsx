@@ -115,7 +115,7 @@ const SidebarUser = ({ showSidebar, setShowSidebar }) => {
             <ul className={`sidebar-menu ${showCab && 'hide'}`}>
               <NavLink to="/user-profile/all-cars">
                 {
-                userData?.role === 'ADMIN'
+                (userData?.role === 'ADMIN' || userData?.role === 'DRIVER')
                 && (
                 <li
                   onClick={() => setShowSidebar(true)}
@@ -125,12 +125,12 @@ const SidebarUser = ({ showSidebar, setShowSidebar }) => {
                 >
                   <span>-</span>
                   {' '}
-                  All cars
+                  Cars
                 </li>
                 )
               }
               </NavLink>
-              <NavLink to="/user-profile/car-details">
+              <NavLink to="/user-profile/edit-car">
                 <li
                   onClick={() => setShowSidebar(true)}
                   onKeyDown={() => setShowSidebar(true)}
@@ -139,7 +139,7 @@ const SidebarUser = ({ showSidebar, setShowSidebar }) => {
                 >
                   <span>-</span>
                   {' '}
-                  Car&apos;s details
+                  Edit Car
                 </li>
               </NavLink>
               <NavLink to="/user-profile/add-car">

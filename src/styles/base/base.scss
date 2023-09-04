@@ -115,3 +115,17 @@ button[type="button"].terciary-button:hover {
   display: flex;
   justify-content: center;
 }
+
+.icon_edit, .icon_delete {
+  margin: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.icon_delete {
+  color: #ef3f3e;
+}
+
+.icon_edit {
+  color: #4aa4d9;
+}
