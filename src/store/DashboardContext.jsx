@@ -5,6 +5,13 @@ export const DashboardContext = createContext();
 export const DashboardProvider = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [showAccess, setShowAccess] = useState(true);
+  const [selectedTrip, setSelectedTrip] = useState({
+    origin_latitude: '',
+    destination_latitude: '',
+    date: '',
+    id: '',
+  });
+  const [tripsData, setTripsData] = useState({});
   const [dataCars, setDataCars] = useState(null);
   const [selectedCar, setSelectCar] = useState({
     id: '',
@@ -15,13 +22,12 @@ export const DashboardProvider = ({ children }) => {
     luggage: '',
     transmition: '',
     fare_km: '',
-    driver_id: '', //como puedo traer el id del driver
+    driver_id: '',
   });
 
   const handleShowAccess = () => {
     setShowAccess(!showAccess);
   };
-  console.log(showAccess);
   const handleToggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
@@ -33,6 +39,10 @@ export const DashboardProvider = ({ children }) => {
         setShowSidebar,
         handleShowAccess,
         showAccess,
+        setSelectedTrip,
+        selectedTrip,
+        tripsData,
+        setTripsData,
         dataCars,
         setDataCars,
         selectedCar,
