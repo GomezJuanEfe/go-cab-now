@@ -12,14 +12,16 @@ import { usdFormat } from '../../services/utils';
 import { formatTableDate } from '../../services/DateFormat';
 import { UserContext } from '../../store/UserContext';
 import CompleteTrip from '../CompleteTrip';
+import CancelTrip from '../CancelTrip';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const BookingsList = () => {
   const { userData } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
+  const [cancelModal, setCancelModal] = useState(false);
   const [loading, setLoading] = useState(true);
-  const { setSelectedTrip, tripsData, setTripsData } = useContext(DashboardContext);
+  const { setSelectedTrip, tripsData, setTripsData, selectedTrip } = useContext(DashboardContext);
 
   useEffect(() => {
     const fetchTripsdata = async () => {
@@ -66,12 +68,26 @@ const BookingsList = () => {
     setShowModal(!showModal);
   };
 
+  const handleCancelModal = (bookingData) => {
+    if (!cancelModal) {
+      setSelectedTrip({
+        origin_latitude: bookingData.origin_latitude,
+        destination_latitude: bookingData.destination_latitude,
+        id: bookingData.id,
+        date: new Date(bookingData.date),
+      });
+    }
+    setCancelModal(!cancelModal);
+  };
+
   const handleShowModal = (bookingData) => {
     if (!showModal) {
       setSelectedTrip(bookingData);
     }
     setShowModal(!showModal);
   };
+
+  console.log('selectedTrip', selectedTrip);
 
   return (
     <>
@@ -113,7 +129,7 @@ const BookingsList = () => {
                         <div>
                           <span onClick={() => handleSetShowModal(booking)} className="reschedule">Reschedule</span>
                           <span> | </span>
-                          <span className="cancel">Cancel</span>
+                          <span onClick={() => handleCancelModal(booking)} className="cancel">Cancel</span>
                         </div>
                       )}
                   </td>
@@ -131,9 +147,19 @@ const BookingsList = () => {
             </Modal>
           )
           : (
-            <Modal showModal={showModal} handleShowModal={handleSetShowModal}>
-              <Reschedule setShowModal={setShowModal} />
-            </Modal>
+            <div>
+              <Modal showModal={showModal} handleShowModal={handleSetShowModal}>
+                <Reschedule setShowModal={setShowModal} />
+              </Modal>
+              <Modal showModal={cancelModal} handleShowModal={handleCancelModal}>
+                <CancelTrip
+                  origin={selectedTrip.origin_latitude}
+                  destination={selectedTrip.destination_latitude}
+                  date={selectedTrip.date}
+                  setShowModal={setCancelModal}
+                />
+              </Modal>
+            </div>
           )
       }
 
