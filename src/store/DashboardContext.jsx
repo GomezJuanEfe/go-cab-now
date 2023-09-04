@@ -12,11 +12,22 @@ export const DashboardProvider = ({ children }) => {
     id: '',
   });
   const [tripsData, setTripsData] = useState({});
+  const [dataCars, setDataCars] = useState(null);
+  const [selectedCar, setSelectCar] = useState({
+    id: '',
+    img: '',
+    car_name: '',
+    type: '',
+    seats: '',
+    luggage: '',
+    transmition: '',
+    fare_km: '',
+    driver_id: '',
+  });
 
   const handleShowAccess = () => {
     setShowAccess(!showAccess);
   };
-console.log(showAccess);
   const handleToggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
@@ -31,7 +42,11 @@ console.log(showAccess);
         setSelectedTrip,
         selectedTrip,
         tripsData,
-        setTripsData
+        setTripsData,
+        dataCars,
+        setDataCars,
+        selectedCar,
+        setSelectCar
       }}
     >
       {children}
