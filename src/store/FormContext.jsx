@@ -32,12 +32,16 @@ export const FromProvider = ({ children }) => {
     password: '',
   });
 
-  const { form: createNewCar, handleForm: handleCreateNewCar } = useForm({
+  const { form: createNewCar, handleForm: handleCreateNewCar, resetForm: resetCreateCar } = useForm({
     carName: '',
-    uploadImgCar: '',
-    capacity: '',
-    fareKm: '',
-    carType: '',
+    type: '',
+    seats: '',
+    img: '',
+    luggage: '',
+    air_conditioner: '',
+    transmition: '',
+    fare_km: '',
+    driver_id: '',
   });
 
   return (
@@ -54,6 +58,7 @@ export const FromProvider = ({ children }) => {
         handleSignInForm,
         createNewCar,
         handleCreateNewCar,
+        resetCreateCar,
         resetSignInForm,
       }}
     >

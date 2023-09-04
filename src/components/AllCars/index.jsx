@@ -23,8 +23,6 @@ const AllCars = () => {
   const [deleteCar, setDeleteCar] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  console.log('selected car', selectedCar);
-
   useEffect(() => {
     const fetchCarsData = async () => {
       setLoading(true);
@@ -59,17 +57,17 @@ const AllCars = () => {
     setModalDelete(true);
   };
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleEditCar = (item) => {
     setSelectCar(item);
-    // navigate('/user-profile/edit-car');
+    navigate('/user-profile/edit-car');
   };
 
   return (
     <>
       <div className="table-container">
-        <DashboardTitle title="All Cars" />
+        <DashboardTitle title="Cars" />
         <DashboardTable>
           <table>
             <thead>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import './ModalCarInformation.scss';
 import { useNavigate } from 'react-router-dom';
 import DashboardTable from '../DashboardTable';

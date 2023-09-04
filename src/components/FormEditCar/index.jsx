@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-// import { useState } from 'react';
-import { useContext } from 'react';
-// import { FormContext } from '../../store/FormContext';
+import axios from 'axios';
+import { useContext, useState, useEffect } from 'react';
 import { DashboardContext } from '../../store/DashboardContext';
 
 const URL = import.meta.env.VITE_API_URL;
@@ -9,24 +8,52 @@ const URL = import.meta.env.VITE_API_URL;
 const FormEditCar = () => {
   const { selectedCar } = useContext(DashboardContext);
 
-  console.log('data selectedCar', selectedCar);
-  /*
-  1. Poner estado selectedCar en un contexto
-  2. Llamar selectedCar del contexto en este componente
-  3. Inicializar el formulario con selectedCar
-  4. implementar useNavigate
-  */
+  const [updatedData, setUpdatedData] = useState({
+    id: selectedCar.id,
+    car_name: selectedCar.car_name,
+    type: selectedCar.type,
+    seats: selectedCar.seats,
+    luggage: selectedCar.luggage,
+    transmition: selectedCar.transmition,
+    fare_km: selectedCar.fare_km,
+  });
 
-  // const handleSubmit = (e) => {
-  //   e.prevenntDefault();
+  useEffect(() => {
+    setUpdatedData({
+      car_name: selectedCar.car_name,
+      type: selectedCar.type,
+      seats: selectedCar.seats,
+      luggage: selectedCar.luggage,
+      transmition: selectedCar.transmition,
+      fare_km: selectedCar.fare_km,
+    });
+  }, []);
 
-  //   axios.patch(`${URL}/api/cars/single`, form, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }),
-  //   setUpdateCar(updateCar);
-  // };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedData({
+      ...updatedData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmitUpdatedCar = (e) => {
+    e.preventDefault();
+    try {
+      axios.patch(
+        `${URL}/api/cars/single`,
+        updatedData,
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
+      );
+    } catch (error) {
+      console.log('Error', error);
+    }
+  };
 
   return (
 
     <form
+      onSubmit={handleSubmitUpdatedCar}
       className="container__add_form"
     >
 
@@ -37,6 +64,8 @@ const FormEditCar = () => {
           className="inputs__add"
           type="text"
           value={selectedCar.car_name}
+          name="car_name"
+          onChange={handleChange}
           placeholder="Car Name"
         />
       </div>
@@ -48,6 +77,8 @@ const FormEditCar = () => {
           className="inputs__add"
           type="text"
           value={selectedCar.type}
+          name="type"
+          onChange={handleChange}
           placeholder="Car Name"
         />
       </div>
@@ -81,6 +112,8 @@ const FormEditCar = () => {
             className="inputs__add"
             type="number"
             value={selectedCar.seats}
+            name="seats"
+            onChange={handleChange}
             placeholder="Seats"
           />
         </div>
@@ -100,6 +133,8 @@ const FormEditCar = () => {
             className="inputs__add"
             type="number"
             value={selectedCar.luggage}
+            name="luggage"
+            onChange={handleChange}
             placeholder="Luggage"
           />
         </div>
@@ -138,6 +173,8 @@ const FormEditCar = () => {
             className="inputs__add"
             type="text"
             value={selectedCar.transmition}
+            name="transmition"
+            onChange={handleChange}
             placeholder="Mecanic or Automatic"
           />
         </div>
@@ -154,13 +191,21 @@ const FormEditCar = () => {
             className="inputs__add"
             placeholder="Fare/km"
             value={selectedCar.fare_km}
+            name="fare_km"
+            onChange={handleChange}
             type="text"
           />
         </div>
       </div>
 
       <div className="buttons__add">
-        <button type="submit" className="submit_add">Edit</button>
+        <button
+          type="submit"
+          className="submit_add"
+          onClick={handleSubmitUpdatedCar}
+        >
+          Edit
+        </button>
         <button type="submit" className="submit_add">Cancel</button>
       </div>
 
@@ -168,4 +213,5 @@ const FormEditCar = () => {
 
   );
 };
+
 export default FormEditCar;

@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import DashboardTitle from '../DashboardTableTitle';
 import './EditCar.scss';
 import Modal from '../Modal';
@@ -8,45 +7,21 @@ import FormEditCar from '../FormEditCar';
 
 const EditCar = () => {
   const [updateCar, setUpdateCar] = useState(false);
-  const [lodingCarById, setLoadingCarById] = useState(true); // renderizar componente
- 
-  // const fetchCarById = async () => {
-  //   setLoadingCarById(true);
-  //   try {
-  //     const res = await axios.get(
-  //       `${URL}/api/cars/single`,
-  //       {
-  //         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-  //       },
-  //     );
 
-  //     setCarData(res.data.car);
-  //     setLoadingCarById(false);
-  //   } catch (error) {
-  //     console.error(error);
-  //     setLoadingCarById(false);
-  //   }
-  // };
-
-  useEffect(() => {
-    // fetchCarById();
-    // lodingCarById();
-  }, []);
-
-  // la logica del form, va ir en el nuevo componente, (recibe como parametro carData)
-  return ( // dividir componente para formulario  y despues de que se realice la petición me lo renderice.
+  return (
 
     <div className="container_edit-car">
 
       <DashboardTitle
         title="Edit Car"
       />
+
       <FormEditCar />
+
       <Modal
         showModal={updateCar.show}
         handleShowModal={setUpdateCar}
       >
-        <h2>{updateCar.msg}</h2>
         <div className="center">
           <h2>Car have been updated correctly</h2>
         </div>

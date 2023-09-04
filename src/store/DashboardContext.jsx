@@ -15,8 +15,8 @@ export const DashboardProvider = ({ children }) => {
     luggage: '',
     transmition: '',
     fare_km: '',
+    driver_id: '', //como puedo traer el id del driver
   });
-
 
   const handleShowAccess = () => {
     setShowAccess(!showAccess);

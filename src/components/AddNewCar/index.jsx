@@ -1,39 +1,58 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable linebreak-style */
 import axios from 'axios';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import DashboardTitle from '../DashboardTableTitle';
 import './AddNewCar.scss';
-import { FormContext } from '../../store/FormContext';
+import { DashboardContext } from '../../store/DashboardContext';
+import { UserContext } from '../../store/UserContext';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const AddNewCar = () => {
-  const { createNewCar, handleCreateNewCar } = useContext(FormContext);
+  const { selectedCar, setSelectCar } = useContext(DashboardContext);
+  const { userData } = useContext(UserContext);
+  const [drivers, setDrivers] = useState(null);
 
-  const fetchCreateCar = async () => {
+  useEffect(() => {
+    const fetchGetDriversWithoutCars = async () => {
+      try {
+        const { data } = await axios.get(
+          `${URL}/api/users/drivers-without-car`,
+          { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
+        );
+        setDrivers(data.drivers);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (userData.role === 'ADMIN') fetchGetDriversWithoutCars();
+  }, []);
+
+  const fetchCreateCar = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post(
-        `${URL}/api/cars`,
+        (`${URL}/api/cars`,
         {
-          carName: parseInt(createNewCar.carName, 10),
-          type: parseInt(createNewCar.carType, 10),
-          driver_id: selectedCar.car_id, //como me podría traer el id del driver
+          carName: selectedCar.carName,
+          type: selectedCar.carType,
+          seats: selectedCar.seats,
+          luggage: selectedCar.luggage,
+          air_conditioner: selectedCar.air_conditioner,
+          transmition: selectedCar.transmition,
+          fare_km: selectedCar.fare_km,
+          driver_id: '',
         },
         {
           headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsbHNwYzByeTAwMDMyOTI4dHNndGtuZ3EiLCJlbWFpbCI6ImF2QHRlc3QuY29tIiwiaWF0IjoxNjkzMTY3OTI3LCJleHAiOjE2OTMyNTQzMjd9.flI1QzLGaKW8ijAyjoGg893ADlBch8Nb90k7nLZTcvQ',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
-        },
+        }),
       );
-      console.log(response);
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const handleSubmitNewCar = (e) => {
-    console.log(e, handleSubmitNewCar);
   };
 
   return (
@@ -44,7 +63,7 @@ const AddNewCar = () => {
       />
 
       <form
-        onSubmit={handleSubmitNewCar}
+        onSubmit={fetchCreateCar}
         className="container__add_form"
       >
 
@@ -57,10 +76,39 @@ const AddNewCar = () => {
             className="inputs__add"
             type="text"
             placeholder="Car Name"
-            value={createNewCar.carName}
-            onChange={handleCreateNewCar}
+            value={selectedCar.carName}
           />
         </div>
+
+        <div className="container__add-inputs">
+          <label htmlFor="car-type" className="add_label-title"><b>Car Type</b></label>
+          <br />
+          <input
+            className="inputs__add"
+            type="text"
+            value=""
+            name="type"
+            placeholder="Car Type"
+          />
+        </div>
+
+        {drivers
+          && (
+            <div className="container__add-inputs">
+              <label className="add_label-title"><b>Select Drivers</b></label>
+              <br />
+              <div className="input-group">
+                <select id="car-type" className="select_add">
+                  <option>Please select an option</option>
+                  {drivers.map((item) => (
+                    <option>
+                      {`${item.first_name} ${item.last_name}`}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          )}
 
         <div className="container__add-inputs">
           <label className="add_label-title">
@@ -89,7 +137,12 @@ const AddNewCar = () => {
                 <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/seat_e37og3.png" alt="seat" />
               </span>
             </div>
-            <input className="inputs__add" type="number" placeholder="Seats" />
+            <input
+              name=""
+              className="inputs__add"
+              type="number"
+              placeholder="Seats"
+            />
           </div>
 
         </div>
@@ -154,8 +207,19 @@ const AddNewCar = () => {
       </form>
 
       <div className="buttons__add">
-        <button type="submit" className="submit_add">Submit</button>
-        <button type="submit" className="submit_add">Cancel</button>
+        <button
+          type="submit"
+          className="submit_add"
+        >
+          Submit
+        </button>
+        <button
+          type="submit"
+          className="submit_add"
+        >
+          Cancel
+        </button>
+
       </div>
 
     </div>
