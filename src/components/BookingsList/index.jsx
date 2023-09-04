@@ -46,16 +46,6 @@ const BookingsList = () => {
     fetchTripsdata();
   }, []);
 
-  console.log('tripsData', tripsData);
-
-  useEffect(() => {
-    axios.get(`${URL}/api/healthcheck`)
-      .then(({ data }) => {
-        console.log(data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
   const handleSetShowModal = (bookingData) => {
     if (!showModal) {
       setSelectedTrip({
@@ -86,8 +76,6 @@ const BookingsList = () => {
     }
     setShowModal(!showModal);
   };
-
-  console.log('selectedTrip', selectedTrip);
 
   return (
     <>

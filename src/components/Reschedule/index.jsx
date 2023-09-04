@@ -40,8 +40,6 @@ const Reschedule = ({ setShowModal }) => {
       date: pickerDateToDateFormat(selectedTrip.date),
     };
 
-    console.log('info', info);
-
     const { data } = await fetchUpdateTrip(info);
     const tripsUpdated = tripsData.map((item) => {
       if (data.tripUpdated.id === item.id) {
@@ -70,8 +68,6 @@ const Reschedule = ({ setShowModal }) => {
     }
     setSelectedTrip(tripUpdated);
   };
-
-  console.log('selectedTrip', selectedTrip);
 
   return (
     <div className="container_reschedule">

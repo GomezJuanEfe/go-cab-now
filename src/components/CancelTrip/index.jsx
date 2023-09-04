@@ -2,19 +2,19 @@ import React, { useContext } from 'react';
 import './CancelTrip.scss';
 import axios from 'axios';
 import { DashboardContext } from '../../store/DashboardContext';
-import { pickerDateToDateFormat, formatTableDate } from '../../services/DateFormat';
+import { formatTableDate } from '../../services/DateFormat';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const CancelTrip = ({ origin, destination, date, setShowModal }) => {
   const { selectedTrip, tripsData, setTripsData } = useContext(DashboardContext);
 
-  const fetchUpdateTrip = async (body) => {
+  const fetchUpdateTrip = async () => {
     try {
       const response = await axios.patch(
         `${URL}/api/trips/single`,
         {
-          id: body.id,
+          id: selectedTrip.id,
           status: 'CANCELLED',
         },
         {
@@ -23,7 +23,6 @@ const CancelTrip = ({ origin, destination, date, setShowModal }) => {
           },
         },
       );
-      console.log("respuesta", response);
       return response;
     } catch (err) {
       console.log(err);
@@ -31,12 +30,7 @@ const CancelTrip = ({ origin, destination, date, setShowModal }) => {
   };
 
   const handleSubmit = async () => {
-    const info = {
-      ...selectedTrip,
-    };
-
-    const { data } = await fetchUpdateTrip(info);
-    console.log(data);
+    const { data } = await fetchUpdateTrip();
     const tripsUpdated = tripsData.map((item) => {
       if (data.tripUpdated.id === item.id) {
         return data.tripUpdated;
