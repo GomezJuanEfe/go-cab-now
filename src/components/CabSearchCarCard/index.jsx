@@ -1,25 +1,22 @@
 import './CabSearchCarCard.scss';
-import { NavLink } from 'react-router-dom';
-import { usdFormat } from '../../services/utils';
+import { usdFormat, toTitleCase } from '../../services/utils';
 
-const CabSearchCarCard = ({
-  carName, carType, carImg, carDetails, fare, handleSelect,
-}) => (
+const CabSearchCarCard = ({ data, handleSelect }) => (
   <div className="cab-search-card">
     <div className="card__header">
       <div className="card__img">
-        <img src={carImg} alt={`${carName} car`} />
+        <img src={data.img} alt={`${data.car_name} car`} />
       </div>
-      <h6>{carName}</h6>
-      <p>{`(${carType})`}</p>
+      <h6>{data.car_name}</h6>
+      <p>{`(${data.type})`}</p>
     </div>
     <div className="card__details">
       <ul>
         <li>
           <span className="seat-icon" />
-          {`${carDetails.seats} seater`}
+          {`${data.seats} seats`}
         </li>
-        {carDetails.air_conditioner
+        {data.air_conditioner
           ? (
             <li>
               <span className="ac-icon" />
@@ -29,11 +26,11 @@ const CabSearchCarCard = ({
           : <li />}
         <li>
           <span className="luggage-icon" />
-          {`${carDetails.luggage} luggage`}
+          {`${data.luggage} luggage`}
         </li>
         <li>
           <span className="trans-icon" />
-          {carDetails.transmition}
+          {toTitleCase(data.transmition)}
         </li>
       </ul>
     </div>
@@ -42,13 +39,11 @@ const CabSearchCarCard = ({
       <p>
         Fare/km:
         {' '}
-        <span>{`$${fare}`}</span>
+        <span>{`$${data.fare_km}`}</span>
       </p>
     </div>
     <div className="card__button">
-      <NavLink to="/cab-booking">
-        <button className="secondary-button" type="button" onClick={handleSelect}>Book Now</button>
-      </NavLink>
+      <button className="secondary-button" type="button" onClick={handleSelect}>Book Now</button>
     </div>
   </div>
 );

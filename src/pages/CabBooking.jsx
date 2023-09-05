@@ -1,9 +1,9 @@
 import ContactDetails from '../components/ContactDetails';
-import BannerPages from '../components/BannerPages'
+import BannerPages from '../components/BannerPages';
 
 const CabBooking = () => (
   <>
-    <BannerPages pageName="cab booking"/>
+    <BannerPages pageName="cab booking" />
     <ContactDetails />
   </>
 );
