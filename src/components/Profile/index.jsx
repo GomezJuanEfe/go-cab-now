@@ -120,7 +120,7 @@ const Profile = () => {
             <div className="container__inputs_profile">
               <label htmlFor="container__inputs_label"><b>Contact Number</b></label>
               <br />
-              <input className="inputs__profile" type="number" value={form.phone || ''} placeholder="Contact Number" name="phone" onChange={handleForm} />
+              <input className="inputs__profile" type="text" value={form.phone || ''} placeholder="Contact Number" name="phone" onChange={handleForm} />
             </div>
 
             <div className="container__inputs_profile">
