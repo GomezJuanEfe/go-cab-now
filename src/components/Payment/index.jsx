@@ -14,7 +14,7 @@ import '../FormTemplate/FormTemplate.scss';
 import { PaymentContext } from '../../store/PaymentContext';
 import { checkForm } from '../../services/utils';
 import { FormContext } from '../../store/FormContext';
-import { CarsContext } from '../../store/CarsContext';
+import { CarContext } from '../../store/CarContext';
 import { pickerDateToDateFormat } from '../../services/DateFormat';
 
 const URL = import.meta.env.VITE_API_URL;
@@ -24,7 +24,7 @@ const Payment = () => {
   const [activeForm, setActiveForm] = useState('Debit Card'); // CreditCard || DebitCard || Bank || Wallet
 
   const { tripForm } = useContext(FormContext);
-  const { selectedCar } = useContext(CarsContext);
+  const { selectedCar } = useContext(CarContext);
 
   const dateFormated = pickerDateToDateFormat(tripForm.pickUpDate);
 
@@ -43,7 +43,7 @@ const Payment = () => {
         {
           origin_latitude: tripForm.pickUpLoc,
           destination_latitude: tripForm.dropOffLoc,
-          car_id: selectedCar.car_id,
+          car_id: selectedCar.id,
           total: 120000,
           date: dateFormated,
         },

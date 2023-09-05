@@ -21,7 +21,7 @@
 
   tbody{
     td{
-      .status--past, .status--cancelled, .status--upcoming{
+      .status--past, .status--cancelled, .status--upcoming, .status--completed {
         color: $white;
         padding: 4px 8px;
         border-radius: 5px;
@@ -31,7 +31,7 @@
       }
       .status--cancelled{
         color: $white;
-        background-color: #ff5959
+        background-color: #DB4437
       }
       .status--upcoming{
         color: $white;
@@ -39,7 +39,7 @@
       }
       .status--completed {
         color: $white;
-        background-color: #44e66d;
+        background-color: #0F9D58;
       }
       .reschedule, .cancel, .complete-trip{
         cursor: pointer;
