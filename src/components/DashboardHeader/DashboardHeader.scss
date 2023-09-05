@@ -72,6 +72,7 @@
           opacity: 0;
           transition: opacity 0.5s ease, transform 0.5s ease;
           transform: translateY(-10px);
+          pointer-events: none;
         }
       }
       .profile-nav:hover .profile-hovercard{

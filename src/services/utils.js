@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 const toTitleCase = (str) => {
   const response = [];
-  str.split(' ').forEach((item) => {
+  str.toLowerCase().split(' ').forEach((item) => {
     response.push(item.charAt(0).toUpperCase() + item.slice(1));
   });
   return response.join(' ');
