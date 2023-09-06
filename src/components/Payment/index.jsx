@@ -2,6 +2,7 @@
 import './Payment.scss';
 import { NavLink } from 'react-router-dom';
 import { useContext, useState } from 'react';
+import axios from 'axios';
 import FormTemplate from '../FormTemplate';
 import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
@@ -12,10 +13,20 @@ import MyWallet from '../MyWallet';
 import '../FormTemplate/FormTemplate.scss';
 import { PaymentContext } from '../../store/PaymentContext';
 import { checkForm } from '../../services/utils';
+import { FormContext } from '../../store/FormContext';
+import { CarContext } from '../../store/CarContext';
+import { pickerDateToDateFormat } from '../../services/DateFormat';
+
+const URL = import.meta.env.VITE_API_URL;
 
 const Payment = () => {
   const [active, setActive] = useState(undefined);
   const [activeForm, setActiveForm] = useState('Debit Card'); // CreditCard || DebitCard || Bank || Wallet
+
+  const { tripForm } = useContext(FormContext);
+  const { selectedCar } = useContext(CarContext);
+
+  const dateFormated = pickerDateToDateFormat(tripForm.pickUpDate);
 
   const {
     debitCardForm,
@@ -25,13 +36,36 @@ const Payment = () => {
     resetGeneralForm,
   } = useContext(PaymentContext);
 
+  const fetchCreateTrip = async () => {
+    try {
+      await axios.post(
+        `${URL}/api/trips`,
+        {
+          origin_latitude: tripForm.pickUpLoc,
+          destination_latitude: tripForm.dropOffLoc,
+          car_id: selectedCar.id,
+          total: 120000,
+          date: dateFormated,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleFormChange = () => {
     resetGeneralForm();
     setActiveForm(activeForm);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchCreateTrip();
   };
 
   return (
@@ -173,11 +207,16 @@ const Payment = () => {
 
               </div>
               <div className="payment-btn">
-                {checkForm(debitCardForm)
+                <button
+                  type="submit"
+                  className="btn_payment"
+                >
+                  MAKE PAYMENT
+                </button>
+                {/* {checkForm(debitCardForm)
                   ? (
                     <NavLink to="/success">
                       <button
-                        onSubmit={handleSubmit}
                         type="submit"
                         className="btn_payment"
                       >
@@ -188,14 +227,13 @@ const Payment = () => {
                   : (
                     <NavLink to="/failedpage">
                       <button
-                        onSubmit={handleSubmit}
                         type="submit"
                         className="btn_payment"
                       >
                         MAKE PAYMENT
                       </button>
                     </NavLink>
-                  )}
+                  )} */}
               </div>
 
             </form>

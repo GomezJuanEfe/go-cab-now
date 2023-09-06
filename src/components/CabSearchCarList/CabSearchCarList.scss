@@ -8,36 +8,6 @@
     flex-flow: column wrap;
     gap: 20px;
   }
-
-  ul.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  li.pagination__item {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $black;
-    background-color: $white;
-    box-shadow: 0 0 8px $medium-gray;
-    cursor: pointer;
-
-    &.active {
-      color: $white;
-      background-color: $primary-color ;
-    }
-    &.disabled {
-      pointer-events: none;
-      opacity: 0;
-    }
-  }
-
 }
 
 @media screen and (min-width: 768px) {
