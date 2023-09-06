@@ -9,6 +9,7 @@ import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
 import advertise from '../../assets/images/advertise.jpg';
 import { UserContext } from '../../store/UserContext';
+import { FormContext } from '../../store/FormContext';
 
 const URL = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -22,14 +23,8 @@ const ContactDetails = () => {
   const [loading, setLoading] = useState(true);
   const [phone, setPhone] = useState('');
   const { userData } = useContext(UserContext);
-  const [contactForm, setContactForm] = useState({
-    firstName: '',
-    lastName: '',
-    emailAddress: '',
-    contactPhone: '',
-    specialRequest: '',
-    promoCode: '',
-  });
+  const { contactForm, setContactForm } = useContext(FormContext);
+
   contactForm.contactPhone = phone;
 
   useEffect(() => {
