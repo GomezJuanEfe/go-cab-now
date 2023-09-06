@@ -29,32 +29,32 @@ const AddNewCar = () => {
     if (userData.role === 'ADMIN') fetchGetDriversWithoutCars();
   }, []);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSelectCar({
+      ...selectedCar,
+      [name]: value,
+    });
+  };
+
   const fetchCreateCar = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
         (`${URL}/api/cars`,
-        {
-          carName: selectedCar.carName,
-          type: selectedCar.carType,
-          seats: selectedCar.seats,
-          luggage: selectedCar.luggage,
-          air_conditioner: selectedCar.air_conditioner,
-          transmition: selectedCar.transmition,
-          fare_km: selectedCar.fare_km,
-          driver_id: '',
-        },
+        selectedCar,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         }),
       );
+      // return response;
+      console.log('response', response);
     } catch (err) {
       console.log(err);
     }
   };
-
   return (
     <div className="container__add">
 
@@ -71,12 +71,12 @@ const AddNewCar = () => {
           <label className="add_label-title"><b>Car Name</b></label>
           <br />
           <input
-            id="carName"
-            name="carName"
+            name="car_name"
             className="inputs__add"
             type="text"
             placeholder="Car Name"
-            value={selectedCar.carName}
+            value={selectedCar.car_name}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -86,7 +86,8 @@ const AddNewCar = () => {
           <input
             className="inputs__add"
             type="text"
-            value=""
+            value={selectedCar.type}
+            onChange={handleInputChange}
             name="type"
             placeholder="Car Type"
           />
@@ -142,6 +143,8 @@ const AddNewCar = () => {
               className="inputs__add"
               type="number"
               placeholder="Seats"
+              value={selectedCar.seats}
+              onChange={handleInputChange}
             />
           </div>
 
@@ -156,7 +159,13 @@ const AddNewCar = () => {
                 <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273257/samples/ICONS_CAR_EDIT/luggage_vqprta.png" alt="luggage" />
               </span>
             </div>
-            <input className="inputs__add" type="number" placeholder="Luggage" />
+            <input
+              className="inputs__add"
+              type="number"
+              onChange={handleInputChange}
+              value={selectedCar.luggage}
+              placeholder="Luggage"
+            />
           </div>
 
         </div>
@@ -189,7 +198,13 @@ const AddNewCar = () => {
                 <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/settings_wijv7z.png" alt="transmition" />
               </span>
             </div>
-            <input className="inputs__add" type="text" placeholder="Mecanic or Automatic" />
+            <input
+              className="inputs__add"
+              type="text"
+              onChange={handleInputChange}
+              value={selectedCar.transmition}
+              placeholder="Mecanic or Automatic"
+            />
           </div>
         </div>
 
@@ -200,27 +215,34 @@ const AddNewCar = () => {
             <div className="container__span">
               <span className="input-group-text">$</span>
             </div>
-            <input className="inputs__add" placeholder="20" type="text" />
+            <input
+              className="inputs__add"
+              placeholder="20"
+              onChange={handleInputChange}
+              value={selectedCar.fare_km}
+              type="number"
+            />
           </div>
         </div>
 
+        <div className="buttons__add">
+          <button
+            type="submit"
+            className="submit_add"
+            onClick={fetchCreateCar}
+          >
+            Submit
+          </button>
+          <button
+            type="submit"
+            className="submit_add"
+          >
+            Cancel
+          </button>
+
+        </div>
+
       </form>
-
-      <div className="buttons__add">
-        <button
-          type="submit"
-          className="submit_add"
-        >
-          Submit
-        </button>
-        <button
-          type="submit"
-          className="submit_add"
-        >
-          Cancel
-        </button>
-
-      </div>
 
     </div>
   );

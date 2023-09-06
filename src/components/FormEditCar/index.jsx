@@ -12,6 +12,7 @@ const FormEditCar = () => {
     id: selectedCar.id,
     car_name: selectedCar.car_name,
     type: selectedCar.type,
+    img: selectedCar.img,
     seats: selectedCar.seats,
     luggage: selectedCar.luggage,
     transmition: selectedCar.transmition,
@@ -20,8 +21,10 @@ const FormEditCar = () => {
 
   useEffect(() => {
     setUpdatedData({
+      id: selectedCar.id,
       car_name: selectedCar.car_name,
       type: selectedCar.type,
+      img: selectedCar.img,
       seats: selectedCar.seats,
       luggage: selectedCar.luggage,
       transmition: selectedCar.transmition,
@@ -36,12 +39,13 @@ const FormEditCar = () => {
       [name]: value,
     });
   };
+  console.log("updatedData", updatedData);
 
   const handleSubmitUpdatedCar = (e) => {
     e.preventDefault();
     try {
       axios.patch(
-        `${URL}/api/cars/single`,
+        `${URL}/api/cars/${selectedCar.id}`,
         updatedData,
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
       );
@@ -63,7 +67,7 @@ const FormEditCar = () => {
         <input
           className="inputs__add"
           type="text"
-          value={selectedCar.car_name}
+          value={updatedData.car_name}
           name="car_name"
           onChange={handleChange}
           placeholder="Car Name"
@@ -76,11 +80,21 @@ const FormEditCar = () => {
         <input
           className="inputs__add"
           type="text"
-          value={selectedCar.type}
+          value={updatedData.type}
           name="type"
           onChange={handleChange}
           placeholder="Car Name"
         />
+      </div>
+
+      <div className="container__add-inputs">
+        <span>
+          <b>Current Image</b>
+          <br />
+          <div className="container_img_update">
+            <img src={selectedCar.img} alt="" />
+          </div>
+        </span>
       </div>
 
       <div className="container__add-inputs">
@@ -111,7 +125,7 @@ const FormEditCar = () => {
           <input
             className="inputs__add"
             type="number"
-            value={selectedCar.seats}
+            value={updatedData.seats}
             name="seats"
             onChange={handleChange}
             placeholder="Seats"
@@ -132,7 +146,7 @@ const FormEditCar = () => {
           <input
             className="inputs__add"
             type="number"
-            value={selectedCar.luggage}
+            value={updatedData.luggage}
             name="luggage"
             onChange={handleChange}
             placeholder="Luggage"
@@ -172,7 +186,7 @@ const FormEditCar = () => {
           <input
             className="inputs__add"
             type="text"
-            value={selectedCar.transmition}
+            value={updatedData.transmition}
             name="transmition"
             onChange={handleChange}
             placeholder="Mecanic or Automatic"
@@ -190,7 +204,7 @@ const FormEditCar = () => {
           <input
             className="inputs__add"
             placeholder="Fare/km"
-            value={selectedCar.fare_km}
+            value={updatedData.fare_km}
             name="fare_km"
             onChange={handleChange}
             type="text"
