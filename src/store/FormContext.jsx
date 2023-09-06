@@ -11,15 +11,6 @@ export const FromProvider = ({ children }) => {
     dropOffDate: '',
   });
 
-  const { form: contactForm, handleForm: handleContactForm } = useForm({
-    firstName: '',
-    lastName: '',
-    emailAddress: '',
-    contactPhone: '',
-    specialRequest: '',
-    promoCode: '',
-  });
-
   const { form: loginForm, handleForm: handleLoginForm, resetForm: resetLoginForm } = useForm({
     email: '',
     password: '',
@@ -49,8 +40,6 @@ export const FromProvider = ({ children }) => {
       value={{
         tripForm,
         handleTripForm,
-        contactForm,
-        handleContactForm,
         loginForm,
         handleLoginForm,
         resetLoginForm,
