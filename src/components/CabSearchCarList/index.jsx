@@ -1,79 +1,49 @@
-import { useContext } from 'react';
 import './CabSearchCarList.scss';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Pagination from '../Pagination';
+import { CarContext } from '../../store/CarContext';
 import CabSearchCarCard from '../CabSearchCarCard';
-import { CarsContext } from '../../store/CarsContext';
 
 const CabSearchCarList = () => {
   const {
-    carsData, carsError, carsIsLoading, setCarPageIndex, carPageIndex, carPages, handleSelectCar,
-  } = useContext(CarsContext);
-  if (carsError) return <div>Failed to load</div>;
-  if (carsIsLoading) return <div>Loading...</div>;
+    data,
+    error,
+    isLoading,
+    cablistIndexPage,
+    setcablistIndexPage,
+    setSelectedCar,
+  } = useContext(CarContext);
 
-  const generatePagination = (pages) => (
-    Array.from({ length: pages }, (_, index) => index + 1)
-  );
+  const navigate = useNavigate();
+
+  const handleSelectCar = (item) => {
+    setSelectedCar(item);
+    navigate('/cab-booking');
+    window.scroll({ top: '0', behavior: 'smooth' });
+  };
+
+  if (error) return <div>Failed to load</div>;
+  if (isLoading) return <div>Loading...</div>;
+
   return (
-    <div className="cab-search-list">
+    <div className="cab-search-list" id="main">
       <div className="list-container">
         {
-          carsData.result.map((item) => (
+          data.response.cars.map((item) => (
             <CabSearchCarCard
-              key={item.car_id}
-              carName={item.car_name}
-              carType={item.car_type}
-              carImg={item.car_img}
-              carDetails={item.car_details}
-              fare={item.fare_km}
+              key={item.id}
+              data={item}
               handleSelect={() => handleSelectCar(item)}
             />
           ))
         }
       </div>
-      <ul className="pagination">
-        {/* Previus arrow */}
-        {
-          carPages > 1
-            ? (
-              <li
-                className={`pagination__item ${carPageIndex === 1 ? 'disabled' : ''}`}
-                onClick={() => setCarPageIndex(carPageIndex - 1)}
-                onKeyDown={() => setCarPageIndex(carPageIndex - 1)}
-                role="menuitem"
-              >
-                «
-              </li>
-            ) : ''
-        }
-        {
-          generatePagination(carPages).map((index) => (
-            <li
-              key={index}
-              className={`pagination__item ${carPageIndex === index ? 'active' : ''}`}
-              onClick={() => setCarPageIndex(index)}
-              onKeyDown={() => setCarPageIndex(index)}
-              role="menuitem"
-            >
-              {index}
-            </li>
-          ))
-        }
-        {/* Next Arrow */}
-        {
-          carPages > 1
-            ? (
-              <li
-                className={`pagination__item ${carPageIndex === carPages ? 'disabled' : ''}`}
-                onClick={() => setCarPageIndex(carPageIndex + 1)}
-                onKeyDown={() => setCarPageIndex(carPageIndex + 1)}
-                role="menuitem"
-              >
-                »
-              </li>
-            )
-            : ''
-        }
-      </ul>
+      <Pagination
+        num={data.response.pageInfo.totalPages}
+        pageIndex={cablistIndexPage}
+        setPageIndex={setcablistIndexPage}
+      />
     </div>
   );
 };

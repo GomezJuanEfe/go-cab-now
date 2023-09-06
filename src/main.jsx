@@ -5,7 +5,7 @@ import router from './router';
 import { FromProvider } from './store/FormContext';
 import './index.scss';
 import { PaymentProvider } from './store/PaymentContext';
-import { CarsProvider } from './store/CarsContext';
+import { CarProvider } from './store/CarContext';
 import { DashboardProvider } from './store/DashboardContext';
 import { UserProvider } from './store/UserContext';
 
@@ -13,13 +13,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
   <FromProvider>
     <PaymentProvider>
-      <CarsProvider>
+      <CarProvider>
         <DashboardProvider>
           <UserProvider>
             <RouterProvider router={router} />
           </UserProvider>
         </DashboardProvider>
-      </CarsProvider>
+      </CarProvider>
     </PaymentProvider>
   </FromProvider>,
   // </React.StrictMode>,

@@ -1,0 +1,20 @@
+@import '../../styles/abstract/variables.scss';
+
+
+.cancel-trip{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .info-trip{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    .date{
+      font-size: 12px;
+      @media screen and (min-width: 600px){
+        font-size: 14px;
+      }
+    }
+  }
+}
