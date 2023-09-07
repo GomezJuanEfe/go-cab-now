@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable linebreak-style */
 import axios from 'axios';
@@ -10,10 +11,29 @@ import { UserContext } from '../../store/UserContext';
 const URL = import.meta.env.VITE_API_URL;
 
 const AddNewCar = () => {
-  const { selectedCar, setSelectCar } = useContext(DashboardContext);
+  const { setSelectCar, selectedCar } = useContext(DashboardContext);
   const { userData } = useContext(UserContext);
   const [drivers, setDrivers] = useState(null);
+  const [selectedDriverEmail, setSelectedDriverEmail] = useState({
+    driver_email: '',
+  });
 
+  const [createCar, setCreateCar] = useState({
+    car_name: selectedCar.car_name,
+    type: selectedCar.type,
+    img: selectedCar.img,
+    seats: selectedCar.seats,
+    luggage: selectedCar.luggage,
+    air_conditioner: selectedCar.air_conditioner,
+    transmition: selectedCar.transmition,
+    fare_km: selectedCar.fare_km,
+  });
+
+  console.log('create car', createCar);
+
+  // traer user segun role condicion:
+  // si el role role es admin obj con item requeridos crear objeto.
+  // si es driver objeto DriverEmail
   useEffect(() => {
     const fetchGetDriversWithoutCars = async () => {
       try {
@@ -23,7 +43,7 @@ const AddNewCar = () => {
         );
         setDrivers(data.drivers);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     if (userData.role === 'ADMIN') fetchGetDriversWithoutCars();
@@ -37,22 +57,35 @@ const AddNewCar = () => {
     });
   };
 
+  const handleDriverChange = (e) => {
+    const { driverEmail } = e.target.options[e.target.selectedIndex].dataset;
+    setSelectedDriverEmail(
+      driverEmail,
+    );
+  };
+
   const fetchCreateCar = async (e) => {
     e.preventDefault();
+    console.log(selectedCar);
     try {
       const response = await axios.post(
-        (`${URL}/api/cars`,
-        selectedCar,
+        `${URL}/api/cars`,
+        {
+          car_info: {
+            createCar,
+          },
+          driver_email: selectedDriverEmail,
+        },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
-        }),
+        },
       );
       // return response;
       console.log('response', response);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.error(error);
     }
   };
   return (
@@ -84,11 +117,11 @@ const AddNewCar = () => {
           <label htmlFor="car-type" className="add_label-title"><b>Car Type</b></label>
           <br />
           <input
+            name="type"
             className="inputs__add"
             type="text"
             value={selectedCar.type}
             onChange={handleInputChange}
-            name="type"
             placeholder="Car Type"
           />
         </div>
@@ -99,10 +132,16 @@ const AddNewCar = () => {
               <label className="add_label-title"><b>Select Drivers</b></label>
               <br />
               <div className="input-group">
-                <select id="car-type" className="select_add">
+                <select
+                  name="driver_id"
+                  id="car-type"
+                  className="select_add"
+                  onChange={handleDriverChange}
+                  value={selectedDriverEmail.driver_email}
+                >
                   <option>Please select an option</option>
                   {drivers.map((item) => (
-                    <option>
+                    <option key={item.id} value={item.id} data-driver-email={item.email}>
                       {`${item.first_name} ${item.last_name}`}
                     </option>
                   ))}
@@ -139,7 +178,7 @@ const AddNewCar = () => {
               </span>
             </div>
             <input
-              name=""
+              name="seats"
               className="inputs__add"
               type="number"
               placeholder="Seats"
@@ -160,6 +199,7 @@ const AddNewCar = () => {
               </span>
             </div>
             <input
+              name="luggage"
               className="inputs__add"
               type="number"
               onChange={handleInputChange}
@@ -180,7 +220,13 @@ const AddNewCar = () => {
               </span>
             </div>
 
-            <select id="car-type" className="select_add">
+            <select
+              name="air_conditioner"
+              id="car-type"
+              className="select_add"
+              value={selectedCar.air_conditioner}
+              onChange={handleInputChange}
+            >
               <option>Please choose an option</option>
               <option>True</option>
               <option>False</option>
@@ -198,13 +244,17 @@ const AddNewCar = () => {
                 <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/settings_wijv7z.png" alt="transmition" />
               </span>
             </div>
-            <input
+            <select
+              name="transmition"
               className="inputs__add"
               type="text"
               onChange={handleInputChange}
               value={selectedCar.transmition}
-              placeholder="Mecanic or Automatic"
-            />
+            >
+              <option>Please choose an option</option>
+              <option>MECANIC</option>
+              <option>AUTOMATIC</option>
+            </select>
           </div>
         </div>
 
@@ -216,6 +266,7 @@ const AddNewCar = () => {
               <span className="input-group-text">$</span>
             </div>
             <input
+              name="fare_km"
               className="inputs__add"
               placeholder="20"
               onChange={handleInputChange}
@@ -229,7 +280,6 @@ const AddNewCar = () => {
           <button
             type="submit"
             className="submit_add"
-            onClick={fetchCreateCar}
           >
             Submit
           </button>

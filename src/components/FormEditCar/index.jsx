@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useContext, useState, useEffect } from 'react';
 import { DashboardContext } from '../../store/DashboardContext';
+import './FormEditCar.scss';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -27,6 +28,7 @@ const FormEditCar = () => {
       img: selectedCar.img,
       seats: selectedCar.seats,
       luggage: selectedCar.luggage,
+      air_conditioner: selectedCar.air_conditioner,
       transmition: selectedCar.transmition,
       fare_km: selectedCar.fare_km,
     });
@@ -165,7 +167,12 @@ const FormEditCar = () => {
             </span>
           </div>
 
-          <select id="car-type" className="select_add">
+          <select
+            id="car-type"
+            onChange={handleChange}
+            className="select_add"
+            value={updatedData.air_conditionaer}
+          >
             <option>Please choose an option</option>
             <option>True</option>
             <option>False</option>
