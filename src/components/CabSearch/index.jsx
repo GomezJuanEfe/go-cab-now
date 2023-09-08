@@ -36,7 +36,11 @@ const CabSearch = () => {
             inpName="dropOffLoc"
             placeholder="Drop Off"
             handleInput={handleTripForm}
-            value={tripForm?.dropOffLoc}
+            value={
+              tripForm?.dropOffLoc !== tripForm?.pickUpLoc
+                ? tripForm?.dropOffLoc
+                : ''
+            }
           />
 
           <DatePicker
