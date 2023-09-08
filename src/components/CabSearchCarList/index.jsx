@@ -4,8 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import Pagination from '../Pagination';
 import { CarContext } from '../../store/CarContext';
 import CabSearchCarCard from '../CabSearchCarCard';
+import { FormContext } from '../../store/FormContext';
+import { usdFormat } from '../../services/utils';
+import distanceBetweenCities from '../../services/citiesDistance';
 
 const CabSearchCarList = () => {
+  const { tripForm } = useContext(FormContext);
   const {
     data,
     error,
@@ -13,12 +17,16 @@ const CabSearchCarList = () => {
     cablistIndexPage,
     setcablistIndexPage,
     setSelectedCar,
+    setSelectedCarPrice,
   } = useContext(CarContext);
 
   const navigate = useNavigate();
 
   const handleSelectCar = (item) => {
     setSelectedCar(item);
+    const totalPrice = usdFormat((distanceBetweenCities(tripForm.pickUpLoc, tripForm.dropOffLoc))
+    * item.fare_km * 100);
+    setSelectedCarPrice(totalPrice);
     navigate('/cab-booking');
     window.scroll({ top: '0', behavior: 'smooth' });
   };
@@ -35,6 +43,8 @@ const CabSearchCarList = () => {
               key={item.id}
               data={item}
               handleSelect={() => handleSelectCar(item)}
+              tripTotal={usdFormat((distanceBetweenCities(tripForm.pickUpLoc, tripForm.dropOffLoc))
+                * item.fare_km * 100)}
             />
           ))
         }

@@ -16,6 +16,7 @@ import { checkForm } from '../../services/utils';
 import { FormContext } from '../../store/FormContext';
 import { CarContext } from '../../store/CarContext';
 import { pickerDateToDateFormat } from '../../services/DateFormat';
+import { convertPriceToPennies } from '../../services/utils';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -23,9 +24,10 @@ const Payment = () => {
   const [active, setActive] = useState(undefined);
   const [activeForm, setActiveForm] = useState('Debit Card'); // CreditCard || DebitCard || Bank || Wallet
 
-  const { tripForm } = useContext(FormContext);
-  const { selectedCar } = useContext(CarContext);
+  const { tripForm, contactForm } = useContext(FormContext);
+  const { selectedCar, selectedCarPrice } = useContext(CarContext);
 
+  const priceFormated = convertPriceToPennies(selectedCarPrice) ;
   const dateFormated = pickerDateToDateFormat(tripForm.pickUpDate);
 
   const {
@@ -44,8 +46,13 @@ const Payment = () => {
           origin_latitude: tripForm.pickUpLoc,
           destination_latitude: tripForm.dropOffLoc,
           car_id: selectedCar.id,
-          total: 120000,
+          total: priceFormated,
           date: dateFormated,
+          contact_first_name: contactForm.firstName,
+          contact_last_name: contactForm.lastName,
+          contact_email: contactForm.emailAddress,
+          contact_phone: contactForm.contactPhone,
+          contact_request: contactForm.specialRequest,
         },
         {
           headers: {
@@ -63,7 +70,7 @@ const Payment = () => {
     setActiveForm(activeForm);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     fetchCreateTrip();
   };
