@@ -307,14 +307,14 @@ const AddNewCar = () => {
           <div className="buttons__add">
             <button
               type="submit"
-              className="secondary-button"
+              className="submit_add"
               onClick={() => setCreateModal(true)}
             >
               Submit
             </button>
             <button
-              type="submit"
-              className="terciary-button"
+              type="button"
+              className="submit_add"
             >
               Cancel
             </button>
