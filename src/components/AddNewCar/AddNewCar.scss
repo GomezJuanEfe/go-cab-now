@@ -88,7 +88,8 @@
 
   .buttons__add {
     display: flex;
-    justify-content: flex-end;
+    justify-content:space-around;
+    padding: 10px;
 
     .submit_add {
       margin: 1rem;

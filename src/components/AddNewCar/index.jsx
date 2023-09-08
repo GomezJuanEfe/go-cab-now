@@ -5,7 +5,6 @@ import axios from 'axios';
 import { useContext, useState, useEffect } from 'react';
 import DashboardTitle from '../DashboardTableTitle';
 import './AddNewCar.scss';
-import useForm from '../../hooks/useForm';
 import { UserContext } from '../../store/UserContext';
 import Modal from '../Modal';
 
@@ -28,18 +27,6 @@ const AddNewCar = () => {
     driver_id: '',
   });
 
-  const { form, handleForm, resetForm } = useForm({
-    car_name: createCar.car_name,
-    type: createCar.type,
-    img: createCar.img,
-    seats: createCar.seats,
-    luggage: createCar.luggage,
-    air_conditioner: createCar.air_conditioner,
-    transmition: createCar.transmition,
-    fare_km: createCar.fare_km,
-    driver_id: createCar.driver_id,
-  });
-
   useEffect(() => {
     const fetchGetDriversWithoutCars = async () => {
       try {
@@ -56,6 +43,20 @@ const AddNewCar = () => {
     if (userData.role === 'DRIVER') setSelectedDriverEmail(userData.email);
   }, []);
 
+  const resetForm = () => {
+    setCreateCar({
+      car_name: '',
+      type: '',
+      img: '',
+      seats: '',
+      luggage: '',
+      air_conditioner: '',
+      transmition: '',
+      fare_km: '',
+      driver_id: '',
+    });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCreateCar({
@@ -69,6 +70,11 @@ const AddNewCar = () => {
     setSelectedDriverEmail(
       driverEmail,
     );
+  };
+
+  const handleCloseModal = () => {
+    resetForm();
+    setCreateModal(false);
   };
 
   const fetchCreateCar = async () => {
@@ -325,11 +331,17 @@ const AddNewCar = () => {
       >
         <h2>You were created a new car</h2>
         <div className="center">
-          <button className="secondary-button" type="button" onClick={() => setCreateCar(false)}>Ok</button>
+          <button
+            className="secondary-button"
+            type="button"
+            onClick={handleCloseModal}
+          >
+            Ok
+          </button>
         </div>
       </Modal>
     </>
   );
-}
+};
 
 export default AddNewCar;
