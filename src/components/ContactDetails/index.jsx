@@ -47,8 +47,6 @@ const ContactDetails = () => {
     setContactForm(contactData);
   };
 
-  console.log('contactForm', contactForm);
-
   const handleClickSubmit = async (e) => {
     e.preventDefault();
     const resolve = await trigger(contactForm);
