@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import useForm from '../hooks/useForm';
 
 export const FormContext = createContext();
@@ -10,7 +10,7 @@ export const FromProvider = ({ children }) => {
     pickUpDate: '',
   });
 
-  const { form: contactForm, handleForm: handleContactForm } = useForm({
+  const [contactForm, setContactForm] = useState({
     firstName: '',
     lastName: '',
     emailAddress: '',
@@ -49,7 +49,6 @@ export const FromProvider = ({ children }) => {
         tripForm,
         handleTripForm,
         resetTripForm,
-        contactForm,
         handleContactForm,
         loginForm,
         handleLoginForm,
@@ -60,6 +59,8 @@ export const FromProvider = ({ children }) => {
         handleCreateNewCar,
         resetCreateCar,
         resetSignInForm,
+        contactForm,
+        setContactForm
       }}
     >
       {children}

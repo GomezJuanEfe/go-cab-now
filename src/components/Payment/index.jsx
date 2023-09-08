@@ -48,6 +48,11 @@ const Payment = () => {
           car_id: selectedCar.id,
           total: priceFormated,
           date: dateFormated,
+          contact_first_name: contactForm.firstName,
+          contact_last_name: contactForm.lastName,
+          contact_email: contactForm.emailAddress,
+          contact_phone: contactForm.contactPhone,
+          contact_request: contactForm.specialRequest,
         },
         {
           headers: {
@@ -65,7 +70,7 @@ const Payment = () => {
     setActiveForm(activeForm);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     fetchCreateTrip();
   };
