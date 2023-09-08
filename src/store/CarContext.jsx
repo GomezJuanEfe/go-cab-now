@@ -16,6 +16,7 @@ export const CarProvider = ({ children }) => {
   const [queryString, setQueryString] = useState('');
   const { data, error, isLoading } = useSWR(`${URL}/api/cars/paginated/?page=${cablistIndexPage}&${queryString}`, fetcher);
   const [selectedCar, setSelectedCar] = useState({});
+  const [selectedCarPrice, setSelectedCarPrice] = useState(0);
   const { form: carFilter, handleForm: handleCarFilter } = useForm({
     searchInput: '',
     // type: '',
@@ -65,6 +66,8 @@ export const CarProvider = ({ children }) => {
         handleQueryString,
         selectedCar,
         setSelectedCar,
+        selectedCarPrice,
+        setSelectedCarPrice,
       }}
     >
       {children}

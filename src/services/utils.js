@@ -61,6 +61,15 @@ const usdFormat = (num) => {
   return usd.format(numberWithDecimals);
 };
 
+const convertPriceToPennies = (price) => {
+  price = price.replace(/\$|,/g, '');
+
+  const decimalPrice = parseFloat(price);
+
+  const priceInPennies = decimalPrice * 100;
+  return priceInPennies;
+};
+
 export {
   toTitleCase,
   parseQueryParameters,
@@ -68,4 +77,5 @@ export {
   buildQueryString,
   checkForm,
   usdFormat,
+  convertPriceToPennies,
 };

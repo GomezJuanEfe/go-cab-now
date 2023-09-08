@@ -5,7 +5,7 @@ import { CarContext } from '../../store/CarContext';
 
 const BookingSummery = () => {
   const { tripForm } = useContext(FormContext);
-  const { selectedCar } = useContext(CarContext);
+  const { selectedCar, selectedCarPrice } = useContext(CarContext);
 
   return (
     <div className="review-booking">
@@ -23,10 +23,6 @@ const BookingSummery = () => {
                 <td>{tripForm.pickUpDate.toString().slice(0, 24) || ''}</td>
               </tr>
               <tr>
-                <td>Return Date:</td>
-                <td>{tripForm.dropOffDate.toString().slice(0, 24) || ''}</td>
-              </tr>
-              <tr>
                 <td>Car Type:</td>
                 <td>{selectedCar.car_name || ''}</td>
               </tr>
@@ -35,7 +31,7 @@ const BookingSummery = () => {
           <div className="grand-total">
             <h5>
               Total Fare:
-              <span>$1250</span>
+              <span>{selectedCarPrice}</span>
             </h5>
           </div>
         </div>
