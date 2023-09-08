@@ -4,11 +4,10 @@ import useForm from '../hooks/useForm';
 export const FormContext = createContext();
 
 export const FromProvider = ({ children }) => {
-  const { form: tripForm, handleForm: handleTripForm } = useForm({
+  const { form: tripForm, handleForm: handleTripForm, resetForm: resetTripForm } = useForm({
     pickUpLoc: '',
     dropOffLoc: '',
     pickUpDate: '',
-    dropOffDate: '',
   });
 
   const { form: contactForm, handleForm: handleContactForm } = useForm({
@@ -49,6 +48,7 @@ export const FromProvider = ({ children }) => {
       value={{
         tripForm,
         handleTripForm,
+        resetTripForm,
         contactForm,
         handleContactForm,
         loginForm,

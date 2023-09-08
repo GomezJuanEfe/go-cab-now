@@ -16,6 +16,7 @@ import { checkForm } from '../../services/utils';
 import { FormContext } from '../../store/FormContext';
 import { CarContext } from '../../store/CarContext';
 import { pickerDateToDateFormat } from '../../services/DateFormat';
+import { convertPriceToPennies } from '../../services/utils';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -24,8 +25,9 @@ const Payment = () => {
   const [activeForm, setActiveForm] = useState('Debit Card'); // CreditCard || DebitCard || Bank || Wallet
 
   const { tripForm } = useContext(FormContext);
-  const { selectedCar } = useContext(CarContext);
+  const { selectedCar, selectedCarPrice } = useContext(CarContext);
 
+  const priceFormated = convertPriceToPennies(selectedCarPrice) ;
   const dateFormated = pickerDateToDateFormat(tripForm.pickUpDate);
 
   const {
@@ -44,7 +46,7 @@ const Payment = () => {
           origin_latitude: tripForm.pickUpLoc,
           destination_latitude: tripForm.dropOffLoc,
           car_id: selectedCar.id,
-          total: 120000,
+          total: priceFormated,
           date: dateFormated,
         },
         {
