@@ -24,7 +24,7 @@ const Payment = () => {
   const [active, setActive] = useState(undefined);
   const [activeForm, setActiveForm] = useState('Debit Card'); // CreditCard || DebitCard || Bank || Wallet
 
-  const { tripForm } = useContext(FormContext);
+  const { tripForm, contactForm } = useContext(FormContext);
   const { selectedCar, selectedCarPrice } = useContext(CarContext);
 
   const priceFormated = convertPriceToPennies(selectedCarPrice) ;

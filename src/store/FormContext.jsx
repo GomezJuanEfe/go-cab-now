@@ -49,7 +49,7 @@ export const FromProvider = ({ children }) => {
         tripForm,
         handleTripForm,
         resetTripForm,
-        handleContactForm,
+        setContactForm,
         loginForm,
         handleLoginForm,
         resetLoginForm,
