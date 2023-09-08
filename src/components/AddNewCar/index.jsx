@@ -5,35 +5,41 @@ import axios from 'axios';
 import { useContext, useState, useEffect } from 'react';
 import DashboardTitle from '../DashboardTableTitle';
 import './AddNewCar.scss';
-import { DashboardContext } from '../../store/DashboardContext';
+import useForm from '../../hooks/useForm';
 import { UserContext } from '../../store/UserContext';
+import Modal from '../Modal';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const AddNewCar = () => {
-  const { setSelectCar, selectedCar } = useContext(DashboardContext);
   const { userData } = useContext(UserContext);
+  const [createModal, setCreateModal] = useState(false);
   const [drivers, setDrivers] = useState(null);
-  const [selectedDriverEmail, setSelectedDriverEmail] = useState({
-    driver_email: '',
-  });
-
+  const [selectedDriverEmail, setSelectedDriverEmail] = useState({ driver_email: '' });
   const [createCar, setCreateCar] = useState({
-    car_name: selectedCar.car_name,
-    type: selectedCar.type,
-    img: selectedCar.img,
-    seats: selectedCar.seats,
-    luggage: selectedCar.luggage,
-    air_conditioner: selectedCar.air_conditioner,
-    transmition: selectedCar.transmition,
-    fare_km: selectedCar.fare_km,
+    car_name: '',
+    type: '',
+    img: '',
+    seats: '',
+    luggage: '',
+    air_conditioner: '',
+    transmition: '',
+    fare_km: '',
+    driver_id: '',
   });
 
-  console.log('create car', createCar);
+  const { form, handleForm, resetForm } = useForm({
+    car_name: createCar.car_name,
+    type: createCar.type,
+    img: createCar.img,
+    seats: createCar.seats,
+    luggage: createCar.luggage,
+    air_conditioner: createCar.air_conditioner,
+    transmition: createCar.transmition,
+    fare_km: createCar.fare_km,
+    driver_id: createCar.driver_id,
+  });
 
-  // traer user segun role condicion:
-  // si el role role es admin obj con item requeridos crear objeto.
-  // si es driver objeto DriverEmail
   useEffect(() => {
     const fetchGetDriversWithoutCars = async () => {
       try {
@@ -47,12 +53,13 @@ const AddNewCar = () => {
       }
     };
     if (userData.role === 'ADMIN') fetchGetDriversWithoutCars();
+    if (userData.role === 'DRIVER') setSelectedDriverEmail(userData.email);
   }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setSelectCar({
-      ...selectedCar,
+    setCreateCar({
+      ...createCar,
       [name]: value,
     });
   };
@@ -64,17 +71,26 @@ const AddNewCar = () => {
     );
   };
 
-  const fetchCreateCar = async (e) => {
-    e.preventDefault();
-    console.log(selectedCar);
+  const fetchCreateCar = async () => {
+    const addNewCar = {
+      car_info: {
+        car_name: createCar.car_name,
+        type: createCar.type,
+        img: createCar.img,
+        seats: parseInt(createCar.seats, 10),
+        luggage: parseInt(createCar.luggage, 10),
+        air_conditioner: createCar.air_conditioner === 'true',
+        transmition: createCar.transmition,
+        fare_km: parseInt(createCar.fare_km, 10),
+      },
+      driver_email: selectedDriverEmail,
+    };
+
     try {
       const response = await axios.post(
         `${URL}/api/cars`,
         {
-          car_info: {
-            createCar,
-          },
-          driver_email: selectedDriverEmail,
+          ...addNewCar,
         },
         {
           headers: {
@@ -82,51 +98,57 @@ const AddNewCar = () => {
           },
         },
       );
-      // return response;
-      console.log('response', response);
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchCreateCar();
+  };
+
   return (
-    <div className="container__add">
+    <>
+      <div className="container__add">
 
-      <DashboardTitle
-        title="Add New Car"
-      />
+        <DashboardTitle
+          title="Add New Car"
+        />
 
-      <form
-        onSubmit={fetchCreateCar}
-        className="container__add_form"
-      >
+        <form
+          onSubmit={handleSubmit}
+          className="container__add_form"
+        >
 
-        <div className="container__add-inputs">
-          <label className="add_label-title"><b>Car Name</b></label>
-          <br />
-          <input
-            name="car_name"
-            className="inputs__add"
-            type="text"
-            placeholder="Car Name"
-            value={selectedCar.car_name}
-            onChange={handleInputChange}
-          />
-        </div>
+          <div className="container__add-inputs">
+            <label className="add_label-title"><b>Car Name</b></label>
+            <br />
+            <input
+              name="car_name"
+              className="inputs__add"
+              type="text"
+              placeholder="Car Name"
+              value={createCar.car_name}
+              onChange={handleInputChange}
+            />
+          </div>
 
-        <div className="container__add-inputs">
-          <label htmlFor="car-type" className="add_label-title"><b>Car Type</b></label>
-          <br />
-          <input
-            name="type"
-            className="inputs__add"
-            type="text"
-            value={selectedCar.type}
-            onChange={handleInputChange}
-            placeholder="Car Type"
-          />
-        </div>
+          <div className="container__add-inputs">
+            <label htmlFor="car-type" className="add_label-title"><b>Car Type</b></label>
+            <br />
+            <input
+              name="type"
+              className="inputs__add"
+              type="text"
+              value={createCar.type}
+              onChange={handleInputChange}
+              placeholder="Car Type"
+            />
+          </div>
 
-        {drivers
+          {drivers
           && (
             <div className="container__add-inputs">
               <label className="add_label-title"><b>Select Drivers</b></label>
@@ -150,151 +172,164 @@ const AddNewCar = () => {
             </div>
           )}
 
-        <div className="container__add-inputs">
-          <label className="add_label-title">
-            <b>Upload Car Image here</b>
-          </label>
-          <br />
-          <div className="submit_file">
-            <div className="section__submit_file">
+          <div className="container__add-inputs">
+            <label className="add_label-title">
+              <b>Upload Car Image here</b>
+            </label>
+            <br />
+            <div className="submit_file">
+              <div className="section__submit_file">
+                <input
+                  accept=".jpg, .png"
+                  multiple={false}
+                  type="file"
+                />
+                <i className="icon-cloud-up" />
+                <h4><b>Drop files here or click to upload.</b></h4>
+              </div>
+            </div>
+          </div>
+
+          <div className="container__add-inputs">
+            <label className="add_label-title"><b>Seats</b></label>
+            <br />
+            <div className="input-group">
+              <div className="container__span">
+                <span className="input-group-text">
+                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/seat_e37og3.png" alt="seat" />
+                </span>
+              </div>
               <input
-                accept=".jpg, .png"
-                multiple={false}
-                type="file"
+                name="seats"
+                className="inputs__add"
+                type="number"
+                placeholder="Seats"
+                value={createCar.seats}
+                onChange={handleInputChange}
               />
-              <i className="icon-cloud-up" />
-              <h4><b>Drop files here or click to upload.</b></h4>
             </div>
-          </div>
-        </div>
 
-        <div className="container__add-inputs">
-          <label className="add_label-title"><b>Seats</b></label>
-          <br />
-          <div className="input-group">
-            <div className="container__span">
-              <span className="input-group-text">
-                <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/seat_e37og3.png" alt="seat" />
-              </span>
-            </div>
-            <input
-              name="seats"
-              className="inputs__add"
-              type="number"
-              placeholder="Seats"
-              value={selectedCar.seats}
-              onChange={handleInputChange}
-            />
           </div>
 
-        </div>
-
-        <div className="container__add-inputs">
-          <label className="add_label-title"><b>Luggage</b></label>
-          <br />
-          <div className="input-group">
-            <div className="container__span">
-              <span className="input-group-text">
-                <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273257/samples/ICONS_CAR_EDIT/luggage_vqprta.png" alt="luggage" />
-              </span>
+          <div className="container__add-inputs">
+            <label className="add_label-title"><b>Luggage</b></label>
+            <br />
+            <div className="input-group">
+              <div className="container__span">
+                <span className="input-group-text">
+                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273257/samples/ICONS_CAR_EDIT/luggage_vqprta.png" alt="luggage" />
+                </span>
+              </div>
+              <input
+                name="luggage"
+                className="inputs__add"
+                type="number"
+                onChange={handleInputChange}
+                value={createCar.luggage}
+                placeholder="Luggage"
+              />
             </div>
-            <input
-              name="luggage"
-              className="inputs__add"
-              type="number"
-              onChange={handleInputChange}
-              value={selectedCar.luggage}
-              placeholder="Luggage"
-            />
+
           </div>
 
-        </div>
+          <div className="container__add-inputs">
+            <label className="add_label-title"><b>Air Conditioner</b></label>
+            <br />
+            <div className="input-group">
+              <div className="container__span">
+                <span className="input-group-text">
+                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/snowflake_uqwwpz.png" alt="air" />
+                </span>
+              </div>
 
-        <div className="container__add-inputs">
-          <label className="add_label-title"><b>Air Conditioner</b></label>
-          <br />
-          <div className="input-group">
-            <div className="container__span">
-              <span className="input-group-text">
-                <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/snowflake_uqwwpz.png" alt="air" />
-              </span>
+              <select
+                name="air_conditioner"
+                id="car-type"
+                className="select_add"
+                value={createCar.air_conditioner}
+                onChange={handleInputChange}
+              >
+                <option>Please choose an option</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+
             </div>
+          </div>
 
-            <select
-              name="air_conditioner"
-              id="car-type"
-              className="select_add"
-              value={selectedCar.air_conditioner}
-              onChange={handleInputChange}
+          <div className="container__add-inputs">
+            <label className="add_label-title"><b>Transmition</b></label>
+            <br />
+            <div className="input-group">
+              <div className="container__span">
+                <span className="input-group-text">
+                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/settings_wijv7z.png" alt="transmition" />
+                </span>
+              </div>
+              <select
+                name="transmition"
+                className="inputs__add"
+                type="text"
+                onChange={handleInputChange}
+                value={createCar.transmition}
+              >
+                <option>Please choose an option</option>
+                <option>MANUAL</option>
+                <option>AUTOMATIC</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="container__add-inputs">
+            <label className="add_label-title"><b>Fare/Km</b></label>
+            <br />
+            <div className="input-group">
+              <div className="container__span">
+                <span className="input-group-text">$</span>
+              </div>
+              <input
+                name="fare_km"
+                className="inputs__add"
+                placeholder="20"
+                onChange={handleInputChange}
+                value={createCar.fare_km}
+                type="number"
+              />
+            </div>
+          </div>
+
+          <div className="buttons__add">
+            <button
+              type="submit"
+              className="secondary-button"
+              onClick={() => setCreateModal(true)}
             >
-              <option>Please choose an option</option>
-              <option>True</option>
-              <option>False</option>
-            </select>
-
-          </div>
-        </div>
-
-        <div className="container__add-inputs">
-          <label className="add_label-title"><b>Transmition</b></label>
-          <br />
-          <div className="input-group">
-            <div className="container__span">
-              <span className="input-group-text">
-                <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/settings_wijv7z.png" alt="transmition" />
-              </span>
-            </div>
-            <select
-              name="transmition"
-              className="inputs__add"
-              type="text"
-              onChange={handleInputChange}
-              value={selectedCar.transmition}
+              Submit
+            </button>
+            <button
+              type="submit"
+              className="terciary-button"
             >
-              <option>Please choose an option</option>
-              <option>MECANIC</option>
-              <option>AUTOMATIC</option>
-            </select>
+              Cancel
+            </button>
+
           </div>
+
+        </form>
+
+      </div>
+
+      <Modal
+        showModal={createModal}
+        handleShowModal={() => setCreateModal(false)}
+      >
+        <h2>You were created a new car</h2>
+        <div className="center">
+          <button className="secondary-button" type="button" onClick={() => setCreateCar(false)}>Ok</button>
         </div>
-
-        <div className="container__add-inputs">
-          <label className="add_label-title"><b>Fare/Km</b></label>
-          <br />
-          <div className="input-group">
-            <div className="container__span">
-              <span className="input-group-text">$</span>
-            </div>
-            <input
-              name="fare_km"
-              className="inputs__add"
-              placeholder="20"
-              onChange={handleInputChange}
-              value={selectedCar.fare_km}
-              type="number"
-            />
-          </div>
-        </div>
-
-        <div className="buttons__add">
-          <button
-            type="submit"
-            className="submit_add"
-          >
-            Submit
-          </button>
-          <button
-            type="submit"
-            className="submit_add"
-          >
-            Cancel
-          </button>
-
-        </div>
-
-      </form>
-
-    </div>
+      </Modal>
+    </>
   );
-};
+}
+
 export default AddNewCar;
