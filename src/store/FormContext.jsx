@@ -1,17 +1,16 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import useForm from '../hooks/useForm';
 
 export const FormContext = createContext();
 
 export const FromProvider = ({ children }) => {
-  const { form: tripForm, handleForm: handleTripForm } = useForm({
+  const { form: tripForm, handleForm: handleTripForm, resetForm: resetTripForm } = useForm({
     pickUpLoc: '',
     dropOffLoc: '',
     pickUpDate: '',
-    dropOffDate: '',
   });
 
-  const { form: contactForm, handleForm: handleContactForm } = useForm({
+  const [contactForm, setContactForm] = useState({
     firstName: '',
     lastName: '',
     emailAddress: '',
@@ -32,34 +31,21 @@ export const FromProvider = ({ children }) => {
     password: '',
   });
 
-  const { form: createNewCar, handleForm: handleCreateNewCar, resetForm: resetCreateCar } = useForm({
-    carName: '',
-    type: '',
-    seats: '',
-    img: '',
-    luggage: '',
-    air_conditioner: '',
-    transmition: '',
-    fare_km: '',
-    driver_id: '',
-  });
-
   return (
     <FormContext.Provider
       value={{
         tripForm,
         handleTripForm,
-        contactForm,
-        handleContactForm,
+        resetTripForm,
+        setContactForm,
         loginForm,
         handleLoginForm,
         resetLoginForm,
         signInForm,
         handleSignInForm,
-        createNewCar,
-        handleCreateNewCar,
-        resetCreateCar,
         resetSignInForm,
+        contactForm,
+        setContactForm
       }}
     >
       {children}

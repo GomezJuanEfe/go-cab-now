@@ -1,7 +1,8 @@
 import './CabSearchCarCard.scss';
-import { usdFormat, toTitleCase } from '../../services/utils';
 
-const CabSearchCarCard = ({ data, handleSelect }) => (
+import { toTitleCase } from '../../services/utils';
+
+const CabSearchCarCard = ({ data, handleSelect, tripTotal }) => (
   <div className="cab-search-card">
     <div className="card__header">
       <div className="card__img">
@@ -35,7 +36,9 @@ const CabSearchCarCard = ({ data, handleSelect }) => (
       </ul>
     </div>
     <div className="card__price">
-      <h3>{usdFormat(120000)}</h3>
+      <h3>
+        {tripTotal}
+      </h3>
       <p>
         Fare/km:
         {' '}
