@@ -19,7 +19,6 @@ const Profile = () => {
     loadingUser,
     logOut,
   } = useContext(UserContext);
-  console.log('🚀 ~ file: index.jsx:22 ~ Profile ~ userData:', userData);
 
   const [updateModal, setUpdateModal] = useState({ show: false, msg: '' });
   const [deleteModal, setDeleteModal] = useState(false);
@@ -49,7 +48,7 @@ const Profile = () => {
         setUpdateModal({ show: true, msg: data.message });
       })
       .catch((err) => {
-        setUpdateModal({ show: true, msg: err.response.data.message });
+        setUpdateModal({ show: true, msg: err.message });
       });
   };
 
@@ -76,8 +75,7 @@ const Profile = () => {
       try {
         const { data } = await updateImage(fl, name);
         setUserData({ ...userData, avatar: data.avatar });
-        // Loading...
-        // Abrir modal acá
+        setUpdateModal({ show: true, msg: data.message });
       } catch (error) {
         console.error(error);
       }
@@ -87,7 +85,21 @@ const Profile = () => {
 
   const handleUploadImage = (e) => {
     const { files } = e.target;
-    if (files.length > 0) readFile(e.target.files[0], e.target.files[0].name);
+    if (files.length > 0) readFile(files[0], files[0].name);
+  };
+
+  const handleRemoveImg = async () => {
+    try {
+      const { data } = await axios.patch(
+        `${URL}/api/users/single`,
+        { avatar: '' },
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
+      );
+      setUserData({ ...userData, avatar: data.avatar });
+      setUpdateModal({ show: true, msg: 'Image removed successfully' });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const navigate = useNavigate();
@@ -128,7 +140,7 @@ const Profile = () => {
                 </div>
 
               </div>
-              <button className="terciary-button" type="button">Remove</button>
+              <button className="terciary-button" type="button" onClick={handleRemoveImg}>Remove</button>
             </div>
 
           </div>
