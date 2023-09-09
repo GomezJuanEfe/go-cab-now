@@ -19,6 +19,8 @@ const Profile = () => {
     loadingUser,
     logOut,
   } = useContext(UserContext);
+  const [file, setFile] = useState(null);
+  const [avatar, setAvatar] = useState(null);
 
   const [updateModal, setUpdateModal] = useState({ show: false, msg: '' });
   const [deleteModal, setDeleteModal] = useState(false);
@@ -52,6 +54,39 @@ const Profile = () => {
       });
   };
 
+  const updateImage = async (fl, name) => {
+    const data = new FormData();
+
+    data.append('avatar_img', fl, name);
+    const response = await axios.post(
+      `${URL}/api/users/single`,
+      data,
+      { headers: { 'Content-Type': 'multipart/form-data' } },
+    );
+    return response;
+  };
+
+  const readFile = (fl, name) => {
+    const reader = new FileReader();
+    reader.onload = async () => {
+      try {
+        const res = await updateImage(fl, name);
+        console.log(res);
+        // Aquí recibo la respuesta del backend
+        // Poner loading aquí
+        // setAvatar('setear url de la respuesta');
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    reader.readAsDataURL(fl);
+  };
+
+  const handleUploadImage = (e) => {
+    const { files } = e.target;
+    if (files.length > 0) readFile(e.target.files[0], e.target.files[0].name);
+  };
+
   const navigate = useNavigate();
 
   const handleDeleteAccount = async () => {
@@ -68,35 +103,37 @@ const Profile = () => {
           title="Personal Information"
         />
 
-        <form className="form__profile" onSubmit={handleSubmit}>
-          <div className="personal__info">
-            <div className="personal-info__img">
-              <img src={profile} alt="profile" />
+        <div className="avatar-section form__profile">
+          <h3>Avatar</h3>
+          <div className="avatar-section__body">
+            <div className="avatar-section__img">
+              <img src={avatar || profile} alt="profile" />
             </div>
-            <div className="personal-info__uplode">
-              <p>
-                Max file size is 5MB,Minimum dimension 150x150
-                And Suitable files are .jpg & .png
-                {' '}
-              </p>
-              <div className="uplode-img">
-                <label htmlFor="img">
-                  <i data-feather="upload" />
-                  {' '}
-                  Uploade Image here
-                </label>
-                <input
-                  type="file"
-                  id="img"
-                  className="img_profile"
-                  accept="image/*"
-                />
+            <div className="avatar-section__upload">
+              <div className="upload-img">
+                <div className="upload-btn">
+                  <input
+                    type="file"
+                    id="img"
+                    className="img_profile"
+                    accept="image/*"
+                    onChange={handleUploadImage}
+                  />
+                  <label htmlFor="img">
+                    Upload
+                  </label>
+                </div>
+
               </div>
-              <button className="btn__profile remove_img" type="submit"> Remove Image</button>
+              <button className="terciary-button" type="button">Remove</button>
             </div>
 
           </div>
 
+        </div>
+
+        <form className="form__profile" onSubmit={handleSubmit}>
+          <h3>General</h3>
           <div className="container__form_profile">
 
             <div className="container__inputs_profile">
