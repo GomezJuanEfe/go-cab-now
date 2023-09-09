@@ -104,7 +104,6 @@ const AddNewCar = () => {
           },
         },
       );
-      console.log(response);
     } catch (error) {
       console.error(error);
     }

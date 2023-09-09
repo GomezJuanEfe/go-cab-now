@@ -50,7 +50,6 @@ const FormEditCar = () => {
 
   const handleSubmitUpdatedCar = (e) => {
     e.preventDefault();
-    console.log('updatedData', updatedData);
     try {
       axios.patch(
         `${URL}/api/cars/${selectedCar.id}`,
@@ -59,7 +58,7 @@ const FormEditCar = () => {
       );
       setUpdateModal(true);
     } catch (error) {
-      console.log('Error', error);
+      console.error(error);
     }
   };
 
