@@ -3,7 +3,7 @@ import './Profile.scss';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import profile from '../../assets/images/profile.png';
+import profile from '../../assets/images/profile.jpg';
 
 import DashboardTitle from '../DashboardTableTitle';
 import { UserContext } from '../../store/UserContext';
@@ -19,8 +19,7 @@ const Profile = () => {
     loadingUser,
     logOut,
   } = useContext(UserContext);
-  const [file, setFile] = useState(null);
-  const [avatar, setAvatar] = useState(null);
+  console.log('🚀 ~ file: index.jsx:22 ~ Profile ~ userData:', userData);
 
   const [updateModal, setUpdateModal] = useState({ show: false, msg: '' });
   const [deleteModal, setDeleteModal] = useState(false);
@@ -57,11 +56,16 @@ const Profile = () => {
   const updateImage = async (fl, name) => {
     const data = new FormData();
 
-    data.append('avatar_img', fl, name);
+    data.append('avatar', fl, name);
     const response = await axios.post(
-      `${URL}/api/users/single`,
+      `${URL}/api/users/upload-img`,
       data,
-      { headers: { 'Content-Type': 'multipart/form-data' } },
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      },
     );
     return response;
   };
@@ -70,11 +74,10 @@ const Profile = () => {
     const reader = new FileReader();
     reader.onload = async () => {
       try {
-        const res = await updateImage(fl, name);
-        console.log(res);
-        // Aquí recibo la respuesta del backend
-        // Poner loading aquí
-        // setAvatar('setear url de la respuesta');
+        const { data } = await updateImage(fl, name);
+        setUserData({ ...userData, avatar: data.avatar });
+        // Loading...
+        // Abrir modal acá
       } catch (error) {
         console.error(error);
       }
@@ -107,7 +110,7 @@ const Profile = () => {
           <h3>Avatar</h3>
           <div className="avatar-section__body">
             <div className="avatar-section__img">
-              <img src={avatar || profile} alt="profile" />
+              <img src={userData.avatar || profile} alt="profile" />
             </div>
             <div className="avatar-section__upload">
               <div className="upload-img">

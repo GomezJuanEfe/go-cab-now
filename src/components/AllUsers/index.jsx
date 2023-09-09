@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 import DashboardTitle from '../DashboardTableTitle';
 import DashboardTable from '../DashboardTable';
-import profileImg from '../../assets/images/profile4.jpg';
+import profileImg from '../../assets/images/profile.jpg';
 import Modal from '../Modal';
 import './AllUsers.scss';
 import useForm from '../../hooks/useForm';
