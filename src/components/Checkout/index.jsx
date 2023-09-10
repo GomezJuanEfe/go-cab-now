@@ -13,7 +13,7 @@ import Cvv from '../../assets/icons/cvv.png';
 import { FormContext } from '../../store/FormContext';
 
 const Checkout = ({ totalPrice }) => {
-  const { setSuccessfulPayment, successfulPayment } = useContext(FormContext)
+  const { setSuccessfulPayment } = useContext(FormContext);
   const stripe = useStripe();
   const elements = useElements();
 
