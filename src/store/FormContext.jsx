@@ -19,6 +19,8 @@ export const FromProvider = ({ children }) => {
     promoCode: '',
   });
 
+  const [successfulPayment, setSuccessfulPayment] = useState(false);
+
   const { form: loginForm, handleForm: handleLoginForm, resetForm: resetLoginForm } = useForm({
     email: '',
     password: '',
@@ -60,6 +62,8 @@ export const FromProvider = ({ children }) => {
         resetCreateCar,
         resetSignInForm,
         contactForm,
+        successfulPayment,
+        setSuccessfulPayment,
       }}
     >
       {children}

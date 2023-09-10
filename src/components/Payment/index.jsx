@@ -3,6 +3,9 @@ import './Payment.scss';
 import { NavLink } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import axios from 'axios';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import Checkout from '../Checkout';
 import FormTemplate from '../FormTemplate';
 import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
@@ -12,11 +15,12 @@ import NetBanking from '../NetBanking';
 import MyWallet from '../MyWallet';
 import '../FormTemplate/FormTemplate.scss';
 import { PaymentContext } from '../../store/PaymentContext';
-import { checkForm } from '../../services/utils';
+import { checkForm, convertPriceToPennies } from '../../services/utils';
 import { FormContext } from '../../store/FormContext';
 import { CarContext } from '../../store/CarContext';
 import { pickerDateToDateFormat } from '../../services/DateFormat';
-import { convertPriceToPennies } from '../../services/utils';
+
+const stripePromise = loadStripe('pk_test_51NntkQKjWbEgSGch5a0c8ajoYKWr2NPDi1A51X1zbVWtN4ifd9QIHFkTnneRQ7eqHNAkNsduXPeMdwIhkZTu4nc200zJzuQQDM');
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -27,7 +31,7 @@ const Payment = () => {
   const { tripForm, contactForm } = useContext(FormContext);
   const { selectedCar, selectedCarPrice } = useContext(CarContext);
 
-  const priceFormated = convertPriceToPennies(selectedCarPrice) ;
+  const priceFormated = convertPriceToPennies(selectedCarPrice);
   const dateFormated = pickerDateToDateFormat(tripForm.pickUpDate);
 
   const {
@@ -244,6 +248,9 @@ const Payment = () => {
               </div>
 
             </form>
+            <Elements stripe={stripePromise}>
+              <Checkout totalPrice={priceFormated} />
+            </Elements>
 
           </FormTemplate>
 
