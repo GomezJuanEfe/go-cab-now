@@ -17,6 +17,7 @@ import AllCarsPage from '../pages/AllCarsPage';
 import AddCarPage from '../pages/AddCarPage';
 import CarEditPage from '../pages/EditCarPage';
 import PrivateRoute from '../components/PrivateRoute';
+import DisableLogged from '../components/DisableLogged';
 
 const router = createBrowserRouter([
   {
@@ -78,7 +79,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/access',
-        element: <AccessPage />,
+        element: <DisableLogged><AccessPage /></DisableLogged>,
       },
     ],
   },

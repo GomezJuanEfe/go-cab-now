@@ -26,7 +26,10 @@ export const UserProvider = ({ children }) => {
           setUserData({ ...data.data });
           setLoadingUser(false);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          setIsLogged(false);
+          console.error(error);
+        });
     }
   }, [isLogged]);
 
@@ -48,6 +51,7 @@ export const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
+        isLogged,
         setIsLogged,
         loadingUser,
         userData,
