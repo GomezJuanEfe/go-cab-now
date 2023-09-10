@@ -40,12 +40,16 @@
     img {
       width:100%
     }
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
   }
 }
 
 .exp-cvv{
   display: flex;
   justify-content: left;
+  flex-direction: column;
   .form-group{
     width: 20%;
     margin-right: 10px;
