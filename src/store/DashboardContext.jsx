@@ -15,11 +15,12 @@ export const DashboardProvider = ({ children }) => {
   const [dataCars, setDataCars] = useState(null);
   const [selectedCar, setSelectCar] = useState({
     id: '',
-    img: '',
     car_name: '',
     type: '',
+    img: '',
     seats: '',
     luggage: '',
+    air_conditioner: '',
     transmition: '',
     fare_km: '',
     driver_id: '',
