@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Checkout.scss';
 import {
   useElements,
@@ -8,6 +8,7 @@ import {
   CardCvcElement,
 } from '@stripe/react-stripe-js';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import creditcard from '../../assets/icons/creditcards.png';
 import Cvv from '../../assets/icons/cvv.png';
 import { FormContext } from '../../store/FormContext';
@@ -22,7 +23,9 @@ const Checkout = () => {
     tripForm,
     contactForm,
   } = useContext(FormContext);
+  const [trip, setTrip] = useState('');
   const { selectedCar, selectedCarPrice } = useContext(CarContext);
+  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
 
@@ -30,9 +33,8 @@ const Checkout = () => {
   const dateFormated = pickerDateToDateFormat(tripForm.pickUpDate);
 
   const fetchCreateTrip = async () => {
-    console.log("start fetchCreateTrip");
     try {
-      await axios.post(
+      const response = await axios.post(
         `${URL}/api/trips`,
         {
           origin_latitude: tripForm.pickUpLoc,
@@ -45,6 +47,28 @@ const Checkout = () => {
           contact_email: contactForm.emailAddress,
           contact_phone: contactForm.contactPhone,
           contact_request: contactForm.specialRequest,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      );
+      return response.data.trip;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchCreatePayment = async (paymentMethod, tripId) => {
+    console.log('trip', trip);
+    try {
+      await axios.post(
+        `${URL}/api/payment/create-payment`,
+        {
+          method: paymentMethod.card.brand,
+          amount: priceFormated,
+          trip_id: tripId,
         },
         {
           headers: {
@@ -75,11 +99,18 @@ const Checkout = () => {
       }
 
       const response = await axios.post('http://localhost:8080/api/payment', {
-        id: paymentMethod.id,
+        paymentMethod,
         amount: priceFormated,
       });
-      alert('Thanks for your Booking');
-      fetchCreateTrip();
+      if (response.status === 201) {
+        const { id } = await fetchCreateTrip();
+        fetchCreatePayment(paymentMethod, id);
+        alert('Thanks for your Booking');
+        navigate('/success');
+      } else {
+        navigate('/failedpage');
+      }
+      window.scroll({ top: '0', behavior: 'smooth' });
     } catch (error) {
       alert(error.response.data.message);
     } finally {
