@@ -61,7 +61,6 @@ const Checkout = () => {
   };
 
   const fetchCreatePayment = async (paymentMethod, tripId) => {
-    console.log('trip', trip);
     try {
       await axios.post(
         `${URL}/api/payment/create-payment`,
