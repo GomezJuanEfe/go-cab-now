@@ -97,7 +97,7 @@ const Checkout = () => {
         return;
       }
 
-      const response = await axios.post('http://localhost:8080/api/payment', {
+      const response = await axios.post(`${URL}/api/payment/`, {
         paymentMethod,
         amount: priceFormated,
       });
