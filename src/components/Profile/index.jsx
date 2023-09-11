@@ -3,7 +3,7 @@ import './Profile.scss';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import profile from '../../assets/images/profile.png';
+import profile from '../../assets/images/profile.jpg';
 
 import DashboardTitle from '../DashboardTableTitle';
 import { UserContext } from '../../store/UserContext';
@@ -48,8 +48,58 @@ const Profile = () => {
         setUpdateModal({ show: true, msg: data.message });
       })
       .catch((err) => {
-        setUpdateModal({ show: true, msg: err.response.data.message });
+        setUpdateModal({ show: true, msg: err.message });
       });
+  };
+
+  const updateImage = async (fl, name) => {
+    const data = new FormData();
+
+    data.append('avatar', fl, name);
+    const response = await axios.post(
+      `${URL}/api/users/upload-img`,
+      data,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      },
+    );
+    return response;
+  };
+
+  const readFile = (fl, name) => {
+    const reader = new FileReader();
+    reader.onload = async () => {
+      try {
+        const { data } = await updateImage(fl, name);
+        setUserData({ ...userData, avatar: data.avatar });
+        setUpdateModal({ show: true, msg: data.message });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    reader.readAsDataURL(fl);
+  };
+
+  const handleUploadImage = (e) => {
+    const { files } = e.target;
+    if (files.length > 0) readFile(files[0], files[0].name);
+  };
+
+  const handleRemoveImg = async () => {
+    try {
+      const { data } = await axios.patch(
+        `${URL}/api/users/single`,
+        { avatar: '' },
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
+      );
+      setUserData({ ...userData, avatar: data.avatar });
+      setUpdateModal({ show: true, msg: 'Image removed successfully' });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const navigate = useNavigate();
@@ -68,35 +118,37 @@ const Profile = () => {
           title="Personal Information"
         />
 
-        <form className="form__profile" onSubmit={handleSubmit}>
-          <div className="personal__info">
-            <div className="personal-info__img">
-              <img src={profile} alt="profile" />
+        <div className="avatar-section form__profile">
+          <h3>Avatar</h3>
+          <div className="avatar-section__body">
+            <div className="avatar-section__img">
+              <img src={userData.avatar || profile} alt="profile" />
             </div>
-            <div className="personal-info__uplode">
-              <p>
-                Max file size is 5MB,Minimum dimension 150x150
-                And Suitable files are .jpg & .png
-                {' '}
-              </p>
-              <div className="uplode-img">
-                <label htmlFor="img">
-                  <i data-feather="upload" />
-                  {' '}
-                  Uploade Image here
-                </label>
-                <input
-                  type="file"
-                  id="img"
-                  className="img_profile"
-                  accept="image/*"
-                />
+            <div className="avatar-section__upload">
+              <div className="upload-img">
+                <div className="upload-btn">
+                  <input
+                    type="file"
+                    id="img"
+                    className="img_profile"
+                    accept="image/*"
+                    onChange={handleUploadImage}
+                  />
+                  <label htmlFor="img">
+                    Upload
+                  </label>
+                </div>
+
               </div>
-              <button className="btn__profile remove_img" type="submit"> Remove Image</button>
+              <button className="terciary-button" type="button" onClick={handleRemoveImg}>Remove</button>
             </div>
 
           </div>
 
+        </div>
+
+        <form className="form__profile" onSubmit={handleSubmit}>
+          <h3>General</h3>
           <div className="container__form_profile">
 
             <div className="container__inputs_profile">
