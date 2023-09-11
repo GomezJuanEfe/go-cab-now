@@ -40,6 +40,7 @@
     }
     .nav-right{
       .profile-nav{
+        position: relative;
         .profile-media{
           cursor: pointer;
           display: flex;
@@ -65,13 +66,14 @@
             }
           }
         }
-        .profile-hovercard{
+        .profile-hovercard {
+          width: 100%;
+          height: 120%;
           position: absolute;
           top: 0px;
           right: 0px;
           opacity: 0;
           transition: opacity 0.5s ease, transform 0.5s ease;
-          transform: translateY(-10px);
           pointer-events: none;
         }
       }

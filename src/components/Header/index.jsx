@@ -99,11 +99,11 @@ const Header = () => {
               <option value="eng">ENG</option>
             </select>
           </li>
-          <NavLink to="access">
-            <li className="menu__right-section-user">
+          <li className="menu__right-section-user">
+            <NavLink to="access">
               <FaUser style={{ fill: 'white', fontSize: '20px' }} />
-            </li>
-          </NavLink>
+            </NavLink>
+          </li>
 
           <li className="menu__right-section-settings">
             <FaCog style={{ fill: 'white', fontSize: '20px' }} onClick={handleClickSettings} />

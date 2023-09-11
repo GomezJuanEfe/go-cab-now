@@ -76,7 +76,8 @@ button {
   box-sizing: border-box;
 }
 
-button[type="button"].secondary-button {
+button[type="button"].secondary-button,
+button[type="submit"].secondary-button {
   padding: 5px 16px;
   text-transform: capitalize;
   font-size: 1.4rem;
@@ -87,13 +88,15 @@ button[type="button"].secondary-button {
   transition: all 0.5s ease;
 }
 
-button[type="button"].secondary-button:hover {
+button[type="button"].secondary-button:hover,
+button[type="submit"].secondary-button:hover {
   outline: 1px solid $primary-color;
   background-color: $white;
   color: $primary-color;
 }
 
-button[type="button"].terciary-button {
+button[type="button"].terciary-button,
+button[type="submit"].terciary-button {
   padding: 5px 16px;
   text-transform: capitalize;
   font-size: 1.4rem;
@@ -105,7 +108,8 @@ button[type="button"].terciary-button {
   transition: all 0.5s ease;
 }
 
-button[type="button"].terciary-button:hover {
+button[type="button"].terciary-button:hover,
+button[type="submit"].terciary-button:hover {
   background-color: $primary-color;
   color: $white;
 }

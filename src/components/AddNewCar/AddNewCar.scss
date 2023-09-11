@@ -88,16 +88,38 @@
 
   .buttons__add {
     display: flex;
-    justify-content: flex-end;
+    justify-content:space-around;
+    padding: 10px;
 
-    .submit_add {
-      margin: 1rem;
+    button[type=button].submit_add {
+      margin-top: 15px;
       border-radius: 5px;
       font-weight: 700;
       padding: 9px 14px;
+      outline: 1px solid $primary-color;
+      background-color: #ffffff;
+      color: $primary-color;
+      transition: all 0.5s ease;
+    }
+    button[type=submit].submit_add {
+      margin-top: 15px;
+      border-radius: 5px;
+      font-weight: 700;
+      padding: 9px 14px;
+      outline: 1px solid $primary-color;
+      background-color: $primary-color;
+      color: $very-light-snow;
+      transition: all 0.5s ease;
+    }
+    button[type=button].submit_add:hover  {
       background-color: $primary-color;
       color: #ffffff;
-      margin-top: 16px;
+      outline: none;
+    }
+    button[type=submit].submit_add:hover  {
+      background-color: $primary-color;
+      color: #ffffff;
+      outline: none;
     }
   }
 }
