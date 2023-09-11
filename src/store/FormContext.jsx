@@ -45,7 +45,6 @@ export const FromProvider = ({ children }) => {
         handleSignInForm,
         resetSignInForm,
         contactForm,
-        setContactForm
       }}
     >
       {children}
