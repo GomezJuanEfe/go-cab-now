@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import axios from 'axios';
 import './FormEditCar.scss';
@@ -10,6 +11,8 @@ const URL = import.meta.env.VITE_API_URL;
 const FormEditCar = () => {
   const { selectedCar } = useContext(DashboardContext);
   const [updateModal, setUpdateModal] = useState(false);
+  const [file, setFile] = useState(null);
+  const [image, setImage] = useState(null);// muestra img
   const [updatedData, setUpdatedData] = useState({
     id: selectedCar.id,
     car_name: selectedCar.car_name,
@@ -48,18 +51,49 @@ const FormEditCar = () => {
     });
   };
 
-  const handleSubmitUpdatedCar = (e) => {
+  const handleSubmitUpdatedCar = async (e) => {
     e.preventDefault();
+
+    const data = new FormData();
+
+    data.append('img', file);
+    data.append('car_name', selectedCar.car_name);
+    data.append('id', selectedCar.id);
+    data.append('type', selectedCar.type);
+    data.append('seats', parseInt(selectedCar.seats, 10));
+    data.append('luggage', parseInt(selectedCar.luggage, 10));
+    data.append('air_conditioner', selectedCar.air_conditioner === 'true');
+    data.append('transmition', selectedCar.transmition);
+    data.append('fare_km', selectedCar.fare_km);
     try {
-      axios.patch(
+      const response = await axios.patch(
         `${URL}/api/cars/${selectedCar.id}`,
-        updatedData,
-        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
+        data,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
       );
+      return response;
       setUpdateModal(true);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const readFile = (img) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setImage(e.target.result);
+    };
+    reader.readAsDataURL(img);
+  };
+
+  const handleUpdateImage = (e) => {
+    readFile(e.target.files[0], e.target.files[0].name);
+    setFile(e.target.files[0]);
   };
 
   return (
@@ -69,6 +103,35 @@ const FormEditCar = () => {
         onSubmit={handleSubmitUpdatedCar}
         className="container__add_form"
       >
+        <div className="section_form__car">
+          <h3>Upload your image car</h3>
+          <div className="car-section__body">
+            <div className="car-section__img">
+              {image && <img src={image} alt="car_image" />}
+            </div>
+            <div className="car-section__upload">
+              <div className="upload-img">
+                <div className="upload-btn">
+                  <input
+                    id="img"
+                    name="img"
+                    type="file"
+                    className="img_car"
+                    accept="image/*"
+                    onChange={handleUpdateImage}
+                  />
+                  <label htmlFor="img">
+                    Upload Image
+                  </label>
+                </div>
+
+              </div>
+              <button className="terciary-button" type="button">Remove</button>
+            </div>
+
+          </div>
+
+        </div>
 
         <div className="container__add-inputs">
           <label className="add_label-title"><b>Car Name</b></label>
@@ -104,22 +167,6 @@ const FormEditCar = () => {
               <img src={selectedCar.img} alt="" />
             </div>
           </span>
-        </div>
-
-        <div className="container__add-inputs">
-          <label className="add_label-title">
-            <b>Upload Car Image here</b>
-          </label>
-          <br />
-          <div className="submit_file">
-            <div className="section__submit_file">
-              <input
-                type="file"
-              />
-              <i className="icon-cloud-up" />
-              <h4><b>Drop car img here or click to upload.</b></h4>
-            </div>
-          </div>
         </div>
 
         <div className="container__add-inputs">
