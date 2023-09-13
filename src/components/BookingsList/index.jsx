@@ -26,7 +26,7 @@ const BookingsList = () => {
   useEffect(() => {
     const fetchTripsdata = async () => {
       setLoading(true);
-      const fetchUrl = userData.role === 'ADMIN' ? `${URL}/api/trips` : userData.role === 'ADMIN' ? `${URL}/api/trips/user-trips` : `${URL}/api/trips/car-trips`;
+      const fetchUrl = userData.role === 'ADMIN' ? `${URL}/api/trips` : userData.role === 'USER' ? `${URL}/api/trips/user-trips` : `${URL}/api/trips/car-trips`;
       try {
         const { data: { trips } } = await axios.get(
           fetchUrl,
