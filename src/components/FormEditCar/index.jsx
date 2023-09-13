@@ -10,7 +10,7 @@ const URL = import.meta.env.VITE_API_URL;
 const FormEditCar = () => {
   const { selectedCar } = useContext(DashboardContext);
   const [updateModal, setUpdateModal] = useState(false);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(selectedCar.img);
   const [image, setImage] = useState(null);
   const [updatedData, setUpdatedData] = useState({
     id: selectedCar.id,
