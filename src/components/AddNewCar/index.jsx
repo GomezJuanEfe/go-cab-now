@@ -93,12 +93,10 @@ const AddNewCar = () => {
     data.append('air_conditioner', createCar.air_conditioner === 'true');
     data.append('transmition', createCar.transmition);
     data.append('fare_km', parseInt(createCar.fare_km, 10));
-    data.append('driver_email', selectedDriverEmail);
-
-    console.log(selectedDriverEmail);
+    data.append('driver_id', selectedDriverEmail);
 
     try {
-      const response = await axios.post(
+      await axios.post(
         `${URL}/api/cars`,
         data,
         {
@@ -108,7 +106,6 @@ const AddNewCar = () => {
           },
         },
       );
-      console.log(response);
       setCreateModal(true);
     } catch (error) {
       console.error(error);

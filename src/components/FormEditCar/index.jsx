@@ -1,4 +1,3 @@
-/* eslint-disable no-unreachable */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import axios from 'axios';
 import './FormEditCar.scss';
@@ -66,7 +65,7 @@ const FormEditCar = () => {
     data.append('transmition', selectedCar.transmition);
     data.append('fare_km', selectedCar.fare_km);
     try {
-      const response = await axios.patch(
+      await axios.patch(
         `${URL}/api/cars/${selectedCar.id}`,
         data,
         {
@@ -76,7 +75,6 @@ const FormEditCar = () => {
           },
         },
       );
-      return response;
       setUpdateModal(true);
     } catch (error) {
       console.error(error);
