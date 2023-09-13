@@ -78,6 +78,7 @@ const AddNewCar = () => {
 
   const handleCloseModal = () => {
     resetForm();
+    setImage(null);
     setCreateModal(false);
   };
 

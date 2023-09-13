@@ -122,13 +122,9 @@ const FormEditCar = () => {
                     Upload Image
                   </label>
                 </div>
-
               </div>
-              <button className="terciary-button" type="button">Remove</button>
             </div>
-
           </div>
-
         </div>
 
         <div className="container__add-inputs">
