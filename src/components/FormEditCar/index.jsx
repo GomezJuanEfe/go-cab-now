@@ -56,14 +56,14 @@ const FormEditCar = () => {
     const data = new FormData();
 
     data.append('img', file);
-    data.append('car_name', selectedCar.car_name);
-    data.append('id', selectedCar.id);
-    data.append('type', selectedCar.type);
-    data.append('seats', parseInt(selectedCar.seats, 10));
-    data.append('luggage', parseInt(selectedCar.luggage, 10));
-    data.append('air_conditioner', selectedCar.air_conditioner === 'true');
-    data.append('transmition', selectedCar.transmition);
-    data.append('fare_km', selectedCar.fare_km);
+    data.append('car_name', updatedData.car_name);
+    data.append('id', updatedData.id);
+    data.append('type', updatedData.type);
+    data.append('seats', parseInt(updatedData.seats, 10));
+    data.append('luggage', parseInt(updatedData.luggage, 10));
+    data.append('air_conditioner', updatedData.air_conditioner === 'true');
+    data.append('transmition', updatedData.transmition);
+    data.append('fare_km', updatedData.fare_km);
     try {
       await axios.patch(
         `${URL}/api/cars/${selectedCar.id}`,
