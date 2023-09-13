@@ -11,7 +11,7 @@ const FormEditCar = () => {
   const { selectedCar } = useContext(DashboardContext);
   const [updateModal, setUpdateModal] = useState(false);
   const [file, setFile] = useState(null);
-  const [image, setImage] = useState(null);// muestra img
+  const [image, setImage] = useState(null);
   const [updatedData, setUpdatedData] = useState({
     id: selectedCar.id,
     car_name: selectedCar.car_name,

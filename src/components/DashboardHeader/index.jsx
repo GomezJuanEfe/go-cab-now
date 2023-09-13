@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { FaAngleDown } from 'react-icons/fa';
 import { useContext } from 'react';
 import logo from '../../assets/icons/GCN-logo.png';
-import portrait from '../../assets/images/profile4.jpg';
+import portrait from '../../assets/images/profile.jpg';
 import ProfileHoverCard from '../ProfileHoverCard';
 import { UserContext } from '../../store/UserContext';
 
@@ -41,7 +41,7 @@ const DashboardHeader = ({ handleToggleSidebar }) => {
           <ul>
             <li className="profile-nav">
               <div className="profile-media">
-                <img src={portrait} alt="portrait" />
+                <img src={userData.avatar || portrait} alt="portrait" />
                 <div className="username">
                   <span>{fullName}</span>
                   <div className="profile-type">
