@@ -1,7 +1,7 @@
 import './LoadingModal.scss';
 
 const loading = ({ text, show }) => (
-  <div className={`loading-container ${show && 'show'}`}>
+  <div className={`loading-modal-container ${show && 'show'}`}>
     <h3>{text}</h3>
     <div className="lds-ring">
       <div />
