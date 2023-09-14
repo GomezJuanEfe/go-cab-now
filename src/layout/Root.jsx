@@ -11,6 +11,7 @@ const Root = () => {
     '/payments',
     '/success',
     '/failedpage',
+    '/verify-account/:token',
   ];
   const validPathsFooter = validPathsHeader;
   return (

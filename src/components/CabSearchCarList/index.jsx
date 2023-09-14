@@ -76,7 +76,6 @@ const CabSearchCarList = () => {
         <div className="center">
           <button type="button" className="secondary-button" onClick={() => setLocationAlert(false)}>Ok</button>
         </div>
-
       </Modal>
       <Modal showModal={dateAlert} handleShowModal={handleShowDateAlert}>
         <h2>Must select a Pick Up Date and Time</h2>

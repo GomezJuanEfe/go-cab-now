@@ -18,6 +18,7 @@ import AddCarPage from '../pages/AddCarPage';
 import CarEditPage from '../pages/EditCarPage';
 import PrivateRoute from '../components/PrivateRoute';
 import DisableLogged from '../components/DisableLogged';
+import VerifyAccount from '../pages/VerifyAccount';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: '/failedpage',
         element: <FailedPage />,
+      },
+      {
+        path: '/verify-account/:token',
+        element: <VerifyAccount />,
       },
       {
         path: '/user-profile/',

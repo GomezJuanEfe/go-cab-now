@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-unreachable */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable linebreak-style */
@@ -14,6 +16,8 @@ const AddNewCar = () => {
   const { userData } = useContext(UserContext);
   const [createModal, setCreateModal] = useState(false);
   const [drivers, setDrivers] = useState(null);
+  const [file, setFile] = useState(null);
+  const [image, setImage] = useState(null);// muestra img
   const [selectedDriverEmail, setSelectedDriverEmail] = useState({ driver_email: '' });
   const [createCar, setCreateCar] = useState({
     car_name: '',
@@ -74,44 +78,52 @@ const AddNewCar = () => {
 
   const handleCloseModal = () => {
     resetForm();
+    setImage(null);
     setCreateModal(false);
   };
 
-  const fetchCreateCar = async () => {
-    const addNewCar = {
-      car_info: {
-        car_name: createCar.car_name,
-        type: createCar.type,
-        img: createCar.img,
-        seats: parseInt(createCar.seats, 10),
-        luggage: parseInt(createCar.luggage, 10),
-        air_conditioner: createCar.air_conditioner === 'true',
-        transmition: createCar.transmition,
-        fare_km: parseInt(createCar.fare_km, 10),
-      },
-      driver_email: selectedDriverEmail,
-    };
+  const handleCreateDataCar = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+
+    data.append('img', file, file.name);
+    data.append('car_name', createCar.car_name);
+    data.append('type', createCar.type);
+    data.append('seats', parseInt(createCar.seats, 10));
+    data.append('luggage', parseInt(createCar.luggage, 10));
+    data.append('air_conditioner', createCar.air_conditioner === 'true');
+    data.append('transmition', createCar.transmition);
+    data.append('fare_km', parseInt(createCar.fare_km, 10));
+    data.append('driver_id', selectedDriverEmail);
 
     try {
-      const response = await axios.post(
+      await axios.post(
         `${URL}/api/cars`,
-        {
-          ...addNewCar,
-        },
+        data,
         {
           headers: {
+            'Content-Type': 'multipart/form-data',
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         },
       );
+      setCreateModal(true);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetchCreateCar();
+  const readFile = (img) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setImage(e.target.result);
+    };
+    reader.readAsDataURL(img);
+  };
+
+  const handleUpdateImg = (e) => {
+    readFile(e.target.files[0], e.target.files[0].name);
+    setFile(e.target.files[0]);
   };
 
   return (
@@ -123,9 +135,35 @@ const AddNewCar = () => {
         />
 
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleCreateDataCar}
           className="container__add_form"
         >
+
+          <div className="section_form__car">
+            <h3>Upload your image car</h3>
+            <div className="car-section__body">
+              <div className="car-section__img">
+                {image && <img src={image} alt="car_image" />}
+              </div>
+              <div className="car-section__upload">
+                <div className="upload-img">
+                  <div className="upload-btn">
+                    <input
+                      id="img"
+                      name="img"
+                      type="file"
+                      className="img_car"
+                      accept="image/*"
+                      onChange={handleUpdateImg}
+                    />
+                    <label htmlFor="img">
+                      Upload Image
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="container__add-inputs">
             <label className="add_label-title"><b>Car Name</b></label>
@@ -176,24 +214,6 @@ const AddNewCar = () => {
               </div>
             </div>
           )}
-
-          <div className="container__add-inputs">
-            <label className="add_label-title">
-              <b>Upload Car Image here</b>
-            </label>
-            <br />
-            <div className="submit_file">
-              <div className="section__submit_file">
-                <input
-                  accept=".jpg, .png"
-                  multiple={false}
-                  type="file"
-                />
-                <i className="icon-cloud-up" />
-                <h4><b>Drop files here or click to upload.</b></h4>
-              </div>
-            </div>
-          </div>
 
           <div className="container__add-inputs">
             <label className="add_label-title"><b>Seats</b></label>
@@ -328,7 +348,7 @@ const AddNewCar = () => {
         showModal={createModal}
         handleShowModal={() => setCreateModal(false)}
       >
-        <h2>You were created a new car</h2>
+        <h2>You created a new car</h2>
         <div className="center">
           <button
             className="secondary-button"
