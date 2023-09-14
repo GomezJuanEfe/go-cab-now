@@ -38,7 +38,8 @@
         cursor: pointer;
       }
     }
-    .nav-right{
+    .nav-right {
+      min-width: 150px;
       .profile-nav{
         position: relative;
         .profile-media{
