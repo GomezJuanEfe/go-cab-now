@@ -1,14 +1,72 @@
 @import '../../styles/abstract/variables.scss';
 
-.container_img_update {
+.car-section__body {
   display: flex;
-  justify-content: center;
-  border: 1px solid #ced4da;;
-  border-radius: 5px;
+  flex-flow: row wrap;
+  align-items: center;
 
-  img {
-   margin: 10px auto;
-   width: 40%;
+  .car-section__img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    img {
+     width: 150px;
+     height: 170px;
+     border-radius: 5px;
+     -o-object-fit: cover;
+     object-fit: cover;
+   }
+  }
+
+  .car-section__upload {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .car-section__upload p {
+    font-size: calc(14px + (17 - 14) * ((100vw - 320px) / (1920 - 320)));
+    margin-top: 12px;
+    margin-bottom: 16px;
+    text-align: center;
+    @media screen and (min-width: 576px) {
+      text-align: left;
+    }
+  }
+  .personal__info .upload-img {
+    position: relative;
+  }
+  .img_car {
+    width:50%
+  }
+  .upload-btn{
+    padding: 20px;
+    position: relative;
+  }
+  .car-section__upload label {
+    padding: 8px 20px;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    background-color: $primary-color;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $white;
+  }
+  .upload-img {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @media screen and (min-width: 576px) {
+      align-items: flex-start;
+    }
+  }
+  .upload-img input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    position: absolute;
   }
 }
 

@@ -2,6 +2,7 @@
 import axios from 'axios';
 import './FormEditCar.scss';
 import { useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal';
 import { DashboardContext } from '../../store/DashboardContext';
 
@@ -10,6 +11,8 @@ const URL = import.meta.env.VITE_API_URL;
 const FormEditCar = () => {
   const { selectedCar } = useContext(DashboardContext);
   const [updateModal, setUpdateModal] = useState(false);
+  const [file, setFile] = useState(selectedCar.img);
+  const [image, setImage] = useState(null);
   const [updatedData, setUpdatedData] = useState({
     id: selectedCar.id,
     car_name: selectedCar.car_name,
@@ -36,8 +39,11 @@ const FormEditCar = () => {
     });
   }, []);
 
+  const navigate = useNavigate();
+
   const handleCloseUpdateModal = () => {
     setUpdateModal(false);
+    navigate('/user-profile/all-cars');
   };
 
   const handleChange = (e) => {
@@ -48,18 +54,48 @@ const FormEditCar = () => {
     });
   };
 
-  const handleSubmitUpdatedCar = (e) => {
+  const handleSubmitUpdatedCar = async (e) => {
     e.preventDefault();
+
+    const data = new FormData();
+
+    data.append('img', file);
+    data.append('car_name', updatedData.car_name);
+    data.append('id', updatedData.id);
+    data.append('type', updatedData.type);
+    data.append('seats', parseInt(updatedData.seats, 10));
+    data.append('luggage', parseInt(updatedData.luggage, 10));
+    data.append('air_conditioner', updatedData.air_conditioner === 'true');
+    data.append('transmition', updatedData.transmition);
+    data.append('fare_km', updatedData.fare_km);
     try {
-      axios.patch(
+      await axios.patch(
         `${URL}/api/cars/${selectedCar.id}`,
-        updatedData,
-        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
+        data,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
       );
       setUpdateModal(true);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const readFile = (img) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setImage(e.target.result);
+    };
+    reader.readAsDataURL(img);
+  };
+
+  const handleUpdateImage = (e) => {
+    readFile(e.target.files[0], e.target.files[0].name);
+    setFile(e.target.files[0]);
   };
 
   return (
@@ -69,6 +105,31 @@ const FormEditCar = () => {
         onSubmit={handleSubmitUpdatedCar}
         className="container__add_form"
       >
+        <div className="section_form__car">
+          <h3>Upload your image car</h3>
+          <div className="car-section__body">
+            <div className="car-section__img">
+              {image && <img src={image} alt="car_image" />}
+            </div>
+            <div className="car-section__upload">
+              <div className="upload-img">
+                <div className="upload-btn">
+                  <input
+                    id="img"
+                    name="img"
+                    type="file"
+                    className="img_car"
+                    accept="image/*"
+                    onChange={handleUpdateImage}
+                  />
+                  <label htmlFor="img">
+                    Upload Image
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="container__add-inputs">
           <label className="add_label-title"><b>Car Name</b></label>
@@ -104,22 +165,6 @@ const FormEditCar = () => {
               <img src={selectedCar.img} alt="" />
             </div>
           </span>
-        </div>
-
-        <div className="container__add-inputs">
-          <label className="add_label-title">
-            <b>Upload Car Image here</b>
-          </label>
-          <br />
-          <div className="submit_file">
-            <div className="section__submit_file">
-              <input
-                type="file"
-              />
-              <i className="icon-cloud-up" />
-              <h4><b>Drop car img here or click to upload.</b></h4>
-            </div>
-          </div>
         </div>
 
         <div className="container__add-inputs">

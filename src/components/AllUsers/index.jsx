@@ -10,6 +10,8 @@ import profileImg from '../../assets/images/profile.jpg';
 import Modal from '../Modal';
 import './AllUsers.scss';
 import useForm from '../../hooks/useForm';
+import Loading from '../Loading';
+import LoadingModal from '../LoadingModal';
 
 const fetcher = (url) => axios.get(url, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((res) => res.data);
 const URL = import.meta.env.VITE_API_URL;
@@ -20,6 +22,7 @@ const AllUsers = () => {
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [errorModal, setErrorModal] = useState({ show: false, msg: '' });
+  const [showLoading, setShowLoading] = useState(false);
 
   const [selectedUser, setSelectedUser] = useState({
     first_name: '',
@@ -61,29 +64,32 @@ const AllUsers = () => {
 
   const handleEditUser = (e) => {
     e.preventDefault();
+    setEditModal(false);
+    setShowLoading(true);
     axios.patch(`${URL}/api/users`, { ...form }, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => {
-        setEditModal(false);
         mutate(`${URL}/api/users/`);
       })
       .catch(({ message }) => {
-        setEditModal(false);
         setErrorModal({ show: true, msg: message });
         console.error(message);
-      });
+      })
+      .finally(() => setShowLoading(false));
   };
 
   const handleDeleteUser = () => {
+    setDeleteModal(false);
+    setShowLoading(true);
     axios.delete(`${URL}/api/users/${selectedUser.email}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => {
-        setDeleteModal(false);
         mutate(`${URL}/api/users/`);
       })
       .catch(({ message }) => {
         setDeleteModal(false);
         setErrorModal({ show: true, msg: message });
         console.error(message);
-      });
+      })
+      .finally(() => setShowLoading(false));
   };
 
   return (
@@ -92,7 +98,7 @@ const AllUsers = () => {
         <DashboardTitle title="All Users" />
         <DashboardTable>
           { error && <div>Failed to load</div> }
-          { isLoading && <div>Loading</div> }
+          { isLoading && <Loading /> }
           { (!error && !isLoading)
             && (
             <table>
@@ -197,6 +203,7 @@ const AllUsers = () => {
         <h2>There was an error</h2>
         <p>{errorModal.msg}</p>
       </Modal>
+      <LoadingModal show={showLoading} />
     </>
   );
 };
