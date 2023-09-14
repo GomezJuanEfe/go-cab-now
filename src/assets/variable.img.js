@@ -1,0 +1,27 @@
+export const iconsURL = {
+  seats: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709828/Icons_GCN/seat_qpynyi.png',
+  luggage: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1693273257/samples/ICONS_CAR_EDIT/luggage_vqprta.png',
+  air_conditioner: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/snowflake_uqwwpz.png',
+  transmition: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/settings_wijv7z.png',
+  wheel: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709830/Icons_GCN/wheel_btmm61.png',
+  customer: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/customer_izln0w.png',
+  world: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709830/Icons_GCN/world_drl6ei.png',
+  cab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/cab_jqexpk.png',
+  mobile: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709826/Icons_GCN/mobile-app_xw6bpp.png',
+  calendar: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/confirm-schedule_b1a4xw.png',
+  taxi: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709829/Icons_GCN/taxi_wavdjc.png',
+  destination: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/destination_bhayvy.png',
+  tecno: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709829/Icons_GCN/tecno_hdjhcj.png',
+  eco: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/eco_pmayys.png',
+  air: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/airport_xchv9e.png',
+  hydra: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709826/Icons_GCN/hydra_wuizmr.png',
+  ux: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709830/Icons_GCN/ux_j6gbdr.png',
+  classicCab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694716825/CARS-Folder/1_ifr9gj.png',
+  businessCab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694716840/CARS-Folder/2_svjmac.png',
+  vipCab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694716840/CARS-Folder/3_ltcx6t.png',
+  vanCab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694716841/CARS-Folder/4_lcqiwh.png',
+  phone1: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694717608/Icons_GCN/3_1_qlfqyi.png',
+  phone2: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694717608/Icons_GCN/4_1_tcohsy.png',
+};
+
+export default iconsURL;

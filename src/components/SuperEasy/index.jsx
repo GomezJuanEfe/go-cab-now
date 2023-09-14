@@ -1,8 +1,5 @@
 import './SuperEasy.scss';
-import mobile from '../../assets/icons/mobile-app.png';
-import calendar from '../../assets/icons/confirm-schedule.png';
-import taxi from '../../assets/icons/taxi.png';
-import destination from '../../assets/icons/destination.png';
+import iconsURL from '../../assets/variable.img';
 
 const SuperEasy = () => (
   <div>
@@ -18,22 +15,22 @@ const SuperEasy = () => (
         <section className="container__icons">
 
           <div className="se-card">
-            <img src={mobile} alt="mobile" />
+            <img src={iconsURL.mobile} alt="mobile" />
             <p>Book Cab Threw Website Or App</p>
           </div>
 
           <div id="card__down" className="se-card">
-            <img src={calendar} />
+            <img src={iconsURL.calendar} alt="calendar" />
             <p>Receive Confirmation</p>
           </div>
 
           <div className="se-card">
-            <img src={taxi} />
+            <img src={iconsURL.taxi} alt="taxi" />
             <p>Meet Cab Driver On Pickup Time</p>
           </div>
 
           <div id="card__down" className="se-card">
-            <img src={destination} />
+            <img src={iconsURL.destination} alt="destination" />
             <p>Arrive At Your Destination</p>
           </div>
 
