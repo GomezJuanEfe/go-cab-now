@@ -2,6 +2,7 @@
 import axios from 'axios';
 import './FormEditCar.scss';
 import { useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal';
 import { DashboardContext } from '../../store/DashboardContext';
 
@@ -38,8 +39,11 @@ const FormEditCar = () => {
     });
   }, []);
 
+  const navigate = useNavigate();
+
   const handleCloseUpdateModal = () => {
     setUpdateModal(false);
+    navigate('/user-profile/all-cars');
   };
 
   const handleChange = (e) => {
