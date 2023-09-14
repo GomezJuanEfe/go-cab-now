@@ -49,7 +49,7 @@ const CabSearchCarList = () => {
   };
   const handleShowDateAlert = () => {
     setDateAlert(!dateAlert);
-  }
+  };
 
   return (
     <div className="cab-search-list" id="main">
@@ -73,9 +73,16 @@ const CabSearchCarList = () => {
       />
       <Modal showModal={locationAlert} handleShowModal={handleShowLocationAlert}>
         <h2>Must select Pick Up and Drop Off Locations</h2>
+        <div className="center">
+          <button type="button" className="secondary-button" onClick={() => setLocationAlert(false)}>Ok</button>
+        </div>
+
       </Modal>
       <Modal showModal={dateAlert} handleShowModal={handleShowDateAlert}>
         <h2>Must select a Pick Up Date and Time</h2>
+        <div className="center">
+          <button type="button" className="secondary-button" onClick={() => setDateAlert(false)}>Ok</button>
+        </div>
       </Modal>
     </div>
   );
