@@ -1,4 +1,7 @@
 export const iconsURL = {
+  GCN_Logo: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709826/Icons_GCN/GCN-logo-Black_okwllw.png',
+  GCN_Logo_White: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709826/Icons_GCN/GCN-logo_ewljzy.png',
+  GCN_Logo_Yellow: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709826/Icons_GCN/GCN-logo-yellow_dyisyk.png',
   seats: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709828/Icons_GCN/seat_qpynyi.png',
   luggage: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1693273257/samples/ICONS_CAR_EDIT/luggage_vqprta.png',
   air_conditioner: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/snowflake_uqwwpz.png',
@@ -6,7 +9,7 @@ export const iconsURL = {
   wheel: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709830/Icons_GCN/wheel_btmm61.png',
   customer: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/customer_izln0w.png',
   world: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709830/Icons_GCN/world_drl6ei.png',
-  cab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/cab_jqexpk.png',
+  cab: 'https://res.cloudinary.com/dbmertsgv/imasge/upload/v1694709825/Icons_GCN/cab_jqexpk.png',
   mobile: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709826/Icons_GCN/mobile-app_xw6bpp.png',
   calendar: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/confirm-schedule_b1a4xw.png',
   taxi: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709829/Icons_GCN/taxi_wavdjc.png',
@@ -16,12 +19,21 @@ export const iconsURL = {
   air: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/airport_xchv9e.png',
   hydra: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709826/Icons_GCN/hydra_wuizmr.png',
   ux: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709830/Icons_GCN/ux_j6gbdr.png',
+  creditcard: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/creditcards_ocv4g6.png',
+  Cvv: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/cvv_ar686q.png',
+};
+
+export const imageURL = {
+  advertise: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694734946/Icons_GCN/advertise_tj8hwu.jpg',
   classicCab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694716825/CARS-Folder/1_ifr9gj.png',
   businessCab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694716840/CARS-Folder/2_svjmac.png',
   vipCab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694716840/CARS-Folder/3_ltcx6t.png',
   vanCab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694716841/CARS-Folder/4_lcqiwh.png',
   phone1: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694717608/Icons_GCN/3_1_qlfqyi.png',
   phone2: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694717608/Icons_GCN/4_1_tcohsy.png',
+  customer1: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694732353/Icons_GCN/1_jem1bv.jpg',
+  customer2: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694732353/Icons_GCN/2_ppuxve.jpg',
+  blogImg1: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694733138/Icons_GCN/1_2_xcc15x.jpg',
+  blogImg2: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694733138/Icons_GCN/2_2_bdx2cz.jpg',
+  ImgFailed: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694722035/avatars/qcds3akzo1wamllznawe.jpg',
 };
-
-export default iconsURL;

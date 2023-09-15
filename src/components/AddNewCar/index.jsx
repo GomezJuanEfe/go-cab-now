@@ -9,7 +9,7 @@ import DashboardTitle from '../DashboardTableTitle';
 import './AddNewCar.scss';
 import { UserContext } from '../../store/UserContext';
 import Modal from '../Modal';
-import iconsURL from '../../assets/variable.img';
+import { iconsURL } from '../../assets/variable.img';
 
 const URL = import.meta.env.VITE_API_URL;
 

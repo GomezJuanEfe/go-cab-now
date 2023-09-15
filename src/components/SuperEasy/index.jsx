@@ -1,5 +1,5 @@
 import './SuperEasy.scss';
-import iconsURL from '../../assets/variable.img';
+import { iconsURL } from '../../assets/variable.img';
 
 const SuperEasy = () => (
   <div>

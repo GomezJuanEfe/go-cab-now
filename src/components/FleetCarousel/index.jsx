@@ -2,7 +2,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './FleetCarousel.scss';
-import iconsURL from '../../assets/variable.img';
+import { imageURL, iconsURL } from '../../assets/variable.img';
 
 const FleetCarousel = () => {
   const settings = {
@@ -50,7 +50,7 @@ const FleetCarousel = () => {
 
       <div className="fleet__car-type">
         <div className="fleet-container">
-          <img src={iconsURL.classicCab} alt="classic cab img" />
+          <img src={imageURL.classicCab} alt="classic cab img" />
           <div className="fleet__content">
             <h3>Classic</h3>
             <h4>Start $5 / per Km</h4>
@@ -67,7 +67,7 @@ const FleetCarousel = () => {
 
       <div className="fleet__car-type">
         <div className="fleet-container">
-          <img src={iconsURL.businessCab} alt="business cab img" />
+          <img src={imageURL.businessCab} alt="business cab img" />
           <div className="fleet__content">
             <h3>Business</h3>
             <h4>Start $6 / per Km</h4>
@@ -84,7 +84,7 @@ const FleetCarousel = () => {
 
       <div className="fleet__car-type">
         <div className="fleet-container">
-          <img src={iconsURL.vipCab} alt="classic cab img" />
+          <img src={imageURL.vipCab} alt="classic cab img" />
           <div className="fleet__content">
             <h3>Vip</h3>
             <h4>Start $10 / per Km</h4>
@@ -101,7 +101,7 @@ const FleetCarousel = () => {
 
       <div className="fleet__car-type">
         <div className="fleet-container">
-          <img src={iconsURL.vanCab} alt="classic cab img" />
+          <img src={imageURL.vanCab} alt="classic cab img" />
           <div className="fleet__content">
             <h3>Van</h3>
             <h4>Start $12 / per Km</h4>

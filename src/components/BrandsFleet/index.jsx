@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import './BrandsFleet.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import iconsURL from '../../assets/variable.img';
+import { iconsURL } from '../../assets/variable.img';
 
 const ArrowStyle = (props) => {
   const { className, style, onClick } = props;

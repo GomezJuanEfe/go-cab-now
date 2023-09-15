@@ -9,8 +9,7 @@ import {
 } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import creditcard from '../../assets/icons/creditcards.png';
-import Cvv from '../../assets/icons/cvv.png';
+import { iconsURL } from '../../assets/variable.img';
 import { FormContext } from '../../store/FormContext';
 import { CarContext } from '../../store/CarContext';
 import { pickerDateToDateFormat } from '../../services/DateFormat';
@@ -135,7 +134,7 @@ const Checkout = () => {
         <label htmlFor="card-number" className="title__inputs">Card Number</label>
         <CardNumberElement id="card-number" className="form-control stripe-input" required />
         <div className="img_credit">
-          <img src={creditcard} alt="creditcard" />
+          <img src={iconsURL.creditcard} alt="creditcard" />
         </div>
       </div>
 
@@ -149,7 +148,7 @@ const Checkout = () => {
           <label className="title__inputs">CVC</label>
           <CardCvcElement className="form-control stripe-input" required />
           <div className="img_cvv">
-            <img src={Cvv} alt="cvv" />
+            <img src={iconsURL.Cvv} alt="cvv" />
           </div>
         </div>
       </div>

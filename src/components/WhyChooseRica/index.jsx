@@ -1,5 +1,5 @@
 import './WhyChooseRica.scss';
-import iconsURL from '../../assets/variable.img';
+import { iconsURL } from '../../assets/variable.img';
 
 const WhyChooseRica = () => (
   <div>
