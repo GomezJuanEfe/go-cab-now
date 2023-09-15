@@ -26,6 +26,8 @@ const CabSearchCarList = () => {
   const navigate = useNavigate();
 
   const handleSelectCar = (item) => {
+    const now = new Date();
+    now.setHours(now.getHours() + 1);
     setSelectedCar(item);
     const totalPrice = usdFormat((distanceBetweenCities(tripForm.pickUpLoc, tripForm.dropOffLoc))
     * item.fare_km * 100);
@@ -33,7 +35,7 @@ const CabSearchCarList = () => {
     if (tripForm.pickUpLoc === '' || tripForm.dropOffLoc === '' || tripForm.pickUpLoc === tripForm.dropOffLoc) {
       setLocationAlert(true);
       return;
-    } if (tripForm.pickUpDate === '') {
+    } if (tripForm.pickUpDate === '' || now > tripForm.pickUpDate) {
       setDateAlert(true);
       return;
     }
@@ -72,13 +74,13 @@ const CabSearchCarList = () => {
         setPageIndex={setcablistIndexPage}
       />
       <Modal showModal={locationAlert} handleShowModal={handleShowLocationAlert}>
-        <h2>Must select Pick Up and Drop Off Locations</h2>
+        <h2>Must select pick up and drop off locations</h2>
         <div className="center">
           <button type="button" className="secondary-button" onClick={() => setLocationAlert(false)}>Ok</button>
         </div>
       </Modal>
       <Modal showModal={dateAlert} handleShowModal={handleShowDateAlert}>
-        <h2>Must select a Pick Up Date and Time</h2>
+        <h2>Must select a pick up date and time that is at least one hour ahead of now</h2>
         <div className="center">
           <button type="button" className="secondary-button" onClick={() => setDateAlert(false)}>Ok</button>
         </div>
