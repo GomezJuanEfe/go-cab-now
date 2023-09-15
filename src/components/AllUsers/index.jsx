@@ -3,7 +3,6 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import axios from 'axios';
 import useSWR, { useSWRConfig } from 'swr';
 import { useEffect, useState } from 'react';
-import { FiAlertTriangle } from 'react-icons/fi';
 import DashboardTitle from '../DashboardTableTitle';
 import DashboardTable from '../DashboardTable';
 import profileImg from '../../assets/images/profile.jpg';
@@ -12,6 +11,7 @@ import './AllUsers.scss';
 import useForm from '../../hooks/useForm';
 import Loading from '../Loading';
 import LoadingModal from '../LoadingModal';
+import ErrorModal from '../ErrorModal';
 
 const fetcher = (url) => axios.get(url, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((res) => res.data);
 const URL = import.meta.env.VITE_API_URL;
@@ -197,11 +197,7 @@ const AllUsers = () => {
         showModal={errorModal.show}
         handleShowModal={() => setErrorModal({ ...errorModal, show: !errorModal.show })}
       >
-        <div className="center alert-icon">
-          <FiAlertTriangle />
-        </div>
-        <h2>There was an error</h2>
-        <p>{errorModal.msg}</p>
+        <ErrorModal errorMessage={errorModal.msg} />
       </Modal>
       <LoadingModal show={showLoading} />
     </>
