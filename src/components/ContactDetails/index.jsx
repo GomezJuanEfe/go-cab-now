@@ -120,7 +120,7 @@ const ContactDetails = () => {
                 <div>
                   <PhoneInput
                     defaultCountry="co"
-                    value={userData.phone}
+                    value={userData.phone || ''}
                     onChange={(phone) => setPhone(phone)}
                   />
                 </div>
