@@ -26,19 +26,29 @@ const CabSearchCarList = () => {
   const navigate = useNavigate();
 
   const handleSelectCar = (item) => {
+    setSelectedCar(item);
+
+    const totalPrice = usdFormat(
+      (distanceBetweenCities(tripForm.pickUpLoc, tripForm.dropOffLoc))
+       * item.fare_km * 100,
+    );
+    setSelectedCarPrice(totalPrice);
+
     const now = new Date();
     now.setHours(now.getHours() + 1);
-    setSelectedCar(item);
-    const totalPrice = usdFormat((distanceBetweenCities(tripForm.pickUpLoc, tripForm.dropOffLoc))
-    * item.fare_km * 100);
-    setSelectedCarPrice(totalPrice);
-    if (tripForm.pickUpLoc === '' || tripForm.dropOffLoc === '' || tripForm.pickUpLoc === tripForm.dropOffLoc) {
+
+    if (tripForm.pickUpLoc === ''
+      || tripForm.dropOffLoc === ''
+      || tripForm.pickUpLoc === tripForm.dropOffLoc) {
       setLocationAlert(true);
       return;
-    } if (tripForm.pickUpDate === '' || now > tripForm.pickUpDate) {
+    }
+
+    if (tripForm.pickUpDate === '' || now > tripForm.pickUpDate) {
       setDateAlert(true);
       return;
     }
+
     navigate('/cab-booking');
     window.scroll({ top: '0', behavior: 'smooth' });
   };
