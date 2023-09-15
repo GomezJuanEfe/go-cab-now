@@ -4,6 +4,7 @@ import './FormEditCar.scss';
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal';
+import Loading from '../Loading';
 import { DashboardContext } from '../../store/DashboardContext';
 
 const URL = import.meta.env.VITE_API_URL;
@@ -13,6 +14,7 @@ const FormEditCar = () => {
   const [updateModal, setUpdateModal] = useState(false);
   const [file, setFile] = useState(selectedCar.img);
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [updatedData, setUpdatedData] = useState({
     id: selectedCar.id,
     car_name: selectedCar.car_name,

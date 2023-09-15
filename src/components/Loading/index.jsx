@@ -1,6 +1,6 @@
 import './Loading.scss';
 
-const loading = ({ text }) => (
+const Loading = ({ text }) => (
   <div className="loading-container">
     <h3>{text}</h3>
     <div className="lds-ring">
@@ -12,4 +12,4 @@ const loading = ({ text }) => (
   </div>
 );
 
-export default loading;
+export default Loading;

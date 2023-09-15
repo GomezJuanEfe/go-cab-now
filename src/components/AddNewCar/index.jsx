@@ -9,6 +9,7 @@ import DashboardTitle from '../DashboardTableTitle';
 import './AddNewCar.scss';
 import { UserContext } from '../../store/UserContext';
 import Modal from '../Modal';
+import LoadingModal from '../LoadingModal';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -19,6 +20,8 @@ const AddNewCar = () => {
   const [file, setFile] = useState(null);
   const [image, setImage] = useState(null);// muestra img
   const [selectedDriverEmail, setSelectedDriverEmail] = useState({ driver_email: '' });
+  const [loading, setLoading] = useState(false);
+
   const [createCar, setCreateCar] = useState({
     car_name: '',
     type: '',
@@ -84,6 +87,7 @@ const AddNewCar = () => {
 
   const handleCreateDataCar = async (e) => {
     e.preventDefault();
+
     const data = new FormData();
 
     data.append('img', file, file.name);
@@ -95,8 +99,8 @@ const AddNewCar = () => {
     data.append('transmition', createCar.transmition);
     data.append('fare_km', parseInt(createCar.fare_km, 10));
     data.append('driver_id', selectedDriverEmail);
-
     try {
+      setLoading(true);
       await axios.post(
         `${URL}/api/cars`,
         data,
@@ -107,6 +111,7 @@ const AddNewCar = () => {
           },
         },
       );
+      setLoading(false);
       setCreateModal(true);
     } catch (error) {
       console.error(error);
@@ -133,7 +138,6 @@ const AddNewCar = () => {
         <DashboardTitle
           title="Add New Car"
         />
-
         <form
           onSubmit={handleCreateDataCar}
           className="container__add_form"
@@ -343,22 +347,27 @@ const AddNewCar = () => {
         </form>
 
       </div>
+      {!loading
+        && (
+        <Modal
+          showModal={createModal}
+          handleShowModal={() => setCreateModal(false)}
+        >
+          <h2>You created a new car</h2>
+          <div className="center">
+            <button
+              className="secondary-button"
+              type="button"
+              onClick={handleCloseModal}
+            >
+              Ok
+            </button>
+          </div>
+        </Modal>
+        )}
 
-      <Modal
-        showModal={createModal}
-        handleShowModal={() => setCreateModal(false)}
-      >
-        <h2>You created a new car</h2>
-        <div className="center">
-          <button
-            className="secondary-button"
-            type="button"
-            onClick={handleCloseModal}
-          >
-            Ok
-          </button>
-        </div>
-      </Modal>
+      { loading && <LoadingModal show={loading} /> }
+
     </>
   );
 };
