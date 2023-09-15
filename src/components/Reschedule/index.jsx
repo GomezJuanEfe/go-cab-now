@@ -1,14 +1,18 @@
 import './Reschedule.scss';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 import { DashboardContext } from '../../store/DashboardContext';
 import LocationPicker from '../LocationPicker';
 import DatePicker from '../DatePicker';
 import { pickerDateToDateFormat } from '../../services/DateFormat';
+import Loading from '../Loading';
+import ErrorModal from '../ErrorModal';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const Reschedule = ({ setShowModal }) => {
+  const [errorModal, setErrorModal] = useState({ show: false, msg: '' });
+  const [loading, setLoading] = useState(false);
   const {
     showReschedule,
     selectedTrip,
@@ -18,6 +22,7 @@ const Reschedule = ({ setShowModal }) => {
   } = useContext(DashboardContext);
 
   const fetchUpdateTrip = async (body) => {
+    setLoading(true);
     try {
       const response = await axios.patch(
         `${URL}/api/trips/single`,
@@ -28,9 +33,11 @@ const Reschedule = ({ setShowModal }) => {
           },
         },
       );
+      setLoading(false);
       return response;
-    } catch (err) {
-      console.log(err);
+    } catch ({ message }) {
+      setErrorModal({ show: true, msg: message });
+      setLoading(false);
     }
   };
 
@@ -71,23 +78,34 @@ const Reschedule = ({ setShowModal }) => {
 
   return (
     <div className="container_reschedule">
+      {
+        !loading && !errorModal.show && (
+          <>
+            <div className="container_inputs_reschedule">
+              <LocationPicker title="Pick Up Location" value={selectedTrip.origin_latitude} inpName="origin_latitude" handleInput={handleInput} />
+              <LocationPicker title="Drop Off Location" value={selectedTrip.destination_latitude} inpName="destination_latitude" handleInput={handleInput} />
+              <DatePicker title="Pick Up Date" inpName="date" value={selectedTrip.date} handleInput={handleInput} />
+            </div>
 
-      <div className="container_inputs_reschedule">
-        <LocationPicker title="Pick Up Location" value={selectedTrip.origin_latitude} inpName="origin_latitude" handleInput={handleInput} />
-        <LocationPicker title="Drop Off Location" value={selectedTrip.destination_latitude} inpName="destination_latitude" handleInput={handleInput} />
-        <DatePicker title="Pick Up Date" inpName="date" value={selectedTrip.date} handleInput={handleInput} />
-      </div>
+            <div className="container_button_reschedule">
+              <button
+                onClick={handleSubmit}
+                className="btn__profile_reschedule"
+                type="button"
+              >
+                Reschedule
+              </button>
+            </div>
+          </>
+        )
+      }
 
-      <div className="container_button_reschedule">
-        <button
-          onClick={handleSubmit}
-          className="btn__profile_reschedule"
-          type="button"
-        >
-          Reschedule
-        </button>
-      </div>
-
+      {
+        loading && <Loading text="Updating Trip" />
+      }
+      {
+        errorModal.show && <ErrorModal errorMessage={errorModal.msg} />
+      }
     </div>
 
   );

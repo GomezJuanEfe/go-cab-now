@@ -15,15 +15,19 @@ import { FormContext } from '../../store/FormContext';
 import { CarContext } from '../../store/CarContext';
 import { pickerDateToDateFormat } from '../../services/DateFormat';
 import { convertPriceToPennies } from '../../services/utils';
+import Loading from '../Loading';
+import ErrorModal from '../ErrorModal';
+import Modal from '../Modal';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const Checkout = () => {
+  const [loading, setLoading] = useState(false);
+  const [errorModal, setErrorModal] = useState({ show: false, msg: '' });
   const {
     tripForm,
     contactForm,
   } = useContext(FormContext);
-  const [trip, setTrip] = useState('');
   const { selectedCar, selectedCarPrice } = useContext(CarContext);
   const navigate = useNavigate();
   const stripe = useStripe();
@@ -55,8 +59,9 @@ const Checkout = () => {
         },
       );
       return response.data.trip;
-    } catch (err) {
-      console.log(err);
+    } catch ({ message }) {
+      setErrorModal({ show: true, msg: message });
+      setLoading(false);
     }
   };
 
@@ -75,8 +80,9 @@ const Checkout = () => {
           },
         },
       );
-    } catch (err) {
-      console.log(err);
+    } catch ({ message }) {
+      setErrorModal({ show: true, msg: message });
+      setLoading(false);
     }
   };
 
@@ -84,6 +90,7 @@ const Checkout = () => {
     event.preventDefault();
 
     try {
+      setLoading(true);
       const { error, paymentMethod } = await stripe.createPaymentMethod({
         type: 'card',
         card: elements.getElement(
@@ -93,7 +100,8 @@ const Checkout = () => {
         ),
       });
       if (error) {
-        alert(error);
+        setErrorModal({ show: true, msg: error });
+        setLoading(false);
         return;
       }
 
@@ -102,16 +110,18 @@ const Checkout = () => {
         amount: priceFormated,
       });
       if (response.status === 201) {
+        setLoading(false);
         const { id } = await fetchCreateTrip();
         fetchCreatePayment(paymentMethod, id);
-        alert('Thanks for your Booking');
         navigate('/success');
       } else {
+        setLoading(false);
         navigate('/failedpage');
       }
       window.scroll({ top: '0', behavior: 'smooth' });
     } catch (error) {
-      alert(error.response.data.message);
+      setErrorModal({ show: true, msg: error.response.data.message });
+      setLoading(false);
     } finally {
       elements.getElement(
         CardNumberElement,
@@ -122,45 +132,63 @@ const Checkout = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
+      {
+        loading && <Loading text="Processing payment" />
+        }
+      {
+        errorModal.show
+        && (
+        <Modal
+          showModal={errorModal.show}
+          handleShowModal={() => setErrorModal({ ...errorModal, show: !errorModal.show })}
+        >
+          <ErrorModal errorMessage={errorModal.msg} />
+        </Modal>
+        )
+      }
 
-      <div className="form-group">
-        <label htmlFor="nameOnCard" className="title__inputs">
-          Name On Card
-        </label>
-        <input className="form-control" id="nameOnCard" type="text" required />
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="card-number" className="title__inputs">Card Number</label>
-        <CardNumberElement id="card-number" className="form-control stripe-input" required />
-        <div className="img_credit">
-          <img src={creditcard} alt="creditcard" />
-        </div>
-      </div>
-
-      <div className="exp-cvv">
-        <div className="form-group">
-          <label className="title__inputs">Expiration</label>
-          <CardExpiryElement className="form-control stripe-input" required />
-        </div>
+      <form onSubmit={handleSubmit}>
 
         <div className="form-group">
-          <label className="title__inputs">CVC</label>
-          <CardCvcElement className="form-control stripe-input" required />
-          <div className="img_cvv">
-            <img src={Cvv} alt="cvv" />
+          <label htmlFor="nameOnCard" className="title__inputs">
+            Name On Card
+          </label>
+          <input className="form-control" id="nameOnCard" type="text" required />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="card-number" className="title__inputs">Card Number</label>
+          <CardNumberElement id="card-number" className="form-control stripe-input" required />
+          <div className="img_credit">
+            <img src={creditcard} alt="creditcard" />
           </div>
         </div>
-      </div>
 
-      <div className="payment-btn">
-        <button type="submit" className="btn_payment">
-          MAKE PAYMENT
-        </button>
-      </div>
+        <div className="exp-cvv">
+          <div className="form-group">
+            <label className="title__inputs">Expiration</label>
+            <CardExpiryElement className="form-control stripe-input" required />
+          </div>
 
-    </form>
+          <div className="form-group">
+            <label className="title__inputs">CVC</label>
+            <CardCvcElement className="form-control stripe-input" required />
+            <div className="img_cvv">
+              <img src={Cvv} alt="cvv" />
+            </div>
+          </div>
+        </div>
+
+        <div className="payment-btn">
+          <button type="submit" className="btn_payment">
+            MAKE PAYMENT
+          </button>
+        </div>
+
+      </form>
+
+    </>
   );
 };
 
