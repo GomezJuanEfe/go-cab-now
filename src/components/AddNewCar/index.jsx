@@ -4,12 +4,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable linebreak-style */
 import axios from 'axios';
-import { useContext, useState, useEffect } from 'react';
-import DashboardTitle from '../DashboardTableTitle';
 import './AddNewCar.scss';
+import { useContext, useState, useEffect } from 'react';
+import { FiAlertTriangle } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+import DashboardTitle from '../DashboardTableTitle';
 import { UserContext } from '../../store/UserContext';
 import Modal from '../Modal';
-import LoadingModal from '../LoadingModal';
+import Loading from '../Loading';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -21,6 +23,7 @@ const AddNewCar = () => {
   const [image, setImage] = useState(null);// muestra img
   const [selectedDriverEmail, setSelectedDriverEmail] = useState({ driver_email: '' });
   const [loading, setLoading] = useState(false);
+  const [errorModal, setErrorModal] = useState({ show: false, msg: '' });
 
   const [createCar, setCreateCar] = useState({
     car_name: '',
@@ -64,6 +67,8 @@ const AddNewCar = () => {
     });
   };
 
+  const navigate = useNavigate();
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCreateCar({
@@ -83,6 +88,7 @@ const AddNewCar = () => {
     resetForm();
     setImage(null);
     setCreateModal(false);
+    navigate('/user-profile/all-cars');
   };
 
   const handleCreateDataCar = async (e) => {
@@ -111,10 +117,12 @@ const AddNewCar = () => {
           },
         },
       );
-      setLoading(false);
       setCreateModal(true);
-    } catch (error) {
-      console.error(error);
+    } catch ({ message }) {
+      setErrorModal({ show: true, msg: message });
+      console.error(message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -138,6 +146,9 @@ const AddNewCar = () => {
         <DashboardTitle
           title="Add New Car"
         />
+
+        {!loading
+        && (
         <form
           onSubmit={handleCreateDataCar}
           className="container__add_form"
@@ -346,7 +357,9 @@ const AddNewCar = () => {
 
         </form>
 
+        )}
       </div>
+
       {!loading
         && (
         <Modal
@@ -364,9 +377,21 @@ const AddNewCar = () => {
             </button>
           </div>
         </Modal>
+
         )}
 
-      { loading && <LoadingModal show={loading} /> }
+      { loading && <Loading text="Creating your car" /> }
+
+      <Modal
+        showModal={errorModal.show}
+        handleShowModal={() => setErrorModal({ ...errorModal, show: !errorModal.show })}
+      >
+        <div className="center alert-icon">
+          <FiAlertTriangle />
+        </div>
+        <h2>There was an error</h2>
+        <p>{errorModal.msg}</p>
+      </Modal>
 
     </>
   );

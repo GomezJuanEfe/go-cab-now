@@ -85,6 +85,7 @@ const AllCars = () => {
             </thead>
             <tbody>
               {!loading && dataCars?.map((car, index) => (
+                // eslint-disable-next-line react/no-array-index-key
                 <tr key={index}>
                   <td>
                     <img src={car.img} alt="car" />

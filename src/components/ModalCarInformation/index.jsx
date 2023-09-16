@@ -19,7 +19,6 @@ const ModalCarInformation = ({
   const navigate = useNavigate();
 
   const handleDeleteCar = async () => {
-    console.log('info car', selectedCar.id);
     try {
       setLoading(true);
       await axios.delete(
@@ -95,7 +94,7 @@ const ModalCarInformation = ({
       </DashboardTable>
       )}
 
-      { loading && <Loading text="Deleting Car" /> }
+      { loading && <Loading text="Deleting your car" /> }
 
     </div>
   );
