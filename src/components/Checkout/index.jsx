@@ -23,7 +23,6 @@ const Checkout = () => {
     tripForm,
     contactForm,
   } = useContext(FormContext);
-  const [trip, setTrip] = useState('');
   const { selectedCar, selectedCarPrice } = useContext(CarContext);
   const navigate = useNavigate();
   const stripe = useStripe();

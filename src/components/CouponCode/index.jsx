@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './CouponCode.scss';
+import { CarContext } from '../../store/CarContext';
+import { convertPriceToPennies } from '../../services/utils';
+import { usdFormat } from '../../services/utils';
 
-const CouponCode = () => (
+const CouponCode = () => {
+  const { selectedCarPrice, setSelectedCarPrice } = useContext(CarContext);
+  const [discount, setDiscount] = useState(0);
+  const [selectDisabled, setSelectDisabled] = useState(false);
+
+  const handleInput = (e) => {
+    setDiscount(e.target.value / 100);
+  };
+  const handleApply = () => {
+    const pennies = convertPriceToPennies(selectedCarPrice);
+    const priceWithDiscount = pennies - Math.ceil(discount * pennies);
+    setSelectedCarPrice(usdFormat(priceWithDiscount));
+    setSelectDisabled(true);
+  };
+
+  return (
   <div className="review-box">
     <div className="coupon-detail">
       <div className="promo-section">
@@ -9,44 +27,40 @@ const CouponCode = () => (
         <div className="form-group">
           <label className="coupon-title" htmlFor="promo-code">Have A Coupon Code?</label>
           <div className="coupon-input">
-            <input type="text" id="promo-code" placeholder="Promo Code" />
-            <button type="submit">apply</button>
+            <select disabled={selectDisabled} onChange={(e) => handleInput(e)} name="promo-code" id="promo-code">
+              <option value={0}>No Coupon</option>
+              <option value={10}>CAB10</option>
+              <option value={30}>CAB30</option>
+              <option value={40}>CAB40</option>
+            </select>
+            <button disabled={selectDisabled} onClick={handleApply} type="button">apply</button>
           </div>
         </div>
 
         <div className="promos">
           <form>
 
-            <div className="form-check">
-              <input className="form-check-radio" name="radiobtn" type="radio" id="option1" value="option1" />
+            <div className="coupon-info">
               <div>
-                <label htmlFor="option1">
-                  <span>Rica500</span>
-                  <br />
-                  <span>Use Rica50, And Get $50 Off On First Booking</span>
-                </label>
+                <span className="coupon-title">CAB10</span>
+                <br />
+                <span>Use this coupon to get a 10% discount within the first three business days of the week.</span>
               </div>
             </div>
 
-            <div className="form-check">
-              <input className="form-check-radio" type="radio" id="option2" />
+            <div className="coupon-info">
               <div>
-                <label htmlFor="option2">
-                  <span>CAB10</span>
-                  <br />
-                  <span>Use FLY10, And Get $10 Off Upto $50 On Cab Ticket Booking</span>
-                </label>
+                <span className="coupon-title">CAB30</span>
+                <br />
+                <span>Use CAB30, And Get 30% Off On First Booking</span>
               </div>
             </div>
 
-            <div className="form-check">
-              <input className="form-check-radio" type="radio" id="option3" />
+            <div className="coupon-info">
               <div>
-                <label htmlFor="option3">
-                  <span>CAB80</span>
-                  <br />
-                  <span>Upto 80% Off + Upto 40% Cashback On Cab Booking & More + Extra 10% Off Via ICICI Cards $ (10th-13th Oct)</span>
-                </label>
+                <span className="coupon-title">CAB40</span>
+                <br />
+                <span>Use this coupon for your first trip of more than 300km.</span>
               </div>
             </div>
 
@@ -57,5 +71,6 @@ const CouponCode = () => (
     </div>
   </div>
 );
+}
 
 export default CouponCode;
