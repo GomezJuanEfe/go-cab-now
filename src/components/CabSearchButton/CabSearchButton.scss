@@ -36,8 +36,6 @@
     }
 
     button[type="button"] {
-      width: 60%;
-      margin-left: 12%;
       padding: 9px 20px;
       font-size: 1.6rem;
     }
@@ -48,6 +46,10 @@
 
   .search-button {
     width: 30%;
+
+    button[type="button"] {
+      margin-left: 12%;
+    }
 
     button {
       margin: 0;
