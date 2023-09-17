@@ -163,7 +163,6 @@ const ContactDetails = () => {
 
       <div className="col-r">
         <BookingSummery />
-        <CouponCode />
         <div className="advertise">
           <img src={advertise} alt="advertise" />
         </div>

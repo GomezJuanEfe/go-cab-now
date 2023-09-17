@@ -2,10 +2,12 @@ import './BookingSummery.scss';
 import { useContext } from 'react';
 import { FormContext } from '../../store/FormContext';
 import { CarContext } from '../../store/CarContext';
+import { PaymentContext } from '../../store/PaymentContext';
 
 const BookingSummery = () => {
   const { tripForm } = useContext(FormContext);
   const { selectedCar, selectedCarPrice } = useContext(CarContext);
+  const { discount } = useContext(PaymentContext);
 
   return (
     <div className="review-booking">
@@ -25,6 +27,10 @@ const BookingSummery = () => {
               <tr>
                 <td>Car Type:</td>
                 <td>{selectedCar.car_name || ''}</td>
+              </tr>
+              <tr>
+                <td>Discount:</td>
+                <td>{`${discount * 100} %` || ''}</td>
               </tr>
             </tbody>
           </table>

@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 import './CouponCode.scss';
 import { CarContext } from '../../store/CarContext';
-import { convertPriceToPennies } from '../../services/utils';
-import { usdFormat } from '../../services/utils';
+import { PaymentContext } from '../../store/PaymentContext';
+import { convertPriceToPennies, usdFormat } from '../../services/utils';
 
 const CouponCode = () => {
   const { selectedCarPrice, setSelectedCarPrice } = useContext(CarContext);
-  const [discount, setDiscount] = useState(0);
+  const { discount, setDiscount } = useContext(PaymentContext);
   const [selectDisabled, setSelectDisabled] = useState(false);
 
   const handleInput = (e) => {
