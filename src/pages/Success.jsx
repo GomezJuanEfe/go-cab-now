@@ -2,12 +2,12 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable linebreak-style */
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BannerPages from '../components/BannerPages';
 import SuccessItem from '../components/SuccessItem';
 import { FormContext } from '../store/FormContext';
 import { CarContext } from '../store/CarContext';
 import { formatTableDate } from '../services/DateFormat';
-import { useNavigate } from 'react-router-dom';
 
 const Success = () => {
   const { tripForm, contactForm } = useContext(FormContext);
@@ -24,14 +24,32 @@ const Success = () => {
       <BannerPages pageName="Booking Success" />
       <SuccessItem
         title="Payment Successful! Thanks for your booking!"
-        origin={tripForm.pickUpLoc}
-        destination={tripForm.dropOffLoc}
-        date={formatTableDate(tripForm.pickUpDate)}
-        total={selectedCarPrice}
-        firstName={contactForm.firstName}
-        lastName={contactForm.lastName}
-        email={contactForm.emailAddress}
       >
+        <table style={{minWidth: '250px'}}>
+          <tbody>
+            <tr>
+              <td>Booking holder</td>
+              <td>{`${contactForm.firstName} ${contactForm.lastName}`}</td>
+            </tr>
+            <tr>
+              <td>Origin</td>
+              <td>{tripForm.pickUpLoc}</td>
+            </tr>
+            <tr>
+              <td>Destination</td>
+              <td>{tripForm.dropOffLoc}</td>
+            </tr>
+            <tr>
+              <td>Pick up date</td>
+              <td>{formatTableDate(tripForm.pickUpDate)}</td>
+            </tr>
+            <tr>
+              <td>Total charges</td>
+              <td>{selectedCarPrice}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>{`Booking confirmation was sent to ${contactForm.emailAddress}`}</p>
         <button type="button" onClick={handleSubmit} className="secondary-button">Go Cab Now</button>
       </SuccessItem>
     </div>
