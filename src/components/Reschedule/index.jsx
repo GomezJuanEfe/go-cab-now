@@ -1,5 +1,5 @@
 import './Reschedule.scss';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 import { DashboardContext } from '../../store/DashboardContext';
 import LocationPicker from '../LocationPicker';
@@ -9,6 +9,9 @@ import { pickerDateToDateFormat } from '../../services/DateFormat';
 const URL = import.meta.env.VITE_API_URL;
 
 const Reschedule = ({ setShowModal }) => {
+  const [locationAlert, setLocationAlert] = useState('');
+  const [dateAlert, setDateAlert] = useState('');
+  const [disabledButton, setDisabledButton] = useState(false);
   const {
     showReschedule,
     selectedTrip,
@@ -67,6 +70,21 @@ const Reschedule = ({ setShowModal }) => {
       };
     }
     setSelectedTrip(tripUpdated);
+
+    if (tripUpdated.origin_latitude === '' || tripUpdated.destination_latitude === '' || tripUpdated.origin_latitude === tripUpdated.destination_latitude) {
+      setLocationAlert('Must select different Pick Up and Drop Off Locations');
+      setDisabledButton(true);
+      return;
+    } if (tripUpdated.origin_latitude !== tripUpdated.destination_latitude) {
+      setLocationAlert('');
+      setDisabledButton(false);
+    }
+    setLocationAlert('');
+    if (tripUpdated.date === '') {
+      setDateAlert('Must select a Pick Up Date and Time');
+      return;
+    }
+    setDateAlert('');
   };
 
   return (
@@ -78,11 +96,15 @@ const Reschedule = ({ setShowModal }) => {
         <DatePicker title="Pick Up Date" inpName="date" value={selectedTrip.date} handleInput={handleInput} />
       </div>
 
+      <div className="alert">{locationAlert}</div>
+      <div className="alert">{dateAlert}</div>
+
       <div className="container_button_reschedule">
         <button
           onClick={handleSubmit}
           className="btn__profile_reschedule"
           type="button"
+          disabled={disabledButton}
         >
           Reschedule
         </button>

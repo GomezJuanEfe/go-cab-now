@@ -72,7 +72,7 @@ const CabSearchCarList = () => {
         setPageIndex={setcablistIndexPage}
       />
       <Modal showModal={locationAlert} handleShowModal={handleShowLocationAlert}>
-        <h2>Must select Pick Up and Drop Off Locations</h2>
+        <h2>Must select different Pick Up and Drop Off Locations</h2>
         <div className="center">
           <button type="button" className="secondary-button" onClick={() => setLocationAlert(false)}>Ok</button>
         </div>
