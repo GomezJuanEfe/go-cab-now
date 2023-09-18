@@ -2,7 +2,7 @@ import './DashboardHeader.scss';
 import { NavLink } from 'react-router-dom';
 import { FaAngleDown } from 'react-icons/fa';
 import { useContext } from 'react';
-import logo from '../../assets/icons/GCN-logo.png';
+import { iconsURL } from '../../assets/variable.img';
 import portrait from '../../assets/images/profile.jpg';
 import ProfileHoverCard from '../ProfileHoverCard';
 import { UserContext } from '../../store/UserContext';
@@ -19,7 +19,7 @@ const DashboardHeader = ({ handleToggleSidebar }) => {
         <div className="header-logo-wrapper">
           <div className="logo-wrapper">
             <NavLink to="/">
-              <img src={logo} alt="logo" />
+              <img src={iconsURL.GCN_Logo_White} alt="logo" />
             </NavLink>
           </div>
           <div

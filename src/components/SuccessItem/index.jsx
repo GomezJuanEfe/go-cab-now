@@ -1,15 +1,13 @@
 import './SuccessItem.scss';
-import ImgCar from '../../assets/images/success_img.png';
+import { imageURL } from '../../assets/variable.img';
 
 // eslint-disable-next-line arrow-body-style
-const SuccessItem = ({
-  title, body, children,
-}) => (
+const SuccessItem = ({ title, body, children }) => (
   <section className="success-section">
     <div>
       <div className="row_success">
         <div className="col_success">
-          <img src={ImgCar} alt="successCar" />
+          <img src={imageURL.businessCab} alt="successCar" />
           <h2>{title}</h2>
           <p>
             {body}
@@ -20,4 +18,5 @@ const SuccessItem = ({
     </div>
   </section>
 );
+
 export default SuccessItem;

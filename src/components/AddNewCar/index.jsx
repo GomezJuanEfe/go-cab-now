@@ -4,11 +4,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable linebreak-style */
 import axios from 'axios';
-import { useContext, useState, useEffect } from 'react';
-import DashboardTitle from '../DashboardTableTitle';
 import './AddNewCar.scss';
+import { useContext, useState, useEffect } from 'react';
+import { FiAlertTriangle } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+import DashboardTitle from '../DashboardTableTitle';
 import { UserContext } from '../../store/UserContext';
 import Modal from '../Modal';
+import Loading from '../Loading';
+import { iconsURL } from '../../assets/variable.img';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -19,6 +23,9 @@ const AddNewCar = () => {
   const [file, setFile] = useState(null);
   const [image, setImage] = useState(null);// muestra img
   const [selectedDriverEmail, setSelectedDriverEmail] = useState({ driver_email: '' });
+  const [loading, setLoading] = useState(false);
+  const [errorModal, setErrorModal] = useState({ show: false, msg: '' });
+
   const [createCar, setCreateCar] = useState({
     car_name: '',
     type: '',
@@ -61,6 +68,8 @@ const AddNewCar = () => {
     });
   };
 
+  const navigate = useNavigate();
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCreateCar({
@@ -80,10 +89,12 @@ const AddNewCar = () => {
     resetForm();
     setImage(null);
     setCreateModal(false);
+    navigate('/user-profile/all-cars');
   };
 
   const handleCreateDataCar = async (e) => {
     e.preventDefault();
+
     const data = new FormData();
 
     data.append('img', file, file.name);
@@ -95,8 +106,8 @@ const AddNewCar = () => {
     data.append('transmition', createCar.transmition);
     data.append('fare_km', parseInt(createCar.fare_km, 10));
     data.append('driver_id', selectedDriverEmail);
-
     try {
+      setLoading(true);
       await axios.post(
         `${URL}/api/cars`,
         data,
@@ -108,8 +119,11 @@ const AddNewCar = () => {
         },
       );
       setCreateModal(true);
-    } catch (error) {
-      console.error(error);
+    } catch ({ message }) {
+      setErrorModal({ show: true, msg: message });
+      console.error(message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -134,6 +148,8 @@ const AddNewCar = () => {
           title="Add New Car"
         />
 
+        {!loading
+        && (
         <form
           onSubmit={handleCreateDataCar}
           className="container__add_form"
@@ -221,7 +237,7 @@ const AddNewCar = () => {
             <div className="input-group">
               <div className="container__span">
                 <span className="input-group-text">
-                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/seat_e37og3.png" alt="seat" />
+                  <img src={iconsURL.seats} alt="seat" />
                 </span>
               </div>
               <input
@@ -242,7 +258,7 @@ const AddNewCar = () => {
             <div className="input-group">
               <div className="container__span">
                 <span className="input-group-text">
-                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273257/samples/ICONS_CAR_EDIT/luggage_vqprta.png" alt="luggage" />
+                  <img src={iconsURL.luggage} alt="luggage" />
                 </span>
               </div>
               <input
@@ -263,7 +279,7 @@ const AddNewCar = () => {
             <div className="input-group">
               <div className="container__span">
                 <span className="input-group-text">
-                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/snowflake_uqwwpz.png" alt="air" />
+                  <img src={iconsURL.air_conditioner} alt="air" />
                 </span>
               </div>
 
@@ -288,7 +304,7 @@ const AddNewCar = () => {
             <div className="input-group">
               <div className="container__span">
                 <span className="input-group-text">
-                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/settings_wijv7z.png" alt="transmition" />
+                  <img src={iconsURL.transmition} alt="transmition" />
                 </span>
               </div>
               <select
@@ -342,23 +358,42 @@ const AddNewCar = () => {
 
         </form>
 
+        )}
       </div>
 
+      {!loading
+        && (
+        <Modal
+          showModal={createModal}
+          handleShowModal={() => setCreateModal(false)}
+        >
+          <h2>You created a new car</h2>
+          <div className="center">
+            <button
+              className="secondary-button"
+              type="button"
+              onClick={handleCloseModal}
+            >
+              Ok
+            </button>
+          </div>
+        </Modal>
+
+        )}
+
+      { loading && <Loading text="Creating your car" /> }
+
       <Modal
-        showModal={createModal}
-        handleShowModal={() => setCreateModal(false)}
+        showModal={errorModal.show}
+        handleShowModal={() => setErrorModal({ ...errorModal, show: !errorModal.show })}
       >
-        <h2>You created a new car</h2>
-        <div className="center">
-          <button
-            className="secondary-button"
-            type="button"
-            onClick={handleCloseModal}
-          >
-            Ok
-          </button>
+        <div className="center alert-icon">
+          <FiAlertTriangle />
         </div>
+        <h2>There was an error</h2>
+        <p>{errorModal.msg}</p>
       </Modal>
+
     </>
   );
 };

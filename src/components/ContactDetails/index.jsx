@@ -7,7 +7,7 @@ import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import BookingSummery from '../BookingSummery';
 import CouponCode from '../CouponCode';
-import advertise from '../../assets/images/advertise.jpg';
+import { imageURL } from '../../assets/variable.img';
 import { UserContext } from '../../store/UserContext';
 import { FormContext } from '../../store/FormContext';
 
@@ -164,7 +164,7 @@ const ContactDetails = () => {
       <div className="col-r">
         <BookingSummery />
         <div className="advertise">
-          <img src={advertise} alt="advertise" />
+          <img src={imageURL.advertise} alt="advertise" />
         </div>
       </div>
     </div>
