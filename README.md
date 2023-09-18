@@ -14,7 +14,9 @@ For development, you will only need:
 
 ### Screenshot of project
 
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTZhb3JtMXhzcmc5azVmaGV5Mzc2NWN0end4ejAxMGs3NG9scWdyaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2lqYLvsS42BCT0fNiX/giphy.gif" alt="Screenshot"/>
+  <p {align="center"}>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWR6cGg3Z3V2cTA4MG52bjFvNTdpZjRvdW81bDFlbnUwY2Zhd2tmciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AedTBWYQW1D1f7TLdL/giphy.gif" alt="Screenshot"/>
+  </p>
 
 
 ## 🔧 Install 
