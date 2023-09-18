@@ -100,7 +100,7 @@ const Header = () => {
             </select>
           </li>  NOTA: Codigo oculatado funcionalidad no aplicada */}
           <li className="menu__right-section-user">
-            <NavLink to="access">
+            <NavLink to="/access">
               <FaUser style={{ fill: 'white', fontSize: '20px' }} />
             </NavLink>
           </li>

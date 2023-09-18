@@ -79,6 +79,7 @@ button {
 button[type="button"].secondary-button,
 button[type="submit"].secondary-button {
   padding: 5px 16px;
+  margin-top: 20px;
   text-transform: capitalize;
   font-size: 1.4rem;
   font-weight: 700;
@@ -98,6 +99,7 @@ button[type="submit"].secondary-button:hover {
 button[type="button"].terciary-button,
 button[type="submit"].terciary-button {
   padding: 5px 16px;
+  margin-top: 20px;
   text-transform: capitalize;
   font-size: 1.4rem;
   font-weight: 700;
@@ -132,4 +134,75 @@ button[type="submit"].terciary-button:hover {
 
 .icon_edit {
   color: #4aa4d9;
+}
+
+/* Form */
+
+.form-group {
+  label {
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    font-weight: 600;
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+  }
+
+  input {
+    width: 100%;
+    margin-top: 5px;
+    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+    padding: calc(10px + (12 - 10) * ((100vw - 320px) / (1920 - 320))) 10px;
+    border-radius: 0.25rem;
+    border: solid 1px $light-primary-color;
+
+    &:focus {
+      border: solid 1px $primary-color;
+    }
+
+    &::placeholder {
+      opacity: 0.6;
+    }
+  }
+
+  .forgot {
+    text-align: end;
+
+    p {
+      display: inline-block;
+      color: #898989;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        color: $primary-color;
+      }
+
+      @media screen and (min-width: 900px) {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .signin-btn {
+    cursor: pointer;
+    width: 100%;
+    padding: 0.375rem 1.75rem;
+    background-color: $primary-color;
+    text-align: center;
+    color: $white;
+    border-radius: 0.25rem;
+    box-shadow: 0px 1px 9px 3px rgb(228 228 228 / 81%);
+  }
+}
+
+.password-group {
+  margin-bottom: 0;
+
+  input {
+    max-width: 300px;
+  }
 }
