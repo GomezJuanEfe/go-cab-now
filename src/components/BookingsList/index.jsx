@@ -13,6 +13,7 @@ import { formatTableDate } from '../../services/DateFormat';
 import { UserContext } from '../../store/UserContext';
 import CompleteTrip from '../CompleteTrip';
 import CancelTrip from '../CancelTrip';
+import loadingGif from '../../assets/images/Loading.svg';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -21,7 +22,9 @@ const BookingsList = () => {
   const [showModal, setShowModal] = useState(false);
   const [cancelModal, setCancelModal] = useState(false);
   const [loading, setLoading] = useState(true);
-  const { setSelectedTrip, tripsData, setTripsData, selectedTrip } = useContext(DashboardContext);
+  const {
+    setSelectedTrip, tripsData, setTripsData, selectedTrip,
+  } = useContext(DashboardContext);
 
   useEffect(() => {
     const fetchTripsdata = async () => {
@@ -100,29 +103,31 @@ const BookingsList = () => {
               </tr>
             </thead>
             <tbody>
-              { !loading && tripsData.map((booking, index) => (
-                <tr key={index}>
-                  <td>{`${booking.origin_latitude} to ${booking.destination_latitude}`}</td>
-                  <td>{usdFormat(booking?.total)}</td>
-                  <td>{formatTableDate(booking.date)}</td>
-                  <td>
-                    <span className={booking.status === 'PAST' ? 'status--past' : booking.status === 'UPCOMING' ? 'status--upcoming' : 'status--cancelled'}>
-                      {booking.status}
-                    </span>
-                  </td>
-                  <td>
-                    {userData.role === 'DRIVER'
-                      ? <span onClick={() => handleShowModal(booking)} className="complete-trip">Complete Trip</span>
-                      : (
-                        <div>
-                          <span onClick={() => handleSetShowModal(booking)} className="reschedule">Reschedule</span>
-                          <span> | </span>
-                          <span onClick={() => handleCancelModal(booking)} className="cancel">Cancel</span>
-                        </div>
-                      )}
-                  </td>
-                </tr>
-              ))}
+              { loading
+                ? <img className="loading" src={loadingGif} alt="loading" />
+                : tripsData.map((booking, index) => (
+                  <tr key={index}>
+                    <td>{`${booking.origin_latitude} to ${booking.destination_latitude}`}</td>
+                    <td>{usdFormat(booking?.total)}</td>
+                    <td>{formatTableDate(booking.date)}</td>
+                    <td>
+                      <span className={booking.status === 'PAST' ? 'status--past' : booking.status === 'UPCOMING' ? 'status--upcoming' : 'status--cancelled'}>
+                        {booking.status}
+                      </span>
+                    </td>
+                    <td>
+                      {userData.role === 'DRIVER'
+                        ? <span onClick={() => handleShowModal(booking)} className="complete-trip">Complete Trip</span>
+                        : (
+                          <div>
+                            <span onClick={() => handleSetShowModal(booking)} className="reschedule">Reschedule</span>
+                            <span> | </span>
+                            <span onClick={() => handleCancelModal(booking)} className="cancel">Cancel</span>
+                          </div>
+                        )}
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </DashboardTable>
