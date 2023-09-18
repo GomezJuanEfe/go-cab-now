@@ -13,7 +13,8 @@ import { formatTableDate } from '../../services/DateFormat';
 import { UserContext } from '../../store/UserContext';
 import CompleteTrip from '../CompleteTrip';
 import CancelTrip from '../CancelTrip';
-import loadingGif from '../../assets/images/Loading.svg';
+import LoadingModal from '../LoadingModal';
+import ErrorModal from '../ErrorModal';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -21,15 +22,32 @@ const BookingsList = () => {
   const { userData } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
   const [cancelModal, setCancelModal] = useState(false);
+  const [errorModal, setErrorModal] = useState({ show: false, msg: '' });
   const [loading, setLoading] = useState(true);
   const {
-    setSelectedTrip, tripsData, setTripsData, selectedTrip,
+    setSelectedTrip,
+    tripsData,
+    setTripsData,
+    selectedTrip,
   } = useContext(DashboardContext);
+
+  const urlHandler = () => {
+    let url = '';
+    if (userData.role === 'ADMIN') {
+      url = `${URL}/api/trips`;
+    } if (userData.role === 'USER') {
+      url = `${URL}/api/trips/user-trips`;
+    } if (userData.role === 'DRIVER') {
+      url = `${URL}/api/trips/car-trips`;
+    }
+
+    return url;
+  };
 
   useEffect(() => {
     const fetchTripsdata = async () => {
       setLoading(true);
-      const fetchUrl = userData.role === 'ADMIN' ? `${URL}/api/trips` : userData.role === 'USER' ? `${URL}/api/trips/user-trips` : `${URL}/api/trips/car-trips`;
+      const fetchUrl = urlHandler();
       try {
         const { data: { trips } } = await axios.get(
           fetchUrl,
@@ -39,9 +57,10 @@ const BookingsList = () => {
             },
           },
         );
+
         setTripsData(trips);
-      } catch (err) {
-        console.log(err);
+      } catch ({ message }) {
+        setErrorModal({ show: true, msg: message });
       }
       setLoading(false);
     };
@@ -103,31 +122,29 @@ const BookingsList = () => {
               </tr>
             </thead>
             <tbody>
-              { loading
-                ? <img className="loading" src={loadingGif} alt="loading" />
-                : tripsData.map((booking, index) => (
-                  <tr key={index}>
-                    <td>{`${booking.origin_latitude} to ${booking.destination_latitude}`}</td>
-                    <td>{usdFormat(booking?.total)}</td>
-                    <td>{formatTableDate(booking.date)}</td>
-                    <td>
-                      <span className={booking.status === 'PAST' ? 'status--past' : booking.status === 'UPCOMING' ? 'status--upcoming' : 'status--cancelled'}>
-                        {booking.status}
-                      </span>
-                    </td>
-                    <td>
-                      {userData.role === 'DRIVER'
-                        ? <span onClick={() => handleShowModal(booking)} className="complete-trip">Complete Trip</span>
-                        : (
-                          <div>
-                            <span onClick={() => handleSetShowModal(booking)} className="reschedule">Reschedule</span>
-                            <span> | </span>
-                            <span onClick={() => handleCancelModal(booking)} className="cancel">Cancel</span>
-                          </div>
-                        )}
-                    </td>
-                  </tr>
-                ))}
+              { !loading && tripsData.map((booking) => (
+                <tr key={booking.id}>
+                  <td>{`${booking.origin_latitude} to ${booking.destination_latitude}`}</td>
+                  <td>{usdFormat(booking?.total)}</td>
+                  <td>{formatTableDate(booking.date)}</td>
+                  <td>
+                    <span className={booking.status === 'PAST' ? 'status--past' : booking.status === 'UPCOMING' ? 'status--upcoming' : 'status--cancelled'}>
+                      {booking.status}
+                    </span>
+                  </td>
+                  <td>
+                    {userData.role === 'DRIVER'
+                      ? <span onClick={() => handleShowModal(booking)} className="complete-trip">Complete Trip</span>
+                      : (
+                        <div>
+                          <span onClick={() => handleSetShowModal(booking)} className="reschedule">Reschedule</span>
+                          <span> | </span>
+                          <span onClick={() => handleCancelModal(booking)} className="cancel">Cancel</span>
+                        </div>
+                      )}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </DashboardTable>
@@ -152,6 +169,13 @@ const BookingsList = () => {
                   setShowModal={setCancelModal}
                 />
               </Modal>
+              <Modal
+                showModal={errorModal.show}
+                handleShowModal={() => setErrorModal({ ...errorModal, show: !errorModal.show })}
+              >
+                <ErrorModal errorMessage={errorModal.msg} />
+              </Modal>
+              <LoadingModal text="Bookings Loading" show={loading} />
             </div>
           )
       }
