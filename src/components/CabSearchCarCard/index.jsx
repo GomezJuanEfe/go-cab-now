@@ -1,5 +1,4 @@
 import './CabSearchCarCard.scss';
-
 import { toTitleCase } from '../../services/utils';
 
 const CabSearchCarCard = ({ data, handleSelect, tripTotal }) => (

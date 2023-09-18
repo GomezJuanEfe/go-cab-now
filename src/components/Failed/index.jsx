@@ -1,5 +1,5 @@
 import './Failed.scss';
-import ImgFailed from '../../assets/images/failed.jpg';
+import { imageURL } from '../../assets/variable.img';
 
 const Failed = ({ title, body, children }) => (
 
@@ -7,7 +7,7 @@ const Failed = ({ title, body, children }) => (
 
     <div className="row__failed">
 
-      <img src={ImgFailed} className="img-failed" alt="failed" />
+      <img src={imageURL.ImgFailed} className="img-failed" alt="failed" />
       <h2>{title}</h2>
       <p>{body}</p>
       {children}

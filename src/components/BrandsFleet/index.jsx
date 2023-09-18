@@ -4,12 +4,7 @@ import Slider from 'react-slick';
 import './BrandsFleet.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import React from 'react';
-import tecno from '../../assets/icons/tecno.png';
-import eco from '../../assets/icons/eco.png';
-import air from '../../assets/icons/airport.png';
-import hydra from '../../assets/icons/hydra.png';
-import ux from '../../assets/icons/ux.png';
+import { iconsURL } from '../../assets/variable.img';
 
 const ArrowStyle = (props) => {
   const { className, style, onClick } = props;
@@ -71,19 +66,19 @@ const BrandsFleet = () => {
       <div className="brand__slider">
         <Slider {...settings}>
           <div>
-            <img className="brand" src={tecno} alt="tecno" />
+            <img className="brand" src={iconsURL.tecno} alt="tecno" />
           </div>
           <div>
-            <img className="brand" src={eco} alt="eco" />
+            <img className="brand" src={iconsURL.eco} alt="eco" />
           </div>
           <div>
-            <img className="brand" src={air} alt="airport" />
+            <img className="brand" src={iconsURL.air} alt="airport" />
           </div>
           <div>
-            <img className="brand" src={hydra} alt="hydra" />
+            <img className="brand" src={iconsURL.hydra} alt="hydra" />
           </div>
           <div>
-            <img className="brand" src={ux} alt="ux" />
+            <img className="brand" src={iconsURL.ux} alt="ux" />
           </div>
         </Slider>
       </div>
