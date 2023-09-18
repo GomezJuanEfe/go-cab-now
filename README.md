@@ -14,7 +14,7 @@ For development, you will only need:
 
 ### Screenshot of project
 
-  <img src="https://media.giphy.com/media/zWJxjdyUz5IdOmhxmq/giphy.gif" alt="Screenshot"/>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTZhb3JtMXhzcmc5azVmaGV5Mzc2NWN0end4ejAxMGs3NG9scWdyaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2lqYLvsS42BCT0fNiX/giphy.gif" alt="Screenshot"/>
 
 
 ## 🔧 Install 
