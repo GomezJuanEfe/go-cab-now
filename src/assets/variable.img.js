@@ -9,7 +9,7 @@ export const iconsURL = {
   wheel: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709830/Icons_GCN/wheel_btmm61.png',
   customer: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/customer_izln0w.png',
   world: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709830/Icons_GCN/world_drl6ei.png',
-  cab: 'https://res.cloudinary.com/dbmertsgv/imasge/upload/v1694709825/Icons_GCN/cab_jqexpk.png',
+  cab: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709829/Icons_GCN/taxi_wavdjc.png',
   mobile: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709826/Icons_GCN/mobile-app_xw6bpp.png',
   calendar: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709825/Icons_GCN/confirm-schedule_b1a4xw.png',
   taxi: 'https://res.cloudinary.com/dbmertsgv/image/upload/v1694709829/Icons_GCN/taxi_wavdjc.png',
