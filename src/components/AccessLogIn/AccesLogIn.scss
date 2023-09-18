@@ -4,7 +4,6 @@
   display: none;
 }
 
-
 form{
   h4{
     margin-bottom: 5px;
@@ -45,11 +44,12 @@ form{
       }
     }
     .forgot{
-      cursor: pointer;
       text-align: end;
       p{
+        display: inline-block;
         color: #898989;
         transition: all 0.2s ease-in-out;
+        cursor: pointer;
         &:hover{
           color: $primary-color;
         }

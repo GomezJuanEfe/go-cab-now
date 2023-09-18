@@ -27,6 +27,7 @@ const VerifyAccount = () => {
         setLoading(false);
       })
       .catch(({ message }) => {
+        console.log(message);
         setResponseMsg(message);
         setLoading(false);
         setError(true);

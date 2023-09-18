@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import './AccesLogIn.scss';
 import { FaFacebookF, FaGoogle } from 'react-icons/fa';
+import { FiAlertTriangle } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import AccessCard from '../AccessCard';
 import { DashboardContext } from '../../store/DashboardContext';
 import { FormContext } from '../../store/FormContext';
 import { UserContext } from '../../store/UserContext';
+import Modal from '../Modal';
+import Loading from '../Loading';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -14,6 +17,8 @@ const AccessLogIn = ({ handleShowAccess }) => {
   const { showAccess } = useContext(DashboardContext);
   const { loginForm, handleLoginForm, resetLoginForm } = useContext(FormContext);
   const { setIsLogged } = useContext(UserContext);
+  const [modal, setModal] = useState({ show: false, msg: '', title: '' });
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -32,6 +37,25 @@ const AccessLogIn = ({ handleShowAccess }) => {
       email: '',
       password: '',
     });
+  };
+
+  const handleForgotPassword = async () => {
+    if (loginForm.email) {
+      try {
+        setLoading(true);
+        setModal({ ...modal, show: true });
+        const { data } = await axios.get(`${URL}/auth/local/generate-token-forgot-password/${loginForm.email}`);
+        setLoading(false);
+        setModal({ ...modal, msg: data.message, show: true });
+      } catch ({ message }) {
+        setLoading(false);
+        setModal({
+          show: true, msg: message, title: 'Error',
+        });
+      }
+    } else {
+      setModal({ ...modal, show: true, msg: 'Enter an email, please' });
+    }
   };
 
   return (
@@ -68,7 +92,9 @@ const AccessLogIn = ({ handleShowAccess }) => {
           </div>
           <div className="form-group">
             <div className="forgot">
-              <p>Forgot password?</p>
+              <p onClick={handleForgotPassword}>
+                Forgot password?
+              </p>
             </div>
             <div className="btn">
               <button className="signin-btn" type="submit">Sign In</button>
@@ -97,6 +123,25 @@ const AccessLogIn = ({ handleShowAccess }) => {
           </p>
         </form>
       </AccessCard>
+      <Modal
+        showModal={modal.show}
+        handleShowModal={() => setModal({ ...modal, show: false })}
+      >
+        <div className="center alert-icon">
+          <FiAlertTriangle />
+        </div>
+        { loading
+          ? (<Loading />)
+          : (
+            <>
+              <h2>{modal.title || 'Email verification'}</h2>
+              <p>{modal.msg}</p>
+              <div className="center">
+                <button className="secondary-button" onClick={() => setModal({ ...modal, show: false })} type="button">Ok</button>
+              </div>
+            </>
+          )}
+      </Modal>
     </div>
   );
 };
