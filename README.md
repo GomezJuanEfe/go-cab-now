@@ -1,4 +1,6 @@
-# Project Go Cab Now 
+# Welcome to Project Go Cab Now 
+
+This project is an app to book trips in the main cities, with the option to select cars of your choice. 
 
 ## Prerequisites 📋
 
@@ -9,6 +11,12 @@ For development, you will only need:
 - [Node.js](https://nodejs.org)
 - [npm](https://www.npmjs.com/)
 - [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
+
+### Screenshot of project
+
+<p aling="center">
+  <img src="https://media.giphy.com/media/zWJxjdyUz5IdOmhxmq/giphy.gif" alt="Screenshot"/>
+</p>
 
 ## 🔧 Install 
 
