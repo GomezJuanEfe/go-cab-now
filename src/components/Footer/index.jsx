@@ -2,10 +2,8 @@ import './Footer.scss';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import { useState } from 'react';
 import FooterSection from '../FooterSection';
+import { iconsURL, imageURL } from '../../assets/variable.img';
 import FooterBlog from '../FooterBlog';
-import gcnLogo from '../../assets/icons/GCN-logo.png';
-import blogImg1 from '../../assets/images/1(2).jpg';
-import blogImg2 from '../../assets/images/2(2).jpg';
 
 const Footer = () => {
   const [active, setActive] = useState(undefined);
@@ -16,7 +14,7 @@ const Footer = () => {
       <div className="footer-container">
 
         <FooterSection title="Contact Us" active={active} setActive={setActive} id={1}>
-          <img src={gcnLogo} alt="logo" />
+          <img src={iconsURL.GCN_Logo_White} alt="logo" />
           <p>
             {/* eslint-disable-next-line max-len */}
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit praesentium dolore quis a, expedita, nostrum doloremque veritatis iusto magni voluptate hic inventore ipsa earum iure quam voluptates quaerat culpa quisquam.
@@ -69,13 +67,13 @@ const Footer = () => {
           <div className="footer-blog">
 
             <FooterBlog
-              img={blogImg1}
+              img={imageURL.blogImg1}
               title="Recent News"
               body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, totam quibusdam. Excepturi, recusandae animi expedita saepe libero modi dignissimos a."
             />
 
             <FooterBlog
-              img={blogImg2}
+              img={imageURL.blogImg2}
               title="Recent News"
               body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, totam quibusdam. Excepturi, recusandae animi expedita saepe libero modi dignissimos a."
             />

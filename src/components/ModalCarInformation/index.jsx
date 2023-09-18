@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import './ModalCarInformation.scss';
 import { useNavigate } from 'react-router-dom';
 import DashboardTable from '../DashboardTable';
 import { DashboardContext } from '../../store/DashboardContext';
+import Loading from '../Loading';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -13,12 +14,13 @@ const ModalCarInformation = ({
   setDeleteCar,
 }) => {
   const { dataCars, setDataCars } = useContext(DashboardContext);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleDeleteCar = async () => {
-    console.log('info car', selectedCar.id);
     try {
+      setLoading(true);
       await axios.delete(
         `${URL}/api/cars/${selectedCar.id}`,
         {
@@ -31,7 +33,7 @@ const ModalCarInformation = ({
       setDataCars(carsUpdatedDelete);
       setModalDelete(false);
       setDeleteCar(true);
-
+      setLoading(false);
       navigate('/user-profile/all-cars');
     } catch (error) {
       console.log(error);
@@ -40,11 +42,12 @@ const ModalCarInformation = ({
 
   const handleCancelModal = () => {
     setModalDelete(false);
-  }
+  };
 
   return (
     <div className="container__info-selectedCar">
-
+      {!loading
+      && (
       <DashboardTable>
         <table>
           <thead>
@@ -89,6 +92,9 @@ const ModalCarInformation = ({
 
         </div>
       </DashboardTable>
+      )}
+
+      { loading && <Loading text="Deleting your car" /> }
 
     </div>
   );

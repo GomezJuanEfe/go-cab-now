@@ -27,12 +27,16 @@ const ProfileHoverCard = () => {
         </NavLink>
       </div>
       <div className="hovercard-item">
-        <BiUser />
-        <span>My Profile</span>
+        <NavLink to="/user-profile">
+          <BiUser />
+          <span>My Profile</span>
+        </NavLink>
       </div>
       <div className="hovercard-item">
-        <BiBookmark />
-        <span>My Bookings</span>
+        <NavLink to="/user-profile/bookings">
+          <BiBookmark />
+          <span>My Bookings</span>
+        </NavLink>
       </div>
       <div className="hovercard-item" onClick={handleLogOut}>
         <BiLogIn />

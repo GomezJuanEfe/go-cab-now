@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import axios from 'axios';
 import './FormEditCar.scss';
+import { FiAlertTriangle } from 'react-icons/fi';
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal';
+import Loading from '../Loading';
 import { DashboardContext } from '../../store/DashboardContext';
 
 const URL = import.meta.env.VITE_API_URL;
@@ -13,6 +15,9 @@ const FormEditCar = () => {
   const [updateModal, setUpdateModal] = useState(false);
   const [file, setFile] = useState(selectedCar.img);
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [errorModal, setErrorModal] = useState({ show: false, msg: '' });
+
   const [updatedData, setUpdatedData] = useState({
     id: selectedCar.id,
     car_name: selectedCar.car_name,
@@ -55,6 +60,7 @@ const FormEditCar = () => {
   };
 
   const handleSubmitUpdatedCar = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     const data = new FormData();
@@ -80,9 +86,11 @@ const FormEditCar = () => {
         },
       );
       setUpdateModal(true);
-    } catch (error) {
-      console.error(error);
+    } catch ({ message }) {
+      setErrorModal({ show: true, msg: message });
+      console.error(message);
     }
+    setLoading(false);
   };
 
   const readFile = (img) => {
@@ -101,6 +109,8 @@ const FormEditCar = () => {
   return (
     <div className="container__edit-car">
 
+      {!loading
+      && (
       <form
         onSubmit={handleSubmitUpdatedCar}
         className="container__add_form"
@@ -292,6 +302,8 @@ const FormEditCar = () => {
         </div>
 
       </form>
+      )}
+
       <Modal
         showModal={updateModal}
         handleShowModal={() => setUpdateModal(false)}
@@ -307,6 +319,20 @@ const FormEditCar = () => {
           </button>
         </div>
       </Modal>
+
+      {loading && <Loading text="Editing your car" />}
+
+      <Modal
+        showModal={errorModal.show}
+        handleShowModal={() => setErrorModal({ ...errorModal, show: !errorModal.show })}
+      >
+        <div className="center alert-icon">
+          <FiAlertTriangle />
+        </div>
+        <h2>There was an error</h2>
+        <p>{errorModal.msg}</p>
+      </Modal>
+
     </div>
   );
 };

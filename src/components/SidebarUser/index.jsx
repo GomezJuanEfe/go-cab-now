@@ -130,18 +130,6 @@ const SidebarUser = ({ showSidebar, setShowSidebar }) => {
                 )
               }
               </NavLink>
-              <NavLink to="/user-profile/edit-car">
-                <li
-                  onClick={() => setShowSidebar(true)}
-                  onKeyDown={() => setShowSidebar(true)}
-                  role="menuitem"
-                  tabIndex={0}
-                >
-                  <span>-</span>
-                  {' '}
-                  Edit Car
-                </li>
-              </NavLink>
               <NavLink to="/user-profile/add-car">
                 <li
                   onClick={() => setShowSidebar(true)}

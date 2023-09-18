@@ -19,6 +19,7 @@ import CarEditPage from '../pages/EditCarPage';
 import PrivateRoute from '../components/PrivateRoute';
 import DisableLogged from '../components/DisableLogged';
 import VerifyAccount from '../pages/VerifyAccount';
+import VerifyResetPassword from '../pages/VerifyResetPassword';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: '/verify-account/:token',
         element: <VerifyAccount />,
+      },
+      {
+        path: '/verify-forgot-password/:token',
+        element: <VerifyResetPassword />,
       },
       {
         path: '/user-profile/',

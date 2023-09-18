@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import './AllCars.scss';
 import axios from 'axios';
+import { FiAlertTriangle } from 'react-icons/fi';
 import { FaEdit } from 'react-icons/fa';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +11,7 @@ import Modal from '../Modal';
 import ModalCarInformation from '../ModalCarInformation';
 import { DashboardContext } from '../../store/DashboardContext';
 import { UserContext } from '../../store/UserContext';
+import LoadingModal from '../LoadingModal';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -18,7 +20,7 @@ const AllCars = () => {
     dataCars, setDataCars, selectedCar, setSelectCar,
   } = useContext(DashboardContext);
   const { userData } = useContext(UserContext);
-
+  const [errorModal, setErrorModal] = useState({ show: false, msg: '' });
   const [modalDelete, setModalDelete] = useState(false);
   const [deleteCar, setDeleteCar] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -26,7 +28,6 @@ const AllCars = () => {
   useEffect(() => {
     const fetchCarsData = async () => {
       setLoading(true);
-
       try {
         const { data: { cars } } = await axios.get((userData.role === 'ADMIN' ? `${URL}/api/cars` : `${URL}/api/cars/single`), {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
@@ -36,10 +37,12 @@ const AllCars = () => {
         } else {
           setDataCars([cars]);
         }
-      } catch (error) {
-        console.log(error);
+      } catch ({ message }) {
+        setErrorModal({ show: true, msg: message });
+        console.log(message);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchCarsData();
@@ -82,6 +85,7 @@ const AllCars = () => {
             </thead>
             <tbody>
               {!loading && dataCars?.map((car, index) => (
+                // eslint-disable-next-line react/no-array-index-key
                 <tr key={index}>
                   <td>
                     <img src={car.img} alt="car" />
@@ -133,6 +137,17 @@ const AllCars = () => {
           <h1>Your car was deleted successfully</h1>
         </div>
       </Modal>
+      <Modal
+        showModal={errorModal.show}
+        handleShowModal={() => setErrorModal({ ...errorModal, show: !errorModal.show })}
+      >
+        <div className="center alert-icon">
+          <FiAlertTriangle />
+        </div>
+        <h2>There was an error</h2>
+        <p>{errorModal.msg}</p>
+      </Modal>
+      <LoadingModal show={loading} />
     </>
   );
 };
