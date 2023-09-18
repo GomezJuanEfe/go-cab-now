@@ -1,9 +1,10 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import useForm from '../hooks/useForm';
 
 export const PaymentContext = createContext();
 
 export const PaymentProvider = ({ children }) => {
+  const [discount, setDiscount] = useState(0);
   const {
     form: debitCardForm,
     handleForm: handleDebitCardForm,
@@ -60,6 +61,8 @@ export const PaymentProvider = ({ children }) => {
         selectWalletForm,
         handleSelectWalletForm,
         resetGeneralForm,
+        discount,
+        setDiscount
       }}
     >
       {children}

@@ -67,96 +67,82 @@ const ContactDetails = () => {
               !loading && (
               <form onSubmit={handleClickSubmit}>
 
-              <div className="form-group">
-                <div className="row">
-                  <div className="col first-name">
-                    <label htmlFor="first-name">First name</label>
-                    <br />
-                    <input
-                      type="text"
-                      id="first-name"
-                      name="firstName"
-                      placeholder="First name"
-                      onChange={(e) => handleContactForm(e)}
-                      value={contactForm.firstName}
-                      required
-                    />
-                  </div>
-                  <div className="col last-name">
-                    <label htmlFor="last-name">Last name</label>
-                    <br />
-                    <input
-                      type="text"
-                      id="last-name"
-                      name="lastName"
-                      placeholder="Last name"
-                      onChange={(e) => handleContactForm(e)}
-                      value={contactForm.lastName}
-                      required
-                    />
+                <div className="form-group">
+                  <div className="row">
+                    <div className="col first-name">
+                      <label htmlFor="first-name">First name</label>
+                      <br />
+                      <input
+                        type="text"
+                        id="first-name"
+                        name="firstName"
+                        placeholder="First name"
+                        onChange={(e) => handleContactForm(e)}
+                        value={contactForm.firstName}
+                        required
+                      />
+                    </div>
+                    <div className="col last-name">
+                      <label htmlFor="last-name">Last name</label>
+                      <br />
+                      <input
+                        type="text"
+                        id="last-name"
+                        name="lastName"
+                        placeholder="Last name"
+                        onChange={(e) => handleContactForm(e)}
+                        value={contactForm.lastName}
+                        required
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="form-group email-input">
-                <label htmlFor="email">Email Address</label>
-                <br />
-                <input
-                  id="email"
-                  name="emailAddress"
-                  type="email"
-                  placeholder="Enter email"
-                  onChange={(e) => handleContactForm(e)}
-                  value={contactForm.emailAddress}
-                  required
-                />
-                <br />
-                <small>Booking confirmation will be sent to this email ID.</small>
-              </div>
-
-              <div className="form-group contact-info">
-                <label htmlFor="contact-info">Contact Info</label>
-                <br />
-                <div>
-                  <PhoneInput
-                    defaultCountry="co"
-                    value={userData.phone || ''}
-                    onChange={(phone) => setPhone(phone)}
-                  />
-                </div>
-              </div>
-
-              <div className="form-group special-request">
-                <label htmlFor="special-request">Special Request</label>
-                <br />
-                <textarea
-                  id="special-request"
-                  name="specialRequest"
-                  type="text"
-                  onChange={(e) => handleContactForm(e)}
-                  value={contactForm.specialRequest}
-                />
-              </div>
-
-              <div className="form-group coupon-group">
-                <label className="coupon-title" htmlFor="promo-code">Have A Coupon Code?</label>
-                <div className="coupon-input">
+                <div className="form-group email-input">
+                  <label htmlFor="email">Email Address</label>
+                  <br />
                   <input
-                    type="text"
-                    name="promoCode"
-                    id="promo-code"
-                    placeholder="Promo Code"
+                    id="email"
+                    name="emailAddress"
+                    type="email"
+                    placeholder="Enter email"
                     onChange={(e) => handleContactForm(e)}
-                    value={contactForm.promoCode}
+                    value={contactForm.emailAddress}
+                    required
                   />
-                  <button type="submit">apply</button>
+                  <br />
+                  <small>Booking confirmation will be sent to this email ID.</small>
                 </div>
-              </div>
-              <NavLink to="/payments">
-                <div className="proceed-to-pay">
-                  <button type="submit" className="proceed-button">PROCEED TO PAY</button>
+
+                <div className="form-group contact-info">
+                  <label htmlFor="contact-info">Contact Info</label>
+                  <br />
+                  <div>
+                    <PhoneInput
+                      defaultCountry="co"
+                      value={userData.phone || ''}
+                      onChange={(phone) => setPhone(phone)}
+                    />
+                  </div>
                 </div>
-              </NavLink>
+
+                <div className="form-group special-request">
+                  <label htmlFor="special-request">Special Request</label>
+                  <br />
+                  <textarea
+                    id="special-request"
+                    name="specialRequest"
+                    type="text"
+                    onChange={(e) => handleContactForm(e)}
+                    value={contactForm.specialRequest}
+                  />
+                </div>
+
+                <NavLink to="/payments">
+                  <div className="proceed-to-pay">
+                    <button type="submit" className="proceed-button">PROCEED TO PAY</button>
+                  </div>
+                </NavLink>
               </form>
               )
             }
@@ -168,19 +154,7 @@ const ContactDetails = () => {
           <div className="info-text">
             <div className="info-cancelation">
               <h6>Cancellation Charges</h6>
-              <p>
-                Airline Fee :
-                <span> $2012</span>
-              </p>
-              <p>This Airline Allows Cancellation Only Before 2 Hrs From Departure Time.</p>
-            </div>
-            <div className="info-reschedule">
-              <h6>Reschedule Charges</h6>
-              <p>
-                Airline Fee :
-                <span> $2012</span>
-              </p>
-              <p>This Airline Allows Reschedule Only Before 2 Hrs From Departure Time.</p>
+              <p>Go Cab Now Allows Cancellation Only Before 2 Hrs From Departure Time.</p>
             </div>
           </div>
         </div>
@@ -189,7 +163,6 @@ const ContactDetails = () => {
 
       <div className="col-r">
         <BookingSummery />
-        <CouponCode />
         <div className="advertise">
           <img src={imageURL.advertise} alt="advertise" />
         </div>
