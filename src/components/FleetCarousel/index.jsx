@@ -2,17 +2,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './FleetCarousel.scss';
-import React from 'react';
-import classicCab from '../../assets/images/1.png';
-import businessCab from '../../assets/images/2.png';
-import vipCab from '../../assets/images/3.png';
-import vanCab from '../../assets/images/4.png';
-import seat from '../../assets/icons/seat.png';
-import options from '../../assets/icons/settings.png';
-import snowflake from '../../assets/icons/snowflake.png';
-import luggage from '../../assets/icons/luggage.png';
-
-// https://github.com/akiran/react-slick
+import { imageURL, iconsURL } from '../../assets/variable.img';
 
 const FleetCarousel = () => {
   const settings = {
@@ -60,16 +50,16 @@ const FleetCarousel = () => {
 
       <div className="fleet__car-type">
         <div className="fleet-container">
-          <img src={classicCab} alt="classic cab img" />
+          <img src={imageURL.classicCab} alt="classic cab img" />
           <div className="fleet__content">
             <h3>Classic</h3>
             <h4>Start $5 / per Km</h4>
             <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit. Adipisci Alias Aperiam At, Aut Commodi Corporis</p>
             <ul>
-              <li><img src={seat} alt="" /></li>
-              <li><img src={luggage} alt="" /></li>
-              <li><img src={snowflake} alt="" /></li>
-              <li><img src={options} alt="" /></li>
+              <li><img src={iconsURL.seats} alt="" /></li>
+              <li><img src={iconsURL.luggage} alt="" /></li>
+              <li><img src={iconsURL.air_conditioner} alt="" /></li>
+              <li><img src={iconsURL.transmition} alt="" /></li>
             </ul>
           </div>
         </div>
@@ -77,16 +67,16 @@ const FleetCarousel = () => {
 
       <div className="fleet__car-type">
         <div className="fleet-container">
-          <img src={businessCab} alt="business cab img" />
+          <img src={imageURL.businessCab} alt="business cab img" />
           <div className="fleet__content">
             <h3>Business</h3>
             <h4>Start $6 / per Km</h4>
             <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit. Adipisci Alias Aperiam At, Aut Commodi Corporis</p>
             <ul>
-              <li><img src={seat} alt="" /></li>
-              <li><img src={luggage} alt="" /></li>
-              <li><img src={snowflake} alt="" /></li>
-              <li><img src={options} alt="" /></li>
+              <li><img src={iconsURL.seats} alt="" /></li>
+              <li><img src={iconsURL.luggage} alt="" /></li>
+              <li><img src={iconsURL.air_conditioner} alt="" /></li>
+              <li><img src={iconsURL.transmition} alt="" /></li>
             </ul>
           </div>
         </div>
@@ -94,16 +84,16 @@ const FleetCarousel = () => {
 
       <div className="fleet__car-type">
         <div className="fleet-container">
-          <img src={vipCab} alt="classic cab img" />
+          <img src={imageURL.vipCab} alt="classic cab img" />
           <div className="fleet__content">
             <h3>Vip</h3>
             <h4>Start $10 / per Km</h4>
             <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit. Adipisci Alias Aperiam At, Aut Commodi Corporis</p>
             <ul>
-              <li><img src={seat} alt="" /></li>
-              <li><img src={luggage} alt="" /></li>
-              <li><img src={snowflake} alt="" /></li>
-              <li><img src={options} alt="" /></li>
+              <li><img src={iconsURL.seats} alt="" /></li>
+              <li><img src={iconsURL.luggage} alt="" /></li>
+              <li><img src={iconsURL.air_conditioner} alt="" /></li>
+              <li><img src={iconsURL.transmition} alt="" /></li>
             </ul>
           </div>
         </div>
@@ -111,16 +101,16 @@ const FleetCarousel = () => {
 
       <div className="fleet__car-type">
         <div className="fleet-container">
-          <img src={vanCab} alt="classic cab img" />
+          <img src={imageURL.vanCab} alt="classic cab img" />
           <div className="fleet__content">
             <h3>Van</h3>
             <h4>Start $12 / per Km</h4>
             <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit. Adipisci Alias Aperiam At, Aut Commodi Corporis</p>
             <ul>
-              <li><img src={seat} alt="" /></li>
-              <li><img src={luggage} alt="" /></li>
-              <li><img src={snowflake} alt="" /></li>
-              <li><img src={options} alt="" /></li>
+              <li><img src={iconsURL.seats} alt="" /></li>
+              <li><img src={iconsURL.luggage} alt="" /></li>
+              <li><img src={iconsURL.air_conditioner} alt="" /></li>
+              <li><img src={iconsURL.transmition} alt="" /></li>
             </ul>
           </div>
         </div>
