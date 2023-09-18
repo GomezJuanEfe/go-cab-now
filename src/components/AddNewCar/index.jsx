@@ -12,6 +12,7 @@ import DashboardTitle from '../DashboardTableTitle';
 import { UserContext } from '../../store/UserContext';
 import Modal from '../Modal';
 import Loading from '../Loading';
+import { iconsURL } from '../../assets/variable.img';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -236,7 +237,7 @@ const AddNewCar = () => {
             <div className="input-group">
               <div className="container__span">
                 <span className="input-group-text">
-                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/seat_e37og3.png" alt="seat" />
+                  <img src={iconsURL.seats} alt="seat" />
                 </span>
               </div>
               <input
@@ -257,7 +258,7 @@ const AddNewCar = () => {
             <div className="input-group">
               <div className="container__span">
                 <span className="input-group-text">
-                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273257/samples/ICONS_CAR_EDIT/luggage_vqprta.png" alt="luggage" />
+                  <img src={iconsURL.luggage} alt="luggage" />
                 </span>
               </div>
               <input
@@ -278,7 +279,7 @@ const AddNewCar = () => {
             <div className="input-group">
               <div className="container__span">
                 <span className="input-group-text">
-                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/snowflake_uqwwpz.png" alt="air" />
+                  <img src={iconsURL.air_conditioner} alt="air" />
                 </span>
               </div>
 
@@ -303,7 +304,7 @@ const AddNewCar = () => {
             <div className="input-group">
               <div className="container__span">
                 <span className="input-group-text">
-                  <img src="https://res.cloudinary.com/dbmertsgv/image/upload/v1693273273/samples/ICONS_CAR_EDIT/settings_wijv7z.png" alt="transmition" />
+                  <img src={iconsURL.transmition} alt="transmition" />
                 </span>
               </div>
               <select

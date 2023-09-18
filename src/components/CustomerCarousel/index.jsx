@@ -3,8 +3,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CustomerCarousel.scss';
 import React from 'react';
-import customerA from '../../assets/images/1.jpg';
-import customerB from '../../assets/images/2.jpg';
+import { imageURL } from '../../assets/variable.img';
 
 const FleetCarousel = () => {
   const settings = {
@@ -52,7 +51,7 @@ const FleetCarousel = () => {
 
       <div className="customer-container">
         <div className="customer-card">
-          <img src={customerA} alt="costumer" />
+          <img src={imageURL.customer1} alt="costumer" />
           <div className="costumer__content">
             <p>Architecto aut error explicabo. Voluptatem eaque sequi qui beatae velit vero autautem. Et adipisci perferendis corporis et similique vitae consequatur. Auteveniet quam. Et ut placeat consequatur qui nihil eos quibusdam. Impedit blanditiis delectus.</p>
             <h3>Mark Enderess</h3>
@@ -67,7 +66,7 @@ const FleetCarousel = () => {
 
       <div className="customer-container">
         <div className="customer-card">
-          <img src={customerB} alt="costumer" />
+          <img src={imageURL.customer2} alt="costumer" />
           <div className="fleet__content">
             <p>Architecto aut error explicabo. Voluptatem eaque sequi qui beatae velit vero autautem. Et adipisci perferendis corporis et similique vitae consequatur. Auteveniet quam. Et ut placeat consequatur qui nihil eos quibusdam. Impedit blanditiis delectus.</p>
             <h3>Mark Enderess</h3>

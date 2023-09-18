@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
-import img1 from '../../assets/images/3(1).png';
-import img2 from '../../assets/images/4(1).png';
+import { imageURL } from '../../assets/variable.img';
 import './TheBestCab.scss';
 // eslint-disable-next-line import/order
 import { AiFillApple, AiFillAndroid } from 'react-icons/ai';
@@ -11,10 +10,10 @@ const TheBestCab = () => (
       <section className="container__app">
         <div className="container_img">
           <div className="image">
-            <img className="phones" src={img1} alt="phones1" />
+            <img className="phones" src={imageURL.phone1} alt="phones1" />
           </div>
           <div className="image">
-            <img className="phones" src={img2} alt="phones2" />
+            <img className="phones" src={imageURL.phone2} alt="phones2" />
           </div>
         </div>
         <div className="app-content">

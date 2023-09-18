@@ -3,7 +3,7 @@ import './header.scss';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaUser, FaCog, FaAngleRight } from 'react-icons/fa';
 import { useState } from 'react';
-import gcnLogo from '../../assets/icons/GCN-logo.png';
+import { iconsURL } from '../../assets/variable.img';
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -24,7 +24,7 @@ const Header = () => {
 
         <div className="menu__image-container">
           <NavLink to="/">
-            <img src={gcnLogo} alt="" />
+            <img src={iconsURL.GCN_Logo_White} alt="" />
           </NavLink>
         </div>
 
@@ -85,7 +85,7 @@ const Header = () => {
 
         <ul className="menu__right-section">
 
-          <li className="menu__right-section-front">
+          {/* <li className="menu__right-section-front">
             <select name="currency" id="currency-front">
               <option value="usd">USD</option>
               <option value="eur">EUR</option>
@@ -98,7 +98,7 @@ const Header = () => {
               <option value="esp">ESP</option>
               <option value="eng">ENG</option>
             </select>
-          </li>
+          </li>  NOTA: Codigo oculatado funcionalidad no aplicada */}
           <li className="menu__right-section-user">
             <NavLink to="access">
               <FaUser style={{ fill: 'white', fontSize: '20px' }} />
