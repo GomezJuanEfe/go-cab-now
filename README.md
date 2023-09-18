@@ -13,9 +13,9 @@ For development, you will only need:
 - [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
 
 ### Screenshot of project
-<p aling="center">
+
   <img src="https://media.giphy.com/media/zWJxjdyUz5IdOmhxmq/giphy.gif" alt="Screenshot"/>
-</p>
+
 
 ## 🔧 Install 
 
