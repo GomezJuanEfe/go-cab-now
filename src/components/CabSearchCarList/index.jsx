@@ -8,6 +8,7 @@ import { FormContext } from '../../store/FormContext';
 import Modal from '../Modal';
 import { usdFormat } from '../../services/utils';
 import distanceBetweenCities from '../../services/citiesDistance';
+import Loading from '../Loading';
 
 const CabSearchCarList = () => {
   const { tripForm } = useContext(FormContext);
@@ -54,7 +55,6 @@ const CabSearchCarList = () => {
   };
 
   if (error) return <div>Failed to load</div>;
-  if (isLoading) return <div>Loading...</div>;
 
   const handleShowLocationAlert = () => {
     setLocationAlert(!locationAlert);
@@ -65,24 +65,29 @@ const CabSearchCarList = () => {
 
   return (
     <div className="cab-search-list" id="main">
-      <div className="list-container">
-        {
-          data.response.cars.map((item) => (
-            <CabSearchCarCard
-              key={item.id}
-              data={item}
-              handleSelect={() => handleSelectCar(item)}
-              tripTotal={usdFormat((distanceBetweenCities(tripForm.pickUpLoc, tripForm.dropOffLoc))
-                * item.fare_km * 100)}
-            />
-          ))
-        }
-      </div>
-      <Pagination
-        num={data.response.pageInfo.totalPages}
-        pageIndex={cablistIndexPage}
-        setPageIndex={setcablistIndexPage}
-      />
+      {
+        isLoading
+          ? <Loading />
+          : (
+            <>
+              <div className="list-container">
+                {data.response.cars.map((item) => (
+                  <CabSearchCarCard
+                    key={item.id}
+                    data={item}
+                    handleSelect={() => handleSelectCar(item)}
+                    tripTotal={usdFormat((distanceBetweenCities(tripForm.pickUpLoc, tripForm.dropOffLoc)) * item.fare_km * 100)}
+                  />
+                ))}
+              </div>
+              <Pagination
+                num={data.response.pageInfo.totalPages}
+                pageIndex={cablistIndexPage}
+                setPageIndex={setcablistIndexPage}
+              />
+            </>
+          )
+      }
       <Modal showModal={locationAlert} handleShowModal={handleShowLocationAlert}>
         <h2>Must select different Pick Up and Drop Off Locations</h2>
         <div className="center">

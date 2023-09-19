@@ -9,6 +9,7 @@ import DashboardTitle from '../DashboardTableTitle';
 import { UserContext } from '../../store/UserContext';
 import useForm from '../../hooks/useForm';
 import Modal from '../Modal';
+import LoadingModal from '../LoadingModal';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -29,6 +30,7 @@ const Profile = () => {
     phone: userData.phone,
     email: userData.email,
   });
+  const [loadingModal, setLoadingModal] = useState(false);
 
   useEffect(() => {
     resetForm({
@@ -42,6 +44,7 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoadingModal(true);
     axios.patch(`${URL}/api/users/single`, form, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(({ data }) => {
         setUserData({ ...data.data });
@@ -49,6 +52,9 @@ const Profile = () => {
       })
       .catch((err) => {
         setUpdateModal({ show: true, msg: err.message });
+      })
+      .finally(() => {
+        setLoadingModal(false);
       });
   };
 
@@ -73,11 +79,14 @@ const Profile = () => {
     const reader = new FileReader();
     reader.onload = async () => {
       try {
+        setLoadingModal(true);
         const { data } = await updateImage(fl, name);
         setUserData({ ...userData, avatar: data.avatar });
         setUpdateModal({ show: true, msg: data.message });
       } catch (error) {
-        console.error(error);
+        setUpdateModal({ show: true, msg: error.message });
+      } finally {
+        setLoadingModal(false);
       }
     };
     reader.readAsDataURL(fl);
@@ -90,6 +99,7 @@ const Profile = () => {
 
   const handleRemoveImg = async () => {
     try {
+      setLoadingModal(true);
       const { data } = await axios.patch(
         `${URL}/api/users/single`,
         { avatar: '' },
@@ -98,15 +108,19 @@ const Profile = () => {
       setUserData({ ...userData, avatar: data.avatar });
       setUpdateModal({ show: true, msg: 'Image removed successfully' });
     } catch (error) {
-      console.error(error);
+      setUpdateModal({ show: true, msg: error.message });
+    } finally {
+      setLoadingModal(false);
     }
   };
 
   const navigate = useNavigate();
 
   const handleDeleteAccount = async () => {
+    setLoadingModal(true);
     await axios.delete(`${URL}/api/users`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
     logOut();
+    setLoadingModal(false);
     navigate('/');
   };
 
@@ -186,7 +200,7 @@ const Profile = () => {
             type="submit"
             className="btn__profile"
           >
-            Save Change
+            Save Changes
           </button>
 
           <div>
@@ -219,6 +233,7 @@ const Profile = () => {
           <button className="terciary-button" type="button" onClick={() => setDeleteModal(false)}>Cancel</button>
         </div>
       </Modal>
+      <LoadingModal show={loadingModal} />
     </>
   );
 };
