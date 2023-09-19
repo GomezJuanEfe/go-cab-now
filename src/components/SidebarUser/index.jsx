@@ -80,7 +80,7 @@ const SidebarUser = ({ showSidebar, setShowSidebar }) => {
                   All users
                 </li>
               </NavLink>
-              <NavLink to="/user-profile/add-user">
+              {/* <NavLink to="/user-profile/add-user">
                 <li
                   onClick={() => setShowSidebar(true)}
                   onKeyDown={() => setShowSidebar(true)}
@@ -91,7 +91,7 @@ const SidebarUser = ({ showSidebar, setShowSidebar }) => {
                   {' '}
                   Add new user
                 </li>
-              </NavLink>
+              </NavLink> */}
             </ul>
           </div>
           )}

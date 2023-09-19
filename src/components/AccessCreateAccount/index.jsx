@@ -1,23 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import './AccessCreateAccount.scss';
 import { FaFacebookF, FaGoogle } from 'react-icons/fa';
 import AccessCard from '../AccessCard';
 import { DashboardContext } from '../../store/DashboardContext';
 import { FormContext } from '../../store/FormContext';
+import LoadingModal from '../LoadingModal';
+import Modal from '../Modal';
 
 const URL = import.meta.env.VITE_API_URL;
 
 const AccessCreateAccount = ({ handleShowAccess }) => {
   const { showAccess } = useContext(DashboardContext);
   const { signInForm, handleSignInForm, resetSignInForm } = useContext(FormContext);
+  const [modal, setModal] = useState({ show: false, msg: '', title: '' });
+  const [loadingModal, setLoadingModal] = useState(false);
 
   const handleClickSubmit = async (e) => {
     e.preventDefault();
+    setLoadingModal(true);
 
     axios.post(`${URL}/api/users`, signInForm)
       .then(({ data }) => {
-        alert(data.message);
+        setModal({ show: true, title: 'Great!', msg: data.message });
 
         resetSignInForm({
           first_name: '',
@@ -25,10 +30,18 @@ const AccessCreateAccount = ({ handleShowAccess }) => {
           email: '',
           password: '',
         });
-
-        handleShowAccess();
       })
-      .catch((err) => alert(err.response.data.message));
+      .catch((err) => {
+        setModal({ show: true, title: 'Error!', msg: err.message });
+      })
+      .finally(() => {
+        setLoadingModal(false);
+      });
+  };
+
+  const handleOkButton = () => {
+    setModal({ ...modal, show: false });
+    handleShowAccess();
   };
 
   return (
@@ -119,6 +132,14 @@ const AccessCreateAccount = ({ handleShowAccess }) => {
           </p>
         </form>
       </AccessCard>
+      <Modal showModal={modal.show} handleShowModal={() => setModal({ ...modal, show: false })}>
+        <h2>{modal.title}</h2>
+        <p>{modal.msg}</p>
+        <div className="center">
+          <button className="secondary-button" onClick={handleOkButton} type="button">Ok</button>
+        </div>
+      </Modal>
+      <LoadingModal show={loadingModal} />
     </div>
   );
 };

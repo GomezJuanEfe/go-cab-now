@@ -10,6 +10,7 @@ import { FormContext } from '../../store/FormContext';
 import { UserContext } from '../../store/UserContext';
 import Modal from '../Modal';
 import Loading from '../Loading';
+import LoadingModal from '../LoadingModal';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -19,11 +20,13 @@ const AccessLogIn = ({ handleShowAccess }) => {
   const { setIsLogged } = useContext(UserContext);
   const [modal, setModal] = useState({ show: false, msg: '', title: '' });
   const [loading, setLoading] = useState(false);
+  const [loadingModal, setLoadingModal] = useState(false);
 
   const navigate = useNavigate();
 
   const handleClickSubmit = async (e) => {
     e.preventDefault();
+    setLoadingModal(true);
 
     axios.post(`${URL}/auth/local/login`, loginForm)
       .then(({ data }) => {
@@ -31,7 +34,12 @@ const AccessLogIn = ({ handleShowAccess }) => {
         setIsLogged(true);
         navigate('/user-profile');
       })
-      .catch((err) => alert(err.response.data));
+      .catch((err) => {
+        setModal({ title: 'Ops... There was an error', msg: err.message, show: true });
+      })
+      .finally(() => {
+        setLoadingModal(false);
+      });
 
     resetLoginForm({
       email: '',
@@ -142,6 +150,7 @@ const AccessLogIn = ({ handleShowAccess }) => {
             </>
           )}
       </Modal>
+      <LoadingModal show={loadingModal} />
     </div>
   );
 };
